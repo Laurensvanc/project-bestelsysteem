@@ -25,6 +25,8 @@ namespace Login
 
         private void RestaurantOverzicht_Load(object sender, EventArgs e)
         {
+            pnlReservering.Hide();
+
             ChapooLogic.Tafel_Service tafel_Service = new ChapooLogic.Tafel_Service();
             List<Tafel> tafels = tafel_Service.GetTafels();
 
@@ -69,6 +71,39 @@ namespace Login
                 li.SubItems.Add(r.KlantID.ToString());
 
                 lstReservering.Items.Add(li);
+            }
+
+            dateTijd.Format = DateTimePickerFormat.Custom;
+            dateTijd.CustomFormat = "MM/dd/yyyy HH:mm:ss";
+        }
+
+        private void btnFresh_Click(object sender, EventArgs e)
+        {
+            lstReservering.Refresh();
+            lstTafelStatus.Refresh();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPlus_Click(object sender, EventArgs e)
+        {
+            pnlReservering.Show();
+        }
+
+        private void btnDeleteRes_Click(object sender, EventArgs e)
+        {
+            pnlReservering.Hide();
+        }
+
+        private void btnMin_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Weet je het zeker?", "Verwijderen Reservering", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+
             }
         }
     }
