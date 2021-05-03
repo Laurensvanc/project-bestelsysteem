@@ -12,7 +12,6 @@ namespace Login
 {
     public partial class LoginForm : Form
     { 
-        // test
         public LoginForm()
         {
             InitializeComponent();
