@@ -28,21 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lstReservering = new System.Windows.Forms.ListView();
             this.lstTafelStatus = new System.Windows.Forms.ListView();
             this.btnPlus = new System.Windows.Forms.Button();
             this.btnMin = new System.Windows.Forms.Button();
             this.btnFresh = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listView1
+            // lstReservering
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(599, 12);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(179, 409);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lstReservering.HideSelection = false;
+            this.lstReservering.Location = new System.Drawing.Point(599, 12);
+            this.lstReservering.Name = "lstReservering";
+            this.lstReservering.Size = new System.Drawing.Size(179, 409);
+            this.lstReservering.TabIndex = 0;
+            this.lstReservering.UseCompatibleStateImageBehavior = false;
+            this.lstReservering.View = System.Windows.Forms.View.Details;
             // 
             // lstTafelStatus
             // 
@@ -52,7 +53,7 @@
             this.lstTafelStatus.Size = new System.Drawing.Size(561, 299);
             this.lstTafelStatus.TabIndex = 1;
             this.lstTafelStatus.UseCompatibleStateImageBehavior = false;
-            this.lstTafelStatus.View = System.Windows.Forms.View.List;
+            this.lstTafelStatus.View = System.Windows.Forms.View.Details;
             this.lstTafelStatus.SelectedIndexChanged += new System.EventHandler(this.lstTafelStatus_SelectedIndexChanged);
             // 
             // btnPlus
@@ -91,7 +92,7 @@
             this.Controls.Add(this.btnMin);
             this.Controls.Add(this.btnPlus);
             this.Controls.Add(this.lstTafelStatus);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lstReservering);
             this.Name = "RestaurantOverzicht";
             this.Text = "RestaurantOverzicht";
             this.Load += new System.EventHandler(this.RestaurantOverzicht_Load);
@@ -101,7 +102,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lstReservering;
         private System.Windows.Forms.ListView lstTafelStatus;
         private System.Windows.Forms.Button btnPlus;
         private System.Windows.Forms.Button btnMin;

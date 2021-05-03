@@ -25,8 +25,16 @@ namespace ChapooLogic
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                return null;
+                List<Tafel> tafel = new List<Tafel>();
+                Tafel t = new Tafel();
+                t.Capaciteit = 404;
+                t.Status = "Error";
+                t.WerknemerId = 404;
+                t.TafelNummer = 404;
+                tafel.Add(t);
+                return tafel;
+                
+                throw new Exception("Chapoo kon niet verbinden met de database");
             }
         }
     }
