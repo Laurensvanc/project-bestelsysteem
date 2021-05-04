@@ -94,6 +94,18 @@
     <Compile Include="Voorraad.Designer.cs">
       <DependentUpon>Voorraad.cs</DependentUpon>
     </Compile>
+    <Compile Include="VoorraadAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoorraadAdd.Designer.cs">
+      <DependentUpon>VoorraadAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoorraadChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoorraadChange.Designer.cs">
+      <DependentUpon>VoorraadChange.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -105,6 +117,12 @@
     </Compile>
     <EmbeddedResource Include="RestaurantOverzicht.resx">
       <DependentUpon>RestaurantOverzicht.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Voorraad.resx">
+      <DependentUpon>Voorraad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoorraadChange.resx">
+      <DependentUpon>VoorraadChange.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -120,9 +138,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChapooDal\ChapooDal.csproj">
+    <ProjectReference Include="..\ChapooDal\ChapooDAL.csproj">
       <Project>{2136dcaa-2cb6-4f10-9037-6c925293251d}</Project>
-      <Name>ChapooDal</Name>
+      <Name>ChapooDAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ChapooLogic\ChapooLogic.csproj">
       <Project>{16fb7388-9f3f-49fe-adbc-62bef5dba71c}</Project>

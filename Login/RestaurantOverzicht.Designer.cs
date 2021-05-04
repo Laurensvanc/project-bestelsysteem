@@ -34,13 +34,13 @@
             this.btnMin = new System.Windows.Forms.Button();
             this.btnFresh = new System.Windows.Forms.Button();
             this.pnlReservering = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.dateTijd = new System.Windows.Forms.DateTimePicker();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblAantalPersonen = new System.Windows.Forms.Label();
-            this.btnUpdateRes = new System.Windows.Forms.Button();
             this.btnDeleteRes = new System.Windows.Forms.Button();
+            this.btnUpdateRes = new System.Windows.Forms.Button();
+            this.lblAantalPersonen = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.dateTijd = new System.Windows.Forms.DateTimePicker();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pnlReservering.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,35 +109,24 @@
             this.pnlReservering.Size = new System.Drawing.Size(776, 425);
             this.pnlReservering.TabIndex = 5;
             // 
-            // textBox1
+            // btnDeleteRes
             // 
-            this.textBox1.Location = new System.Drawing.Point(37, 101);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(146, 20);
-            this.textBox1.TabIndex = 0;
+            this.btnDeleteRes.Location = new System.Drawing.Point(149, 267);
+            this.btnDeleteRes.Name = "btnDeleteRes";
+            this.btnDeleteRes.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteRes.TabIndex = 7;
+            this.btnDeleteRes.Text = "Verwijderen";
+            this.btnDeleteRes.UseVisualStyleBackColor = true;
+            this.btnDeleteRes.Click += new System.EventHandler(this.btnDeleteRes_Click);
             // 
-            // textBox3
+            // btnUpdateRes
             // 
-            this.textBox3.Location = new System.Drawing.Point(37, 170);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 2;
-            // 
-            // dateTijd
-            // 
-            this.dateTijd.Location = new System.Drawing.Point(37, 213);
-            this.dateTijd.Name = "dateTijd";
-            this.dateTijd.Size = new System.Drawing.Size(206, 20);
-            this.dateTijd.TabIndex = 3;
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(34, 85);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(35, 13);
-            this.lblName.TabIndex = 4;
-            this.lblName.Text = "Naam";
+            this.btnUpdateRes.Location = new System.Drawing.Point(37, 267);
+            this.btnUpdateRes.Name = "btnUpdateRes";
+            this.btnUpdateRes.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdateRes.TabIndex = 6;
+            this.btnUpdateRes.Text = "Opslaan";
+            this.btnUpdateRes.UseVisualStyleBackColor = true;
             // 
             // lblAantalPersonen
             // 
@@ -149,24 +138,35 @@
             this.lblAantalPersonen.Text = "Aantal Personen";
             this.lblAantalPersonen.Click += new System.EventHandler(this.label1_Click);
             // 
-            // btnUpdateRes
+            // lblName
             // 
-            this.btnUpdateRes.Location = new System.Drawing.Point(37, 267);
-            this.btnUpdateRes.Name = "btnUpdateRes";
-            this.btnUpdateRes.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdateRes.TabIndex = 6;
-            this.btnUpdateRes.Text = "Opslaan";
-            this.btnUpdateRes.UseVisualStyleBackColor = true;
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(34, 85);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(35, 13);
+            this.lblName.TabIndex = 4;
+            this.lblName.Text = "Naam";
             // 
-            // btnDeleteRes
+            // dateTijd
             // 
-            this.btnDeleteRes.Location = new System.Drawing.Point(149, 267);
-            this.btnDeleteRes.Name = "btnDeleteRes";
-            this.btnDeleteRes.Size = new System.Drawing.Size(75, 23);
-            this.btnDeleteRes.TabIndex = 7;
-            this.btnDeleteRes.Text = "Verwijderen";
-            this.btnDeleteRes.UseVisualStyleBackColor = true;
-            this.btnDeleteRes.Click += new System.EventHandler(this.btnDeleteRes_Click);
+            this.dateTijd.Location = new System.Drawing.Point(37, 213);
+            this.dateTijd.Name = "dateTijd";
+            this.dateTijd.Size = new System.Drawing.Size(206, 20);
+            this.dateTijd.TabIndex = 3;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(37, 170);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 2;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(37, 101);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(146, 20);
+            this.textBox1.TabIndex = 0;
             // 
             // RestaurantOverzicht
             // 

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapooUI", "Login\ChapooUI.csproj", "{A076E2E4-FA8B-4FC9-8123-A3E11E105AAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapooDal", "ChapooDal\ChapooDal.csproj", "{2136DCAA-2CB6-4F10-9037-6C925293251D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapooDAL", "ChapooDal\ChapooDAL.csproj", "{2136DCAA-2CB6-4F10-9037-6C925293251D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapooLogic", "ChapooLogic\ChapooLogic.csproj", "{16FB7388-9F3F-49FE-ADBC-62BEF5DBA71C}"
 EndProject

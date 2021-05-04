@@ -41,14 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Product_Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reservering_Service.cs" />
     <Compile Include="Tafel_Service.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChapooDal\ChapooDal.csproj">
+    <ProjectReference Include="..\ChapooDal\ChapooDAL.csproj">
       <Project>{2136dcaa-2cb6-4f10-9037-6c925293251d}</Project>
-      <Name>ChapooDal</Name>
+      <Name>ChapooDAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ChapooModel\ChapooModel.csproj">
       <Project>{97863adb-cafe-40a7-899b-9a48a6ff87f2}</Project>
