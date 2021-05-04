@@ -1,6 +1,7 @@
 ﻿using ChapooModel;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Login
@@ -15,11 +16,12 @@ namespace Login
         public Voorraad()
         {
             InitializeComponent();
+
             // add grid lines, rows
-            lv_Voorraad.View = View.Details;
             lv_Voorraad.GridLines = true;
             lv_Voorraad.FullRowSelect = true;
             lv_Voorraad.MultiSelect = false;
+            
             Voorraad_Refresh();
         }
 
@@ -59,6 +61,8 @@ namespace Login
                     }
                 }
             }
+            lv_Voorraad.Columns[0].Width = -2;
+            lv_Voorraad.Columns[2].Width = -2;
         }
 
         private void FillGridView(Product p)
@@ -117,6 +121,28 @@ namespace Login
                 MessageBox.Show("Geen product geselecteerd!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             
+        }
+
+        private void btn_Search_Click(object sender, EventArgs e)
+        {
+            Voorraad_Refresh();
+            
+            // searches product list
+            if (!string.IsNullOrWhiteSpace(tb_Search.Text))
+            {
+                lv_Voorraad.Items.Clear();
+                foreach (Product p in _products)
+                {
+                    if (p.ProductId.ToString().ToLower().Contains(tb_Search.Text.ToLower()) || p.ProductNaam.ToLower().Contains(tb_Search.Text.ToLower()))
+                    {
+                        FillGridView(p);
+                    }
+                }
+                if (lv_Voorraad.SelectedItems.Count == 1)
+                {
+                    lv_Voorraad.Focus();
+                }
+            }
         }
     }
 }

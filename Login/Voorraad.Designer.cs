@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.pnl_Voorraad = new System.Windows.Forms.Panel();
+            this.btn_Search = new System.Windows.Forms.Button();
+            this.tb_Search = new System.Windows.Forms.TextBox();
             this.btn_Change = new System.Windows.Forms.Button();
             this.btn_Add = new System.Windows.Forms.Button();
             this.lbl_Showing = new System.Windows.Forms.Label();
@@ -43,6 +45,8 @@
             // 
             // pnl_Voorraad
             // 
+            this.pnl_Voorraad.Controls.Add(this.btn_Search);
+            this.pnl_Voorraad.Controls.Add(this.tb_Search);
             this.pnl_Voorraad.Controls.Add(this.btn_Change);
             this.pnl_Voorraad.Controls.Add(this.btn_Add);
             this.pnl_Voorraad.Controls.Add(this.lbl_Showing);
@@ -53,6 +57,23 @@
             this.pnl_Voorraad.Name = "pnl_Voorraad";
             this.pnl_Voorraad.Size = new System.Drawing.Size(776, 426);
             this.pnl_Voorraad.TabIndex = 0;
+            // 
+            // btn_Search
+            // 
+            this.btn_Search.Location = new System.Drawing.Point(525, 0);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(75, 23);
+            this.btn_Search.TabIndex = 7;
+            this.btn_Search.Text = "Search";
+            this.btn_Search.UseVisualStyleBackColor = true;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+            // 
+            // tb_Search
+            // 
+            this.tb_Search.Location = new System.Drawing.Point(606, 2);
+            this.tb_Search.Name = "tb_Search";
+            this.tb_Search.Size = new System.Drawing.Size(167, 20);
+            this.tb_Search.TabIndex = 6;
             // 
             // btn_Change
             // 
@@ -110,6 +131,7 @@
             this.ch0,
             this.ch1,
             this.ch2});
+            this.lv_Voorraad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lv_Voorraad.HideSelection = false;
             this.lv_Voorraad.Location = new System.Drawing.Point(3, 23);
             this.lv_Voorraad.Name = "lv_Voorraad";
@@ -131,6 +153,7 @@
             // ch2
             // 
             this.ch2.Text = "Aantal";
+            this.ch2.Width = 120;
             // 
             // Voorraad
             // 
@@ -158,5 +181,7 @@
         private System.Windows.Forms.Label lbl_Showing;
         private System.Windows.Forms.Button btn_Add;
         private System.Windows.Forms.Button btn_Change;
+        private System.Windows.Forms.TextBox tb_Search;
+        private System.Windows.Forms.Button btn_Search;
     }
 }
