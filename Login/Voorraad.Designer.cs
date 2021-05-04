@@ -60,7 +60,7 @@
             this.btn_Change.Name = "btn_Change";
             this.btn_Change.Size = new System.Drawing.Size(113, 34);
             this.btn_Change.TabIndex = 5;
-            this.btn_Change.Text = "Change";
+            this.btn_Change.Text = "Change/Remove";
             this.btn_Change.UseVisualStyleBackColor = true;
             this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
             // 
@@ -90,7 +90,7 @@
             this.btn_Toggle.Name = "btn_Toggle";
             this.btn_Toggle.Size = new System.Drawing.Size(75, 23);
             this.btn_Toggle.TabIndex = 2;
-            this.btn_Toggle.Text = "Change";
+            this.btn_Toggle.Text = "Show drinks";
             this.btn_Toggle.UseVisualStyleBackColor = true;
             this.btn_Toggle.Click += new System.EventHandler(this.btn_Toggle_Click);
             // 

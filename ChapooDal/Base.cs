@@ -11,7 +11,7 @@ namespace ChapooDAL
         private SqlConnection conn;
         public Base()
         {
-            // DO NOT FORGET TO INSERT YOUR CONNECTION STRING NAMED 'SOMEREN DATABASE' IN YOUR APP.CONFIG!!
+            // DO NOT FORGET TO INSERT YOUR CONNECTION STRING NAMED 'CHAPOO DATABASE' IN YOUR APP.CONFIG!!
             
                 conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dbchapoo202104"].ConnectionString);
                 adapter = new SqlDataAdapter();           

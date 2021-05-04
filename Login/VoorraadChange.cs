@@ -1,4 +1,5 @@
 ﻿using ChapooModel;
+using ChapooLogic;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -12,7 +13,20 @@ namespace Login
         public VoorraadChange(Product product)
         {
             InitializeComponent();
-
+            LoadFields(product);
+            pnl_AddBtn.Hide();
+            pnl_ChangeBtn.Show();
+        }
+        public VoorraadChange()
+        {
+            InitializeComponent();
+            pnl_ChangeBtn.Hide();
+            lbl_ProductIDTxt.Hide();
+            lbl_ProductIDValue.Hide();
+            pnl_AddBtn.Show();
+        }
+        private void LoadFields(Product product)
+        {
             _product = product;
             lbl_ProductIDValue.Text = _product.ProductId.ToString();
             tb_ProductName.Text = _product.ProductNaam;
@@ -101,48 +115,45 @@ namespace Login
 
             return false;
         }
-
-        private void btn_Change_Click(object sender, EventArgs e)
+        private bool TypeToBool()
         {
-            bool IsDrinken;
-            string Soort;
             if (cbox_Type.SelectedItem.ToString() == "Drinken")
             {
-                IsDrinken = true;
-                Soort = "Drinken";
+                return true;
             }
             else
             {
-                IsDrinken = false;
-                Soort = "Eten";
+                return false;
             }
-            Product product = new Product(_product.ProductId, tb_ProductName.Text, double.Parse(tb_MenuPrice.Text), double.Parse(tb_PurchasePrice.Text), Convert.ToInt32(nud_Amount.Value), cb_Alcoholic.Checked, IsDrinken);
+        }
+
+        private void btn_Change_Click(object sender, EventArgs e)
+        {
+            Product product = new Product(_product.ProductId, tb_ProductName.Text, double.Parse(tb_MenuPrice.Text), double.Parse(tb_PurchasePrice.Text), Convert.ToInt32(nud_Amount.Value), cb_Alcoholic.Checked, TypeToBool());
             if (!product.Equals(_product)) // check if object has changed
             {
-                string IsAlcoholNL;
-                if (product.IsAlcohol == true)
-                {
-                    IsAlcoholNL = "Ja";
-                }
-                else
-                {
-                    IsAlcoholNL = "Nee";
-                }
-                DialogResult confirm = MessageBox.Show($"Het product zal de volgende waarden krijgen:\n\nProduct Naam:\t{product.ProductNaam}\nVerkoop Prijs:\t{product.Prijs.ToString("0.00")}\nInkoop Prijs:\t{product.InkoopPrijs.ToString("0.00")}\nAantal:\t\t{product.Aantal.ToString()}\nAlcoholisch:\t{IsAlcoholNL}\nSoort:\t\t{Soort}", "Error!", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-                if (confirm == DialogResult.OK)
-                {
-                    // change item
-                    MessageBox.Show("Product gewijzigd!", "Succes!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Wijziging geannuleerd!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                var voorraadConfirmation = new VoorraadConfirmation(product, "Het product zal de volgende waarden krijgen: ", false, this);
+
+                voorraadConfirmation.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Product waarden zijn niet verandert!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+        private void btn_Remove_Click(object sender, EventArgs e)
+        {
+            Product product = new Product(_product.ProductId, tb_ProductName.Text, double.Parse(tb_MenuPrice.Text), double.Parse(tb_PurchasePrice.Text), Convert.ToInt32(nud_Amount.Value), cb_Alcoholic.Checked, TypeToBool());
+            var voorraadConfirmation = new VoorraadConfirmation(product, "Het product met de volgende waarden zal worden verwijderd: ", true, this);
+
+            voorraadConfirmation.ShowDialog();
+        }
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            Product product = new Product(-1, tb_ProductName.Text, double.Parse(tb_MenuPrice.Text), double.Parse(tb_PurchasePrice.Text), Convert.ToInt32(nud_Amount.Value), cb_Alcoholic.Checked, TypeToBool());
+            var voorraadConfirmation = new VoorraadConfirmation(product, "Het product met de volgende waarden zal worden toegevoegd: ", false, this);
+
+            voorraadConfirmation.ShowDialog();
         }
 
         private void Validation(TextBox textBox, CancelEventArgs e, string Error)
@@ -173,5 +184,9 @@ namespace Login
         {
             Validation(tb_PurchasePrice, e, "Menu prijs mag niet leeg zijn!");
         }
+
+        
+
+       
     }
 }

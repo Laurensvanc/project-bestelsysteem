@@ -48,15 +48,20 @@ namespace Login
             this.lbl_ProductNameTxt = new System.Windows.Forms.Label();
             this.lbl_ProductIDTxt = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pnl_ChangeBtn = new System.Windows.Forms.Panel();
+            this.pnl_AddBtn = new System.Windows.Forms.Panel();
+            this.btn_Add = new System.Windows.Forms.Button();
             this.pnl_VoorraadChange.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Amount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.pnl_ChangeBtn.SuspendLayout();
+            this.pnl_AddBtn.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_VoorraadChange
             // 
-            this.pnl_VoorraadChange.Controls.Add(this.btn_Remove);
-            this.pnl_VoorraadChange.Controls.Add(this.btn_Change);
+            this.pnl_VoorraadChange.Controls.Add(this.pnl_ChangeBtn);
+            this.pnl_VoorraadChange.Controls.Add(this.pnl_AddBtn);
             this.pnl_VoorraadChange.Controls.Add(this.lbl_TypeTxt);
             this.pnl_VoorraadChange.Controls.Add(this.cbox_Type);
             this.pnl_VoorraadChange.Controls.Add(this.cb_Alcoholic);
@@ -78,16 +83,17 @@ namespace Login
             // 
             // btn_Remove
             // 
-            this.btn_Remove.Location = new System.Drawing.Point(168, 183);
+            this.btn_Remove.Location = new System.Drawing.Point(188, 8);
             this.btn_Remove.Name = "btn_Remove";
             this.btn_Remove.Size = new System.Drawing.Size(75, 23);
             this.btn_Remove.TabIndex = 8;
             this.btn_Remove.Text = "Remove";
             this.btn_Remove.UseVisualStyleBackColor = true;
+            this.btn_Remove.Click += new System.EventHandler(this.btn_Remove_Click);
             // 
             // btn_Change
             // 
-            this.btn_Change.Location = new System.Drawing.Point(65, 183);
+            this.btn_Change.Location = new System.Drawing.Point(44, 8);
             this.btn_Change.Name = "btn_Change";
             this.btn_Change.Size = new System.Drawing.Size(75, 23);
             this.btn_Change.TabIndex = 7;
@@ -100,9 +106,9 @@ namespace Login
             this.lbl_TypeTxt.AutoSize = true;
             this.lbl_TypeTxt.Location = new System.Drawing.Point(7, 149);
             this.lbl_TypeTxt.Name = "lbl_TypeTxt";
-            this.lbl_TypeTxt.Size = new System.Drawing.Size(37, 13);
+            this.lbl_TypeTxt.Size = new System.Drawing.Size(38, 13);
             this.lbl_TypeTxt.TabIndex = 13;
-            this.lbl_TypeTxt.Text = "Type: ";
+            this.lbl_TypeTxt.Text = "Soort: ";
             // 
             // cbox_Type
             // 
@@ -227,18 +233,48 @@ namespace Login
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // pnl_ChangeBtn
+            // 
+            this.pnl_ChangeBtn.Controls.Add(this.btn_Remove);
+            this.pnl_ChangeBtn.Controls.Add(this.btn_Change);
+            this.pnl_ChangeBtn.Location = new System.Drawing.Point(34, 182);
+            this.pnl_ChangeBtn.Name = "pnl_ChangeBtn";
+            this.pnl_ChangeBtn.Size = new System.Drawing.Size(308, 39);
+            this.pnl_ChangeBtn.TabIndex = 14;
+            // 
+            // pnl_AddBtn
+            // 
+            this.pnl_AddBtn.Controls.Add(this.btn_Add);
+            this.pnl_AddBtn.Location = new System.Drawing.Point(34, 182);
+            this.pnl_AddBtn.Name = "pnl_AddBtn";
+            this.pnl_AddBtn.Size = new System.Drawing.Size(308, 39);
+            this.pnl_AddBtn.TabIndex = 15;
+            // 
+            // btn_Add
+            // 
+            this.btn_Add.Location = new System.Drawing.Point(107, 8);
+            this.btn_Add.Name = "btn_Add";
+            this.btn_Add.Size = new System.Drawing.Size(75, 23);
+            this.btn_Add.TabIndex = 7;
+            this.btn_Add.Text = "Add";
+            this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
+            // 
             // VoorraadChange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(397, 264);
             this.Controls.Add(this.pnl_VoorraadChange);
+            this.MinimizeBox = false;
             this.Name = "VoorraadChange";
-            this.Text = "VoorraadChange";
+            this.Text = "Voorraad veranderen";
             this.pnl_VoorraadChange.ResumeLayout(false);
             this.pnl_VoorraadChange.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Amount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.pnl_ChangeBtn.ResumeLayout(false);
+            this.pnl_AddBtn.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -263,5 +299,8 @@ namespace Login
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.TextBox tb_MenuPrice;
         private System.Windows.Forms.TextBox tb_ProductName;
+        private System.Windows.Forms.Panel pnl_ChangeBtn;
+        private System.Windows.Forms.Panel pnl_AddBtn;
+        private System.Windows.Forms.Button btn_Add;
     }
 }

@@ -84,17 +84,22 @@ namespace Login
             if (_showingDrinks == false)
             {
                 _showingDrinks = true;
+                btn_Toggle.Text = "Show food";
             }
             else
             {
                 _showingDrinks = false;
+                btn_Toggle.Text = "Show drinks";
             }
             Voorraad_Refresh();
         }
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
+            var voorraadChange = new VoorraadChange();
 
+            voorraadChange.ShowDialog();
+            Voorraad_Refresh();
         }
 
         private void btn_Change_Click(object sender, EventArgs e)
@@ -105,6 +110,7 @@ namespace Login
                 var voorraadChange = new VoorraadChange(product);
 
                 voorraadChange.ShowDialog();
+                Voorraad_Refresh();
             }
             else
             {

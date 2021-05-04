@@ -31,5 +31,41 @@ namespace ChapooLogic
                 return products;
             }
         }
+        public void AddProduct(Product product)
+        {
+            try
+            {
+                product_db.AddProduct(product);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public void ChangeProduct(Product product)
+        {
+            try
+            {
+                product_db.ChangeProduct(product);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public void DeleteProduct(Product product)
+        {
+            try
+            {
+                product_db.DeleteProduct(product);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
