@@ -1,5 +1,4 @@
 ﻿using ChapooModel;
-using ChapooLogic;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -9,6 +8,10 @@ namespace Login
     public partial class VoorraadChange : Form
     {
         private Product _product;
+        private bool _nameValidated = false;
+        private bool _menuPriceValidated = false;
+        private bool _purchasePriceValidated = false;
+        private bool _typeValidated = false;
 
         public VoorraadChange(Product product)
         {
@@ -17,6 +20,7 @@ namespace Login
             pnl_AddBtn.Hide();
             pnl_ChangeBtn.Show();
         }
+
         public VoorraadChange()
         {
             InitializeComponent();
@@ -24,7 +28,10 @@ namespace Login
             lbl_ProductIDTxt.Hide();
             lbl_ProductIDValue.Hide();
             pnl_AddBtn.Show();
+            tb_MenuPrice.Clear();
+            tb_PurchasePrice.Clear();
         }
+
         private void LoadFields(Product product)
         {
             _product = product;
@@ -115,8 +122,10 @@ namespace Login
 
             return false;
         }
+
         private bool TypeToBool()
         {
+            // convert string type to boolean
             if (cbox_Type.SelectedItem.ToString() == "Drinken")
             {
                 return true;
@@ -129,64 +138,111 @@ namespace Login
 
         private void btn_Change_Click(object sender, EventArgs e)
         {
-            Product product = new Product(_product.ProductId, tb_ProductName.Text, double.Parse(tb_MenuPrice.Text), double.Parse(tb_PurchasePrice.Text), Convert.ToInt32(nud_Amount.Value), cb_Alcoholic.Checked, TypeToBool());
-            if (!product.Equals(_product)) // check if object has changed
+            // change product
+            if (ValidateChildren(ValidationConstraints.Enabled)) // validate input not empty
             {
-                var voorraadConfirmation = new VoorraadConfirmation(product, "Het product zal de volgende waarden krijgen: ", false, this);
-
-                voorraadConfirmation.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Product waarden zijn niet verandert!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                if ((_nameValidated && _menuPriceValidated && _purchasePriceValidated && _typeValidated) == true) // if validation succesful open confirmation window
+                {
+                    Product product = new Product(_product.ProductId, tb_ProductName.Text, double.Parse(tb_MenuPrice.Text), double.Parse(tb_PurchasePrice.Text), Convert.ToInt32(nud_Amount.Value), cb_Alcoholic.Checked, TypeToBool());
+                    if (!product.Equals(_product)) // check if object has changed
+                    {
+                        using (VoorraadConfirmation voorraadConfirmation = new VoorraadConfirmation(product, "Het product zal de volgende waarden krijgen: ", false, this))
+                        {
+                            voorraadConfirmation.ShowDialog();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Product waarden zijn niet verandert!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
             }
         }
+
         private void btn_Remove_Click(object sender, EventArgs e)
         {
-            Product product = new Product(_product.ProductId, tb_ProductName.Text, double.Parse(tb_MenuPrice.Text), double.Parse(tb_PurchasePrice.Text), Convert.ToInt32(nud_Amount.Value), cb_Alcoholic.Checked, TypeToBool());
-            var voorraadConfirmation = new VoorraadConfirmation(product, "Het product met de volgende waarden zal worden verwijderd: ", true, this);
-
-            voorraadConfirmation.ShowDialog();
+            // remove product
+            using (VoorraadConfirmation voorraadConfirmation = new VoorraadConfirmation(_product, "Het product met de volgende waarden zal worden verwijderd: ", true, this))
+            {
+                voorraadConfirmation.ShowDialog();
+            }
         }
+
         private void btn_Add_Click(object sender, EventArgs e)
         {
-            Product product = new Product(-1, tb_ProductName.Text, double.Parse(tb_MenuPrice.Text), double.Parse(tb_PurchasePrice.Text), Convert.ToInt32(nud_Amount.Value), cb_Alcoholic.Checked, TypeToBool());
-            var voorraadConfirmation = new VoorraadConfirmation(product, "Het product met de volgende waarden zal worden toegevoegd: ", false, this);
-
-            voorraadConfirmation.ShowDialog();
+            // add product
+            if (ValidateChildren(ValidationConstraints.Enabled)) // validate input not empty
+            {
+                if ((_nameValidated && _menuPriceValidated && _purchasePriceValidated && _typeValidated) == true) // if validation succesful open confirmation window
+                {
+                    Product product = new Product(-1, tb_ProductName.Text, double.Parse(tb_MenuPrice.Text), double.Parse(tb_PurchasePrice.Text), Convert.ToInt32(nud_Amount.Value), cb_Alcoholic.Checked, TypeToBool());
+                    using (VoorraadConfirmation voorraadConfirmation = new VoorraadConfirmation(product, "Het product met de volgende waarden zal worden toegevoegd: ", false, this))
+                    {
+                        voorraadConfirmation.ShowDialog();
+                    }
+                }
+            }
         }
 
-        private void Validation(TextBox textBox, CancelEventArgs e, string Error)
+        private bool ValidationTextBox(TextBox textBox, CancelEventArgs e, string Error)
         {
             // check if textboxes aren't empty
             if (string.IsNullOrEmpty(textBox.Text))
             {
                 errorProvider.SetError(textBox, Error);
-                e.Cancel = true;
+                return false;
+                //e.Cancel = true;
             }
             else
             {
                 errorProvider.SetError(textBox, null);
+                return true;
+            }
+        }
+
+        private bool ValidationComboBox(ComboBox comboBox, CancelEventArgs e, string Error)
+        {
+            // check if index is selected
+            if (comboBox.SelectedIndex == -1)
+            {
+                errorProvider.SetError(comboBox, Error);
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(comboBox, null);
+                return true;
             }
         }
 
         private void tb_ProductName_Validating(object sender, CancelEventArgs e)
         {
-            Validation(tb_ProductName, e, "Product naam mag niet leeg zijn!");
+            _nameValidated = ValidationTextBox(tb_ProductName, e, "Product naam mag niet leeg zijn!");
         }
 
         private void tb_MenuPrice_Validating(object sender, CancelEventArgs e)
         {
-            Validation(tb_MenuPrice, e, "Menu prijs mag niet leeg zijn!");
+            _menuPriceValidated = ValidationTextBox(tb_MenuPrice, e, "Menu prijs mag niet leeg zijn!");
         }
 
         private void tb_PurchasePrice_Validating(object sender, CancelEventArgs e)
         {
-            Validation(tb_PurchasePrice, e, "Menu prijs mag niet leeg zijn!");
+            _purchasePriceValidated = ValidationTextBox(tb_PurchasePrice, e, "Inkoop prijs mag niet leeg zijn!");
         }
 
-        
+        private void cbox_Type_Validating(object sender, CancelEventArgs e)
+        {
+            _typeValidated = ValidationComboBox(cbox_Type, e, "Soort mag niet leeg zijn!");
+        }
 
-       
+        private void btn_CancelAdd_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btn_CancelChange_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

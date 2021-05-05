@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnl_Voorraad = new System.Windows.Forms.Panel();
+            this.btn_Menu = new System.Windows.Forms.Button();
             this.btn_Search = new System.Windows.Forms.Button();
             this.tb_Search = new System.Windows.Forms.TextBox();
             this.btn_Change = new System.Windows.Forms.Button();
@@ -45,6 +46,7 @@
             // 
             // pnl_Voorraad
             // 
+            this.pnl_Voorraad.Controls.Add(this.btn_Menu);
             this.pnl_Voorraad.Controls.Add(this.btn_Search);
             this.pnl_Voorraad.Controls.Add(this.tb_Search);
             this.pnl_Voorraad.Controls.Add(this.btn_Change);
@@ -57,6 +59,16 @@
             this.pnl_Voorraad.Name = "pnl_Voorraad";
             this.pnl_Voorraad.Size = new System.Drawing.Size(776, 426);
             this.pnl_Voorraad.TabIndex = 0;
+            // 
+            // btn_Menu
+            // 
+            this.btn_Menu.Location = new System.Drawing.Point(491, 373);
+            this.btn_Menu.Name = "btn_Menu";
+            this.btn_Menu.Size = new System.Drawing.Size(113, 34);
+            this.btn_Menu.TabIndex = 3;
+            this.btn_Menu.Text = "Menu Overview";
+            this.btn_Menu.UseVisualStyleBackColor = true;
+            this.btn_Menu.Click += new System.EventHandler(this.btn_Menu_Click);
             // 
             // btn_Search
             // 
@@ -74,13 +86,14 @@
             this.tb_Search.Name = "tb_Search";
             this.tb_Search.Size = new System.Drawing.Size(167, 20);
             this.tb_Search.TabIndex = 6;
+            this.tb_Search.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tb_Search_KeyUp);
             // 
             // btn_Change
             // 
             this.btn_Change.Location = new System.Drawing.Point(173, 373);
             this.btn_Change.Name = "btn_Change";
             this.btn_Change.Size = new System.Drawing.Size(113, 34);
-            this.btn_Change.TabIndex = 5;
+            this.btn_Change.TabIndex = 2;
             this.btn_Change.Text = "Change/Remove";
             this.btn_Change.UseVisualStyleBackColor = true;
             this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
@@ -90,7 +103,7 @@
             this.btn_Add.Location = new System.Drawing.Point(19, 373);
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(113, 34);
-            this.btn_Add.TabIndex = 4;
+            this.btn_Add.TabIndex = 1;
             this.btn_Add.Text = "Add";
             this.btn_Add.UseVisualStyleBackColor = true;
             this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
@@ -110,7 +123,7 @@
             this.btn_Toggle.Location = new System.Drawing.Point(123, 0);
             this.btn_Toggle.Name = "btn_Toggle";
             this.btn_Toggle.Size = new System.Drawing.Size(75, 23);
-            this.btn_Toggle.TabIndex = 2;
+            this.btn_Toggle.TabIndex = 5;
             this.btn_Toggle.Text = "Show drinks";
             this.btn_Toggle.UseVisualStyleBackColor = true;
             this.btn_Toggle.Click += new System.EventHandler(this.btn_Toggle_Click);
@@ -120,7 +133,7 @@
             this.btn_Refresh.Location = new System.Drawing.Point(645, 373);
             this.btn_Refresh.Name = "btn_Refresh";
             this.btn_Refresh.Size = new System.Drawing.Size(113, 34);
-            this.btn_Refresh.TabIndex = 1;
+            this.btn_Refresh.TabIndex = 4;
             this.btn_Refresh.Text = "Refresh";
             this.btn_Refresh.UseVisualStyleBackColor = true;
             this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
@@ -183,5 +196,6 @@
         private System.Windows.Forms.Button btn_Change;
         private System.Windows.Forms.TextBox tb_Search;
         private System.Windows.Forms.Button btn_Search;
+        private System.Windows.Forms.Button btn_Menu;
     }
 }

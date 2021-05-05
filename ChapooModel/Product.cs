@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChapooModel
+﻿namespace ChapooModel
 {
     public class Product
     {
@@ -15,6 +9,7 @@ namespace ChapooModel
         public int Aantal { get; set; }
         public bool IsAlcohol { get; set; }
         public bool IsDrinken { get; set; }
+
         public Product(int productId, string productNaam, double prijs, double inkoopPrijs, int aantal, bool isAlcohol, bool isDrinken)
         {
             ProductId = productId;
@@ -25,10 +20,12 @@ namespace ChapooModel
             IsAlcohol = isAlcohol;
             IsDrinken = isDrinken;
         }
+
         public override string ToString()
         {
             return ProductNaam;
         }
+
         public override bool Equals(object obj)
         {
             var other = obj as Product;

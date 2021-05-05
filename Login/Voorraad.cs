@@ -18,10 +18,12 @@ namespace Login
             InitializeComponent();
 
             // add grid lines, rows
+            Point point = new Point(12, 12);
+            pnl_Voorraad.Location = point;
             lv_Voorraad.GridLines = true;
             lv_Voorraad.FullRowSelect = true;
             lv_Voorraad.MultiSelect = false;
-            
+
             Voorraad_Refresh();
         }
 
@@ -111,22 +113,22 @@ namespace Login
             if (lv_Voorraad.SelectedItems.Count > 0)
             {
                 Product product = _products.Find(p => p.ProductId == int.Parse(lv_Voorraad.SelectedItems[0].Text));
-                var voorraadChange = new VoorraadChange(product);
-
-                voorraadChange.ShowDialog();
+                using (var voorraadChange = new VoorraadChange(product))
+                {
+                    voorraadChange.ShowDialog();
+                }
                 Voorraad_Refresh();
             }
             else
             {
                 MessageBox.Show("Geen product geselecteerd!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            
         }
 
-        private void btn_Search_Click(object sender, EventArgs e)
+        private void SearchVoorraad()
         {
             Voorraad_Refresh();
-            
+
             // searches product list
             if (!string.IsNullOrWhiteSpace(tb_Search.Text))
             {
@@ -142,6 +144,23 @@ namespace Login
                 {
                     lv_Voorraad.Focus();
                 }
+            }
+        }
+
+        private void btn_Search_Click(object sender, EventArgs e)
+        {
+            SearchVoorraad();
+        }
+
+        private void btn_Menu_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void tb_Search_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SearchVoorraad();
             }
         }
     }

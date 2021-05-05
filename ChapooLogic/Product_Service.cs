@@ -2,15 +2,13 @@
 using ChapooModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChapooLogic
 {
     public class Product_Service
     {
         private ProductDAO product_db = new ProductDAO();
+
         public List<Product> GetProducts()
         {
             try
@@ -31,6 +29,7 @@ namespace ChapooLogic
                 return products;
             }
         }
+
         public void AddProduct(Product product)
         {
             try
@@ -39,10 +38,10 @@ namespace ChapooLogic
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
+
         public void ChangeProduct(Product product)
         {
             try
@@ -51,10 +50,10 @@ namespace ChapooLogic
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
+
         public void DeleteProduct(Product product)
         {
             try
@@ -63,7 +62,6 @@ namespace ChapooLogic
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

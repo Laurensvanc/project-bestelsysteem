@@ -1,5 +1,5 @@
-﻿using ChapooModel;
-using ChapooLogic;
+﻿using ChapooLogic;
+using ChapooModel;
 using System;
 using System.Windows.Forms;
 
@@ -22,7 +22,7 @@ namespace Login
         }
 
         private void LoadFields()
-        { 
+        {
             // fill labels
             string alcohol;
             string type;
@@ -52,7 +52,7 @@ namespace Login
 
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            if (_deleting)
+            if (_deleting) // check if process is deleting
             {
                 DialogResult confirm = MessageBox.Show($"Weet je het zeker dat je dit product wilt verwijderen?\nDeze actie is niet terug te draaien!", "Product verwijderen?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (confirm == DialogResult.OK)
@@ -69,9 +69,8 @@ namespace Login
                     MessageBox.Show("Taak geannuleerd!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     this.Close();
                 }
-                
             }
-            else if (_product.ProductId == -1)
+            else if (_product.ProductId == -1) // check if process is adding
             {
                 // add item
                 Product_Service product_Service = new Product_Service();
@@ -80,7 +79,7 @@ namespace Login
                 this.Close();
                 _parentForm.Close();
             }
-            else
+            else // else change process
             {
                 // change item
                 Product_Service product_Service = new Product_Service();
@@ -89,7 +88,6 @@ namespace Login
                 this.Close();
                 _parentForm.Close();
             }
-            
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
