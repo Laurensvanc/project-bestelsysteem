@@ -7,13 +7,13 @@ namespace ChapooLogic
 {
     public class Product_Service
     {
-        private ProductDAO product_db = new ProductDAO();
+        private ProductDAO productDAO = new ProductDAO();
 
         public List<Product> GetProducts()
         {
             try
             {
-                List<Product> products = product_db.Db_Get_All_Products();
+                List<Product> products = productDAO.Db_Get_All_Products();
                 return products;
             }
             catch (Exception e)
@@ -34,7 +34,7 @@ namespace ChapooLogic
         {
             try
             {
-                product_db.AddProduct(product);
+                productDAO.AddProduct(product);
             }
             catch (Exception)
             {
@@ -46,7 +46,7 @@ namespace ChapooLogic
         {
             try
             {
-                product_db.ChangeProduct(product);
+                productDAO.ChangeProduct(product);
             }
             catch (Exception)
             {
@@ -58,7 +58,7 @@ namespace ChapooLogic
         {
             try
             {
-                product_db.DeleteProduct(product);
+                productDAO.DeleteProduct(product);
             }
             catch (Exception)
             {

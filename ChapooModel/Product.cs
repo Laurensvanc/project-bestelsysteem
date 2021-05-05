@@ -21,6 +21,11 @@
             IsDrinken = isDrinken;
         }
 
+        public Product(int productId)
+        {
+            ProductId = productId;
+        }
+
         public override string ToString()
         {
             return ProductNaam;

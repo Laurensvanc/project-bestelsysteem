@@ -10,6 +10,7 @@ namespace Login
         private Product _product;
         private bool _deleting;
         private VoorraadChange _parentForm;
+        private Product_Service _product_Service;
 
         public VoorraadConfirmation(Product product, string txt, bool deleting, VoorraadChange parentForm)
         {
@@ -18,6 +19,7 @@ namespace Login
             _deleting = deleting;
             _parentForm = parentForm;
             lbl_PreviewTxt.Text = txt;
+            _product_Service = new Product_Service();
             LoadFields();
         }
 
@@ -58,8 +60,7 @@ namespace Login
                 if (confirm == DialogResult.OK)
                 {
                     // delete item
-                    Product_Service product_Service = new Product_Service();
-                    product_Service.DeleteProduct(_product);
+                    _product_Service.DeleteProduct(_product);
                     MessageBox.Show("Product verwijderd!", "Succes!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                     _parentForm.Close();
@@ -73,8 +74,7 @@ namespace Login
             else if (_product.ProductId == -1) // check if process is adding
             {
                 // add item
-                Product_Service product_Service = new Product_Service();
-                product_Service.AddProduct(_product);
+                _product_Service.AddProduct(_product);
                 MessageBox.Show("Product toegevoegd!", "Succes!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
                 _parentForm.Close();
@@ -82,8 +82,7 @@ namespace Login
             else // else change process
             {
                 // change item
-                Product_Service product_Service = new Product_Service();
-                product_Service.ChangeProduct(_product);
+                _product_Service.ChangeProduct(_product);
                 MessageBox.Show("Product gewijzigd!", "Succes!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
                 _parentForm.Close();

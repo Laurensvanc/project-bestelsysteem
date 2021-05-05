@@ -32,9 +32,11 @@ namespace Login
             this.components = new System.ComponentModel.Container();
             this.pnl_VoorraadChange = new System.Windows.Forms.Panel();
             this.pnl_ChangeBtn = new System.Windows.Forms.Panel();
+            this.btn_CancelChange = new System.Windows.Forms.Button();
             this.btn_Remove = new System.Windows.Forms.Button();
             this.btn_Change = new System.Windows.Forms.Button();
             this.pnl_AddBtn = new System.Windows.Forms.Panel();
+            this.btn_CancelAdd = new System.Windows.Forms.Button();
             this.btn_Add = new System.Windows.Forms.Button();
             this.lbl_TypeTxt = new System.Windows.Forms.Label();
             this.cbox_Type = new System.Windows.Forms.ComboBox();
@@ -51,8 +53,6 @@ namespace Login
             this.lbl_ProductNameTxt = new System.Windows.Forms.Label();
             this.lbl_ProductIDTxt = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btn_CancelChange = new System.Windows.Forms.Button();
-            this.btn_CancelAdd = new System.Windows.Forms.Button();
             this.pnl_VoorraadChange.SuspendLayout();
             this.pnl_ChangeBtn.SuspendLayout();
             this.pnl_AddBtn.SuspendLayout();
@@ -78,7 +78,7 @@ namespace Login
             this.pnl_VoorraadChange.Controls.Add(this.lbl_ProductIDValue);
             this.pnl_VoorraadChange.Controls.Add(this.lbl_ProductNameTxt);
             this.pnl_VoorraadChange.Controls.Add(this.lbl_ProductIDTxt);
-            this.pnl_VoorraadChange.Location = new System.Drawing.Point(12, 12);
+            this.pnl_VoorraadChange.Location = new System.Drawing.Point(0, 0);
             this.pnl_VoorraadChange.Name = "pnl_VoorraadChange";
             this.pnl_VoorraadChange.Size = new System.Drawing.Size(373, 240);
             this.pnl_VoorraadChange.TabIndex = 0;
@@ -92,6 +92,17 @@ namespace Login
             this.pnl_ChangeBtn.Name = "pnl_ChangeBtn";
             this.pnl_ChangeBtn.Size = new System.Drawing.Size(308, 39);
             this.pnl_ChangeBtn.TabIndex = 14;
+            // 
+            // btn_CancelChange
+            // 
+            this.btn_CancelChange.CausesValidation = false;
+            this.btn_CancelChange.Location = new System.Drawing.Point(206, 8);
+            this.btn_CancelChange.Name = "btn_CancelChange";
+            this.btn_CancelChange.Size = new System.Drawing.Size(75, 23);
+            this.btn_CancelChange.TabIndex = 21;
+            this.btn_CancelChange.Text = "Cancel";
+            this.btn_CancelChange.UseVisualStyleBackColor = true;
+            this.btn_CancelChange.Click += new System.EventHandler(this.btn_CancelChange_Click);
             // 
             // btn_Remove
             // 
@@ -121,6 +132,17 @@ namespace Login
             this.pnl_AddBtn.Name = "pnl_AddBtn";
             this.pnl_AddBtn.Size = new System.Drawing.Size(308, 39);
             this.pnl_AddBtn.TabIndex = 15;
+            // 
+            // btn_CancelAdd
+            // 
+            this.btn_CancelAdd.CausesValidation = false;
+            this.btn_CancelAdd.Location = new System.Drawing.Point(160, 8);
+            this.btn_CancelAdd.Name = "btn_CancelAdd";
+            this.btn_CancelAdd.Size = new System.Drawing.Size(75, 23);
+            this.btn_CancelAdd.TabIndex = 21;
+            this.btn_CancelAdd.Text = "Cancel";
+            this.btn_CancelAdd.UseVisualStyleBackColor = true;
+            this.btn_CancelAdd.Click += new System.EventHandler(this.btn_CancelAdd_Click);
             // 
             // btn_Add
             // 
@@ -265,33 +287,11 @@ namespace Login
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // btn_CancelChange
-            // 
-            this.btn_CancelChange.CausesValidation = false;
-            this.btn_CancelChange.Location = new System.Drawing.Point(206, 8);
-            this.btn_CancelChange.Name = "btn_CancelChange";
-            this.btn_CancelChange.Size = new System.Drawing.Size(75, 23);
-            this.btn_CancelChange.TabIndex = 21;
-            this.btn_CancelChange.Text = "Cancel";
-            this.btn_CancelChange.UseVisualStyleBackColor = true;
-            this.btn_CancelChange.Click += new System.EventHandler(this.btn_CancelChange_Click);
-            // 
-            // btn_CancelAdd
-            // 
-            this.btn_CancelAdd.CausesValidation = false;
-            this.btn_CancelAdd.Location = new System.Drawing.Point(160, 8);
-            this.btn_CancelAdd.Name = "btn_CancelAdd";
-            this.btn_CancelAdd.Size = new System.Drawing.Size(75, 23);
-            this.btn_CancelAdd.TabIndex = 21;
-            this.btn_CancelAdd.Text = "Cancel";
-            this.btn_CancelAdd.UseVisualStyleBackColor = true;
-            this.btn_CancelAdd.Click += new System.EventHandler(this.btn_CancelAdd_Click);
-            // 
             // VoorraadChange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 264);
+            this.ClientSize = new System.Drawing.Size(373, 240);
             this.Controls.Add(this.pnl_VoorraadChange);
             this.MaximizeBox = false;
             this.Name = "VoorraadChange";

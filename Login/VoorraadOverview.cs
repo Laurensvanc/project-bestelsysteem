@@ -1,4 +1,5 @@
-﻿using ChapooModel;
+﻿using ChapooLogic;
+using ChapooModel;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,20 +7,25 @@ using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class Voorraad : Form
+    public partial class VoorraadOverview : Form
     {
         private bool _showingDrinks = false;
         private List<Product> _products;
+        private Product_Service product_Service;
 
         public VoorraadChange VoorraadChange { get; private set; }
 
-        public Voorraad()
+        public VoorraadOverview()
         {
             InitializeComponent();
+        }
 
+        private void VoorraadOverview_Load(object sender, EventArgs e)
+        {
+            product_Service = new Product_Service();
             // add grid lines, rows
             Point point = new Point(12, 12);
-            pnl_Voorraad.Location = point;
+            pnl_VoorraadOverview.Location = point;
             lv_Voorraad.GridLines = true;
             lv_Voorraad.FullRowSelect = true;
             lv_Voorraad.MultiSelect = false;
@@ -29,7 +35,6 @@ namespace Login
 
         private void Voorraad_Refresh()
         {
-            ChapooLogic.Product_Service product_Service = new ChapooLogic.Product_Service();
             _products = product_Service.GetProducts();
 
             // clear list
@@ -102,14 +107,16 @@ namespace Login
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
-            var voorraadChange = new VoorraadChange();
-
-            voorraadChange.ShowDialog();
+            using (var voorraadChange = new VoorraadChange())
+            {
+                voorraadChange.ShowDialog();
+            }
             Voorraad_Refresh();
         }
 
         private void btn_Change_Click(object sender, EventArgs e)
         {
+            // opens window to change/remove product
             if (lv_Voorraad.SelectedItems.Count > 0)
             {
                 Product product = _products.Find(p => p.ProductId == int.Parse(lv_Voorraad.SelectedItems[0].Text));
@@ -158,9 +165,19 @@ namespace Login
 
         private void tb_Search_KeyUp(object sender, KeyEventArgs e)
         {
+            // enables searching using the enter key
             if (e.KeyCode == Keys.Enter)
             {
                 SearchVoorraad();
+            }
+        }
+
+        private void tb_Search_KeyDown(object sender, KeyEventArgs e)
+        {
+            // mute ding sound when pressing enter
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
             }
         }
     }
