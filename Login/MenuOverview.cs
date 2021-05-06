@@ -3,6 +3,7 @@ using ChapooModel;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Login
@@ -137,6 +138,10 @@ namespace Login
                 lbl_Instruction.ForeColor = SystemColors.ControlText;
                 lbl_Instruction.Text = "Klik een product voor meer info";
                 button.BackColor = SystemColors.Control;
+                if (String.IsNullOrEmpty(_menuType)) // if no submenu is selected hide button
+                {
+                    button.Hide();
+                }
             }
         }
 
@@ -167,22 +172,78 @@ namespace Login
             }
         }
 
-        private void OverviewChanged()
+        private void OverviewChanged(object sender)
         {
-            // whenever a button is pressed check for labels and refresh menu
+            // whenever a button is pressed check for labels and buttons
             lbl_Instruction.Hide();
             flp_MenuOverview.Controls.Clear();
-            if (!String.IsNullOrEmpty(_menuName))
+            Button button = (Button)sender;
+            if (button.Text == _menuName) // else if selected menu is current menu selected
             {
-                pnl_ActionButtons.Show();
-                lbl_Instruction2.Hide();
-            }
-            else
-            {
+                // hide buttons and show instruction
                 lbl_Instruction2.Show();
                 pnl_ActionButtons.Hide();
+                pnl_MenuDinerButtons.Hide();
+                pnl_MenuDrankButtons.Hide();
+                pnl_MenuLunchButtons.Hide();
+                _menuName = null;
+                _menuType = null;
+
+                // reset colours
+                Control control = ((Button)sender).Parent;
+                Panel panel = (Panel)control;
+                ResetColors(panel);
             }
-            Menu_Refresh();
+            else if (button.Parent != pnl_MenuButtons) // if menu selected is not a main menu
+            {
+                _menuType = button.Text;
+                ButtonColor(sender);
+            }
+            else // another menu is selected
+            {
+                _menuType = null;
+                pnl_ActionButtons.Show();
+                _menuName = button.Text;
+                lbl_Instruction2.Hide();
+                ButtonColor(sender);
+            }
+            if (!String.IsNullOrEmpty(_menuType)) // if a submenu is selected show remove button
+            {
+                btn_Remove.Show();
+            }
+            else if (_deleting == false) // if no submenu is selected and delete mode is off, hide button
+            {
+                btn_Remove.Hide();
+            }
+            FillOverview();
+        }
+
+        private void ButtonColor(object sender)
+        {
+            Button button = (Button)sender;
+            Control panel = ((Button)sender).Parent;
+
+            // change button colour to selected mode
+            foreach (Button b in panel.Controls.OfType<Button>())
+            {
+                if (b.Name != button.Name)
+                {
+                    b.BackColor = SystemColors.Control;
+                }
+                else
+                {
+                    b.BackColor = SystemColors.GradientActiveCaption;
+                }
+            }
+        }
+
+        private void ResetColors(Panel pnl_MenuDrankButtons)
+        {
+            // reset colours to default
+            foreach (Button b in pnl_MenuDrankButtons.Controls.OfType<Button>())
+            {
+                b.BackColor = SystemColors.Control;
+            }
         }
 
         private void btn_Drank_Click(object sender, EventArgs e)
@@ -191,9 +252,8 @@ namespace Login
             pnl_MenuLunchButtons.Hide();
             pnl_MenuDrankButtons.Show();
 
-            _menuName = "Drank Kaart";
-            _menuType = "";
-            OverviewChanged();
+            OverviewChanged(sender);
+            ResetColors(pnl_MenuDrankButtons);
         }
 
         private void btn_Diner_Click(object sender, EventArgs e)
@@ -202,9 +262,8 @@ namespace Login
             pnl_MenuLunchButtons.Hide();
             pnl_MenuDinerButtons.Show();
 
-            _menuName = "Diner Kaart";
-            _menuType = "";
-            OverviewChanged();
+            OverviewChanged(sender);
+            ResetColors(pnl_MenuDinerButtons);
         }
 
         private void btn_Lunch_Click(object sender, EventArgs e)
@@ -213,81 +272,81 @@ namespace Login
             pnl_MenuDinerButtons.Hide();
             pnl_MenuLunchButtons.Show();
 
-            _menuName = "Lunch Kaart";
-            _menuType = "";
-            OverviewChanged();
+            OverviewChanged(sender);
+            ResetColors(pnl_MenuLunchButtons);
         }
 
         private void btn_DrankF_Click(object sender, EventArgs e)
         {
-            _menuType = "Frisdrank";
-            OverviewChanged();
+            OverviewChanged(sender);
         }
 
         private void btn_DrankB_Click(object sender, EventArgs e)
         {
-            _menuType = "Bieren";
-            OverviewChanged();
+            OverviewChanged(sender);
         }
 
         private void btn_DrankW_Click(object sender, EventArgs e)
         {
-            _menuType = "Wijnen";
-            OverviewChanged();
+            OverviewChanged(sender);
         }
 
         private void btn_DrankG_Click(object sender, EventArgs e)
         {
-            _menuType = "Gedistilleerde dranken";
-            OverviewChanged();
+            OverviewChanged(sender);
         }
 
         private void btn_DrankK_Click(object sender, EventArgs e)
         {
-            _menuType = "Koffie / Thee";
-            OverviewChanged();
+            OverviewChanged(sender);
         }
 
         private void btn_LunchV_Click(object sender, EventArgs e)
         {
-            _menuType = "Voorgerechten";
-            OverviewChanged();
+            OverviewChanged(sender);
         }
 
         private void btn_LunchH_Click(object sender, EventArgs e)
         {
-            _menuType = "Hoofdgerechten";
-            OverviewChanged();
+            OverviewChanged(sender);
         }
 
         private void btn_LunchN_Click(object sender, EventArgs e)
         {
-            _menuType = "Nagerechten";
-            OverviewChanged();
+            OverviewChanged(sender);
         }
 
         private void btn_DinerV_Click(object sender, EventArgs e)
         {
-            _menuType = "Voorgerechten";
-            OverviewChanged();
+            OverviewChanged(sender);
         }
 
         private void btn_DinerT_Click(object sender, EventArgs e)
         {
-            _menuType = "Tussengerechten";
-            OverviewChanged();
+            OverviewChanged(sender);
         }
 
         private void btn_DinerH_Click(object sender, EventArgs e)
         {
-            _menuType = "Hoofdgerechten";
-            OverviewChanged();
+            OverviewChanged(sender);
         }
 
         private void btn_DinerN_Click(object sender, EventArgs e)
         {
-            _menuType = "Nagerechten";
-            OverviewChanged();
+            OverviewChanged(sender);
+        }
+
+        private void btn_Voorraad_Click(object sender, EventArgs e)
+        {
+            VoorraadOverview voorraadOverview = new VoorraadOverview();
+            voorraadOverview.FormClosing += (s, ev) => this.Show();
+            voorraadOverview.Show();
+            this.Hide();
+        }
+
+        private void btn_Refresh_Click(object sender, EventArgs e)
+        {
+            Menu_Refresh();
         }
     }
 }

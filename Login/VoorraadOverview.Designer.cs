@@ -41,6 +41,7 @@
             this.ch0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ch1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ch2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lbl_Instruction = new System.Windows.Forms.Label();
             this.pnl_VoorraadOverview.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +50,7 @@
             this.pnl_VoorraadOverview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnl_VoorraadOverview.Controls.Add(this.lbl_Instruction);
             this.pnl_VoorraadOverview.Controls.Add(this.btn_Menu);
             this.pnl_VoorraadOverview.Controls.Add(this.btn_Search);
             this.pnl_VoorraadOverview.Controls.Add(this.tb_Search);
@@ -65,6 +67,7 @@
             // 
             // btn_Menu
             // 
+            this.btn_Menu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Menu.Location = new System.Drawing.Point(500, 386);
             this.btn_Menu.Name = "btn_Menu";
             this.btn_Menu.Size = new System.Drawing.Size(113, 34);
@@ -75,6 +78,7 @@
             // 
             // btn_Search
             // 
+            this.btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Search.Location = new System.Drawing.Point(534, 12);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(75, 23);
@@ -97,6 +101,7 @@
             // 
             // btn_Change
             // 
+            this.btn_Change.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Change.Location = new System.Drawing.Point(182, 386);
             this.btn_Change.Name = "btn_Change";
             this.btn_Change.Size = new System.Drawing.Size(113, 34);
@@ -107,6 +112,7 @@
             // 
             // btn_Add
             // 
+            this.btn_Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Add.Location = new System.Drawing.Point(28, 386);
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(113, 34);
@@ -130,6 +136,7 @@
             // 
             // btn_Toggle
             // 
+            this.btn_Toggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Toggle.Location = new System.Drawing.Point(132, 12);
             this.btn_Toggle.Name = "btn_Toggle";
             this.btn_Toggle.Size = new System.Drawing.Size(75, 23);
@@ -140,6 +147,7 @@
             // 
             // btn_Refresh
             // 
+            this.btn_Refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Refresh.Location = new System.Drawing.Point(654, 386);
             this.btn_Refresh.Name = "btn_Refresh";
             this.btn_Refresh.Size = new System.Drawing.Size(113, 34);
@@ -165,6 +173,7 @@
             this.lv_Voorraad.TabIndex = 0;
             this.lv_Voorraad.UseCompatibleStateImageBehavior = false;
             this.lv_Voorraad.View = System.Windows.Forms.View.Details;
+            this.lv_Voorraad.DoubleClick += new System.EventHandler(this.lv_Voorraad_DoubleClick);
             // 
             // ch0
             // 
@@ -181,6 +190,15 @@
             this.ch2.Text = "Aantal";
             this.ch2.Width = 120;
             // 
+            // lbl_Instruction
+            // 
+            this.lbl_Instruction.AutoSize = true;
+            this.lbl_Instruction.Location = new System.Drawing.Point(223, 18);
+            this.lbl_Instruction.Name = "lbl_Instruction";
+            this.lbl_Instruction.Size = new System.Drawing.Size(218, 13);
+            this.lbl_Instruction.TabIndex = 8;
+            this.lbl_Instruction.Text = "Dubbel klik een product voor meer informatie";
+            // 
             // VoorraadOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -188,7 +206,9 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pnl_VoorraadOverview);
             this.Name = "VoorraadOverview";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Voorraad Overview";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VoorraadOverview_FormClosing);
             this.Load += new System.EventHandler(this.VoorraadOverview_Load);
             this.pnl_VoorraadOverview.ResumeLayout(false);
             this.pnl_VoorraadOverview.PerformLayout();
@@ -211,5 +231,6 @@
         private System.Windows.Forms.TextBox tb_Search;
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.Button btn_Menu;
+        private System.Windows.Forms.Label lbl_Instruction;
     }
 }

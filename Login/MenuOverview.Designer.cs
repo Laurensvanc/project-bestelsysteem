@@ -30,6 +30,8 @@ namespace Login
         private void InitializeComponent()
         {
             this.pnl_MenuOverview = new System.Windows.Forms.Panel();
+            this.lbl_Instruction2 = new System.Windows.Forms.Label();
+            this.lbl_Instruction = new System.Windows.Forms.Label();
             this.pnl_MenuDinerButtons = new System.Windows.Forms.Panel();
             this.btn_DinerT = new System.Windows.Forms.Button();
             this.btn_DinerH = new System.Windows.Forms.Button();
@@ -45,16 +47,16 @@ namespace Login
             this.btn_LunchH = new System.Windows.Forms.Button();
             this.btn_LunchN = new System.Windows.Forms.Button();
             this.btn_LunchV = new System.Windows.Forms.Button();
+            this.flp_MenuOverview = new System.Windows.Forms.FlowLayoutPanel();
             this.pnl_ActionButtons = new System.Windows.Forms.Panel();
             this.btn_Remove = new System.Windows.Forms.Button();
             this.btn_Add = new System.Windows.Forms.Button();
             this.pnl_MenuButtons = new System.Windows.Forms.Panel();
+            this.btn_Lunch = new System.Windows.Forms.Button();
             this.btn_Drank = new System.Windows.Forms.Button();
             this.btn_Diner = new System.Windows.Forms.Button();
-            this.btn_Lunch = new System.Windows.Forms.Button();
-            this.flp_MenuOverview = new System.Windows.Forms.FlowLayoutPanel();
-            this.lbl_Instruction = new System.Windows.Forms.Label();
-            this.lbl_Instruction2 = new System.Windows.Forms.Label();
+            this.btn_Voorraad = new System.Windows.Forms.Button();
+            this.btn_Refresh = new System.Windows.Forms.Button();
             this.pnl_MenuOverview.SuspendLayout();
             this.pnl_MenuDinerButtons.SuspendLayout();
             this.pnl_MenuDrankButtons.SuspendLayout();
@@ -70,6 +72,8 @@ namespace Login
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_MenuOverview.AutoSize = true;
             this.pnl_MenuOverview.BackColor = System.Drawing.SystemColors.Control;
+            this.pnl_MenuOverview.Controls.Add(this.btn_Refresh);
+            this.pnl_MenuOverview.Controls.Add(this.btn_Voorraad);
             this.pnl_MenuOverview.Controls.Add(this.lbl_Instruction2);
             this.pnl_MenuOverview.Controls.Add(this.lbl_Instruction);
             this.pnl_MenuOverview.Controls.Add(this.pnl_MenuDinerButtons);
@@ -82,6 +86,24 @@ namespace Login
             this.pnl_MenuOverview.Name = "pnl_MenuOverview";
             this.pnl_MenuOverview.Size = new System.Drawing.Size(800, 450);
             this.pnl_MenuOverview.TabIndex = 0;
+            // 
+            // lbl_Instruction2
+            // 
+            this.lbl_Instruction2.AutoSize = true;
+            this.lbl_Instruction2.Location = new System.Drawing.Point(228, 22);
+            this.lbl_Instruction2.Name = "lbl_Instruction2";
+            this.lbl_Instruction2.Size = new System.Drawing.Size(186, 13);
+            this.lbl_Instruction2.TabIndex = 6;
+            this.lbl_Instruction2.Text = "Kies een menu om aan te beginnen ->";
+            // 
+            // lbl_Instruction
+            // 
+            this.lbl_Instruction.AutoSize = true;
+            this.lbl_Instruction.Location = new System.Drawing.Point(105, 41);
+            this.lbl_Instruction.Name = "lbl_Instruction";
+            this.lbl_Instruction.Size = new System.Drawing.Size(154, 13);
+            this.lbl_Instruction.TabIndex = 5;
+            this.lbl_Instruction.Text = "Klik een product voor meer info";
             // 
             // pnl_MenuDinerButtons
             // 
@@ -260,13 +282,22 @@ namespace Login
             this.btn_LunchV.UseVisualStyleBackColor = true;
             this.btn_LunchV.Click += new System.EventHandler(this.btn_LunchV_Click);
             // 
+            // flp_MenuOverview
+            // 
+            this.flp_MenuOverview.AutoScroll = true;
+            this.flp_MenuOverview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flp_MenuOverview.Location = new System.Drawing.Point(99, 57);
+            this.flp_MenuOverview.Name = "flp_MenuOverview";
+            this.flp_MenuOverview.Size = new System.Drawing.Size(686, 336);
+            this.flp_MenuOverview.TabIndex = 1;
+            // 
             // pnl_ActionButtons
             // 
             this.pnl_ActionButtons.Controls.Add(this.btn_Remove);
             this.pnl_ActionButtons.Controls.Add(this.btn_Add);
-            this.pnl_ActionButtons.Location = new System.Drawing.Point(3, 57);
+            this.pnl_ActionButtons.Location = new System.Drawing.Point(3, 104);
             this.pnl_ActionButtons.Name = "pnl_ActionButtons";
-            this.pnl_ActionButtons.Size = new System.Drawing.Size(95, 155);
+            this.pnl_ActionButtons.Size = new System.Drawing.Size(95, 98);
             this.pnl_ActionButtons.TabIndex = 1;
             // 
             // btn_Remove
@@ -303,8 +334,22 @@ namespace Login
             this.pnl_MenuButtons.Size = new System.Drawing.Size(368, 51);
             this.pnl_MenuButtons.TabIndex = 0;
             // 
+            // btn_Lunch
+            // 
+            this.btn_Lunch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Lunch.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_Lunch.Location = new System.Drawing.Point(124, 3);
+            this.btn_Lunch.Name = "btn_Lunch";
+            this.btn_Lunch.Size = new System.Drawing.Size(120, 45);
+            this.btn_Lunch.TabIndex = 3;
+            this.btn_Lunch.TabStop = false;
+            this.btn_Lunch.Text = "Lunch Kaart";
+            this.btn_Lunch.UseVisualStyleBackColor = true;
+            this.btn_Lunch.Click += new System.EventHandler(this.btn_Lunch_Click);
+            // 
             // btn_Drank
             // 
+            this.btn_Drank.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Drank.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Drank.Location = new System.Drawing.Point(3, 3);
             this.btn_Drank.Name = "btn_Drank";
@@ -312,7 +357,7 @@ namespace Login
             this.btn_Drank.TabIndex = 2;
             this.btn_Drank.TabStop = false;
             this.btn_Drank.Text = "Drank Kaart";
-            this.btn_Drank.UseVisualStyleBackColor = true;
+            this.btn_Drank.UseVisualStyleBackColor = false;
             this.btn_Drank.Click += new System.EventHandler(this.btn_Drank_Click);
             // 
             // btn_Diner
@@ -327,45 +372,29 @@ namespace Login
             this.btn_Diner.UseVisualStyleBackColor = true;
             this.btn_Diner.Click += new System.EventHandler(this.btn_Diner_Click);
             // 
-            // btn_Lunch
+            // btn_Voorraad
             // 
-            this.btn_Lunch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Lunch.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_Lunch.Location = new System.Drawing.Point(124, 3);
-            this.btn_Lunch.Name = "btn_Lunch";
-            this.btn_Lunch.Size = new System.Drawing.Size(120, 45);
-            this.btn_Lunch.TabIndex = 3;
-            this.btn_Lunch.TabStop = false;
-            this.btn_Lunch.Text = "Lunch Kaart";
-            this.btn_Lunch.UseVisualStyleBackColor = true;
-            this.btn_Lunch.Click += new System.EventHandler(this.btn_Lunch_Click);
+            this.btn_Voorraad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Voorraad.Location = new System.Drawing.Point(6, 6);
+            this.btn_Voorraad.Name = "btn_Voorraad";
+            this.btn_Voorraad.Size = new System.Drawing.Size(89, 29);
+            this.btn_Voorraad.TabIndex = 2;
+            this.btn_Voorraad.TabStop = false;
+            this.btn_Voorraad.Text = "Voorraad";
+            this.btn_Voorraad.UseVisualStyleBackColor = true;
+            this.btn_Voorraad.Click += new System.EventHandler(this.btn_Voorraad_Click);
             // 
-            // flp_MenuOverview
+            // btn_Refresh
             // 
-            this.flp_MenuOverview.AutoScroll = true;
-            this.flp_MenuOverview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flp_MenuOverview.Location = new System.Drawing.Point(99, 57);
-            this.flp_MenuOverview.Name = "flp_MenuOverview";
-            this.flp_MenuOverview.Size = new System.Drawing.Size(686, 336);
-            this.flp_MenuOverview.TabIndex = 1;
-            // 
-            // lbl_Instruction
-            // 
-            this.lbl_Instruction.AutoSize = true;
-            this.lbl_Instruction.Location = new System.Drawing.Point(105, 41);
-            this.lbl_Instruction.Name = "lbl_Instruction";
-            this.lbl_Instruction.Size = new System.Drawing.Size(154, 13);
-            this.lbl_Instruction.TabIndex = 5;
-            this.lbl_Instruction.Text = "Klik een product voor meer info";
-            // 
-            // lbl_Instruction2
-            // 
-            this.lbl_Instruction2.AutoSize = true;
-            this.lbl_Instruction2.Location = new System.Drawing.Point(228, 22);
-            this.lbl_Instruction2.Name = "lbl_Instruction2";
-            this.lbl_Instruction2.Size = new System.Drawing.Size(186, 13);
-            this.lbl_Instruction2.TabIndex = 6;
-            this.lbl_Instruction2.Text = "Kies een menu om aan te beginnen ->";
+            this.btn_Refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Refresh.Location = new System.Drawing.Point(6, 60);
+            this.btn_Refresh.Name = "btn_Refresh";
+            this.btn_Refresh.Size = new System.Drawing.Size(89, 45);
+            this.btn_Refresh.TabIndex = 2;
+            this.btn_Refresh.TabStop = false;
+            this.btn_Refresh.Text = "Refresh Menus";
+            this.btn_Refresh.UseVisualStyleBackColor = true;
+            this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
             // 
             // MenuOverview
             // 
@@ -374,6 +403,7 @@ namespace Login
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pnl_MenuOverview);
             this.Name = "MenuOverview";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Overview";
             this.Load += new System.EventHandler(this.MenuOverview_Load);
             this.pnl_MenuOverview.ResumeLayout(false);
@@ -416,5 +446,7 @@ namespace Login
         private System.Windows.Forms.FlowLayoutPanel flp_MenuOverview;
         private System.Windows.Forms.Label lbl_Instruction;
         private System.Windows.Forms.Label lbl_Instruction2;
+        private System.Windows.Forms.Button btn_Voorraad;
+        private System.Windows.Forms.Button btn_Refresh;
     }
 }

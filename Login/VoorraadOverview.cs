@@ -161,6 +161,9 @@ namespace Login
 
         private void btn_Menu_Click(object sender, EventArgs e)
         {
+            FormClosingEventArgs f = new FormClosingEventArgs(0, false);
+            VoorraadOverview_FormClosing(sender, f);
+            this.Close();
         }
 
         private void tb_Search_KeyUp(object sender, KeyEventArgs e)
@@ -179,6 +182,26 @@ namespace Login
             {
                 e.SuppressKeyPress = true;
             }
+        }
+
+        private void VoorraadOverview_FormClosing(object sender, FormClosingEventArgs e)
+        {
+        }
+
+        private void lv_Voorraad_DoubleClick(object sender, EventArgs e)
+        {
+            // product info
+            Product product = _products.Find(p => p.ProductId == int.Parse(lv_Voorraad.SelectedItems[0].Text));
+            string alcohol;
+            if (product.IsAlcohol == true)
+            {
+                alcohol = "Ja";
+            }
+            else
+            {
+                alcohol = "Nee";
+            }
+            MessageBox.Show($"{product}\n\nProductID:\t{product.ProductId}\nPrijs:\t\t€{product.Prijs.ToString("0.00")}\nInkoop prijs:\t€{product.InkoopPrijs.ToString("0.00")}\nAantal:\t\t{product.Aantal}\nAlcoholisch:\t{alcohol}", "Product Info");
         }
     }
 }
