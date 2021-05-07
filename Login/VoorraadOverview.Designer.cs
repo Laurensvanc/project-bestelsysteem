@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnl_VoorraadOverview = new System.Windows.Forms.Panel();
+            this.lbl_Instruction = new System.Windows.Forms.Label();
             this.btn_Menu = new System.Windows.Forms.Button();
             this.btn_Search = new System.Windows.Forms.Button();
             this.tb_Search = new System.Windows.Forms.TextBox();
@@ -41,7 +42,6 @@
             this.ch0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ch1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ch2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lbl_Instruction = new System.Windows.Forms.Label();
             this.pnl_VoorraadOverview.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +64,15 @@
             this.pnl_VoorraadOverview.Name = "pnl_VoorraadOverview";
             this.pnl_VoorraadOverview.Size = new System.Drawing.Size(800, 450);
             this.pnl_VoorraadOverview.TabIndex = 0;
+            // 
+            // lbl_Instruction
+            // 
+            this.lbl_Instruction.AutoSize = true;
+            this.lbl_Instruction.Location = new System.Drawing.Point(223, 18);
+            this.lbl_Instruction.Name = "lbl_Instruction";
+            this.lbl_Instruction.Size = new System.Drawing.Size(218, 13);
+            this.lbl_Instruction.TabIndex = 8;
+            this.lbl_Instruction.Text = "Dubbel klik een product voor meer informatie";
             // 
             // btn_Menu
             // 
@@ -173,6 +182,7 @@
             this.lv_Voorraad.TabIndex = 0;
             this.lv_Voorraad.UseCompatibleStateImageBehavior = false;
             this.lv_Voorraad.View = System.Windows.Forms.View.Details;
+            this.lv_Voorraad.SelectedIndexChanged += new System.EventHandler(this.lv_Voorraad_SelectedIndexChanged);
             this.lv_Voorraad.DoubleClick += new System.EventHandler(this.lv_Voorraad_DoubleClick);
             // 
             // ch0
@@ -189,15 +199,6 @@
             // 
             this.ch2.Text = "Aantal";
             this.ch2.Width = 120;
-            // 
-            // lbl_Instruction
-            // 
-            this.lbl_Instruction.AutoSize = true;
-            this.lbl_Instruction.Location = new System.Drawing.Point(223, 18);
-            this.lbl_Instruction.Name = "lbl_Instruction";
-            this.lbl_Instruction.Size = new System.Drawing.Size(218, 13);
-            this.lbl_Instruction.TabIndex = 8;
-            this.lbl_Instruction.Text = "Dubbel klik een product voor meer informatie";
             // 
             // VoorraadOverview
             // 

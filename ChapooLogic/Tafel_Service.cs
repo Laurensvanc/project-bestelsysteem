@@ -13,8 +13,7 @@ namespace ChapooLogic
 {
     public class Tafel_Service
     {
-
-        TafelDAO tafelDAO = new TafelDAO();
+        private TafelDAO tafelDAO = new TafelDAO();
 
         public List<Tafel> GetTafels()
         {
@@ -26,11 +25,12 @@ namespace ChapooLogic
             catch(Exception ex)
             {
                 List<Tafel> tafel = new List<Tafel>();
-                Tafel t = new Tafel();
-                t.Capaciteit = 404;
-                t.Status = "Error";
-                t.WerknemerId = 404;
-                t.TafelNummer = 404;
+                Tafel t = new Tafel(
+                "Niemand",
+                404,
+                "Error",
+                404
+                );
                 tafel.Add(t);
                 return tafel;
                 

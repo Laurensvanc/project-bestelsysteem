@@ -13,6 +13,7 @@ namespace Login
 {
     public partial class RestaurantOverzicht : Form
     {
+        private ChapooLogic.Reservering_Service reservering_Service;
         public RestaurantOverzicht()
         {
             InitializeComponent();
@@ -26,61 +27,12 @@ namespace Login
         private void RestaurantOverzicht_Load(object sender, EventArgs e)
         {
             pnlReservering.Hide();
-
-            ChapooLogic.Tafel_Service tafel_Service = new ChapooLogic.Tafel_Service();
-            List<Tafel> tafels = tafel_Service.GetTafels();
-
-            lstTafelStatus.Clear();
-
-            lstTafelStatus.Columns.Add("TafelNummer", 75);
-            lstTafelStatus.Columns.Add("Capaciteit", 75);
-            lstTafelStatus.Columns.Add("Werknemer", 75);
-            lstTafelStatus.Columns.Add("Status", 150);
-
-            lstTafelStatus.FullRowSelect = true;
-            lstTafelStatus.GridLines = true;
-
-            foreach (ChapooModel.Tafel t in tafels)
-            {
-                ListViewItem li = new ListViewItem(t.TafelNummer.ToString());
-                li.SubItems.Add(t.Capaciteit.ToString());
-                li.SubItems.Add(t.WerknemerId.ToString());
-                li.SubItems.Add(t.Status);
-                lstTafelStatus.Items.Add(li);
-            }
-
-            ChapooLogic.Reservering_Service reservering_Service = new ChapooLogic.Reservering_Service();
-            List<Reservering> reserverings = reservering_Service.GetReserverings();
-
-            lstReservering.Clear();
-
-            lstReservering.Columns.Add("Reservering Nummer", 75);
-            lstReservering.Columns.Add("Tafel Nummer", 75);
-            lstReservering.Columns.Add("Begin Tijd", 75);
-            lstReservering.Columns.Add("Eind Tijd", 75);
-            lstReservering.Columns.Add("Klant Naam", 75);
-
-            lstReservering.FullRowSelect = true;
-            lstReservering.GridLines = true;
-
-            foreach (ChapooModel.Reservering r in reserverings) {
-               ListViewItem li = new ListViewItem(r.ReserveringID.ToString());
-                li.SubItems.Add(r.TafelID.ToString());
-                li.SubItems.Add(r.BeginTijd.ToString());
-                li.SubItems.Add(r.EindTijd.ToString());
-                li.SubItems.Add(r.KlantID.ToString());
-
-                lstReservering.Items.Add(li);
-            }
-
-            dateTijd.Format = DateTimePickerFormat.Custom;
-            dateTijd.CustomFormat = "MM/dd/yyyy HH:mm:ss";
+            loadLists();
         }
 
         private void btnFresh_Click(object sender, EventArgs e)
         {
-            lstReservering.Refresh();
-            lstTafelStatus.Refresh();
+            Refresh();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -105,6 +57,72 @@ namespace Login
             {
 
             }
+        }
+
+        private void btnUpdateRes_Click(object sender, EventArgs e)
+        {
+            DateTime begintijd = dateTijd.Value;
+            Reservering reservering = new Reservering(3, begintijd, begintijd.AddHours(2), 2);
+            reservering_Service.AddReservering(reservering);
+            pnlReservering.Hide();
+            Refresh();
+
+        }
+        private void Refresh()
+        {
+            loadLists();
+        }
+        private void loadLists()
+        {
+            ChapooLogic.Tafel_Service tafel_Service = new ChapooLogic.Tafel_Service();
+            List<Tafel> tafels = tafel_Service.GetTafels();
+
+            lstTafelStatus.Clear();
+
+            lstTafelStatus.Columns.Add("TafelNummer", 75);
+            lstTafelStatus.Columns.Add("Capaciteit", 75);
+            lstTafelStatus.Columns.Add("Werknemer", 75);
+            lstTafelStatus.Columns.Add("Status", 150);
+
+            lstTafelStatus.FullRowSelect = true;
+            lstTafelStatus.GridLines = true;
+
+            foreach (ChapooModel.Tafel t in tafels)
+            {
+                ListViewItem li = new ListViewItem(t.TafelNummer.ToString());
+                li.SubItems.Add(t.Capaciteit.ToString());
+                li.SubItems.Add(t.WerknemerId.ToString());
+                li.SubItems.Add(t.Status);
+                lstTafelStatus.Items.Add(li);
+            }
+
+            reservering_Service = new ChapooLogic.Reservering_Service();
+            List<Reservering> reserverings = reservering_Service.GetReserverings();
+
+            lstReservering.Clear();
+
+            lstReservering.Columns.Add("Reservering Nummer", 75);
+            lstReservering.Columns.Add("Tafel Nummer", 75);
+            lstReservering.Columns.Add("Begin Tijd", 75);
+            lstReservering.Columns.Add("Eind Tijd", 75);
+            lstReservering.Columns.Add("Klant Naam", 75);
+
+            lstReservering.FullRowSelect = true;
+            lstReservering.GridLines = true;
+
+            foreach (ChapooModel.Reservering r in reserverings)
+            {
+                ListViewItem li = new ListViewItem(r.ReserveringID.ToString());
+                li.SubItems.Add(r.TafelID.ToString());
+                li.SubItems.Add(r.BeginTijd.ToString());
+                li.SubItems.Add(r.EindTijd.ToString());
+                li.SubItems.Add(r.KlantNaam.ToString());
+
+                lstReservering.Items.Add(li);
+            }
+
+            dateTijd.Format = DateTimePickerFormat.Custom;
+            dateTijd.CustomFormat = "MM/dd/yyyy HH:mm:ss";
         }
     }
 }

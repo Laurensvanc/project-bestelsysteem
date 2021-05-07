@@ -203,5 +203,10 @@ namespace Login
             }
             MessageBox.Show($"{product}\n\nProductID:\t{product.ProductId}\nPrijs:\t\t€{product.Prijs.ToString("0.00")}\nInkoop prijs:\t€{product.InkoopPrijs.ToString("0.00")}\nAantal:\t\t{product.Aantal}\nAlcoholisch:\t{alcohol}", "Product Info");
         }
+
+        private void lv_Voorraad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace ChapooDAL
     {
         public List<Reservering> Db_Get_All_Tafels()
         {
-            string query = "SELECT ReserveringID, TafelID, BeginTijd, EindTijd, KlantID FROM Reservering";
+            string query = "SELECT [Klant].Voornaam, [Reservering].ReserveringID, [Reservering].TafelID, [Reservering].BeginTijd, [Reservering].EindTijd, [Reservering].KlantID FROM [Reservering] JOIN [Klant] ON [Reservering].KlantID = [Klant].KlantID";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -25,17 +25,33 @@ namespace ChapooDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Reservering reservering = new Reservering()
-                {
-                    ReserveringID = (int)dr["ReserveringID"],
-                    TafelID = (int)dr["TafelID"],
-                    BeginTijd = (DateTime)dr["BeginTijd"],
-                    EindTijd = (DateTime)dr["EindTijd"],
-                    KlantID = (int)dr["KlantID"]
-                };
+                Reservering reservering = new Reservering(
+
+                    (String)dr["Voornaam"],
+                    (int)dr["ReserveringID"],
+                    (int)dr["TafelID"],
+                    (DateTime)dr["BeginTijd"],
+                    (DateTime)dr["EindTijd"],
+                    (int)dr["KlantID"]
+                    );
+                
                 reserverings.Add(reservering);
             }
             return reserverings;
+        }
+        public void AddReservering(Reservering reservering)
+        {
+            // Data gets written to database, primary key is automatically made
+            string query = "USE dbchapoo202104 INSERT INTO Reservering (TafelID, BeginTijd, EindTijd, KlantID) VALUES(@TafelID, @Begin, @Eind, @KlantID); ";
+
+            // Setting the parameters from the parameter order
+            SqlParameter[] sqlParameters = new SqlParameter[4];
+
+            sqlParameters[0] = new SqlParameter("@TafelID", reservering.TafelID);
+            sqlParameters[1] = new SqlParameter("@Begin", reservering.BeginTijd);
+            sqlParameters[2] = new SqlParameter("@Eind", reservering.EindTijd);
+            sqlParameters[3] = new SqlParameter("@KlantID", reservering.KlantID);
+            ExecuteEditQuery(query, sqlParameters);
         }
     }
 }

@@ -1,12 +1,8 @@
 ﻿using ChapooModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
-using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 
 namespace ChapooDAL
 {
@@ -14,7 +10,7 @@ namespace ChapooDAL
     {
         public List<Tafel> Db_Get_All_Tafels()
         {
-            string query = "SELECT TafelID, Capaciteit, Status, WerknemerID FROM Tafel";
+            string query = "USE dbchapoo202104 SELECT [Tafel].TafelID, [Tafel].Capaciteit, [Tafel].Status, [Werknemer].Voornaam FROM [Tafel] JOIN [Werknemer] ON [Tafel].WerknemerID = [Werknemer].WerknemerID";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -25,13 +21,13 @@ namespace ChapooDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Tafel tafel = new Tafel()
-                {
-                    WerknemerId = (int)dr["WerknemerID"],
-                    Capaciteit = (int)dr["Capaciteit"],
-                    Status = (string)dr["Status"],
-                    TafelNummer = (int)dr["TafelID"]
-                };
+                Tafel tafel = new Tafel(
+                    (string)dr["Voornaam"],
+                    (int)dr["Capaciteit"],
+                    (string)dr["Status"],
+                    (int)dr["TafelID"]
+                    );
+
                 tafels.Add(tafel);
             }
             return tafels;

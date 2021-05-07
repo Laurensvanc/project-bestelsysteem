@@ -26,16 +26,28 @@ namespace ChapooLogic
             catch(Exception ex)
             {
                 List<Reservering> reservering = new List<Reservering>();
-                Reservering r = new Reservering();
-                r.KlantID = 404;
-                r.ReserveringID = 404;
-                r.TafelID = 404;
-                r.BeginTijd = DateTime.Now.AddSeconds(404);
-                r.EindTijd = DateTime.Now.AddMinutes(404);
+                Reservering r = new Reservering(
+                404,
+                404,
+                DateTime.Now.AddSeconds(404),
+                DateTime.Now.AddMinutes(404),
+                404
+                );
                 reservering.Add(r);
                 return reservering;
                 
                 throw new Exception("Chapoo kon niet verbinden met de database");
+            }
+        }
+        public void AddReservering(Reservering reservering)
+        {
+            try
+            {
+                reserveringDAO.AddReservering(reservering);
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

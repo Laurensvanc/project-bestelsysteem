@@ -40,7 +40,7 @@
             this.lblName = new System.Windows.Forms.Label();
             this.dateTijd = new System.Windows.Forms.DateTimePicker();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNaam = new System.Windows.Forms.TextBox();
             this.pnlReservering.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,7 +103,7 @@
             this.pnlReservering.Controls.Add(this.lblName);
             this.pnlReservering.Controls.Add(this.dateTijd);
             this.pnlReservering.Controls.Add(this.textBox3);
-            this.pnlReservering.Controls.Add(this.textBox1);
+            this.pnlReservering.Controls.Add(this.txtNaam);
             this.pnlReservering.Location = new System.Drawing.Point(12, 13);
             this.pnlReservering.Name = "pnlReservering";
             this.pnlReservering.Size = new System.Drawing.Size(776, 425);
@@ -127,6 +127,7 @@
             this.btnUpdateRes.TabIndex = 6;
             this.btnUpdateRes.Text = "Opslaan";
             this.btnUpdateRes.UseVisualStyleBackColor = true;
+            this.btnUpdateRes.Click += new System.EventHandler(this.btnUpdateRes_Click);
             // 
             // lblAantalPersonen
             // 
@@ -161,12 +162,12 @@
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 2;
             // 
-            // textBox1
+            // txtNaam
             // 
-            this.textBox1.Location = new System.Drawing.Point(37, 101);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(146, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtNaam.Location = new System.Drawing.Point(37, 101);
+            this.txtNaam.Name = "txtNaam";
+            this.txtNaam.Size = new System.Drawing.Size(146, 20);
+            this.txtNaam.TabIndex = 0;
             // 
             // RestaurantOverzicht
             // 
@@ -200,7 +201,7 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.DateTimePicker dateTijd;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNaam;
         private System.Windows.Forms.Button btnDeleteRes;
         private System.Windows.Forms.Button btnUpdateRes;
     }

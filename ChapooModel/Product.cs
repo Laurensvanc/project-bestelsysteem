@@ -1,4 +1,5 @@
-﻿namespace ChapooModel
+﻿
+namespace ChapooModel
 {
     public class Product
     {
