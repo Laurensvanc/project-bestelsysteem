@@ -182,7 +182,6 @@
             this.lv_Voorraad.TabIndex = 0;
             this.lv_Voorraad.UseCompatibleStateImageBehavior = false;
             this.lv_Voorraad.View = System.Windows.Forms.View.Details;
-            this.lv_Voorraad.SelectedIndexChanged += new System.EventHandler(this.lv_Voorraad_SelectedIndexChanged);
             this.lv_Voorraad.DoubleClick += new System.EventHandler(this.lv_Voorraad_DoubleClick);
             // 
             // ch0
