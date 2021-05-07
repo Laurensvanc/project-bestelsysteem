@@ -31,6 +31,7 @@ namespace ChapooLogic
                 404,
                 DateTime.Now.AddSeconds(404),
                 DateTime.Now.AddMinutes(404),
+                404,
                 404
                 );
                 reservering.Add(r);

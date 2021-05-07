@@ -39,9 +39,10 @@
             this.lblAantalPersonen = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.dateTijd = new System.Windows.Forms.DateTimePicker();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.txtNaam = new System.Windows.Forms.TextBox();
+            this.NumericAantal = new System.Windows.Forms.NumericUpDown();
             this.pnlReservering.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericAantal)).BeginInit();
             this.SuspendLayout();
             // 
             // lstReservering
@@ -97,12 +98,12 @@
             // 
             // pnlReservering
             // 
+            this.pnlReservering.Controls.Add(this.NumericAantal);
             this.pnlReservering.Controls.Add(this.btnDeleteRes);
             this.pnlReservering.Controls.Add(this.btnUpdateRes);
             this.pnlReservering.Controls.Add(this.lblAantalPersonen);
             this.pnlReservering.Controls.Add(this.lblName);
             this.pnlReservering.Controls.Add(this.dateTijd);
-            this.pnlReservering.Controls.Add(this.textBox3);
             this.pnlReservering.Controls.Add(this.txtNaam);
             this.pnlReservering.Location = new System.Drawing.Point(12, 13);
             this.pnlReservering.Name = "pnlReservering";
@@ -155,19 +156,19 @@
             this.dateTijd.Size = new System.Drawing.Size(206, 20);
             this.dateTijd.TabIndex = 3;
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(37, 170);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 2;
-            // 
             // txtNaam
             // 
             this.txtNaam.Location = new System.Drawing.Point(37, 101);
             this.txtNaam.Name = "txtNaam";
             this.txtNaam.Size = new System.Drawing.Size(146, 20);
             this.txtNaam.TabIndex = 0;
+            // 
+            // NumericAantal
+            // 
+            this.NumericAantal.Location = new System.Drawing.Point(37, 169);
+            this.NumericAantal.Name = "NumericAantal";
+            this.NumericAantal.Size = new System.Drawing.Size(120, 20);
+            this.NumericAantal.TabIndex = 8;
             // 
             // RestaurantOverzicht
             // 
@@ -185,6 +186,7 @@
             this.Load += new System.EventHandler(this.RestaurantOverzicht_Load);
             this.pnlReservering.ResumeLayout(false);
             this.pnlReservering.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericAantal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -200,9 +202,9 @@
         private System.Windows.Forms.Label lblAantalPersonen;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.DateTimePicker dateTijd;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox txtNaam;
         private System.Windows.Forms.Button btnDeleteRes;
         private System.Windows.Forms.Button btnUpdateRes;
+        private System.Windows.Forms.NumericUpDown NumericAantal;
     }
 }

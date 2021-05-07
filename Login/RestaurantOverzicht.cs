@@ -62,7 +62,8 @@ namespace Login
         private void btnUpdateRes_Click(object sender, EventArgs e)
         {
             DateTime begintijd = dateTijd.Value;
-            Reservering reservering = new Reservering(3, begintijd, begintijd.AddHours(2), 2);
+            int AantalPersonen = (int)NumericAantal.Value;
+            Reservering reservering = new Reservering(3, begintijd, begintijd.AddHours(2), 2, AantalPersonen);
             reservering_Service.AddReservering(reservering);
             pnlReservering.Hide();
             Refresh();
@@ -106,6 +107,7 @@ namespace Login
             lstReservering.Columns.Add("Begin Tijd", 75);
             lstReservering.Columns.Add("Eind Tijd", 75);
             lstReservering.Columns.Add("Klant Naam", 75);
+            lstReservering.Columns.Add("Aantal", 75);
 
             lstReservering.FullRowSelect = true;
             lstReservering.GridLines = true;
@@ -117,6 +119,7 @@ namespace Login
                 li.SubItems.Add(r.BeginTijd.ToString());
                 li.SubItems.Add(r.EindTijd.ToString());
                 li.SubItems.Add(r.KlantNaam.ToString());
+                li.SubItems.Add(r.AantalPersonen.ToString());
 
                 lstReservering.Items.Add(li);
             }
