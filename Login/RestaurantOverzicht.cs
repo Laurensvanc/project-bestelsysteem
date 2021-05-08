@@ -14,6 +14,8 @@ namespace Login
     public partial class RestaurantOverzicht : Form
     {
         private ChapooLogic.Reservering_Service reservering_Service;
+        private ChapooLogic.Klant_Service klant_Service;
+        private int KlantID;
         public RestaurantOverzicht()
         {
             InitializeComponent();
@@ -27,6 +29,7 @@ namespace Login
         private void RestaurantOverzicht_Load(object sender, EventArgs e)
         {
             pnlReservering.Hide();
+            pnlKlantSysteem.Hide();
             loadLists();
         }
 
@@ -69,10 +72,37 @@ namespace Login
         {
             DateTime begintijd = dateTijd.Value;
             int AantalPersonen = (int)NumericAantal.Value;
-            Reservering reservering = new Reservering(3, begintijd, begintijd.AddHours(2), 2, AantalPersonen);
-            reservering_Service.AddReservering(reservering);
-            pnlReservering.Hide();
-            Refresh();
+
+            if (String.IsNullOrEmpty(txtNaam.Text) || String.IsNullOrEmpty(txtAchternaam.Text) || String.IsNullOrEmpty(txtTellie.Text))
+            {
+                DialogResult dialogResult = MessageBox.Show("Vul Persoonsgegevens in", "Error");
+            } else 
+            {
+                LoadKlanten();
+
+                if (!bestaatDeKlant())
+                {
+                    VoegKlantToe();
+                    LoadKlanten();
+                    if (bestaatDeKlant())
+                    {
+                        Reservering reservering = new Reservering(3, begintijd, begintijd.AddHours(2), KlantID, AantalPersonen);
+                        reservering_Service.AddReservering(reservering);
+                        DialogResult dialogResult = MessageBox.Show("Reservering voor" + txtNaam.Text + "Gezet, op: " + dateTijd.Value.ToShortDateString(), "Error");
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Geen Persoon gevonden", "Error");
+                    }
+                }
+
+                pnlReservering.Hide();
+                Refresh();
+                txtNaam.Clear();
+                txtAchternaam.Clear();
+                txtTellie.Clear();
+            }
+
 
         }
         private void Refresh()
@@ -184,6 +214,114 @@ namespace Login
         {
             loadLists();
             lblDatum.Text = "Reserveringen voor: " + dateTijd.Value.Date.ToShortDateString();
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSelectKlant_Click(object sender, EventArgs e)
+        {
+            LoadKlanten();
+            pnlKlantSysteem.Show();
+        }
+
+        private void btnTerug_Click(object sender, EventArgs e)
+        {
+            pnlKlantSysteem.Hide();
+        }
+        private void LoadKlanten()
+        {
+            klant_Service = new ChapooLogic.Klant_Service();
+            List<Klant> klanten = klant_Service.GetKlants();
+
+            lstKlantSysteem.Clear();
+
+            lstKlantSysteem.Columns.Add("KlantNummer", 75);
+            lstKlantSysteem.Columns.Add("Voornaam", 75);
+            lstKlantSysteem.Columns.Add("Achternaam", 100);
+            lstKlantSysteem.Columns.Add("GeboorteDatum", 75);
+            lstKlantSysteem.Columns.Add("Mobiel", 75);
+
+            lstKlantSysteem.FullRowSelect = true;
+            lstKlantSysteem.GridLines = true;
+
+            foreach (ChapooModel.Klant k in klanten)
+            {
+                if (!String.IsNullOrEmpty(txtNaamKlant.Text))
+                {
+                    if (k.Voornaam.Contains(txtNaamKlant.Text)|| k.Achternaam.Contains(txtNaamKlant.Text))
+                    {
+                        ListViewItem li = new ListViewItem(k.KlantID.ToString());
+                        li.SubItems.Add(k.Voornaam.ToString());
+                        li.SubItems.Add(k.Achternaam.ToString());
+                        li.SubItems.Add(k.GeboorteDatum.ToString());
+                        li.SubItems.Add(k.Mobiel.ToString());
+
+                        lstKlantSysteem.Items.Add(li);
+                    }
+
+                } else
+                {
+                    ListViewItem li = new ListViewItem(k.KlantID.ToString());
+                    li.SubItems.Add(k.Voornaam.ToString());
+                    li.SubItems.Add(k.Achternaam.ToString());
+                    li.SubItems.Add(k.GeboorteDatum.ToString());
+                    li.SubItems.Add(k.Mobiel.ToString());
+
+                    lstKlantSysteem.Items.Add(li);
+                }
+            }
+        }
+
+        private void lstKlantSysteem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.lstKlantSysteem.SelectedItems.Count == 0)
+                return;
+
+            var i = lstKlantSysteem.SelectedItems[0];
+            lblKlantGeselct.Text = "U Heeft: " + i.SubItems[1].Text + " " + i.SubItems[2].Text + " Geselecteerd";
+        }
+
+        private void txtNaamKlant_TextChanged(object sender, EventArgs e)
+        {
+            LoadKlanten();
+            lblZoeken.Text = "Zoeken op: " + txtNaamKlant.Text;
+        }
+
+        private void btnKlantOpslaan_Click(object sender, EventArgs e)
+        {
+            if (this.lstKlantSysteem.SelectedItems.Count == 0)
+                return;
+            var i = lstKlantSysteem.SelectedItems[0];
+
+            txtNaam.Text = i.SubItems[1].Text;
+            txtAchternaam.Text = i.SubItems[2].Text; 
+            txtGeboorteDatum.Text = i.SubItems[3].Text;
+            txtTellie.Text = i.SubItems[4].Text;
+            KlantID = int.Parse(i.SubItems[0].Text);
+
+            pnlKlantSysteem.Hide();
+        }
+        private void VoegKlantToe()
+        {
+
+            Klant klant = new Klant(txtNaam.Text, txtAchternaam.Text, txtGeboorteDatum.Text, txtTellie.Text);
+            klant_Service.AddKlant(klant);
+        }
+        private bool bestaatDeKlant()
+        {
+            bool bestaat = false;
+            for (int i = 0; i < lstKlantSysteem.Items.Count; i++)
+            {
+                if (lstKlantSysteem.Items[i].SubItems[1].Text.Contains(txtNaam.Text) && lstKlantSysteem.Items[i].SubItems[2].Text.Contains(txtAchternaam.Text))
+                {
+                    KlantID = int.Parse(lstKlantSysteem.Items[i].SubItems[0].Text);
+                    bestaat = true;
+                }
+            }
+            return bestaat;
         }
     }
 }
