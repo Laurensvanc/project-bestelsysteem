@@ -55,7 +55,13 @@ namespace Login
             DialogResult dialogResult = MessageBox.Show("Weet je het zeker?", "Verwijderen Reservering", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                var i = lstReservering.SelectedItems[0];
 
+                Reservering reservering = new Reservering(
+                    int.Parse(i.SubItems[0].Text));
+                
+                reservering_Service.DeleteReservering(reservering);
+                loadLists();
             }
         }
 
@@ -82,8 +88,8 @@ namespace Login
 
             lstTafelStatus.Columns.Add("TafelNummer", 75);
             lstTafelStatus.Columns.Add("Capaciteit", 75);
-            lstTafelStatus.Columns.Add("Werknemer", 75);
-            lstTafelStatus.Columns.Add("Status", 150);
+            lstTafelStatus.Columns.Add("Werknemer", 100);
+            lstTafelStatus.Columns.Add("Status", 75);
 
             lstTafelStatus.FullRowSelect = true;
             lstTafelStatus.GridLines = true;
@@ -93,14 +99,28 @@ namespace Login
                 ListViewItem li = new ListViewItem(t.TafelNummer.ToString());
                 li.SubItems.Add(t.Capaciteit.ToString());
                 li.SubItems.Add(t.WerknemerId.ToString());
-                li.SubItems.Add(t.Status);
+                if (t.Status == "Bezet")
+                {
+                    li.SubItems.Add(t.Status);
+                    li.SubItems[3].BackColor = Color.Red;
+                    li.UseItemStyleForSubItems = false;
+                }
+                else
+                {
+                    li.SubItems.Add(t.Status);
+                    li.SubItems[3].BackColor = Color.Green;
+                    li.UseItemStyleForSubItems = false;
+                }
+
                 lstTafelStatus.Items.Add(li);
             }
+
 
             reservering_Service = new ChapooLogic.Reservering_Service();
             List<Reservering> reserverings = reservering_Service.GetReserverings();
 
             lstReservering.Clear();
+            lstReserveringDag.Clear();
 
             lstReservering.Columns.Add("Reservering Nummer", 75);
             lstReservering.Columns.Add("Tafel Nummer", 75);
@@ -111,6 +131,16 @@ namespace Login
 
             lstReservering.FullRowSelect = true;
             lstReservering.GridLines = true;
+
+            lstReserveringDag.Columns.Add("Reservering Nummer", 75);
+            lstReserveringDag.Columns.Add("Tafel Nummer", 75);
+            lstReserveringDag.Columns.Add("Begin Tijd", 75);
+            lstReserveringDag.Columns.Add("Eind Tijd", 75);
+            lstReserveringDag.Columns.Add("Klant Naam", 75);
+            lstReserveringDag.Columns.Add("Aantal", 75);
+
+            lstReserveringDag.FullRowSelect = true;
+            lstReserveringDag.GridLines = true;
 
             foreach (ChapooModel.Reservering r in reserverings)
             {
@@ -126,6 +156,34 @@ namespace Login
 
             dateTijd.Format = DateTimePickerFormat.Custom;
             dateTijd.CustomFormat = "MM/dd/yyyy HH:mm:ss";
+
+            DateTime time = dateTijd.Value;
+
+            foreach (ChapooModel.Reservering r in reserverings)
+            {
+                if (r.BeginTijd.Date == time.Date)
+                {
+                    ListViewItem li = new ListViewItem(r.ReserveringID.ToString());
+                    li.SubItems.Add(r.TafelID.ToString());
+                    li.SubItems.Add(r.BeginTijd.Hour.ToString() + ":" + r.BeginTijd.Minute.ToString("D2"));
+                    li.SubItems.Add(r.EindTijd.Hour.ToString() + ":" + r.EindTijd.Minute.ToString("D2"));
+                    li.SubItems.Add(r.KlantNaam.ToString());
+                    li.SubItems.Add(r.AantalPersonen.ToString());
+
+                    lstReserveringDag.Items.Add(li);
+                } 
+            }
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTijd_ValueChanged(object sender, EventArgs e)
+        {
+            loadLists();
+            lblDatum.Text = "Reserveringen voor: " + dateTijd.Value.Date.ToShortDateString();
         }
     }
 }

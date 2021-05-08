@@ -14,6 +14,11 @@ namespace ChapooModel
         public int AantalPersonen { get; set; }
 
         public string KlantNaam { get; set; }
+
+        public Reservering(int ReserveringID)
+        {
+            this.ReserveringID = ReserveringID;
+        }
         public Reservering(int TafelID, DateTime BeginTijd, DateTime EindTijd, int KlantID, int AantalPersonen)
         {
 

@@ -34,13 +34,15 @@
             this.btnMin = new System.Windows.Forms.Button();
             this.btnFresh = new System.Windows.Forms.Button();
             this.pnlReservering = new System.Windows.Forms.Panel();
+            this.NumericAantal = new System.Windows.Forms.NumericUpDown();
             this.btnDeleteRes = new System.Windows.Forms.Button();
             this.btnUpdateRes = new System.Windows.Forms.Button();
             this.lblAantalPersonen = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.dateTijd = new System.Windows.Forms.DateTimePicker();
             this.txtNaam = new System.Windows.Forms.TextBox();
-            this.NumericAantal = new System.Windows.Forms.NumericUpDown();
+            this.lstReserveringDag = new System.Windows.Forms.ListView();
+            this.lblDatum = new System.Windows.Forms.Label();
             this.pnlReservering.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericAantal)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +70,7 @@
             // 
             // btnPlus
             // 
+            this.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPlus.Location = new System.Drawing.Point(26, 359);
             this.btnPlus.Name = "btnPlus";
             this.btnPlus.Size = new System.Drawing.Size(44, 34);
@@ -78,6 +81,7 @@
             // 
             // btnMin
             // 
+            this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnMin.Location = new System.Drawing.Point(92, 359);
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(44, 34);
@@ -88,6 +92,7 @@
             // 
             // btnFresh
             // 
+            this.btnFresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFresh.Location = new System.Drawing.Point(161, 359);
             this.btnFresh.Name = "btnFresh";
             this.btnFresh.Size = new System.Drawing.Size(76, 34);
@@ -98,6 +103,8 @@
             // 
             // pnlReservering
             // 
+            this.pnlReservering.Controls.Add(this.lblDatum);
+            this.pnlReservering.Controls.Add(this.lstReserveringDag);
             this.pnlReservering.Controls.Add(this.NumericAantal);
             this.pnlReservering.Controls.Add(this.btnDeleteRes);
             this.pnlReservering.Controls.Add(this.btnUpdateRes);
@@ -110,8 +117,16 @@
             this.pnlReservering.Size = new System.Drawing.Size(776, 425);
             this.pnlReservering.TabIndex = 5;
             // 
+            // NumericAantal
+            // 
+            this.NumericAantal.Location = new System.Drawing.Point(37, 169);
+            this.NumericAantal.Name = "NumericAantal";
+            this.NumericAantal.Size = new System.Drawing.Size(120, 20);
+            this.NumericAantal.TabIndex = 8;
+            // 
             // btnDeleteRes
             // 
+            this.btnDeleteRes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDeleteRes.Location = new System.Drawing.Point(149, 267);
             this.btnDeleteRes.Name = "btnDeleteRes";
             this.btnDeleteRes.Size = new System.Drawing.Size(75, 23);
@@ -122,6 +137,7 @@
             // 
             // btnUpdateRes
             // 
+            this.btnUpdateRes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUpdateRes.Location = new System.Drawing.Point(37, 267);
             this.btnUpdateRes.Name = "btnUpdateRes";
             this.btnUpdateRes.Size = new System.Drawing.Size(75, 23);
@@ -155,6 +171,7 @@
             this.dateTijd.Name = "dateTijd";
             this.dateTijd.Size = new System.Drawing.Size(206, 20);
             this.dateTijd.TabIndex = 3;
+            this.dateTijd.ValueChanged += new System.EventHandler(this.dateTijd_ValueChanged);
             // 
             // txtNaam
             // 
@@ -163,17 +180,31 @@
             this.txtNaam.Size = new System.Drawing.Size(146, 20);
             this.txtNaam.TabIndex = 0;
             // 
-            // NumericAantal
+            // lstReserveringDag
             // 
-            this.NumericAantal.Location = new System.Drawing.Point(37, 169);
-            this.NumericAantal.Name = "NumericAantal";
-            this.NumericAantal.Size = new System.Drawing.Size(120, 20);
-            this.NumericAantal.TabIndex = 8;
+            this.lstReserveringDag.HideSelection = false;
+            this.lstReserveringDag.Location = new System.Drawing.Point(308, 50);
+            this.lstReserveringDag.Name = "lstReserveringDag";
+            this.lstReserveringDag.Size = new System.Drawing.Size(454, 293);
+            this.lstReserveringDag.TabIndex = 9;
+            this.lstReserveringDag.UseCompatibleStateImageBehavior = false;
+            this.lstReserveringDag.View = System.Windows.Forms.View.Details;
+            this.lstReserveringDag.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // lblDatum
+            // 
+            this.lblDatum.AutoSize = true;
+            this.lblDatum.Location = new System.Drawing.Point(308, 31);
+            this.lblDatum.Name = "lblDatum";
+            this.lblDatum.Size = new System.Drawing.Size(201, 13);
+            this.lblDatum.TabIndex = 10;
+            this.lblDatum.Text = "Ingeplande Reserveringen voor vandaag";
             // 
             // RestaurantOverzicht
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pnlReservering);
             this.Controls.Add(this.btnFresh);
@@ -206,5 +237,7 @@
         private System.Windows.Forms.Button btnDeleteRes;
         private System.Windows.Forms.Button btnUpdateRes;
         private System.Windows.Forms.NumericUpDown NumericAantal;
+        private System.Windows.Forms.ListView lstReserveringDag;
+        private System.Windows.Forms.Label lblDatum;
     }
 }

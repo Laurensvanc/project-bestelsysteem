@@ -51,5 +51,16 @@ namespace ChapooLogic
                 throw;
             }
         }
+        public void DeleteReservering(Reservering reservering)
+        {
+            try
+            {
+                reserveringDAO.DeleteReservering(reservering);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
