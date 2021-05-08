@@ -54,6 +54,7 @@ namespace Login
 
         private void btn_OK_Click(object sender, EventArgs e)
         {
+            // adding/changing item
             if (_deleting) // check if process is deleting
             {
                 DialogResult confirm = MessageBox.Show($"Weet je het zeker dat je dit product wilt verwijderen?\nDeze actie is niet terug te draaien!", "Product verwijderen?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);

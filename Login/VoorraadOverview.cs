@@ -74,6 +74,7 @@ namespace Login
 
         private void FillGridView(Product p)
         {
+            // fill grid with product
             string[] arr = new string[3];
             ListViewItem li;
 
@@ -92,6 +93,7 @@ namespace Login
 
         private void btn_Toggle_Click(object sender, EventArgs e)
         {
+            // toggle between drinks and food
             if (_showingDrinks == false)
             {
                 _showingDrinks = true;
@@ -107,6 +109,7 @@ namespace Login
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
+            // open new window to change or add products
             using (var voorraadChange = new VoorraadChange())
             {
                 voorraadChange.ShowDialog();
@@ -144,7 +147,10 @@ namespace Login
                 {
                     if (p.ProductId.ToString().ToLower().Contains(tb_Search.Text.ToLower()) || p.ProductNaam.ToLower().Contains(tb_Search.Text.ToLower()))
                     {
-                        FillGridView(p);
+                        if ((p.IsDrinken == true && _showingDrinks == true) || (p.IsDrinken == false && _showingDrinks == false))
+                        {
+                            FillGridView(p);
+                        }
                     }
                 }
                 if (lv_Voorraad.SelectedItems.Count == 1)
@@ -161,6 +167,7 @@ namespace Login
 
         private void btn_Menu_Click(object sender, EventArgs e)
         {
+            // opens menu overview
             FormClosingEventArgs f = new FormClosingEventArgs(0, false);
             VoorraadOverview_FormClosing(sender, f);
             this.Close();
@@ -186,6 +193,7 @@ namespace Login
 
         private void VoorraadOverview_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // transition between menu and voorraad overview (open, closing)
         }
 
         private void lv_Voorraad_DoubleClick(object sender, EventArgs e)
@@ -202,11 +210,6 @@ namespace Login
                 alcohol = "Nee";
             }
             MessageBox.Show($"{product}\n\nProductID:\t{product.ProductId}\nPrijs:\t\t€{product.Prijs.ToString("0.00")}\nInkoop prijs:\t€{product.InkoopPrijs.ToString("0.00")}\nAantal:\t\t{product.Aantal}\nAlcoholisch:\t{alcohol}", "Product Info");
-        }
-
-        private void lv_Voorraad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

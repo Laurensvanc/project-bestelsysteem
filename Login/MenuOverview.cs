@@ -91,12 +91,13 @@ namespace Login
 
         private void btn_Click(object sender, EventArgs e)
         {
+            // searches for item clicked
             Button button = (Button)sender;
             MenuName menu = _menus.Find(m => m.Name == _menuName);
             MenuType menuType = menu.menuTypes.Find(mt => mt.Type == _menuType);
             Product product = menuType.products.Find(p => p.ProductId == int.Parse(button.Name));
 
-            if (_deleting == true)
+            if (_deleting == true) // check if deleting mode is on
             {
                 // if deleting mode is on delete item
                 Product p = new Product(product.ProductId);
@@ -116,12 +117,22 @@ namespace Login
             else
             {
                 // display info when clicking on a product
-                MessageBox.Show($"Aantal:\t\t{product.Aantal}\nPrijs:\t\t€{product.Prijs.ToString("0.00")}\nAlcoholisch:\t{product.IsAlcohol}", product.ToString());
+                string alcohol;
+                if (product.IsAlcohol == true)
+                {
+                    alcohol = "Ja";
+                }
+                else
+                {
+                    alcohol = "Nee";
+                }
+                MessageBox.Show($"Aantal:\t\t{product.Aantal}\nPrijs:\t\t€{product.Prijs.ToString("0.00")}\nAlcoholisch:\t{alcohol}", product.ToString());
             }
         }
 
         private void btn_Remove_Click(object sender, EventArgs e)
         {
+            // switches delete mode on and off
             Button button = (Button)sender;
             if (_deleting == false)
             {
@@ -157,7 +168,7 @@ namespace Login
                     break;
                 }
             }
-            if (menuId > 0)
+            if (menuId > 0) // checks which products to load
             {
                 bool drinks = false;
                 if (_menuName == "Drank Kaart")
@@ -174,11 +185,11 @@ namespace Login
 
         private void OverviewChanged(object sender)
         {
-            // whenever a button is pressed check for labels and buttons
+            // whenever a button is pressed check for labels and buttons to show
             lbl_Instruction.Hide();
             flp_MenuOverview.Controls.Clear();
             Button button = (Button)sender;
-            if (button.Text == _menuName) // else if selected menu is current menu selected
+            if (button.Text == _menuName) // if selected menu is current menu selected > unselect menu
             {
                 // hide buttons and show instruction
                 lbl_Instruction2.Show();
@@ -194,32 +205,30 @@ namespace Login
                 Panel panel = (Panel)control;
                 ResetColors(panel);
             }
-            else if (button.Parent != pnl_MenuButtons) // if menu selected is not a main menu
+            else if (button.Parent != pnl_MenuButtons) // if menu selected is not a main menu > show submenu, show remove button
             {
                 _menuType = button.Text;
+                btn_Remove.Show();
                 ButtonColor(sender);
             }
-            else // another menu is selected
+            else // another menu is selected > hide submenu
             {
                 _menuType = null;
+                if (_deleting == false) // if delete mode is off hide button
+                {
+                    btn_Remove.Hide();
+                }
                 pnl_ActionButtons.Show();
                 _menuName = button.Text;
                 lbl_Instruction2.Hide();
                 ButtonColor(sender);
-            }
-            if (!String.IsNullOrEmpty(_menuType)) // if a submenu is selected show remove button
-            {
-                btn_Remove.Show();
-            }
-            else if (_deleting == false) // if no submenu is selected and delete mode is off, hide button
-            {
-                btn_Remove.Hide();
             }
             FillOverview();
         }
 
         private void ButtonColor(object sender)
         {
+            // changes button colour if button is pressed
             Button button = (Button)sender;
             Control panel = ((Button)sender).Parent;
 

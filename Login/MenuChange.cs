@@ -98,6 +98,7 @@ namespace Login
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
+            // adding/changing menu
             if (_selectedProduct != 0) // if a product is selected
             {
                 if (cbox_Category.SelectedIndex > -1) // if a category is selected
@@ -148,8 +149,9 @@ namespace Login
             }
         }
 
-        private bool Exists(MenuName menu) // checks if product exists on menu
+        private bool Exists(MenuName menu)
         {
+            // checks if product exists on menu
             foreach (MenuName m in _menus)
             {
                 if (m.MenuId == menu.MenuId)
@@ -182,7 +184,10 @@ namespace Login
                 {
                     if (p.ProductId.ToString().ToLower().Contains(tb_Search.Text.ToLower()) || p.ProductNaam.ToLower().Contains(tb_Search.Text.ToLower()))
                     {
-                        MakeButton(p);
+                        if ((p.IsDrinken == true && _drinks == true) || (p.IsDrinken == false && _drinks == false))
+                        {
+                            MakeButton(p);
+                        }
                     }
                 }
                 AddButtons();

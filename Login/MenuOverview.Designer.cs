@@ -30,6 +30,8 @@ namespace Login
         private void InitializeComponent()
         {
             this.pnl_MenuOverview = new System.Windows.Forms.Panel();
+            this.btn_Refresh = new System.Windows.Forms.Button();
+            this.btn_Voorraad = new System.Windows.Forms.Button();
             this.lbl_Instruction2 = new System.Windows.Forms.Label();
             this.lbl_Instruction = new System.Windows.Forms.Label();
             this.pnl_MenuDinerButtons = new System.Windows.Forms.Panel();
@@ -55,8 +57,6 @@ namespace Login
             this.btn_Lunch = new System.Windows.Forms.Button();
             this.btn_Drank = new System.Windows.Forms.Button();
             this.btn_Diner = new System.Windows.Forms.Button();
-            this.btn_Voorraad = new System.Windows.Forms.Button();
-            this.btn_Refresh = new System.Windows.Forms.Button();
             this.pnl_MenuOverview.SuspendLayout();
             this.pnl_MenuDinerButtons.SuspendLayout();
             this.pnl_MenuDrankButtons.SuspendLayout();
@@ -87,14 +87,38 @@ namespace Login
             this.pnl_MenuOverview.Size = new System.Drawing.Size(800, 450);
             this.pnl_MenuOverview.TabIndex = 0;
             // 
+            // btn_Refresh
+            // 
+            this.btn_Refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Refresh.Location = new System.Drawing.Point(6, 60);
+            this.btn_Refresh.Name = "btn_Refresh";
+            this.btn_Refresh.Size = new System.Drawing.Size(89, 45);
+            this.btn_Refresh.TabIndex = 2;
+            this.btn_Refresh.TabStop = false;
+            this.btn_Refresh.Text = "Refresh Menus";
+            this.btn_Refresh.UseVisualStyleBackColor = true;
+            this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
+            // 
+            // btn_Voorraad
+            // 
+            this.btn_Voorraad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Voorraad.Location = new System.Drawing.Point(6, 6);
+            this.btn_Voorraad.Name = "btn_Voorraad";
+            this.btn_Voorraad.Size = new System.Drawing.Size(89, 29);
+            this.btn_Voorraad.TabIndex = 2;
+            this.btn_Voorraad.TabStop = false;
+            this.btn_Voorraad.Text = "Voorraad";
+            this.btn_Voorraad.UseVisualStyleBackColor = true;
+            this.btn_Voorraad.Click += new System.EventHandler(this.btn_Voorraad_Click);
+            // 
             // lbl_Instruction2
             // 
             this.lbl_Instruction2.AutoSize = true;
-            this.lbl_Instruction2.Location = new System.Drawing.Point(228, 22);
+            this.lbl_Instruction2.Location = new System.Drawing.Point(249, 22);
             this.lbl_Instruction2.Name = "lbl_Instruction2";
-            this.lbl_Instruction2.Size = new System.Drawing.Size(186, 13);
+            this.lbl_Instruction2.Size = new System.Drawing.Size(165, 13);
             this.lbl_Instruction2.TabIndex = 6;
-            this.lbl_Instruction2.Text = "Kies een menu om aan te beginnen ->";
+            this.lbl_Instruction2.Text = "Kies een menu om te beginnen ->";
             // 
             // lbl_Instruction
             // 
@@ -371,30 +395,6 @@ namespace Login
             this.btn_Diner.Text = "Diner Kaart";
             this.btn_Diner.UseVisualStyleBackColor = true;
             this.btn_Diner.Click += new System.EventHandler(this.btn_Diner_Click);
-            // 
-            // btn_Voorraad
-            // 
-            this.btn_Voorraad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Voorraad.Location = new System.Drawing.Point(6, 6);
-            this.btn_Voorraad.Name = "btn_Voorraad";
-            this.btn_Voorraad.Size = new System.Drawing.Size(89, 29);
-            this.btn_Voorraad.TabIndex = 2;
-            this.btn_Voorraad.TabStop = false;
-            this.btn_Voorraad.Text = "Voorraad";
-            this.btn_Voorraad.UseVisualStyleBackColor = true;
-            this.btn_Voorraad.Click += new System.EventHandler(this.btn_Voorraad_Click);
-            // 
-            // btn_Refresh
-            // 
-            this.btn_Refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Refresh.Location = new System.Drawing.Point(6, 60);
-            this.btn_Refresh.Name = "btn_Refresh";
-            this.btn_Refresh.Size = new System.Drawing.Size(89, 45);
-            this.btn_Refresh.TabIndex = 2;
-            this.btn_Refresh.TabStop = false;
-            this.btn_Refresh.Text = "Refresh Menus";
-            this.btn_Refresh.UseVisualStyleBackColor = true;
-            this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
             // 
             // MenuOverview
             // 
