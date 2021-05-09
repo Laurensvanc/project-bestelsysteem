@@ -73,7 +73,7 @@ namespace Login
             DateTime begintijd = dateTijd.Value;
             int AantalPersonen = (int)NumericAantal.Value;
 
-            if (String.IsNullOrEmpty(txtNaam.Text) || String.IsNullOrEmpty(txtAchternaam.Text) || String.IsNullOrEmpty(txtTellie.Text))
+            if (String.IsNullOrEmpty(txtNaam.Text) || String.IsNullOrEmpty(txtAchternaam.Text) || String.IsNullOrEmpty(txtTellie.Text) || String.IsNullOrEmpty(cmbTafel.Text))
             {
                 DialogResult dialogResult = MessageBox.Show("Vul Persoonsgegevens in", "Error");
             } else 
@@ -86,14 +86,20 @@ namespace Login
                     LoadKlanten();
                     if (bestaatDeKlant())
                     {
-                        Reservering reservering = new Reservering(3, begintijd, begintijd.AddHours(2), KlantID, AantalPersonen);
+
+                        Reservering reservering = new Reservering(int.Parse(cmbTafel.Text), begintijd, begintijd.AddHours(2), KlantID, AantalPersonen);
                         reservering_Service.AddReservering(reservering);
-                        DialogResult dialogResult = MessageBox.Show("Reservering voor" + txtNaam.Text + "Gezet, op: " + dateTijd.Value.ToShortDateString(), "Error");
+                        DialogResult dialogResult = MessageBox.Show("Reservering voor" + txtNaam.Text + "Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
                     }
                     else
                     {
                         DialogResult dialogResult = MessageBox.Show("Geen Persoon gevonden", "Error");
                     }
+                } else
+                {
+                    Reservering reservering = new Reservering(int.Parse(cmbTafel.Text), begintijd, begintijd.AddHours(2), KlantID, AantalPersonen);
+                    reservering_Service.AddReservering(reservering);
+                    DialogResult dialogResult = MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
                 }
 
                 pnlReservering.Hide();
@@ -141,7 +147,7 @@ namespace Login
                     li.SubItems[3].BackColor = Color.Green;
                     li.UseItemStyleForSubItems = false;
                 }
-
+                cmbTafel.Items.Add(t.TafelNummer);
                 lstTafelStatus.Items.Add(li);
             }
 
@@ -322,6 +328,11 @@ namespace Login
                 }
             }
             return bestaat;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
