@@ -118,6 +118,9 @@
     <Compile Include="VoorraadConfirmation.Designer.cs">
       <DependentUpon>VoorraadConfirmation.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuChange.resx">
       <DependentUpon>MenuChange.cs</DependentUpon>
     </EmbeddedResource>
