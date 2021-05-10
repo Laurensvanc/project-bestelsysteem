@@ -14,7 +14,7 @@ namespace Login
         private List<MenuName> _menus;
         private string _menuName;
         private string _menuType;
-        private Point _typeButtonsLocation = new Point(126, 396);
+        private Point _typeButtonsLocation = new Point(126, 396); // location submenu bar
         private bool _deleting = false;
 
         public MenuOverview()
