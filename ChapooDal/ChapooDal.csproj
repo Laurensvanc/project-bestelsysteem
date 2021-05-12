@@ -61,6 +61,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountDAO.cs" />
     <Compile Include="Base.cs" />
     <Compile Include="KlantDAO.cs" />
     <Compile Include="MenuDAO.cs" />

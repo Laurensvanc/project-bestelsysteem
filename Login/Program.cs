@@ -16,7 +16,8 @@ namespace Login
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RestaurantOverzicht());
+            //Application.Run(new RestaurantOverzicht());
+            Application.Run(new MedewerkerRegistreren());
         }
     }
 }

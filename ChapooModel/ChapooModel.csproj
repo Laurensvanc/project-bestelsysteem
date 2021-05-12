@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
     <Compile Include="Klant.cs" />
     <Compile Include="MenuName.cs" />
     <Compile Include="MenuType.cs" />
