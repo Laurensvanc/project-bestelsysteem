@@ -260,6 +260,7 @@ namespace Login
                 // Displays the MessageBox.
                 result = MessageBox.Show(message, caption, buttons);
                 if (result == System.Windows.Forms.DialogResult.Yes)
+                    lblTotal.Text = "0.00";
                     listOrderView.Clear();
                     pnl_TafelSelect.Show();
                     pnl_Tafelnr.Hide();
