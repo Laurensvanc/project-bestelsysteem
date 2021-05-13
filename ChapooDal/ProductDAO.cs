@@ -14,7 +14,13 @@ namespace ChapooDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
-
+        public List<Product> Db_Get_All_SpecificProduct(int soortID)
+        {
+            string query = "USE dbchapoo202104 SELECT P.ProductID, ProductNaam, Prijs, InkoopPrijs, Aantal, IsAlcohol, IsDrinken FROM [Product] AS P INNER JOIN Menu_Product AS MP ON MP.ProductID = P.ProductID WHERE MP.SoortID = @soortID; ";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@soortID", soortID);
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
         public void AddProduct(Product product)
         {
             // Data gets written to database, primary key is automatically made

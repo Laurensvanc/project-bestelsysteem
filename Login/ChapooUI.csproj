@@ -146,6 +146,9 @@
     <Compile Include="VoorraadConfirmation.Designer.cs">
       <DependentUpon>VoorraadConfirmation.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BestellingOpnemen.resx">
+      <DependentUpon>BestellingOpnemen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

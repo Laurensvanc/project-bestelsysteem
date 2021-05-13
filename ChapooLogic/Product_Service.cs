@@ -21,7 +21,23 @@ namespace ChapooLogic
                 //ErrorText = e.Message;
                 //Error = true;
                 // throw new Exception(e.Message);
-                // something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!
+                // something went wrong connecting to the database, so we will add a fake product to the list to make sure the rest of the application continues working!
+                List<Product> products = new List<Product>();
+                Product a = new Product(404, "404", 40.4, 4.04, 404, false, false);
+                products.Add(a);
+
+                return products;
+            }
+        }
+        public List<Product> GetSpecificProduct(int soortID)
+        {
+            try
+            {
+                List<Product> products = productDAO.Db_Get_All_SpecificProduct(soortID);
+                return products;
+            }
+            catch (Exception e)
+            {
                 List<Product> products = new List<Product>();
                 Product a = new Product(404, "404", 40.4, 4.04, 404, false, false);
                 products.Add(a);
