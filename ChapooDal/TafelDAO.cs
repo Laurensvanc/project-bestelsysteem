@@ -10,7 +10,7 @@ namespace ChapooDAL
     {
         public List<Tafel> Db_Get_All_Tafels()
         {
-            string query = "USE dbchapoo202104 SELECT [Tafel].TafelID, [Tafel].Capaciteit, [Tafel].Status, [Werknemer].Voornaam FROM [Tafel] JOIN [Werknemer] ON [Tafel].WerknemerID = [Werknemer].WerknemerID";
+            string query = "USE dbchapoo202104 SELECT [Tafel].TafelID, [Tafel].Capaciteit, [Werknemer].Voornaam FROM [Tafel] JOIN [Werknemer] ON [Tafel].WerknemerID = [Werknemer].WerknemerID";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -24,7 +24,7 @@ namespace ChapooDAL
                 Tafel tafel = new Tafel(
                     (string)dr["Voornaam"],
                     (int)dr["Capaciteit"],
-                    (string)dr["Status"],
+                    "Vrij",
                     (int)dr["TafelID"]
                     );
 
