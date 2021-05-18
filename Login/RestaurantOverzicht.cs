@@ -117,43 +117,12 @@ namespace Login
         }
         private void loadLists()
         {
-            ChapooLogic.Tafel_Service tafel_Service = new ChapooLogic.Tafel_Service();
-            List<Tafel> tafels = tafel_Service.GetTafels();
-
-            lstTafelStatus.Clear();
-
-            lstTafelStatus.Columns.Add("TafelNummer", 75);
-            lstTafelStatus.Columns.Add("Capaciteit", 75);
-            lstTafelStatus.Columns.Add("Werknemer", 100);
-            lstTafelStatus.Columns.Add("Status", 75);
-
-            lstTafelStatus.FullRowSelect = true;
-            lstTafelStatus.GridLines = true;
-
-            foreach (ChapooModel.Tafel t in tafels)
-            {
-                ListViewItem li = new ListViewItem(t.TafelNummer.ToString());
-                li.SubItems.Add(t.Capaciteit.ToString());
-                li.SubItems.Add(t.WerknemerId.ToString());
-                if (t.Status == "Bezet")
-                {
-                    li.SubItems.Add(t.Status);
-                    li.SubItems[3].BackColor = Color.Red;
-                    li.UseItemStyleForSubItems = false;
-                }
-                else
-                {
-                    li.SubItems.Add(t.Status);
-                    li.SubItems[3].BackColor = Color.Green;
-                    li.UseItemStyleForSubItems = false;
-                }
-                cmbTafel.Items.Add(t.TafelNummer);
-                lstTafelStatus.Items.Add(li);
-            }
-
-
+            // Reservering
             reservering_Service = new ChapooLogic.Reservering_Service();
             List<Reservering> reserverings = reservering_Service.GetReserverings();
+
+            List<int> tafelToBezet = new List<int>();
+            List<int> tafelToGereserveerd = new List<int>();
 
             lstReservering.Clear();
             lstReserveringDag.Clear();
@@ -186,9 +155,58 @@ namespace Login
                 li.SubItems.Add(r.EindTijd.ToString());
                 li.SubItems.Add(r.KlantNaam.ToString());
                 li.SubItems.Add(r.AantalPersonen.ToString());
-
                 lstReservering.Items.Add(li);
+                // Update Tafelstatus
+                DateTime nu = dateTijd.Value;
+                if (r.BeginTijd < nu && r.EindTijd > nu)
+                {
+                    tafelToBezet.Add(r.TafelID);
+                }
+                else if (r.BeginTijd < nu.AddHours(2) && r.EindTijd > nu)
+                {
+                    tafelToGereserveerd.Add(r.TafelID);
+                }
             }
+            // Tafel & status
+            ChapooLogic.Tafel_Service tafel_Service = new ChapooLogic.Tafel_Service();
+            List<Tafel> tafels = tafel_Service.GetTafels();
+            cmbTafel.Items.Clear();
+            lstTafelStatus.Clear();
+
+            lstTafelStatus.Columns.Add("TafelNummer", 75);
+            lstTafelStatus.Columns.Add("Capaciteit", 75);
+            lstTafelStatus.Columns.Add("Werknemer", 100);
+            lstTafelStatus.Columns.Add("Status", 75);
+
+            lstTafelStatus.FullRowSelect = true;
+            lstTafelStatus.GridLines = true;
+
+            foreach (ChapooModel.Tafel t in tafels)
+            {
+                if (tafelToBezet.Contains(t.TafelNummer)) t.Status = "Bezet";
+                if (tafelToGereserveerd.Contains(t.TafelNummer)) t.Status = "Gereserveerd";
+                ListViewItem li = new ListViewItem(t.TafelNummer.ToString());
+                li.SubItems.Add(t.Capaciteit.ToString());
+                li.SubItems.Add(t.WerknemerId.ToString());
+                li.SubItems.Add(t.Status);
+                if (t.Status == "Bezet")
+                {
+                    li.SubItems[3].BackColor = Color.Red;
+                }
+                else if (t.Status == "Gereserveerd")
+                {
+                    li.SubItems[3].BackColor = Color.Orange;
+                }
+                else
+                {
+                    li.SubItems[3].BackColor = Color.Green;
+                }
+
+                li.UseItemStyleForSubItems = false;
+                cmbTafel.Items.Add(t.TafelNummer);
+                lstTafelStatus.Items.Add(li);
+            }
+
 
             dateTijd.Format = DateTimePickerFormat.Custom;
             dateTijd.CustomFormat = "MM/dd/yyyy HH:mm:ss";
