@@ -26,7 +26,7 @@ namespace ChapooDal
             sqlParameters[3] = new SqlParameter("@Mobiel", account.Telefoonnummer);
             sqlParameters[4] = new SqlParameter("@Email", account.Email);
             ExecuteEditQuery(query, sqlParameters);
-            
+
             // Get werknemerID from database
             query = "USE dbchapoo202104 SELECT TOP 1 WerknemerID FROM [Werknemer] ORDER BY WerknemerID DESC";
             sqlParameters = new SqlParameter[0];
@@ -50,6 +50,27 @@ namespace ChapooDal
             sqlParameters[9] = new SqlParameter("@Bar", account.Bar);
             ExecuteEditQuery(query, sqlParameters);
         }
+
+        public string LoginAccount(string account)
+        {
+            string query = "USE dbchapoo202104 SELECT Inlognaam,Wachtwoord FROM [Account] WHERE Inlognaam = @inlognaam";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@inlognaam", account);
+            return Readpassword(ExecuteSelectQuery(query, sqlParameters));
+
+
+
+        }
+        private string Readpassword(DataTable dataTable)
+        {
+            string a = "";
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                a = dr["Wachtwoord"].ToString();
+            }
+            return a;
+        }
+
         private int ReadTables(DataTable dataTable)
         {
             int id = 0;
