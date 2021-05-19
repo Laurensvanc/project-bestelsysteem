@@ -34,6 +34,8 @@
             this.btnRemoveFromOrder = new System.Windows.Forms.Button();
             this.listOrderView = new System.Windows.Forms.ListView();
             this.pnl_Bestellen = new System.Windows.Forms.Panel();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnInstructies = new System.Windows.Forms.Button();
             this.btnKlacht = new System.Windows.Forms.Button();
             this.btnKaartOverzicht = new System.Windows.Forms.Button();
@@ -73,8 +75,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtInstructies = new System.Windows.Forms.TextBox();
             this.btnKaartoverzicht3 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
             this.pnl_Bestellen.SuspendLayout();
             this.pnl_MenuType.SuspendLayout();
             this.pnl_TafelSelect.SuspendLayout();
@@ -159,6 +159,26 @@
             this.pnl_Bestellen.Name = "pnl_Bestellen";
             this.pnl_Bestellen.Size = new System.Drawing.Size(475, 878);
             this.pnl_Bestellen.TabIndex = 7;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblTotal.Location = new System.Drawing.Point(248, 436);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(45, 24);
+            this.lblTotal.TabIndex = 11;
+            this.lblTotal.Text = "0.00";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label5.Location = new System.Drawing.Point(161, 436);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(81, 24);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Totaal: €";
             // 
             // btnInstructies
             // 
@@ -589,26 +609,6 @@
             this.btnKaartoverzicht3.Text = "< Kaartoverzicht";
             this.btnKaartoverzicht3.UseVisualStyleBackColor = true;
             this.btnKaartoverzicht3.Click += new System.EventHandler(this.btnKaartoverzicht3_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label5.Location = new System.Drawing.Point(161, 436);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 24);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Totaal: €";
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblTotal.Location = new System.Drawing.Point(248, 436);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(45, 24);
-            this.lblTotal.TabIndex = 11;
-            this.lblTotal.Text = "0.00";
             // 
             // BestellingOpnemen
             // 

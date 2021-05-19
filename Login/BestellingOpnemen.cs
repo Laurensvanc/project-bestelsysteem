@@ -290,7 +290,14 @@ namespace Login
                 OrderList
             );
             Bestelling_Service bestellingService = new Bestelling_Service();
-            bestellingService.AddBestelling(bestelling);
+            if (bestellingService.AddBestelling(bestelling))
+            {
+                lblTotal.Text = "0.00";
+                listOrderView.Clear();
+                pnl_Tafelnr.Hide();
+                pnl_TafelSelect.Show();
+                MessageBox.Show($"Bestelling voor tafel {lblTafelnr.Text} is geplaatst.");
+            }
         }
         private void btnKlacht_Click(object sender, EventArgs e)
         {

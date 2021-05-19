@@ -18,7 +18,7 @@ namespace ChapooDal
             string query = "USE dbchapoo202104 SELECT WerknemerID FROM Tafel WHERE TafelID = @TafelID";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@TafelID", bestelling.TafelID);
-            bestelling.WerknemerID = ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            bestelling.WerknemerID = ReadTables(ExecuteSelectQuery(query, sqlParameters), "WerknemerID");
 
             // Data gets written to database, primary key is automatically made
              query = "USE dbchapoo202104 INSERT INTO Bestelling (TafelID, TotaalPrijs, Opgenomen, Klacht, Instructies, [Status], Aangepast, WerknemerID) VALUES(@TafelID, @TotaalPrijs, @Opgenomen, @Klacht, @Instructies, @Status, @Aangepast, @WerknemerID)";
@@ -39,7 +39,7 @@ namespace ChapooDal
             // Get last BestellingID from database
             query = "USE dbchapoo202104 SELECT TOP 1 BestellingID FROM Bestelling ORDER BY BestellingID DESC";
             sqlParameters = new SqlParameter[0];
-            int bestellingID = ReadTablesBesID(ExecuteSelectQuery(query, sqlParameters));
+            int bestellingID = ReadTables(ExecuteSelectQuery(query, sqlParameters), "BestellingID");
 
             // Data gets written to database
             query = "USE dbchapoo202104 INSERT INTO [Order] (BestellingID) VALUES( @BestellingID)";
@@ -50,7 +50,7 @@ namespace ChapooDal
             // Get last OrderID from database
             query = "USE dbchapoo202104 SELECT TOP 1 OrderID FROM [Order] ORDER BY OrderID DESC";
             sqlParameters = new SqlParameter[0];
-            int orderID = ReadTablesOrdID(ExecuteSelectQuery(query, sqlParameters));
+            int orderID = ReadTables(ExecuteSelectQuery(query, sqlParameters), "OrderID");
 
             foreach (Order_Product productItem in bestelling.OrderList)
             {
@@ -63,32 +63,13 @@ namespace ChapooDal
                 sqlParameters[2] = new SqlParameter("@Aantal", productItem.Aantal);
                 ExecuteEditQuery(query, sqlParameters);
             }
-            
         }
-        private int ReadTables(DataTable dataTable)
+        private int ReadTables(DataTable dataTable, string idType)
         {
             int id = 0;
             foreach (DataRow dr in dataTable.Rows)
             {
-                id = (int)dr["WerknemerID"];
-            }
-            return id;
-        }
-        private int ReadTablesBesID(DataTable dataTable)
-        {
-            int id = 0;
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                id = (int)dr["BestellingID"];
-            }
-            return id;
-        }
-        private int ReadTablesOrdID(DataTable dataTable)
-        {
-            int id = 0;
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                id = (int)dr["OrderID"];
+                id = (int)dr[idType];
             }
             return id;
         }
