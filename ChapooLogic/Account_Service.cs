@@ -23,5 +23,18 @@ namespace ChapooLogic
                 throw;
             }
         }
+        public string LoginAccount(string account)
+        {
+            try
+            {
+                string ww =  accountDAO.LoginAccount(account);
+                
+                return ww;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

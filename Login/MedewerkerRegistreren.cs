@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BCrypt.Net;
 
 namespace Login
 {
@@ -30,6 +31,7 @@ namespace Login
             else if (rbSommelier.Checked) Sommelier = 1;
             else if (rbMaitre.Checked) Maitre = 1;
             else if (rbBar.Checked) Bar = 1;
+            string encryptedwachtwoord = BCrypt.Net.BCrypt.HashPassword(txtWachtwoord.Text);
             Account account = new Account(
                 txtVoornaam.Text,
                 txtAchternaam.Text,
@@ -37,7 +39,7 @@ namespace Login
                 dtGeboorteDatum.Value,
                 Mobiel,
                 txtEmail.Text,
-                txtWachtwoord.Text,
+                encryptedwachtwoord,
                 Manager, Chef, Bediening, Keuken, Sommelier, Maitre, Bar);
             Account_Service service = new Account_Service();
             if (service.AddAccount(account)) System.Windows.Forms.MessageBox.Show($"{txtVoornaam.Text} is succesvol geregistreerd.");

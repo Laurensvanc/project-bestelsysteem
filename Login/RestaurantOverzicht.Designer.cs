@@ -142,7 +142,7 @@
             this.pnlReservering.Controls.Add(this.lblName);
             this.pnlReservering.Controls.Add(this.dateTijd);
             this.pnlReservering.Controls.Add(this.txtNaam);
-            this.pnlReservering.Location = new System.Drawing.Point(12, 13);
+            this.pnlReservering.Location = new System.Drawing.Point(12, 9);
             this.pnlReservering.Name = "pnlReservering";
             this.pnlReservering.Size = new System.Drawing.Size(776, 425);
             this.pnlReservering.TabIndex = 5;
@@ -327,7 +327,7 @@
             this.pnlKlantSysteem.Controls.Add(this.btnTerug);
             this.pnlKlantSysteem.Controls.Add(this.btnKlantOpslaan);
             this.pnlKlantSysteem.Controls.Add(this.lstKlantSysteem);
-            this.pnlKlantSysteem.Location = new System.Drawing.Point(12, 12);
+            this.pnlKlantSysteem.Location = new System.Drawing.Point(13, 9);
             this.pnlKlantSysteem.Name = "pnlKlantSysteem";
             this.pnlKlantSysteem.Size = new System.Drawing.Size(772, 421);
             this.pnlKlantSysteem.TabIndex = 16;
@@ -413,7 +413,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(809, 454);
             this.Controls.Add(this.pnlKlantSysteem);
             this.Controls.Add(this.pnlReservering);
             this.Controls.Add(this.btnFresh);

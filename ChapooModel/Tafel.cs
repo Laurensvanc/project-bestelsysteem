@@ -11,7 +11,6 @@ namespace ChapooModel
         public string Status { get; set; }
         public string WerknemerId { get; set; }
 
-
         public Tafel(string WerknemerId, int Capaciteit, string Status, int TafelNummer)
         {
             this.TafelNummer = TafelNummer;

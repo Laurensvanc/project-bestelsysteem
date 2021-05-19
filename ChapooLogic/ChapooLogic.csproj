@@ -41,12 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account_Service.cs" />
+    <Compile Include="Bestelling_Service.cs" />
     <Compile Include="Klant_Service.cs" />
     <Compile Include="Menu_Service.cs" />
     <Compile Include="Product_Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reservering_Service.cs" />
     <Compile Include="Tafel_Service.cs" />
+    <Compile Include="Transaction_Service.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChapooDal\ChapooDAL.csproj">
