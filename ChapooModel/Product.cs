@@ -36,11 +36,7 @@ namespace ChapooModel
         {
             var other = obj as Product;
 
-            if (other == null)
-            {
-                return false;
-            }
-            if (ProductId != other.ProductId || ProductNaam != other.ProductNaam || Prijs != other.Prijs || InkoopPrijs != other.InkoopPrijs || Aantal != other.Aantal || IsAlcohol != other.IsAlcohol || IsDrinken != other.IsDrinken)
+            if ((ProductId != other.ProductId || ProductNaam != other.ProductNaam || Prijs != other.Prijs || InkoopPrijs != other.InkoopPrijs || Aantal != other.Aantal || IsAlcohol != other.IsAlcohol || IsDrinken != other.IsDrinken) || other is null)
             {
                 return false;
             }
