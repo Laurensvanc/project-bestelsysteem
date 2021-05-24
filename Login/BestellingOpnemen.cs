@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class BestellingOpnemen : Form
+    public partial class BestellingOpnemen : UserControl
     {
         public Product_Service productService = new Product_Service();
         public List<Product> productList = new List<Product>();
@@ -260,15 +260,19 @@ namespace Login
                 // Displays the MessageBox.
                 result = MessageBox.Show(message, caption, buttons);
                 if (result == System.Windows.Forms.DialogResult.Yes)
+                {
                     lblTotal.Text = "0.00";
                     listOrderView.Clear();
                     pnl_TafelSelect.Show();
                     pnl_Tafelnr.Hide();
+                }
             }
             else 
+            {
                 pnl_TafelSelect.Show();
                 listOrderView.Clear();
                 pnl_Tafelnr.Hide();
+            }
         }
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
@@ -290,7 +294,17 @@ namespace Login
                 OrderList
             );
             Bestelling_Service bestellingService = new Bestelling_Service();
-            bestellingService.AddBestelling(bestelling);
+            if (OrderList.Count() == 0)
+            {
+                MessageBox.Show("Geen bestelling gevonden, probeer nog een keer.");
+            } else if  (bestellingService.AddBestelling(bestelling))
+            {
+                lblTotal.Text = "0.00";
+                listOrderView.Clear();
+                pnl_Tafelnr.Hide();
+                pnl_TafelSelect.Show();
+                MessageBox.Show($"Bestelling voor tafel {lblTafelnr.Text} is geplaatst.");
+            }
         }
         private void btnKlacht_Click(object sender, EventArgs e)
         {

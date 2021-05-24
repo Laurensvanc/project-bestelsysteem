@@ -34,7 +34,7 @@ namespace Login
             if (encryptedww != string.Empty)
             {
                 if (BCrypt.Net.BCrypt.Verify(wwtxt.Text, encryptedww)) { 
-                    new BestellingOpnemen().Show();
+                    new Menu().Show();
                     this.Hide();
                 }
                 else
@@ -48,10 +48,6 @@ namespace Login
                 MessageBox.Show($"Wachtwoord of Inlognaam is incorrect");
 
             }
-
-
-
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

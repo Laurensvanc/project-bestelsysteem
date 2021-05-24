@@ -123,6 +123,7 @@
             // 
             // pnlReservering
             // 
+            this.pnlReservering.BackColor = System.Drawing.Color.Transparent;
             this.pnlReservering.Controls.Add(this.label7);
             this.pnlReservering.Controls.Add(this.label6);
             this.pnlReservering.Controls.Add(this.cmbTafel);
@@ -142,15 +143,16 @@
             this.pnlReservering.Controls.Add(this.lblName);
             this.pnlReservering.Controls.Add(this.dateTijd);
             this.pnlReservering.Controls.Add(this.txtNaam);
-            this.pnlReservering.Location = new System.Drawing.Point(12, 9);
+            this.pnlReservering.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlReservering.Location = new System.Drawing.Point(0, 0);
             this.pnlReservering.Name = "pnlReservering";
-            this.pnlReservering.Size = new System.Drawing.Size(776, 425);
+            this.pnlReservering.Size = new System.Drawing.Size(1305, 821);
             this.pnlReservering.TabIndex = 5;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(167, 192);
+            this.label7.Location = new System.Drawing.Point(167, 263);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 13);
             this.label7.TabIndex = 21;
@@ -159,7 +161,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(160, 152);
+            this.label6.Location = new System.Drawing.Point(160, 223);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 13);
             this.label6.TabIndex = 20;
@@ -168,7 +170,7 @@
             // cmbTafel
             // 
             this.cmbTafel.FormattingEnabled = true;
-            this.cmbTafel.Location = new System.Drawing.Point(163, 168);
+            this.cmbTafel.Location = new System.Drawing.Point(163, 239);
             this.cmbTafel.Name = "cmbTafel";
             this.cmbTafel.Size = new System.Drawing.Size(121, 21);
             this.cmbTafel.TabIndex = 19;
@@ -177,7 +179,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(146, 16);
+            this.label5.Location = new System.Drawing.Point(146, 87);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 13);
             this.label5.TabIndex = 18;
@@ -185,33 +187,36 @@
             // 
             // txtAchternaam
             // 
-            this.txtAchternaam.Location = new System.Drawing.Point(149, 32);
+            this.txtAchternaam.Location = new System.Drawing.Point(149, 103);
             this.txtAchternaam.Name = "txtAchternaam";
             this.txtAchternaam.Size = new System.Drawing.Size(107, 20);
             this.txtAchternaam.TabIndex = 17;
             // 
             // txtGeboorteDatum
             // 
-            this.txtGeboorteDatum.Location = new System.Drawing.Point(37, 71);
+            this.txtGeboorteDatum.Location = new System.Drawing.Point(37, 142);
             this.txtGeboorteDatum.Name = "txtGeboorteDatum";
             this.txtGeboorteDatum.Size = new System.Drawing.Size(120, 20);
             this.txtGeboorteDatum.TabIndex = 16;
             // 
             // btnSelectKlant
             // 
-            this.btnSelectKlant.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSelectKlant.Location = new System.Drawing.Point(663, 16);
+            this.btnSelectKlant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnSelectKlant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectKlant.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectKlant.ForeColor = System.Drawing.Color.White;
+            this.btnSelectKlant.Location = new System.Drawing.Point(1048, 12);
             this.btnSelectKlant.Name = "btnSelectKlant";
-            this.btnSelectKlant.Size = new System.Drawing.Size(99, 23);
+            this.btnSelectKlant.Size = new System.Drawing.Size(173, 58);
             this.btnSelectKlant.TabIndex = 15;
             this.btnSelectKlant.Text = "Klant Systeem";
-            this.btnSelectKlant.UseVisualStyleBackColor = true;
+            this.btnSelectKlant.UseVisualStyleBackColor = false;
             this.btnSelectKlant.Click += new System.EventHandler(this.btnSelectKlant_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 94);
+            this.label2.Location = new System.Drawing.Point(37, 165);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 13);
             this.label2.TabIndex = 14;
@@ -219,7 +224,7 @@
             // 
             // txtTellie
             // 
-            this.txtTellie.Location = new System.Drawing.Point(37, 110);
+            this.txtTellie.Location = new System.Drawing.Point(37, 181);
             this.txtTellie.Name = "txtTellie";
             this.txtTellie.Size = new System.Drawing.Size(120, 20);
             this.txtTellie.TabIndex = 13;
@@ -227,7 +232,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 55);
+            this.label1.Location = new System.Drawing.Point(37, 126);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 12;
@@ -237,18 +242,19 @@
             // lblDatum
             // 
             this.lblDatum.AutoSize = true;
-            this.lblDatum.Location = new System.Drawing.Point(308, 31);
+            this.lblDatum.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDatum.Location = new System.Drawing.Point(413, 78);
             this.lblDatum.Name = "lblDatum";
-            this.lblDatum.Size = new System.Drawing.Size(201, 13);
+            this.lblDatum.Size = new System.Drawing.Size(384, 25);
             this.lblDatum.TabIndex = 10;
             this.lblDatum.Text = "Ingeplande Reserveringen voor vandaag";
             // 
             // lstReserveringDag
             // 
             this.lstReserveringDag.HideSelection = false;
-            this.lstReserveringDag.Location = new System.Drawing.Point(308, 50);
+            this.lstReserveringDag.Location = new System.Drawing.Point(413, 103);
             this.lstReserveringDag.Name = "lstReserveringDag";
-            this.lstReserveringDag.Size = new System.Drawing.Size(454, 293);
+            this.lstReserveringDag.Size = new System.Drawing.Size(808, 480);
             this.lstReserveringDag.TabIndex = 9;
             this.lstReserveringDag.UseCompatibleStateImageBehavior = false;
             this.lstReserveringDag.View = System.Windows.Forms.View.Details;
@@ -256,37 +262,43 @@
             // 
             // NumericAantal
             // 
-            this.NumericAantal.Location = new System.Drawing.Point(37, 169);
+            this.NumericAantal.Location = new System.Drawing.Point(37, 240);
             this.NumericAantal.Name = "NumericAantal";
             this.NumericAantal.Size = new System.Drawing.Size(120, 20);
             this.NumericAantal.TabIndex = 8;
             // 
             // btnDeleteRes
             // 
-            this.btnDeleteRes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDeleteRes.Location = new System.Drawing.Point(149, 267);
+            this.btnDeleteRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnDeleteRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteRes.Font = new System.Drawing.Font("Roboto", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteRes.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteRes.Location = new System.Drawing.Point(269, 673);
             this.btnDeleteRes.Name = "btnDeleteRes";
-            this.btnDeleteRes.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteRes.Size = new System.Drawing.Size(238, 102);
             this.btnDeleteRes.TabIndex = 7;
             this.btnDeleteRes.Text = "Verwijderen";
-            this.btnDeleteRes.UseVisualStyleBackColor = true;
+            this.btnDeleteRes.UseVisualStyleBackColor = false;
             this.btnDeleteRes.Click += new System.EventHandler(this.btnDeleteRes_Click);
             // 
             // btnUpdateRes
             // 
-            this.btnUpdateRes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnUpdateRes.Location = new System.Drawing.Point(37, 267);
+            this.btnUpdateRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnUpdateRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateRes.Font = new System.Drawing.Font("Roboto", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateRes.ForeColor = System.Drawing.Color.White;
+            this.btnUpdateRes.Location = new System.Drawing.Point(37, 673);
             this.btnUpdateRes.Name = "btnUpdateRes";
-            this.btnUpdateRes.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdateRes.Size = new System.Drawing.Size(205, 102);
             this.btnUpdateRes.TabIndex = 6;
             this.btnUpdateRes.Text = "Opslaan";
-            this.btnUpdateRes.UseVisualStyleBackColor = true;
+            this.btnUpdateRes.UseVisualStyleBackColor = false;
             this.btnUpdateRes.Click += new System.EventHandler(this.btnUpdateRes_Click);
             // 
             // lblAantalPersonen
             // 
             this.lblAantalPersonen.AutoSize = true;
-            this.lblAantalPersonen.Location = new System.Drawing.Point(34, 153);
+            this.lblAantalPersonen.Location = new System.Drawing.Point(34, 224);
             this.lblAantalPersonen.Name = "lblAantalPersonen";
             this.lblAantalPersonen.Size = new System.Drawing.Size(85, 13);
             this.lblAantalPersonen.TabIndex = 5;
@@ -296,7 +308,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(34, 16);
+            this.lblName.Location = new System.Drawing.Point(34, 87);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(55, 13);
             this.lblName.TabIndex = 4;
@@ -304,7 +316,7 @@
             // 
             // dateTijd
             // 
-            this.dateTijd.Location = new System.Drawing.Point(37, 213);
+            this.dateTijd.Location = new System.Drawing.Point(37, 284);
             this.dateTijd.Name = "dateTijd";
             this.dateTijd.Size = new System.Drawing.Size(206, 20);
             this.dateTijd.TabIndex = 3;
@@ -312,7 +324,7 @@
             // 
             // txtNaam
             // 
-            this.txtNaam.Location = new System.Drawing.Point(37, 32);
+            this.txtNaam.Location = new System.Drawing.Point(37, 103);
             this.txtNaam.Name = "txtNaam";
             this.txtNaam.Size = new System.Drawing.Size(106, 20);
             this.txtNaam.TabIndex = 0;
@@ -327,9 +339,10 @@
             this.pnlKlantSysteem.Controls.Add(this.btnTerug);
             this.pnlKlantSysteem.Controls.Add(this.btnKlantOpslaan);
             this.pnlKlantSysteem.Controls.Add(this.lstKlantSysteem);
-            this.pnlKlantSysteem.Location = new System.Drawing.Point(13, 9);
+            this.pnlKlantSysteem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlKlantSysteem.Location = new System.Drawing.Point(0, 0);
             this.pnlKlantSysteem.Name = "pnlKlantSysteem";
-            this.pnlKlantSysteem.Size = new System.Drawing.Size(772, 421);
+            this.pnlKlantSysteem.Size = new System.Drawing.Size(1305, 821);
             this.pnlKlantSysteem.TabIndex = 16;
             // 
             // lblZoeken
@@ -412,17 +425,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(809, 454);
-            this.Controls.Add(this.pnlKlantSysteem);
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.pnlReservering);
+            this.Controls.Add(this.pnlKlantSysteem);
             this.Controls.Add(this.btnFresh);
             this.Controls.Add(this.btnMin);
             this.Controls.Add(this.btnPlus);
             this.Controls.Add(this.lstTafelStatus);
             this.Controls.Add(this.lstReservering);
             this.Name = "RestaurantOverzicht";
-            this.Text = "RestaurantOverzicht";
+            this.Size = new System.Drawing.Size(1305, 821);
             this.Load += new System.EventHandler(this.RestaurantOverzicht_Load);
             this.pnlReservering.ResumeLayout(false);
             this.pnlReservering.PerformLayout();

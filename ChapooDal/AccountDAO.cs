@@ -57,9 +57,6 @@ namespace ChapooDal
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@inlognaam", account);
             return Readpassword(ExecuteSelectQuery(query, sqlParameters));
-
-
-
         }
         private string Readpassword(DataTable dataTable)
         {

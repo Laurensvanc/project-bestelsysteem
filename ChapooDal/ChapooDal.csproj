@@ -66,10 +66,12 @@
     <Compile Include="BestellingDAO.cs" />
     <Compile Include="KlantDAO.cs" />
     <Compile Include="MenuDAO.cs" />
+    <Compile Include="Order_ProductDAO.cs" />
     <Compile Include="ProductDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReserveringDAO.cs" />
     <Compile Include="TafelDAO.cs" />
+    <Compile Include="TransactionDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

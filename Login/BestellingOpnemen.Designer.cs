@@ -34,6 +34,8 @@
             this.btnRemoveFromOrder = new System.Windows.Forms.Button();
             this.listOrderView = new System.Windows.Forms.ListView();
             this.pnl_Bestellen = new System.Windows.Forms.Panel();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnInstructies = new System.Windows.Forms.Button();
             this.btnKlacht = new System.Windows.Forms.Button();
             this.btnKaartOverzicht = new System.Windows.Forms.Button();
@@ -73,8 +75,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtInstructies = new System.Windows.Forms.TextBox();
             this.btnKaartoverzicht3 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
             this.pnl_Bestellen.SuspendLayout();
             this.pnl_MenuType.SuspendLayout();
             this.pnl_TafelSelect.SuspendLayout();
@@ -90,44 +90,53 @@
             this.listMenuView.FullRowSelect = true;
             this.listMenuView.GridLines = true;
             this.listMenuView.HideSelection = false;
-            this.listMenuView.Location = new System.Drawing.Point(30, 66);
+            this.listMenuView.Location = new System.Drawing.Point(16, 66);
             this.listMenuView.Name = "listMenuView";
-            this.listMenuView.Size = new System.Drawing.Size(406, 335);
+            this.listMenuView.Size = new System.Drawing.Size(367, 335);
             this.listMenuView.TabIndex = 5;
             this.listMenuView.UseCompatibleStateImageBehavior = false;
             this.listMenuView.View = System.Windows.Forms.View.Details;
             // 
             // btnAddToOrder
             // 
+            this.btnAddToOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnAddToOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddToOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F);
-            this.btnAddToOrder.Location = new System.Drawing.Point(69, 418);
+            this.btnAddToOrder.ForeColor = System.Drawing.Color.White;
+            this.btnAddToOrder.Location = new System.Drawing.Point(35, 418);
             this.btnAddToOrder.Name = "btnAddToOrder";
             this.btnAddToOrder.Size = new System.Drawing.Size(75, 59);
             this.btnAddToOrder.TabIndex = 2;
             this.btnAddToOrder.Text = "+";
-            this.btnAddToOrder.UseVisualStyleBackColor = true;
+            this.btnAddToOrder.UseVisualStyleBackColor = false;
             this.btnAddToOrder.Click += new System.EventHandler(this.btnAddToOrder_Click);
             // 
             // btnPlaceOrder
             // 
+            this.btnPlaceOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnPlaceOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlaceOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnPlaceOrder.Location = new System.Drawing.Point(69, 497);
+            this.btnPlaceOrder.ForeColor = System.Drawing.Color.White;
+            this.btnPlaceOrder.Location = new System.Drawing.Point(35, 497);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
             this.btnPlaceOrder.Size = new System.Drawing.Size(328, 59);
             this.btnPlaceOrder.TabIndex = 4;
             this.btnPlaceOrder.Text = "Plaats bestelling";
-            this.btnPlaceOrder.UseVisualStyleBackColor = true;
+            this.btnPlaceOrder.UseVisualStyleBackColor = false;
             this.btnPlaceOrder.Click += new System.EventHandler(this.btnPlaceOrder_Click);
             // 
             // btnRemoveFromOrder
             // 
+            this.btnRemoveFromOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnRemoveFromOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveFromOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F);
-            this.btnRemoveFromOrder.Location = new System.Drawing.Point(322, 418);
+            this.btnRemoveFromOrder.ForeColor = System.Drawing.Color.White;
+            this.btnRemoveFromOrder.Location = new System.Drawing.Point(288, 421);
             this.btnRemoveFromOrder.Name = "btnRemoveFromOrder";
             this.btnRemoveFromOrder.Size = new System.Drawing.Size(75, 59);
             this.btnRemoveFromOrder.TabIndex = 5;
             this.btnRemoveFromOrder.Text = "-";
-            this.btnRemoveFromOrder.UseVisualStyleBackColor = true;
+            this.btnRemoveFromOrder.UseVisualStyleBackColor = false;
             this.btnRemoveFromOrder.Click += new System.EventHandler(this.btnRemoveFromOrder_Click);
             // 
             // listOrderView
@@ -136,9 +145,9 @@
             this.listOrderView.FullRowSelect = true;
             this.listOrderView.GridLines = true;
             this.listOrderView.HideSelection = false;
-            this.listOrderView.Location = new System.Drawing.Point(30, 562);
+            this.listOrderView.Location = new System.Drawing.Point(16, 562);
             this.listOrderView.Name = "listOrderView";
-            this.listOrderView.Size = new System.Drawing.Size(406, 240);
+            this.listOrderView.Size = new System.Drawing.Size(367, 240);
             this.listOrderView.TabIndex = 6;
             this.listOrderView.UseCompatibleStateImageBehavior = false;
             this.listOrderView.View = System.Windows.Forms.View.Details;
@@ -155,42 +164,71 @@
             this.pnl_Bestellen.Controls.Add(this.btnRemoveFromOrder);
             this.pnl_Bestellen.Controls.Add(this.btnAddToOrder);
             this.pnl_Bestellen.Controls.Add(this.btnPlaceOrder);
-            this.pnl_Bestellen.Location = new System.Drawing.Point(12, 12);
+            this.pnl_Bestellen.Location = new System.Drawing.Point(5, 12);
             this.pnl_Bestellen.Name = "pnl_Bestellen";
-            this.pnl_Bestellen.Size = new System.Drawing.Size(475, 878);
+            this.pnl_Bestellen.Size = new System.Drawing.Size(416, 878);
             this.pnl_Bestellen.TabIndex = 7;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblTotal.Location = new System.Drawing.Point(219, 436);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(45, 24);
+            this.lblTotal.TabIndex = 11;
+            this.lblTotal.Text = "0.00";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label5.Location = new System.Drawing.Point(132, 436);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(81, 24);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Totaal: €";
             // 
             // btnInstructies
             // 
+            this.btnInstructies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnInstructies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInstructies.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnInstructies.Location = new System.Drawing.Point(239, 808);
+            this.btnInstructies.ForeColor = System.Drawing.Color.White;
+            this.btnInstructies.Location = new System.Drawing.Point(203, 808);
             this.btnInstructies.Name = "btnInstructies";
-            this.btnInstructies.Size = new System.Drawing.Size(197, 59);
+            this.btnInstructies.Size = new System.Drawing.Size(180, 59);
             this.btnInstructies.TabIndex = 9;
             this.btnInstructies.Text = "Instructies";
-            this.btnInstructies.UseVisualStyleBackColor = true;
+            this.btnInstructies.UseVisualStyleBackColor = false;
             this.btnInstructies.Click += new System.EventHandler(this.btnInstructies_Click);
             // 
             // btnKlacht
             // 
+            this.btnKlacht.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnKlacht.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKlacht.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnKlacht.Location = new System.Drawing.Point(30, 808);
+            this.btnKlacht.ForeColor = System.Drawing.Color.White;
+            this.btnKlacht.Location = new System.Drawing.Point(16, 808);
             this.btnKlacht.Name = "btnKlacht";
-            this.btnKlacht.Size = new System.Drawing.Size(197, 59);
+            this.btnKlacht.Size = new System.Drawing.Size(180, 59);
             this.btnKlacht.TabIndex = 8;
             this.btnKlacht.Text = "Klacht";
-            this.btnKlacht.UseVisualStyleBackColor = true;
+            this.btnKlacht.UseVisualStyleBackColor = false;
             this.btnKlacht.Click += new System.EventHandler(this.btnKlacht_Click);
             // 
             // btnKaartOverzicht
             // 
+            this.btnKaartOverzicht.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnKaartOverzicht.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKaartOverzicht.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnKaartOverzicht.Location = new System.Drawing.Point(30, 9);
+            this.btnKaartOverzicht.ForeColor = System.Drawing.Color.White;
+            this.btnKaartOverzicht.Location = new System.Drawing.Point(13, 9);
             this.btnKaartOverzicht.Name = "btnKaartOverzicht";
-            this.btnKaartOverzicht.Size = new System.Drawing.Size(247, 51);
+            this.btnKaartOverzicht.Size = new System.Drawing.Size(211, 51);
             this.btnKaartOverzicht.TabIndex = 7;
             this.btnKaartOverzicht.Text = "< Kaartoverzicht";
-            this.btnKaartOverzicht.UseVisualStyleBackColor = true;
+            this.btnKaartOverzicht.UseVisualStyleBackColor = false;
             this.btnKaartOverzicht.Click += new System.EventHandler(this.btnKaartOverzicht_Click);
             // 
             // pnl_MenuType
@@ -201,81 +239,100 @@
             this.pnl_MenuType.Controls.Add(this.btnHoofdgerecht);
             this.pnl_MenuType.Controls.Add(this.btnDrankKaart);
             this.pnl_MenuType.Controls.Add(this.btnVoorgerecht);
-            this.pnl_MenuType.Location = new System.Drawing.Point(12, 12);
+            this.pnl_MenuType.Location = new System.Drawing.Point(5, 12);
             this.pnl_MenuType.Name = "pnl_MenuType";
-            this.pnl_MenuType.Size = new System.Drawing.Size(475, 409);
+            this.pnl_MenuType.Size = new System.Drawing.Size(394, 409);
             this.pnl_MenuType.TabIndex = 8;
             // 
             // btnNagerecht
             // 
+            this.btnNagerecht.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnNagerecht.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNagerecht.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnNagerecht.Location = new System.Drawing.Point(69, 283);
+            this.btnNagerecht.ForeColor = System.Drawing.Color.White;
+            this.btnNagerecht.Location = new System.Drawing.Point(37, 276);
             this.btnNagerecht.Name = "btnNagerecht";
             this.btnNagerecht.Size = new System.Drawing.Size(328, 60);
             this.btnNagerecht.TabIndex = 12;
             this.btnNagerecht.Text = "Nagerechten";
-            this.btnNagerecht.UseVisualStyleBackColor = true;
+            this.btnNagerecht.UseVisualStyleBackColor = false;
             this.btnNagerecht.Click += new System.EventHandler(this.btnNagerecht_Click);
             // 
             // btnTussengerecht
             // 
+            this.btnTussengerecht.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnTussengerecht.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTussengerecht.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnTussengerecht.Location = new System.Drawing.Point(69, 349);
+            this.btnTussengerecht.ForeColor = System.Drawing.Color.White;
+            this.btnTussengerecht.Location = new System.Drawing.Point(37, 342);
             this.btnTussengerecht.Name = "btnTussengerecht";
             this.btnTussengerecht.Size = new System.Drawing.Size(328, 60);
             this.btnTussengerecht.TabIndex = 11;
             this.btnTussengerecht.Text = "Tussengerechten";
-            this.btnTussengerecht.UseVisualStyleBackColor = true;
+            this.btnTussengerecht.UseVisualStyleBackColor = false;
             this.btnTussengerecht.Click += new System.EventHandler(this.btnTussengerecht_Click);
             // 
             // btnTafelOverzicht
             // 
+            this.btnTafelOverzicht.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnTafelOverzicht.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTafelOverzicht.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnTafelOverzicht.Location = new System.Drawing.Point(30, 14);
+            this.btnTafelOverzicht.ForeColor = System.Drawing.Color.White;
+            this.btnTafelOverzicht.Location = new System.Drawing.Point(13, 9);
             this.btnTafelOverzicht.Name = "btnTafelOverzicht";
-            this.btnTafelOverzicht.Size = new System.Drawing.Size(247, 51);
+            this.btnTafelOverzicht.Size = new System.Drawing.Size(211, 51);
             this.btnTafelOverzicht.TabIndex = 8;
             this.btnTafelOverzicht.Text = "< Tafeloverzicht";
-            this.btnTafelOverzicht.UseVisualStyleBackColor = true;
+            this.btnTafelOverzicht.UseVisualStyleBackColor = false;
             this.btnTafelOverzicht.Click += new System.EventHandler(this.btnTafelOverzicht_Click);
             // 
             // btnHoofdgerecht
             // 
+            this.btnHoofdgerecht.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnHoofdgerecht.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHoofdgerecht.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnHoofdgerecht.Location = new System.Drawing.Point(69, 217);
+            this.btnHoofdgerecht.ForeColor = System.Drawing.Color.White;
+            this.btnHoofdgerecht.Location = new System.Drawing.Point(37, 210);
             this.btnHoofdgerecht.Name = "btnHoofdgerecht";
             this.btnHoofdgerecht.Size = new System.Drawing.Size(328, 60);
             this.btnHoofdgerecht.TabIndex = 9;
             this.btnHoofdgerecht.Text = "Hoofdgerechten";
-            this.btnHoofdgerecht.UseVisualStyleBackColor = true;
+            this.btnHoofdgerecht.UseVisualStyleBackColor = false;
             this.btnHoofdgerecht.Click += new System.EventHandler(this.btnHoofdgerecht_Click);
             // 
             // btnDrankKaart
             // 
+            this.btnDrankKaart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnDrankKaart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDrankKaart.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnDrankKaart.Location = new System.Drawing.Point(69, 85);
+            this.btnDrankKaart.ForeColor = System.Drawing.Color.White;
+            this.btnDrankKaart.Location = new System.Drawing.Point(37, 78);
             this.btnDrankKaart.Name = "btnDrankKaart";
             this.btnDrankKaart.Size = new System.Drawing.Size(328, 60);
             this.btnDrankKaart.TabIndex = 7;
             this.btnDrankKaart.Text = "Drankjes";
-            this.btnDrankKaart.UseVisualStyleBackColor = true;
+            this.btnDrankKaart.UseVisualStyleBackColor = false;
             this.btnDrankKaart.Click += new System.EventHandler(this.btnDrankKaart_Click);
             // 
             // btnVoorgerecht
             // 
+            this.btnVoorgerecht.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnVoorgerecht.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoorgerecht.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnVoorgerecht.Location = new System.Drawing.Point(69, 151);
+            this.btnVoorgerecht.ForeColor = System.Drawing.Color.White;
+            this.btnVoorgerecht.Location = new System.Drawing.Point(37, 144);
             this.btnVoorgerecht.Name = "btnVoorgerecht";
             this.btnVoorgerecht.Size = new System.Drawing.Size(328, 60);
             this.btnVoorgerecht.TabIndex = 8;
             this.btnVoorgerecht.Text = "Voorgerechten";
-            this.btnVoorgerecht.UseVisualStyleBackColor = true;
+            this.btnVoorgerecht.UseVisualStyleBackColor = false;
             this.btnVoorgerecht.Click += new System.EventHandler(this.btnVoorgerecht_Click);
             // 
             // lblTafelnr
             // 
             this.lblTafelnr.AutoSize = true;
             this.lblTafelnr.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.lblTafelnr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
             this.lblTafelnr.Location = new System.Drawing.Point(134, 14);
             this.lblTafelnr.Name = "lblTafelnr";
             this.lblTafelnr.Size = new System.Drawing.Size(44, 37);
@@ -295,16 +352,17 @@
             this.pnl_TafelSelect.Controls.Add(this.btnTafel3);
             this.pnl_TafelSelect.Controls.Add(this.btnTafel2);
             this.pnl_TafelSelect.Controls.Add(this.btnTafel1);
-            this.pnl_TafelSelect.Location = new System.Drawing.Point(12, 12);
+            this.pnl_TafelSelect.Location = new System.Drawing.Point(5, 10);
             this.pnl_TafelSelect.Name = "pnl_TafelSelect";
-            this.pnl_TafelSelect.Size = new System.Drawing.Size(475, 878);
+            this.pnl_TafelSelect.Size = new System.Drawing.Size(407, 878);
             this.pnl_TafelSelect.TabIndex = 10;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.label2.Location = new System.Drawing.Point(125, 23);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
+            this.label2.Location = new System.Drawing.Point(87, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(218, 37);
             this.label2.TabIndex = 11;
@@ -312,112 +370,142 @@
             // 
             // btnTafel10
             // 
+            this.btnTafel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnTafel10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTafel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnTafel10.Location = new System.Drawing.Point(248, 635);
+            this.btnTafel10.ForeColor = System.Drawing.Color.White;
+            this.btnTafel10.Location = new System.Drawing.Point(211, 635);
             this.btnTafel10.Name = "btnTafel10";
             this.btnTafel10.Size = new System.Drawing.Size(189, 118);
             this.btnTafel10.TabIndex = 16;
             this.btnTafel10.Text = "Tafel 10";
-            this.btnTafel10.UseVisualStyleBackColor = true;
+            this.btnTafel10.UseVisualStyleBackColor = false;
             this.btnTafel10.Click += new System.EventHandler(this.btnTafel10_Click);
             // 
             // btnTafel9
             // 
+            this.btnTafel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnTafel9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTafel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnTafel9.Location = new System.Drawing.Point(39, 635);
+            this.btnTafel9.ForeColor = System.Drawing.Color.White;
+            this.btnTafel9.Location = new System.Drawing.Point(2, 635);
             this.btnTafel9.Name = "btnTafel9";
             this.btnTafel9.Size = new System.Drawing.Size(189, 118);
             this.btnTafel9.TabIndex = 15;
             this.btnTafel9.Text = "Tafel 9";
-            this.btnTafel9.UseVisualStyleBackColor = true;
+            this.btnTafel9.UseVisualStyleBackColor = false;
             this.btnTafel9.Click += new System.EventHandler(this.btnTafel9_Click);
             // 
             // btnTafel8
             // 
+            this.btnTafel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnTafel8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTafel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnTafel8.Location = new System.Drawing.Point(248, 497);
+            this.btnTafel8.ForeColor = System.Drawing.Color.White;
+            this.btnTafel8.Location = new System.Drawing.Point(211, 497);
             this.btnTafel8.Name = "btnTafel8";
             this.btnTafel8.Size = new System.Drawing.Size(189, 118);
             this.btnTafel8.TabIndex = 14;
             this.btnTafel8.Text = "Tafel 8";
-            this.btnTafel8.UseVisualStyleBackColor = true;
+            this.btnTafel8.UseVisualStyleBackColor = false;
             this.btnTafel8.Click += new System.EventHandler(this.btnTafel8_Click);
             // 
             // btnTafel7
             // 
+            this.btnTafel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnTafel7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTafel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnTafel7.Location = new System.Drawing.Point(39, 497);
+            this.btnTafel7.ForeColor = System.Drawing.Color.White;
+            this.btnTafel7.Location = new System.Drawing.Point(2, 497);
             this.btnTafel7.Name = "btnTafel7";
             this.btnTafel7.Size = new System.Drawing.Size(189, 118);
             this.btnTafel7.TabIndex = 13;
             this.btnTafel7.Text = "Tafel 7";
-            this.btnTafel7.UseVisualStyleBackColor = true;
+            this.btnTafel7.UseVisualStyleBackColor = false;
             this.btnTafel7.Click += new System.EventHandler(this.btnTafel7_Click);
             // 
             // btnTafel6
             // 
+            this.btnTafel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnTafel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTafel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnTafel6.Location = new System.Drawing.Point(248, 359);
+            this.btnTafel6.ForeColor = System.Drawing.Color.White;
+            this.btnTafel6.Location = new System.Drawing.Point(211, 359);
             this.btnTafel6.Name = "btnTafel6";
             this.btnTafel6.Size = new System.Drawing.Size(189, 118);
             this.btnTafel6.TabIndex = 12;
             this.btnTafel6.Text = "Tafel 6";
-            this.btnTafel6.UseVisualStyleBackColor = true;
+            this.btnTafel6.UseVisualStyleBackColor = false;
             this.btnTafel6.Click += new System.EventHandler(this.btnTafel6_Click);
             // 
             // btnTafel5
             // 
+            this.btnTafel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnTafel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTafel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnTafel5.Location = new System.Drawing.Point(39, 359);
+            this.btnTafel5.ForeColor = System.Drawing.Color.White;
+            this.btnTafel5.Location = new System.Drawing.Point(2, 359);
             this.btnTafel5.Name = "btnTafel5";
             this.btnTafel5.Size = new System.Drawing.Size(189, 118);
             this.btnTafel5.TabIndex = 11;
             this.btnTafel5.Text = "Tafel 5";
-            this.btnTafel5.UseVisualStyleBackColor = true;
+            this.btnTafel5.UseVisualStyleBackColor = false;
             this.btnTafel5.Click += new System.EventHandler(this.btnTafel5_Click);
             // 
             // btnTafel4
             // 
+            this.btnTafel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnTafel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTafel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnTafel4.Location = new System.Drawing.Point(248, 221);
+            this.btnTafel4.ForeColor = System.Drawing.Color.White;
+            this.btnTafel4.Location = new System.Drawing.Point(211, 221);
             this.btnTafel4.Name = "btnTafel4";
             this.btnTafel4.Size = new System.Drawing.Size(189, 118);
             this.btnTafel4.TabIndex = 10;
             this.btnTafel4.Text = "Tafel 4";
-            this.btnTafel4.UseVisualStyleBackColor = true;
+            this.btnTafel4.UseVisualStyleBackColor = false;
             this.btnTafel4.Click += new System.EventHandler(this.btnTafel4_Click);
             // 
             // btnTafel3
             // 
+            this.btnTafel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnTafel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTafel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnTafel3.Location = new System.Drawing.Point(39, 221);
+            this.btnTafel3.ForeColor = System.Drawing.Color.White;
+            this.btnTafel3.Location = new System.Drawing.Point(2, 221);
             this.btnTafel3.Name = "btnTafel3";
             this.btnTafel3.Size = new System.Drawing.Size(189, 118);
             this.btnTafel3.TabIndex = 9;
             this.btnTafel3.Text = "Tafel 3";
-            this.btnTafel3.UseVisualStyleBackColor = true;
+            this.btnTafel3.UseVisualStyleBackColor = false;
             this.btnTafel3.Click += new System.EventHandler(this.btnTafel3_Click);
             // 
             // btnTafel2
             // 
+            this.btnTafel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnTafel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTafel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnTafel2.Location = new System.Drawing.Point(248, 85);
+            this.btnTafel2.ForeColor = System.Drawing.Color.White;
+            this.btnTafel2.Location = new System.Drawing.Point(211, 85);
             this.btnTafel2.Name = "btnTafel2";
             this.btnTafel2.Size = new System.Drawing.Size(189, 118);
             this.btnTafel2.TabIndex = 8;
             this.btnTafel2.Text = "Tafel 2";
-            this.btnTafel2.UseVisualStyleBackColor = true;
+            this.btnTafel2.UseVisualStyleBackColor = false;
             this.btnTafel2.Click += new System.EventHandler(this.btnTafel2_Click);
             // 
             // btnTafel1
             // 
+            this.btnTafel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnTafel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTafel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnTafel1.Location = new System.Drawing.Point(39, 85);
+            this.btnTafel1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnTafel1.Location = new System.Drawing.Point(2, 85);
             this.btnTafel1.Name = "btnTafel1";
             this.btnTafel1.Size = new System.Drawing.Size(189, 118);
             this.btnTafel1.TabIndex = 7;
             this.btnTafel1.Text = "Tafel 1";
-            this.btnTafel1.UseVisualStyleBackColor = true;
+            this.btnTafel1.UseVisualStyleBackColor = false;
             this.btnTafel1.Click += new System.EventHandler(this.btnTafel1_Click);
             // 
             // pnl_Drank
@@ -427,70 +515,86 @@
             this.pnl_Drank.Controls.Add(this.btnFrisdrank);
             this.pnl_Drank.Controls.Add(this.btnBieren);
             this.pnl_Drank.Controls.Add(this.btnWijnen);
-            this.pnl_Drank.Location = new System.Drawing.Point(12, 78);
+            this.pnl_Drank.Location = new System.Drawing.Point(0, 78);
             this.pnl_Drank.Name = "pnl_Drank";
-            this.pnl_Drank.Size = new System.Drawing.Size(475, 343);
+            this.pnl_Drank.Size = new System.Drawing.Size(400, 343);
             this.pnl_Drank.TabIndex = 12;
             // 
             // btnKoffieThee
             // 
+            this.btnKoffieThee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnKoffieThee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKoffieThee.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnKoffieThee.Location = new System.Drawing.Point(72, 283);
+            this.btnKoffieThee.ForeColor = System.Drawing.Color.White;
+            this.btnKoffieThee.Location = new System.Drawing.Point(39, 283);
             this.btnKoffieThee.Name = "btnKoffieThee";
             this.btnKoffieThee.Size = new System.Drawing.Size(328, 60);
             this.btnKoffieThee.TabIndex = 12;
             this.btnKoffieThee.Text = "Koffie / Thee";
-            this.btnKoffieThee.UseVisualStyleBackColor = true;
+            this.btnKoffieThee.UseVisualStyleBackColor = false;
             this.btnKoffieThee.Click += new System.EventHandler(this.btnKoffieThee_Click);
             // 
             // btnGedestDrank
             // 
+            this.btnGedestDrank.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnGedestDrank.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGedestDrank.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnGedestDrank.Location = new System.Drawing.Point(72, 217);
+            this.btnGedestDrank.ForeColor = System.Drawing.Color.White;
+            this.btnGedestDrank.Location = new System.Drawing.Point(39, 217);
             this.btnGedestDrank.Name = "btnGedestDrank";
             this.btnGedestDrank.Size = new System.Drawing.Size(328, 60);
             this.btnGedestDrank.TabIndex = 11;
             this.btnGedestDrank.Text = "Gedestilleerde dranken";
-            this.btnGedestDrank.UseVisualStyleBackColor = true;
+            this.btnGedestDrank.UseVisualStyleBackColor = false;
             this.btnGedestDrank.Click += new System.EventHandler(this.btnGedestDrank_Click);
             // 
             // btnFrisdrank
             // 
+            this.btnFrisdrank.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnFrisdrank.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFrisdrank.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnFrisdrank.Location = new System.Drawing.Point(72, 19);
+            this.btnFrisdrank.ForeColor = System.Drawing.Color.White;
+            this.btnFrisdrank.Location = new System.Drawing.Point(39, 19);
             this.btnFrisdrank.Name = "btnFrisdrank";
             this.btnFrisdrank.Size = new System.Drawing.Size(328, 60);
             this.btnFrisdrank.TabIndex = 7;
             this.btnFrisdrank.Text = "Frisdrank";
-            this.btnFrisdrank.UseVisualStyleBackColor = true;
+            this.btnFrisdrank.UseVisualStyleBackColor = false;
             this.btnFrisdrank.Click += new System.EventHandler(this.btnFrisdrank_Click);
             // 
             // btnBieren
             // 
+            this.btnBieren.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnBieren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBieren.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnBieren.Location = new System.Drawing.Point(72, 85);
+            this.btnBieren.ForeColor = System.Drawing.Color.White;
+            this.btnBieren.Location = new System.Drawing.Point(39, 85);
             this.btnBieren.Name = "btnBieren";
             this.btnBieren.Size = new System.Drawing.Size(328, 60);
             this.btnBieren.TabIndex = 8;
             this.btnBieren.Text = "Bieren";
-            this.btnBieren.UseVisualStyleBackColor = true;
+            this.btnBieren.UseVisualStyleBackColor = false;
             this.btnBieren.Click += new System.EventHandler(this.btnBieren_Click);
             // 
             // btnWijnen
             // 
+            this.btnWijnen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnWijnen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnWijnen.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnWijnen.Location = new System.Drawing.Point(72, 151);
+            this.btnWijnen.ForeColor = System.Drawing.Color.White;
+            this.btnWijnen.Location = new System.Drawing.Point(39, 151);
             this.btnWijnen.Name = "btnWijnen";
             this.btnWijnen.Size = new System.Drawing.Size(328, 60);
             this.btnWijnen.TabIndex = 9;
             this.btnWijnen.Text = "Wijnen";
-            this.btnWijnen.UseVisualStyleBackColor = true;
+            this.btnWijnen.UseVisualStyleBackColor = false;
             this.btnWijnen.Click += new System.EventHandler(this.btnWijnen_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
             this.label1.Location = new System.Drawing.Point(9, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 37);
@@ -501,9 +605,9 @@
             // 
             this.pnl_Tafelnr.Controls.Add(this.label1);
             this.pnl_Tafelnr.Controls.Add(this.lblTafelnr);
-            this.pnl_Tafelnr.Location = new System.Drawing.Point(306, 12);
+            this.pnl_Tafelnr.Location = new System.Drawing.Point(230, 15);
             this.pnl_Tafelnr.Name = "pnl_Tafelnr";
-            this.pnl_Tafelnr.Size = new System.Drawing.Size(181, 65);
+            this.pnl_Tafelnr.Size = new System.Drawing.Size(172, 53);
             this.pnl_Tafelnr.TabIndex = 13;
             // 
             // pnl_Klacht
@@ -511,15 +615,16 @@
             this.pnl_Klacht.Controls.Add(this.label3);
             this.pnl_Klacht.Controls.Add(this.txtKlacht);
             this.pnl_Klacht.Controls.Add(this.btnKaartoverzicht2);
-            this.pnl_Klacht.Location = new System.Drawing.Point(12, 12);
+            this.pnl_Klacht.Location = new System.Drawing.Point(5, 12);
             this.pnl_Klacht.Name = "pnl_Klacht";
-            this.pnl_Klacht.Size = new System.Drawing.Size(475, 556);
+            this.pnl_Klacht.Size = new System.Drawing.Size(400, 878);
             this.pnl_Klacht.TabIndex = 13;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
             this.label3.Location = new System.Drawing.Point(23, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(191, 37);
@@ -533,19 +638,22 @@
             this.txtKlacht.Location = new System.Drawing.Point(30, 85);
             this.txtKlacht.Multiline = true;
             this.txtKlacht.Name = "txtKlacht";
-            this.txtKlacht.Size = new System.Drawing.Size(406, 327);
+            this.txtKlacht.Size = new System.Drawing.Size(347, 327);
             this.txtKlacht.TabIndex = 11;
             this.txtKlacht.Text = "\r\n\r\n";
             // 
             // btnKaartoverzicht2
             // 
+            this.btnKaartoverzicht2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
+            this.btnKaartoverzicht2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKaartoverzicht2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnKaartoverzicht2.Location = new System.Drawing.Point(112, 440);
+            this.btnKaartoverzicht2.ForeColor = System.Drawing.Color.White;
+            this.btnKaartoverzicht2.Location = new System.Drawing.Point(72, 463);
             this.btnKaartoverzicht2.Name = "btnKaartoverzicht2";
             this.btnKaartoverzicht2.Size = new System.Drawing.Size(247, 51);
             this.btnKaartoverzicht2.TabIndex = 10;
             this.btnKaartoverzicht2.Text = "< Kaartoverzicht";
-            this.btnKaartoverzicht2.UseVisualStyleBackColor = true;
+            this.btnKaartoverzicht2.UseVisualStyleBackColor = false;
             this.btnKaartoverzicht2.Click += new System.EventHandler(this.btnKaartoverzicht2_Click);
             // 
             // pnl_Instructies
@@ -553,15 +661,16 @@
             this.pnl_Instructies.Controls.Add(this.label4);
             this.pnl_Instructies.Controls.Add(this.txtInstructies);
             this.pnl_Instructies.Controls.Add(this.btnKaartoverzicht3);
-            this.pnl_Instructies.Location = new System.Drawing.Point(12, 12);
+            this.pnl_Instructies.Location = new System.Drawing.Point(5, 12);
             this.pnl_Instructies.Name = "pnl_Instructies";
-            this.pnl_Instructies.Size = new System.Drawing.Size(475, 556);
+            this.pnl_Instructies.Size = new System.Drawing.Size(422, 907);
             this.pnl_Instructies.TabIndex = 18;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
             this.label4.Location = new System.Drawing.Point(23, 28);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(162, 37);
@@ -575,55 +684,37 @@
             this.txtInstructies.Location = new System.Drawing.Point(30, 85);
             this.txtInstructies.Multiline = true;
             this.txtInstructies.Name = "txtInstructies";
-            this.txtInstructies.Size = new System.Drawing.Size(406, 327);
+            this.txtInstructies.Size = new System.Drawing.Size(356, 327);
             this.txtInstructies.TabIndex = 11;
             this.txtInstructies.Text = "\r\n\r\n";
             // 
             // btnKaartoverzicht3
             // 
+            this.btnKaartoverzicht3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnKaartoverzicht3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKaartoverzicht3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnKaartoverzicht3.Location = new System.Drawing.Point(112, 440);
+            this.btnKaartoverzicht3.ForeColor = System.Drawing.Color.White;
+            this.btnKaartoverzicht3.Location = new System.Drawing.Point(78, 460);
             this.btnKaartoverzicht3.Name = "btnKaartoverzicht3";
             this.btnKaartoverzicht3.Size = new System.Drawing.Size(247, 51);
             this.btnKaartoverzicht3.TabIndex = 10;
             this.btnKaartoverzicht3.Text = "< Kaartoverzicht";
-            this.btnKaartoverzicht3.UseVisualStyleBackColor = true;
+            this.btnKaartoverzicht3.UseVisualStyleBackColor = false;
             this.btnKaartoverzicht3.Click += new System.EventHandler(this.btnKaartoverzicht3_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label5.Location = new System.Drawing.Point(161, 436);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 24);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Totaal: €";
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblTotal.Location = new System.Drawing.Point(248, 436);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(45, 24);
-            this.lblTotal.TabIndex = 11;
-            this.lblTotal.Text = "0.00";
             // 
             // BestellingOpnemen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 911);
-            this.Controls.Add(this.pnl_Instructies);
-            this.Controls.Add(this.pnl_Tafelnr);
-            this.Controls.Add(this.pnl_Klacht);
-            this.Controls.Add(this.pnl_Drank);
             this.Controls.Add(this.pnl_TafelSelect);
+            this.Controls.Add(this.pnl_Instructies);
+            this.Controls.Add(this.pnl_Klacht);
+            this.Controls.Add(this.pnl_Tafelnr);
             this.Controls.Add(this.pnl_MenuType);
+            this.Controls.Add(this.pnl_Drank);
             this.Controls.Add(this.pnl_Bestellen);
             this.Name = "BestellingOpnemen";
-            this.Text = "BestellingOpnemen";
+            this.Size = new System.Drawing.Size(428, 926);
             this.pnl_Bestellen.ResumeLayout(false);
             this.pnl_Bestellen.PerformLayout();
             this.pnl_MenuType.ResumeLayout(false);

@@ -1,4 +1,5 @@
-﻿using ChapooModel;
+﻿using ChapooLogic;
+using ChapooModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class RestaurantOverzicht : Form
+    public partial class RestaurantOverzicht : UserControl
     {
         private ChapooLogic.Reservering_Service reservering_Service;
         private ChapooLogic.Klant_Service klant_Service;
@@ -117,6 +118,9 @@ namespace Login
         }
         private void loadLists()
         {
+            // Tafels bezet
+            Transaction_Service transaction_Service = new Transaction_Service();
+            List<int> tableList = transaction_Service.GetTables();
             // Reservering
             reservering_Service = new ChapooLogic.Reservering_Service();
             List<Reservering> reserverings = reservering_Service.GetReserverings();
@@ -158,7 +162,7 @@ namespace Login
                 lstReservering.Items.Add(li);
                 // Update Tafelstatus
                 DateTime nu = dateTijd.Value;
-                if (r.BeginTijd < nu && r.EindTijd > nu)
+                if (r.BeginTijd < nu && r.EindTijd > nu || tableList.Contains(r.TafelID))
                 {
                     tafelToBezet.Add(r.TafelID);
                 }
