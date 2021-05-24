@@ -46,6 +46,7 @@
     <Compile Include="Klant.cs" />
     <Compile Include="MenuName.cs" />
     <Compile Include="MenuType.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="Order_Product.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
