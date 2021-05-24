@@ -16,11 +16,12 @@ namespace Login
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new RestaurantOverzicht());
+            Application.Run(new RestaurantOverzicht());
+            //Application.Run(new Afrekenen());
             //Application.Run(new MedewerkerRegistreren());
-            Application.Run(new LoginForm());
+            //Application.Run(new LoginForm());
             //Application.Run(new MenuOverview());
-            // Application.Run(new BestellingOpnemen());
+            //Application.Run(new BestellingOpnemen());
         }
     }
 }

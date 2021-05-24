@@ -68,16 +68,11 @@ namespace Login
                                 btn.FlatStyle = FlatStyle.Popup;
                                 btn.BackColor = Color.White;
                                 btn.Click += btn_Click;
-                                buttons.Add(btn);
+                                flp_MenuOverview.Controls.Add(btn);
                             }
                         }
                     }
                 }
-            }
-
-            foreach (Button b in buttons)
-            {
-                flp_MenuOverview.Controls.Add(b);
             }
             if (flp_MenuOverview.Controls.Count > 0)
             {
@@ -99,20 +94,8 @@ namespace Login
 
             if (_deleting == true) // check if deleting mode is on
             {
-                // if deleting mode is on delete item
-                Product p = new Product(product.ProductId);
-                MenuType mt = new MenuType(menuType.SoortID);
-                mt.products.Add(p);
-                MenuName m = new MenuName(menu.MenuId);
-                m.menuTypes.Add(mt);
-
-                DialogResult confirm = MessageBox.Show($"[{product}] zal verwijderd worden van de [{menu.Name}] onder de categorie [{menuType.Type}].\n\nWeet je het zeker?", "Confirmation", MessageBoxButtons.OKCancel);
-                if (confirm == DialogResult.OK) // if confirmed delete product from menu
-                {
-                    _menuService.RemoveMenu(m);
-                    MessageBox.Show("Product verwijderd.", "Succes");
-                    Menu_Refresh();
-                }
+                // delete item from menu
+                DeleteFromMenu(product, menuType, menu);
             }
             else
             {
@@ -127,6 +110,23 @@ namespace Login
                     alcohol = "Nee";
                 }
                 MessageBox.Show($"Aantal:\t\t{product.Aantal}\nPrijs:\t\t€{product.Prijs.ToString("0.00")}\nAlcoholisch:\t{alcohol}", product.ToString());
+            }
+        }
+        private void DeleteFromMenu(Product product, MenuType menuType, MenuName menu)
+        {
+            // put product in correct menutype and menu
+            Product p = new Product(product.ProductId);
+            MenuType mt = new MenuType(menuType.SoortID);
+            mt.products.Add(p);
+            MenuName m = new MenuName(menu.MenuId);
+            m.menuTypes.Add(mt);
+
+            DialogResult confirm = MessageBox.Show($"[{product}] zal verwijderd worden van de [{menu.Name}] onder de categorie [{menuType.Type}].\n\nWeet je het zeker?", "Confirmation", MessageBoxButtons.OKCancel);
+            if (confirm == DialogResult.OK) // if confirmed delete product from menu
+            {
+                _menuService.RemoveMenu(m);
+                MessageBox.Show("Product verwijderd.", "Succes");
+                Menu_Refresh();
             }
         }
 

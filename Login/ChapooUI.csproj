@@ -251,6 +251,9 @@
     <Compile Include="VoorraadConfirmation.Designer.cs">
       <DependentUpon>VoorraadConfirmation.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Afrekenen.resx">
+      <DependentUpon>Afrekenen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BestellingOpnemen.resx">
       <DependentUpon>BestellingOpnemen.cs</DependentUpon>
     </EmbeddedResource>
@@ -322,6 +325,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\chapoo.png" />
     <Content Include="img\img.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
