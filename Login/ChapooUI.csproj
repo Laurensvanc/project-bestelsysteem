@@ -178,7 +178,7 @@
       <DependentUpon>BarKeukOverzicht.cs</DependentUpon>
     </Compile>
     <Compile Include="BestellingOpnemen.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="BestellingOpnemen.Designer.cs">
       <DependentUpon>BestellingOpnemen.cs</DependentUpon>
@@ -219,16 +219,28 @@
     <Compile Include="MobileLogin.Designer.cs">
       <DependentUpon>MobileLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="MobileMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MobileMenu.Designer.cs">
+      <DependentUpon>MobileMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="OmzetOverzicht.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OmzetOverzicht.Designer.cs">
       <DependentUpon>OmzetOverzicht.cs</DependentUpon>
     </Compile>
+    <Compile Include="Platform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Platform.Designer.cs">
+      <DependentUpon>Platform.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestaurantOverzicht.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="RestaurantOverzicht.Designer.cs">
       <DependentUpon>RestaurantOverzicht.cs</DependentUpon>
@@ -272,8 +284,17 @@
     <EmbeddedResource Include="MenuOverview.resx">
       <DependentUpon>MenuOverview.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MobileLogin.resx">
+      <DependentUpon>MobileLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MobileMenu.resx">
+      <DependentUpon>MobileMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OmzetOverzicht.resx">
       <DependentUpon>OmzetOverzicht.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Platform.resx">
+      <DependentUpon>Platform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -283,6 +304,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="RestaurantOverzicht.resx">
       <DependentUpon>RestaurantOverzicht.cs</DependentUpon>
@@ -325,7 +347,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="img\arrow_right.png" />
+    <None Include="img\arrow_left_pink.png" />
     <Content Include="img\chapoo.png" />
+    <None Include="img\Shut down.png" />
+    <None Include="img\chapoo_white.png" />
+    <None Include="img\chapoo_pink.png" />
     <Content Include="img\img.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class RestaurantOverzicht : Form
+    public partial class RestaurantOverzicht : UserControl
     {
         private ChapooLogic.Reservering_Service reservering_Service;
         private ChapooLogic.Klant_Service klant_Service;

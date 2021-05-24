@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class BestellingOpnemen : Form
+    public partial class BestellingOpnemen : UserControl
     {
         public Product_Service productService = new Product_Service();
         public List<Product> productList = new List<Product>();
