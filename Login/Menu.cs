@@ -49,7 +49,7 @@ namespace Login
 
         private void btn_navBestellingen_Click(object sender, EventArgs e)
         {
-
+            LoadUserControl(new BestellingOpnemenDesktop());
         }
     }
 }
