@@ -260,15 +260,19 @@ namespace Login
                 // Displays the MessageBox.
                 result = MessageBox.Show(message, caption, buttons);
                 if (result == System.Windows.Forms.DialogResult.Yes)
+                {
                     lblTotal.Text = "0.00";
                     listOrderView.Clear();
                     pnl_TafelSelect.Show();
                     pnl_Tafelnr.Hide();
+                }
             }
             else 
+            {
                 pnl_TafelSelect.Show();
                 listOrderView.Clear();
                 pnl_Tafelnr.Hide();
+            }
         }
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
@@ -290,7 +294,10 @@ namespace Login
                 OrderList
             );
             Bestelling_Service bestellingService = new Bestelling_Service();
-            if (bestellingService.AddBestelling(bestelling))
+            if (OrderList.Count() == 0)
+            {
+                MessageBox.Show("Geen bestelling gevonden, probeer nog een keer.");
+            } else if  (bestellingService.AddBestelling(bestelling))
             {
                 lblTotal.Text = "0.00";
                 listOrderView.Clear();

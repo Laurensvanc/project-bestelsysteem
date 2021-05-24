@@ -46,5 +46,10 @@ namespace Login
         {
             LoadUserControl(new RestaurantOverzicht());
         }
+
+        private void btn_navBestellingen_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
