@@ -16,9 +16,6 @@ namespace Login
         {
             InitializeComponent();
             btn_closeForm.FlatAppearance.MouseOverBackColor = btn_closeForm.BackColor;
-
-            //pnl_Reserveringen.Controls.Add((new RestaurantOverzicht()).Controls[0]);
-            //pnl_Reserveringen.Controls.Add((new RestaurantOverzicht()).Controls[1]);
         }
 
         private void btn_closeForm_Click(object sender, EventArgs e)
@@ -39,7 +36,7 @@ namespace Login
 
         private void btn_navBarKeuken_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new RestaurantOverzicht());
+            LoadUserControl(new BarKeukOverzicht());
         }
 
         private void btn_navHome_Click(object sender, EventArgs e)
