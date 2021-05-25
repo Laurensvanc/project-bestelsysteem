@@ -25,6 +25,8 @@ namespace Login
             //Application.Run(new LoginForm());
             //Application.Run(new MenuOverview());
             //Application.Run(new BestellingOpnemen());
+            //Application.Run(new BestellingOpnemenDesktop());
+
         }
     }
 }

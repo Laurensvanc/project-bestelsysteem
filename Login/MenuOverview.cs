@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class MenuOverview : Form
+    public partial class MenuOverview : UserControl
     {
         private Menu_Service _menuService;
         private List<MenuName> _menus;
@@ -343,14 +343,6 @@ namespace Login
         private void btn_DinerN_Click(object sender, EventArgs e)
         {
             OverviewChanged(sender);
-        }
-
-        private void btn_Voorraad_Click(object sender, EventArgs e)
-        {
-            VoorraadOverview voorraadOverview = new VoorraadOverview();
-            voorraadOverview.FormClosing += (s, ev) => this.Show();
-            voorraadOverview.Show();
-            this.Hide();
         }
 
         private void btn_Refresh_Click(object sender, EventArgs e)

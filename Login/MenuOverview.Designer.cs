@@ -31,7 +31,6 @@ namespace Login
         {
             this.pnl_MenuOverview = new System.Windows.Forms.Panel();
             this.btn_Refresh = new System.Windows.Forms.Button();
-            this.btn_Voorraad = new System.Windows.Forms.Button();
             this.lbl_Instruction2 = new System.Windows.Forms.Label();
             this.lbl_Instruction = new System.Windows.Forms.Label();
             this.pnl_MenuDinerButtons = new System.Windows.Forms.Panel();
@@ -73,7 +72,6 @@ namespace Login
             this.pnl_MenuOverview.AutoSize = true;
             this.pnl_MenuOverview.BackColor = System.Drawing.SystemColors.Control;
             this.pnl_MenuOverview.Controls.Add(this.btn_Refresh);
-            this.pnl_MenuOverview.Controls.Add(this.btn_Voorraad);
             this.pnl_MenuOverview.Controls.Add(this.lbl_Instruction2);
             this.pnl_MenuOverview.Controls.Add(this.lbl_Instruction);
             this.pnl_MenuOverview.Controls.Add(this.pnl_MenuDinerButtons);
@@ -84,7 +82,7 @@ namespace Login
             this.pnl_MenuOverview.Controls.Add(this.pnl_MenuButtons);
             this.pnl_MenuOverview.Location = new System.Drawing.Point(0, 0);
             this.pnl_MenuOverview.Name = "pnl_MenuOverview";
-            this.pnl_MenuOverview.Size = new System.Drawing.Size(800, 450);
+            this.pnl_MenuOverview.Size = new System.Drawing.Size(1576, 942);
             this.pnl_MenuOverview.TabIndex = 0;
             // 
             // btn_Refresh
@@ -98,18 +96,6 @@ namespace Login
             this.btn_Refresh.Text = "Refresh Menus";
             this.btn_Refresh.UseVisualStyleBackColor = true;
             this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
-            // 
-            // btn_Voorraad
-            // 
-            this.btn_Voorraad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Voorraad.Location = new System.Drawing.Point(6, 6);
-            this.btn_Voorraad.Name = "btn_Voorraad";
-            this.btn_Voorraad.Size = new System.Drawing.Size(89, 29);
-            this.btn_Voorraad.TabIndex = 2;
-            this.btn_Voorraad.TabStop = false;
-            this.btn_Voorraad.Text = "Voorraad";
-            this.btn_Voorraad.UseVisualStyleBackColor = true;
-            this.btn_Voorraad.Click += new System.EventHandler(this.btn_Voorraad_Click);
             // 
             // lbl_Instruction2
             // 
@@ -400,11 +386,9 @@ namespace Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pnl_MenuOverview);
             this.Name = "MenuOverview";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Menu Overview";
+            this.Size = new System.Drawing.Size(1576, 942);
             this.Load += new System.EventHandler(this.MenuOverview_Load);
             this.pnl_MenuOverview.ResumeLayout(false);
             this.pnl_MenuOverview.PerformLayout();
@@ -446,7 +430,6 @@ namespace Login
         private System.Windows.Forms.FlowLayoutPanel flp_MenuOverview;
         private System.Windows.Forms.Label lbl_Instruction;
         private System.Windows.Forms.Label lbl_Instruction2;
-        private System.Windows.Forms.Button btn_Voorraad;
         private System.Windows.Forms.Button btn_Refresh;
     }
 }
