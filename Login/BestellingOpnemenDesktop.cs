@@ -12,31 +12,97 @@ using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class BestellingOpnemen : UserControl
+    public partial class BestellingOpnemenDesktop : UserControl
     {
         public Product_Service productService = new Product_Service();
         public List<Product> productList = new List<Product>();
-        public BestellingOpnemen()
+        private int _tableNr;
+        public BestellingOpnemenDesktop()
         {
             InitializeComponent();
+            ShowTables();
+            DisableButtons(); // Disable buttons before selecting a table
+            ShowColumns();
             pnl_Drank.Hide();
-            pnl_Tafelnr.Hide();
-            pnl_Klacht.Hide();
-            pnl_Instructies.Hide();
+            txtInstructies.Show();
+            txtKlacht.Hide();
+        }
+        public void ShowTables()
+        {
+            flp_TableSelect.Controls.Clear();
+            for (int i = 1; i < 11; i++)
+            {
+                Button btn = new Button();
+                btn.Name = i.ToString();
+                btn.Text = "Tafel " + i.ToString();
+                btn.TextAlign = ContentAlignment.MiddleLeft;
+                btn.Size = new Size(205, 34);
+                btn.FlatStyle = FlatStyle.Flat;
+                if (_tableNr == i) btn.BackColor = Color.FromArgb(176, 113, 137);
+                else btn.BackColor = Color.FromArgb(146, 60, 93);
+                btn.Margin = new Padding(0, 0, 0, 0);
+                btn.Click += btn_Click;
+                flp_TableSelect.Controls.Add(btn);
+            }
+        }
+        public void DisableButtons()
+        {
+            btnDrankKaart.Enabled = false;
+            btnVoorgerecht.Enabled = false;
+            btnHoofdgerecht.Enabled = false;
+            btnNagerecht.Enabled = false;
+            btnTussengerecht.Enabled = false;
+        }
+        public void EnableButtons()
+        {
+            btnDrankKaart.Enabled = true;
+            btnVoorgerecht.Enabled = true;
+            btnHoofdgerecht.Enabled = true;
+            btnNagerecht.Enabled = true;
+            btnTussengerecht.Enabled = true;
+        }
+        private void btn_Click(object sender, EventArgs e)
+        {
+            bool dontSwitchTable = false;
+            if (listOrderView.Items.Count > 0)
+            {
+                string message = "Bestelling is niet opgeslagen. Weet u zeker dat u een nieuwe tafel wilt selecteren?";
+                string caption = "Chapoo";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+                // Displays the MessageBox.
+                result = MessageBox.Show(message, caption, buttons);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    lblTotal.Text = "0.00";
+                    listMenuView.Clear();
+                    listOrderView.Clear();
+                }
+                else dontSwitchTable = true;
+            }
+            else
+            {
+                listMenuView.Clear();
+            }
+            Button button = (Button)sender;
+            if (!dontSwitchTable) _tableNr = int.Parse(button.Name);
+            EnableButtons();
+            ShowTables();
+            pnl_MenuType.Show();
         }
         public void ShowColumns()
         {
-            listOrderView.Columns.Add("Bestelling", 210);
-            listOrderView.Columns.Add("Prijs", 75);
+            listOrderView.Columns.Add("Bestelling", 615);
             listOrderView.Columns.Add("Aantal", 75);
+            listOrderView.Columns.Add("Prijs", 80);
             listOrderView.Columns.Add("ID", 40);
         }
         public void ShowMenuItems(int soortID)
         {
-            //productList = productService.GetProducts();
+            listMenuView.Columns.Clear();
             productList = productService.GetSpecificProduct(soortID);
 
-            listMenuView.Columns.Add("Menu", 295);
+            listMenuView.Columns.Add("Menu", 695);
             listMenuView.Columns.Add("Prijs", 75);
             listMenuView.Columns.Add("ID", 40);
 
@@ -61,8 +127,8 @@ namespace Login
                     if (listOrderView.Items.Count == 0)
                     {
                         ListViewItem li = new ListViewItem(productList[i].ProductNaam);
-                        li.SubItems.Add(productList[i].Prijs.ToString("0.00"));
                         li.SubItems.Add("1");
+                        li.SubItems.Add(productList[i].Prijs.ToString("0.00"));
                         li.SubItems.Add(productList[i].ProductId.ToString());
                         listOrderView.Items.Add(li);
                     }
@@ -74,10 +140,10 @@ namespace Login
                         {
                             if (listOrderView.Items[item].SubItems[3].Text == listMenuView.Items[i].SubItems[2].Text)
                             {
-                                int quantity = int.Parse(listOrderView.Items[item].SubItems[2].Text) + 1;
-                                float totalProduct = float.Parse(listOrderView.Items[item].SubItems[1].Text) + float.Parse(listMenuView.Items[i].SubItems[1].Text);
-                                listOrderView.Items[item].SubItems[1].Text = totalProduct.ToString("0.00");
-                                listOrderView.Items[item].SubItems[2].Text = quantity.ToString();
+                                int quantity = int.Parse(listOrderView.Items[item].SubItems[1].Text) + 1;
+                                float totalProduct = float.Parse(listOrderView.Items[item].SubItems[2].Text) + float.Parse(listMenuView.Items[i].SubItems[1].Text);
+                                listOrderView.Items[item].SubItems[1].Text = quantity.ToString();
+                                listOrderView.Items[item].SubItems[2].Text = totalProduct.ToString("0.00");
                                 duplicate = true;
                                 break;
                             }
@@ -86,8 +152,8 @@ namespace Login
                         if (!duplicate)
                         {
                             ListViewItem li = new ListViewItem(productList[i].ProductNaam);
-                            li.SubItems.Add(productList[i].Prijs.ToString("0.00"));
                             li.SubItems.Add("1");
+                            li.SubItems.Add(productList[i].Prijs.ToString("0.00"));
                             li.SubItems.Add(productList[i].ProductId.ToString());
                             listOrderView.Items.Add(li);
                         }
@@ -101,8 +167,8 @@ namespace Login
             {
                 if (listOrderView.Items[i].Selected)
                 {
-                    int quantity = int.Parse(listOrderView.Items[i].SubItems[2].Text);
-                    float individualPrice = float.Parse(listOrderView.Items[i].SubItems[1].Text) / float.Parse(quantity.ToString());
+                    int quantity = int.Parse(listOrderView.Items[i].SubItems[1].Text);
+                    float individualPrice = float.Parse(listOrderView.Items[i].SubItems[2].Text) / float.Parse(quantity.ToString());
 
                     float total = float.Parse(lblTotal.Text);
                     total -= individualPrice;
@@ -111,9 +177,9 @@ namespace Login
                     if (quantity > 1)
                     {
                         quantity--;
-                        float totalProduct = float.Parse(listOrderView.Items[i].SubItems[1].Text) - individualPrice;
-                        listOrderView.Items[i].SubItems[1].Text = totalProduct.ToString("0.00");
-                        listOrderView.Items[i].SubItems[2].Text = quantity.ToString();
+                        float totalProduct = float.Parse(listOrderView.Items[i].SubItems[2].Text) - individualPrice;
+                        listOrderView.Items[i].SubItems[2].Text = totalProduct.ToString("0.00");
+                        listOrderView.Items[i].SubItems[1].Text = quantity.ToString();
                     }
                     else
                     {
@@ -180,75 +246,6 @@ namespace Login
             listMenuView.Clear();
             pnl_MenuType.Show();
         }
-        private void btnKaartoverzicht2_Click(object sender, EventArgs e)
-        {
-            listMenuView.Clear();
-            pnl_Klacht.Hide();
-            pnl_MenuType.Show();
-        }
-        private void btnKaartoverzicht3_Click(object sender, EventArgs e)
-        {
-            listMenuView.Clear();
-            pnl_Instructies.Hide();
-            pnl_MenuType.Show();
-        }
-        // tafels
-        private void btnTafel1_Click(object sender, EventArgs e)
-        {
-            lblTafelnr.Text = "1";
-            HideTableShowMenu();
-        }
-        private void btnTafel2_Click(object sender, EventArgs e)
-        {
-            lblTafelnr.Text = "2";
-            HideTableShowMenu();
-        }
-        private void btnTafel3_Click(object sender, EventArgs e)
-        {
-            lblTafelnr.Text = "3";
-            HideTableShowMenu();
-        }
-        private void btnTafel4_Click(object sender, EventArgs e)
-        {
-            lblTafelnr.Text = "4";
-            HideTableShowMenu();
-        }
-        private void btnTafel5_Click(object sender, EventArgs e)
-        {
-            lblTafelnr.Text = "5";
-            HideTableShowMenu();
-        }
-        private void btnTafel6_Click(object sender, EventArgs e)
-        {
-            lblTafelnr.Text = "6";
-            HideTableShowMenu();
-        }
-        private void btnTafel7_Click(object sender, EventArgs e)
-        {
-            lblTafelnr.Text = "7";
-            HideTableShowMenu();
-        }
-        private void btnTafel8_Click(object sender, EventArgs e)
-        {
-            lblTafelnr.Text = "8";
-            HideTableShowMenu();
-        }
-        private void btnTafel9_Click(object sender, EventArgs e)
-        {
-            lblTafelnr.Text = "9";
-            HideTableShowMenu();
-        }
-        private void btnTafel10_Click(object sender, EventArgs e)
-        {
-            lblTafelnr.Text = "10";
-            HideTableShowMenu();
-        }
-        public void HideTableShowMenu()
-        {
-            pnl_TafelSelect.Hide();
-            pnl_Tafelnr.Show();
-            ShowColumns();
-        }
         private void btnTafelOverzicht_Click(object sender, EventArgs e)
         {
             if (listOrderView.Items.Count > 0)
@@ -263,15 +260,11 @@ namespace Login
                 {
                     lblTotal.Text = "0.00";
                     listOrderView.Clear();
-                    pnl_TafelSelect.Show();
-                    pnl_Tafelnr.Hide();
                 }
             }
             else 
             {
-                pnl_TafelSelect.Show();
                 listOrderView.Clear();
-                pnl_Tafelnr.Hide();
             }
         }
         private void btnPlaceOrder_Click(object sender, EventArgs e)
@@ -280,13 +273,13 @@ namespace Login
             for (int i = 0; i < listOrderView.Items.Count; i++)
             {
                 int id = int.Parse(listOrderView.Items[i].SubItems[3].Text);
-                int aantal = int.Parse(listOrderView.Items[i].SubItems[2].Text);
+                int aantal = int.Parse(listOrderView.Items[i].SubItems[1].Text);
                 Order_Product orderItem = new Order_Product(id, aantal);
                 OrderList.Add(orderItem);
             }
             Bestelling bestelling = new Bestelling 
             (
-                int.Parse(lblTafelnr.Text),
+                _tableNr,
                 float.Parse(lblTotal.Text),
                 txtKlacht.Text,
                 txtInstructies.Text,
@@ -301,19 +294,21 @@ namespace Login
             {
                 lblTotal.Text = "0.00";
                 listOrderView.Clear();
-                pnl_Tafelnr.Hide();
-                pnl_TafelSelect.Show();
-                MessageBox.Show($"Bestelling voor tafel {lblTafelnr.Text} is geplaatst.");
+                MessageBox.Show($"Bestelling voor tafel {_tableNr} is geplaatst.");
             }
         }
         private void btnKlacht_Click(object sender, EventArgs e)
         {
-            pnl_Klacht.Show();
+            lblInstructKlacht.Text = "Klacht";
+            txtInstructies.Hide();
+            txtKlacht.Show();
         }
 
         private void btnInstructies_Click(object sender, EventArgs e)
         {
-            pnl_Instructies.Show();
+            lblInstructKlacht.Text = "Instructies";
+            txtInstructies.Show();
+            txtKlacht.Hide();
         }
     }
 }

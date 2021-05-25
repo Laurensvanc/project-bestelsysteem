@@ -80,13 +80,13 @@ namespace Login
             // 
             this.btn_navHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(61)))), ((int)(((byte)(102)))));
             this.btn_navHome.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_navHome.Font = new System.Drawing.Font("Roboto", 36F);
+            this.btn_navHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
             this.btn_navHome.ForeColor = System.Drawing.Color.White;
             this.btn_navHome.Image = ((System.Drawing.Image)(resources.GetObject("btn_navHome.Image")));
             this.btn_navHome.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_navHome.Name = "btn_navHome";
             this.btn_navHome.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_navHome.Size = new System.Drawing.Size(342, 62);
+            this.btn_navHome.Size = new System.Drawing.Size(342, 59);
             this.btn_navHome.Text = "Home";
             this.btn_navHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_navHome.ToolTipText = "Home";
@@ -95,12 +95,12 @@ namespace Login
             // btn_navReserveringen
             // 
             this.btn_navReserveringen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_navReserveringen.Font = new System.Drawing.Font("Roboto", 36F);
+            this.btn_navReserveringen.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
             this.btn_navReserveringen.ForeColor = System.Drawing.Color.White;
             this.btn_navReserveringen.Image = ((System.Drawing.Image)(resources.GetObject("btn_navReserveringen.Image")));
             this.btn_navReserveringen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_navReserveringen.Name = "btn_navReserveringen";
-            this.btn_navReserveringen.Size = new System.Drawing.Size(342, 62);
+            this.btn_navReserveringen.Size = new System.Drawing.Size(342, 59);
             this.btn_navReserveringen.Text = "Reserveringen";
             this.btn_navReserveringen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_navReserveringen.Click += new System.EventHandler(this.btn_navReserveringen_Click);
@@ -109,12 +109,12 @@ namespace Login
             // 
             this.btn_navBarKeuken.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(61)))), ((int)(((byte)(102)))));
             this.btn_navBarKeuken.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_navBarKeuken.Font = new System.Drawing.Font("Roboto", 36F);
+            this.btn_navBarKeuken.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
             this.btn_navBarKeuken.ForeColor = System.Drawing.Color.White;
             this.btn_navBarKeuken.Image = ((System.Drawing.Image)(resources.GetObject("btn_navBarKeuken.Image")));
             this.btn_navBarKeuken.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_navBarKeuken.Name = "btn_navBarKeuken";
-            this.btn_navBarKeuken.Size = new System.Drawing.Size(342, 62);
+            this.btn_navBarKeuken.Size = new System.Drawing.Size(342, 59);
             this.btn_navBarKeuken.Text = "Bar/Keuken";
             this.btn_navBarKeuken.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_navBarKeuken.Click += new System.EventHandler(this.btn_navBarKeuken_Click);
@@ -122,26 +122,27 @@ namespace Login
             // btn_navBestellingen
             // 
             this.btn_navBestellingen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_navBestellingen.Font = new System.Drawing.Font("Roboto", 36F);
+            this.btn_navBestellingen.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
             this.btn_navBestellingen.ForeColor = System.Drawing.Color.White;
             this.btn_navBestellingen.Image = ((System.Drawing.Image)(resources.GetObject("btn_navBestellingen.Image")));
             this.btn_navBestellingen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_navBestellingen.Name = "btn_navBestellingen";
-            this.btn_navBestellingen.Size = new System.Drawing.Size(342, 62);
+            this.btn_navBestellingen.Size = new System.Drawing.Size(342, 59);
             this.btn_navBestellingen.Text = "Bestellingen";
             this.btn_navBestellingen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_navBestellingen.Click += new System.EventHandler(this.btn_navBestellingen_Click);
             // 
             // btn_navVoorraad
             // 
             this.btn_navVoorraad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(61)))), ((int)(((byte)(102)))));
             this.btn_navVoorraad.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_navVoorraad.Font = new System.Drawing.Font("Roboto", 36F);
+            this.btn_navVoorraad.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
             this.btn_navVoorraad.ForeColor = System.Drawing.Color.White;
             this.btn_navVoorraad.Image = ((System.Drawing.Image)(resources.GetObject("btn_navVoorraad.Image")));
             this.btn_navVoorraad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_navVoorraad.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_navVoorraad.Name = "btn_navVoorraad";
-            this.btn_navVoorraad.Size = new System.Drawing.Size(342, 62);
+            this.btn_navVoorraad.Size = new System.Drawing.Size(342, 59);
             this.btn_navVoorraad.Text = "Voorraad";
             this.btn_navVoorraad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -164,11 +165,11 @@ namespace Login
             // 
             this.lbl_userDisplay.AutoSize = true;
             this.lbl_userDisplay.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_userDisplay.Font = new System.Drawing.Font("Roboto", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_userDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_userDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.lbl_userDisplay.Location = new System.Drawing.Point(374, 27);
             this.lbl_userDisplay.Name = "lbl_userDisplay";
-            this.lbl_userDisplay.Size = new System.Drawing.Size(176, 33);
+            this.lbl_userDisplay.Size = new System.Drawing.Size(176, 31);
             this.lbl_userDisplay.TabIndex = 2;
             this.lbl_userDisplay.Text = "Logged in as:";
             // 
@@ -176,19 +177,19 @@ namespace Login
             // 
             this.lbl_timeDisplay.AutoSize = true;
             this.lbl_timeDisplay.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_timeDisplay.Font = new System.Drawing.Font("Roboto", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_timeDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_timeDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.lbl_timeDisplay.Location = new System.Drawing.Point(1525, 27);
             this.lbl_timeDisplay.Name = "lbl_timeDisplay";
-            this.lbl_timeDisplay.Size = new System.Drawing.Size(68, 33);
+            this.lbl_timeDisplay.Size = new System.Drawing.Size(67, 31);
             this.lbl_timeDisplay.TabIndex = 3;
             this.lbl_timeDisplay.Text = "date";
             // 
             // pnl_Display
             // 
-            this.pnl_Display.Location = new System.Drawing.Point(472, 178);
+            this.pnl_Display.Location = new System.Drawing.Point(397, 160);
             this.pnl_Display.Name = "pnl_Display";
-            this.pnl_Display.Size = new System.Drawing.Size(1358, 837);
+            this.pnl_Display.Size = new System.Drawing.Size(1433, 855);
             this.pnl_Display.TabIndex = 4;
             // 
             // Menu

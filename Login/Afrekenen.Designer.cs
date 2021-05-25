@@ -32,10 +32,6 @@
             this.flp_TableSelect = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnl_Afrekenen = new System.Windows.Forms.Panel();
-            this.pnl_Opmerking = new System.Windows.Forms.Panel();
-            this.btnTerug = new System.Windows.Forms.Button();
-            this.txtOpmerking = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnTerugOverzicht = new System.Windows.Forms.Button();
             this.btnOpmerking = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -58,9 +54,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblAfrekenen = new System.Windows.Forms.Label();
+            this.pnl_Opmerking = new System.Windows.Forms.Panel();
+            this.btnTerug = new System.Windows.Forms.Button();
+            this.txtOpmerking = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.rbtnPin = new System.Windows.Forms.RadioButton();
             this.pnl_Afrekenen.SuspendLayout();
-            this.pnl_Opmerking.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_Logo)).BeginInit();
@@ -68,6 +67,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.pnl_Opmerking.SuspendLayout();
             this.SuspendLayout();
             // 
             // flp_TableSelect
@@ -108,48 +108,6 @@
             this.pnl_Afrekenen.Name = "pnl_Afrekenen";
             this.pnl_Afrekenen.Size = new System.Drawing.Size(1017, 546);
             this.pnl_Afrekenen.TabIndex = 19;
-            // 
-            // pnl_Opmerking
-            // 
-            this.pnl_Opmerking.Controls.Add(this.btnTerug);
-            this.pnl_Opmerking.Controls.Add(this.txtOpmerking);
-            this.pnl_Opmerking.Controls.Add(this.label4);
-            this.pnl_Opmerking.Location = new System.Drawing.Point(9, 12);
-            this.pnl_Opmerking.Name = "pnl_Opmerking";
-            this.pnl_Opmerking.Size = new System.Drawing.Size(1020, 545);
-            this.pnl_Opmerking.TabIndex = 29;
-            // 
-            // btnTerug
-            // 
-            this.btnTerug.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.btnTerug.Location = new System.Drawing.Point(379, 439);
-            this.btnTerug.Name = "btnTerug";
-            this.btnTerug.Size = new System.Drawing.Size(268, 65);
-            this.btnTerug.TabIndex = 29;
-            this.btnTerug.Text = "Terug naar afrekenen";
-            this.btnTerug.UseVisualStyleBackColor = true;
-            this.btnTerug.Click += new System.EventHandler(this.btnTerug_Click);
-            // 
-            // txtOpmerking
-            // 
-            this.txtOpmerking.AcceptsReturn = true;
-            this.txtOpmerking.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtOpmerking.Location = new System.Drawing.Point(313, 106);
-            this.txtOpmerking.Multiline = true;
-            this.txtOpmerking.Name = "txtOpmerking";
-            this.txtOpmerking.Size = new System.Drawing.Size(406, 327);
-            this.txtOpmerking.TabIndex = 30;
-            this.txtOpmerking.Text = "\r\n\r\n";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.label4.Location = new System.Drawing.Point(421, 40);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(174, 37);
-            this.label4.TabIndex = 29;
-            this.label4.Text = "Opmerking";
             // 
             // btnTerugOverzicht
             // 
@@ -385,6 +343,48 @@
             this.lblAfrekenen.TabIndex = 17;
             this.lblAfrekenen.Text = "Afrekenen tafel ...";
             // 
+            // pnl_Opmerking
+            // 
+            this.pnl_Opmerking.Controls.Add(this.btnTerug);
+            this.pnl_Opmerking.Controls.Add(this.txtOpmerking);
+            this.pnl_Opmerking.Controls.Add(this.label4);
+            this.pnl_Opmerking.Location = new System.Drawing.Point(9, 12);
+            this.pnl_Opmerking.Name = "pnl_Opmerking";
+            this.pnl_Opmerking.Size = new System.Drawing.Size(1020, 545);
+            this.pnl_Opmerking.TabIndex = 29;
+            // 
+            // btnTerug
+            // 
+            this.btnTerug.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.btnTerug.Location = new System.Drawing.Point(379, 439);
+            this.btnTerug.Name = "btnTerug";
+            this.btnTerug.Size = new System.Drawing.Size(268, 65);
+            this.btnTerug.TabIndex = 29;
+            this.btnTerug.Text = "Terug naar afrekenen";
+            this.btnTerug.UseVisualStyleBackColor = true;
+            this.btnTerug.Click += new System.EventHandler(this.btnTerug_Click);
+            // 
+            // txtOpmerking
+            // 
+            this.txtOpmerking.AcceptsReturn = true;
+            this.txtOpmerking.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtOpmerking.Location = new System.Drawing.Point(313, 106);
+            this.txtOpmerking.Multiline = true;
+            this.txtOpmerking.Name = "txtOpmerking";
+            this.txtOpmerking.Size = new System.Drawing.Size(406, 327);
+            this.txtOpmerking.TabIndex = 30;
+            this.txtOpmerking.Text = "\r\n\r\n";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.label4.Location = new System.Drawing.Point(421, 40);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(174, 37);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "Opmerking";
+            // 
             // rbtnPin
             // 
             this.rbtnPin.AutoSize = true;
@@ -410,8 +410,6 @@
             this.Text = "Afrekenen";
             this.pnl_Afrekenen.ResumeLayout(false);
             this.pnl_Afrekenen.PerformLayout();
-            this.pnl_Opmerking.ResumeLayout(false);
-            this.pnl_Opmerking.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTip)).EndInit();
@@ -424,6 +422,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.pnl_Opmerking.ResumeLayout(false);
+            this.pnl_Opmerking.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

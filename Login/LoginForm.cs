@@ -34,7 +34,7 @@ namespace Login
             if (encryptedww != string.Empty)
             {
                 if (BCrypt.Net.BCrypt.Verify(wwtxt.Text, encryptedww)) { 
-                    new BestellingOpnemen().Show();
+                    new Menu().Show();
                     this.Hide();
                 }
                 else
