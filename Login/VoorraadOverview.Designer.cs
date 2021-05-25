@@ -51,6 +51,7 @@
             this.pnl_VoorraadOverview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnl_VoorraadOverview.BackColor = System.Drawing.Color.White;
             this.pnl_VoorraadOverview.Controls.Add(this.lbl_Instruction);
             this.pnl_VoorraadOverview.Controls.Add(this.btn_Search);
             this.pnl_VoorraadOverview.Controls.Add(this.tb_Search);
@@ -140,7 +141,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Showing.AutoSize = true;
             this.lbl_Showing.Font = new System.Drawing.Font("Roboto", 14.25F);
-            this.lbl_Showing.Location = new System.Drawing.Point(17, 10);
+            this.lbl_Showing.Location = new System.Drawing.Point(8, 11);
             this.lbl_Showing.Name = "lbl_Showing";
             this.lbl_Showing.Size = new System.Drawing.Size(47, 23);
             this.lbl_Showing.TabIndex = 3;
