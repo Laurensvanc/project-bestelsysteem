@@ -40,8 +40,7 @@ namespace Login
         }
         void tmr_Tick(object sender, EventArgs e)
         {
-            lbl_timeDisplay.Text = DateTime.Now.ToString("F",
-            CultureInfo.CreateSpecificCulture("en-GB"));
+            lbl_timeDisplay.Text = DateTime.Now.ToString("F", CultureInfo.CreateSpecificCulture("nl-NL"));
         }
 
         private void btn_navReserveringen_Click(object sender, EventArgs e)
