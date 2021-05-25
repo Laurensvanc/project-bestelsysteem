@@ -179,11 +179,10 @@ namespace Login
             this.lbl_timeDisplay.BackColor = System.Drawing.Color.Transparent;
             this.lbl_timeDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_timeDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.lbl_timeDisplay.Location = new System.Drawing.Point(1525, 27);
+            this.lbl_timeDisplay.Location = new System.Drawing.Point(1460, 27);
             this.lbl_timeDisplay.Name = "lbl_timeDisplay";
-            this.lbl_timeDisplay.Size = new System.Drawing.Size(67, 31);
+            this.lbl_timeDisplay.Size = new System.Drawing.Size(0, 31);
             this.lbl_timeDisplay.TabIndex = 3;
-            this.lbl_timeDisplay.Text = "date";
             // 
             // pnl_Display
             // 
