@@ -45,7 +45,17 @@ namespace ChapooLogic
                 return products;
             }
         }
-
+        public void OpenBottle(int bottleID, int glasID)
+        {
+            try
+            {
+                productDAO.Open_Bottle_Product(bottleID, glasID);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public void AddProduct(Product product)
         {
             try
