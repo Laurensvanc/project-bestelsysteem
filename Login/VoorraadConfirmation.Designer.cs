@@ -50,6 +50,7 @@ namespace Login
             // 
             // pnl_VoorraadConfirm
             // 
+            this.pnl_VoorraadConfirm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_VoorraadConfirm.Controls.Add(this.tb_ProductNameValue);
             this.pnl_VoorraadConfirm.Controls.Add(this.btn_Cancel);
             this.pnl_VoorraadConfirm.Controls.Add(this.btn_OK);
@@ -67,142 +68,166 @@ namespace Login
             this.pnl_VoorraadConfirm.Controls.Add(this.lbl_PreviewTxt);
             this.pnl_VoorraadConfirm.Location = new System.Drawing.Point(0, 0);
             this.pnl_VoorraadConfirm.Name = "pnl_VoorraadConfirm";
-            this.pnl_VoorraadConfirm.Size = new System.Drawing.Size(334, 234);
+            this.pnl_VoorraadConfirm.Size = new System.Drawing.Size(420, 260);
             this.pnl_VoorraadConfirm.TabIndex = 0;
             // 
             // tb_ProductNameValue
             // 
-            this.tb_ProductNameValue.Location = new System.Drawing.Point(159, 46);
+            this.tb_ProductNameValue.BackColor = System.Drawing.Color.White;
+            this.tb_ProductNameValue.Font = new System.Drawing.Font("Roboto Condensed", 12F);
+            this.tb_ProductNameValue.Location = new System.Drawing.Point(233, 44);
             this.tb_ProductNameValue.Name = "tb_ProductNameValue";
             this.tb_ProductNameValue.ReadOnly = true;
-            this.tb_ProductNameValue.Size = new System.Drawing.Size(100, 20);
+            this.tb_ProductNameValue.Size = new System.Drawing.Size(100, 27);
             this.tb_ProductNameValue.TabIndex = 21;
             // 
             // btn_Cancel
             // 
-            this.btn_Cancel.Location = new System.Drawing.Point(159, 188);
+            this.btn_Cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btn_Cancel.FlatAppearance.BorderSize = 0;
+            this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Cancel.Font = new System.Drawing.Font("Roboto Condensed", 12F);
+            this.btn_Cancel.ForeColor = System.Drawing.Color.White;
+            this.btn_Cancel.Location = new System.Drawing.Point(211, 217);
             this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_Cancel.Size = new System.Drawing.Size(75, 28);
             this.btn_Cancel.TabIndex = 20;
             this.btn_Cancel.Text = "Cancel";
-            this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.UseVisualStyleBackColor = false;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // btn_OK
             // 
-            this.btn_OK.Location = new System.Drawing.Point(32, 188);
+            this.btn_OK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btn_OK.FlatAppearance.BorderSize = 0;
+            this.btn_OK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_OK.Font = new System.Drawing.Font("Roboto Condensed", 12F);
+            this.btn_OK.ForeColor = System.Drawing.Color.White;
+            this.btn_OK.Location = new System.Drawing.Point(129, 217);
             this.btn_OK.Name = "btn_OK";
-            this.btn_OK.Size = new System.Drawing.Size(75, 23);
+            this.btn_OK.Size = new System.Drawing.Size(75, 28);
             this.btn_OK.TabIndex = 1;
             this.btn_OK.Text = "OK";
-            this.btn_OK.UseVisualStyleBackColor = true;
+            this.btn_OK.UseVisualStyleBackColor = false;
             this.btn_OK.Click += new System.EventHandler(this.btn_OK_Click);
             // 
             // lbl_TypeValue
             // 
             this.lbl_TypeValue.AutoSize = true;
-            this.lbl_TypeValue.Location = new System.Drawing.Point(159, 159);
+            this.lbl_TypeValue.Font = new System.Drawing.Font("Roboto Condensed", 12F);
+            this.lbl_TypeValue.Location = new System.Drawing.Point(229, 188);
             this.lbl_TypeValue.Name = "lbl_TypeValue";
-            this.lbl_TypeValue.Size = new System.Drawing.Size(32, 13);
+            this.lbl_TypeValue.Size = new System.Drawing.Size(43, 19);
             this.lbl_TypeValue.TabIndex = 19;
             this.lbl_TypeValue.Text = "Soort";
             // 
             // lbl_TypeTxt
             // 
             this.lbl_TypeTxt.AutoSize = true;
-            this.lbl_TypeTxt.Location = new System.Drawing.Point(24, 159);
+            this.lbl_TypeTxt.Font = new System.Drawing.Font("Roboto Condensed", 12F);
+            this.lbl_TypeTxt.Location = new System.Drawing.Point(79, 188);
             this.lbl_TypeTxt.Name = "lbl_TypeTxt";
-            this.lbl_TypeTxt.Size = new System.Drawing.Size(38, 13);
+            this.lbl_TypeTxt.Size = new System.Drawing.Size(51, 19);
             this.lbl_TypeTxt.TabIndex = 19;
             this.lbl_TypeTxt.Text = "Soort: ";
             // 
             // lbl_AlcoholicValue
             // 
             this.lbl_AlcoholicValue.AutoSize = true;
-            this.lbl_AlcoholicValue.Location = new System.Drawing.Point(159, 137);
+            this.lbl_AlcoholicValue.Font = new System.Drawing.Font("Roboto Condensed", 12F);
+            this.lbl_AlcoholicValue.Location = new System.Drawing.Point(229, 160);
             this.lbl_AlcoholicValue.Name = "lbl_AlcoholicValue";
-            this.lbl_AlcoholicValue.Size = new System.Drawing.Size(61, 13);
+            this.lbl_AlcoholicValue.Size = new System.Drawing.Size(83, 19);
             this.lbl_AlcoholicValue.TabIndex = 18;
             this.lbl_AlcoholicValue.Text = "Alcoholisch";
             // 
             // lbl_AlcoholicTxt
             // 
             this.lbl_AlcoholicTxt.AutoSize = true;
-            this.lbl_AlcoholicTxt.Location = new System.Drawing.Point(24, 137);
+            this.lbl_AlcoholicTxt.Font = new System.Drawing.Font("Roboto Condensed", 12F);
+            this.lbl_AlcoholicTxt.Location = new System.Drawing.Point(79, 160);
             this.lbl_AlcoholicTxt.Name = "lbl_AlcoholicTxt";
-            this.lbl_AlcoholicTxt.Size = new System.Drawing.Size(67, 13);
+            this.lbl_AlcoholicTxt.Size = new System.Drawing.Size(91, 19);
             this.lbl_AlcoholicTxt.TabIndex = 18;
             this.lbl_AlcoholicTxt.Text = "Alcoholisch: ";
             // 
             // lbl_AmountValue
             // 
             this.lbl_AmountValue.AutoSize = true;
-            this.lbl_AmountValue.Location = new System.Drawing.Point(159, 115);
+            this.lbl_AmountValue.Font = new System.Drawing.Font("Roboto Condensed", 12F);
+            this.lbl_AmountValue.Location = new System.Drawing.Point(229, 131);
             this.lbl_AmountValue.Name = "lbl_AmountValue";
-            this.lbl_AmountValue.Size = new System.Drawing.Size(37, 13);
+            this.lbl_AmountValue.Size = new System.Drawing.Size(51, 19);
             this.lbl_AmountValue.TabIndex = 17;
             this.lbl_AmountValue.Text = "Aantal";
             // 
             // lbl_AmountTxt
             // 
             this.lbl_AmountTxt.AutoSize = true;
-            this.lbl_AmountTxt.Location = new System.Drawing.Point(24, 115);
+            this.lbl_AmountTxt.Font = new System.Drawing.Font("Roboto Condensed", 12F);
+            this.lbl_AmountTxt.Location = new System.Drawing.Point(79, 131);
             this.lbl_AmountTxt.Name = "lbl_AmountTxt";
-            this.lbl_AmountTxt.Size = new System.Drawing.Size(43, 13);
+            this.lbl_AmountTxt.Size = new System.Drawing.Size(59, 19);
             this.lbl_AmountTxt.TabIndex = 17;
             this.lbl_AmountTxt.Text = "Aantal: ";
             // 
             // lbl_PurchasePriceValue
             // 
             this.lbl_PurchasePriceValue.AutoSize = true;
-            this.lbl_PurchasePriceValue.Location = new System.Drawing.Point(159, 93);
+            this.lbl_PurchasePriceValue.Font = new System.Drawing.Font("Roboto Condensed", 12F);
+            this.lbl_PurchasePriceValue.Location = new System.Drawing.Point(229, 102);
             this.lbl_PurchasePriceValue.Name = "lbl_PurchasePriceValue";
-            this.lbl_PurchasePriceValue.Size = new System.Drawing.Size(77, 13);
+            this.lbl_PurchasePriceValue.Size = new System.Drawing.Size(107, 19);
             this.lbl_PurchasePriceValue.TabIndex = 16;
             this.lbl_PurchasePriceValue.Text = "Inkoop Prijs (€)";
             // 
             // lbl_PurchasePriceTxt
             // 
             this.lbl_PurchasePriceTxt.AutoSize = true;
-            this.lbl_PurchasePriceTxt.Location = new System.Drawing.Point(24, 93);
+            this.lbl_PurchasePriceTxt.Font = new System.Drawing.Font("Roboto Condensed", 12F);
+            this.lbl_PurchasePriceTxt.Location = new System.Drawing.Point(79, 102);
             this.lbl_PurchasePriceTxt.Name = "lbl_PurchasePriceTxt";
-            this.lbl_PurchasePriceTxt.Size = new System.Drawing.Size(68, 13);
+            this.lbl_PurchasePriceTxt.Size = new System.Drawing.Size(93, 19);
             this.lbl_PurchasePriceTxt.TabIndex = 16;
             this.lbl_PurchasePriceTxt.Text = "Inkoop Prijs: ";
             // 
             // lbl_MenuPriceValue
             // 
             this.lbl_MenuPriceValue.AutoSize = true;
-            this.lbl_MenuPriceValue.Location = new System.Drawing.Point(159, 71);
+            this.lbl_MenuPriceValue.Font = new System.Drawing.Font("Roboto Condensed", 12F);
+            this.lbl_MenuPriceValue.Location = new System.Drawing.Point(229, 74);
             this.lbl_MenuPriceValue.Name = "lbl_MenuPriceValue";
-            this.lbl_MenuPriceValue.Size = new System.Drawing.Size(84, 13);
+            this.lbl_MenuPriceValue.Size = new System.Drawing.Size(117, 19);
             this.lbl_MenuPriceValue.TabIndex = 15;
             this.lbl_MenuPriceValue.Text = "Verkoop Prijs (€)";
             // 
             // lbl_MenuPriceTxt
             // 
             this.lbl_MenuPriceTxt.AutoSize = true;
-            this.lbl_MenuPriceTxt.Location = new System.Drawing.Point(24, 71);
+            this.lbl_MenuPriceTxt.Font = new System.Drawing.Font("Roboto Condensed", 12F);
+            this.lbl_MenuPriceTxt.Location = new System.Drawing.Point(79, 74);
             this.lbl_MenuPriceTxt.Name = "lbl_MenuPriceTxt";
-            this.lbl_MenuPriceTxt.Size = new System.Drawing.Size(75, 13);
+            this.lbl_MenuPriceTxt.Size = new System.Drawing.Size(103, 19);
             this.lbl_MenuPriceTxt.TabIndex = 15;
             this.lbl_MenuPriceTxt.Text = "Verkoop Prijs: ";
             // 
             // lbl_ProductNameTxt
             // 
             this.lbl_ProductNameTxt.AutoSize = true;
-            this.lbl_ProductNameTxt.Location = new System.Drawing.Point(24, 49);
+            this.lbl_ProductNameTxt.Font = new System.Drawing.Font("Roboto Condensed", 12F);
+            this.lbl_ProductNameTxt.Location = new System.Drawing.Point(79, 47);
             this.lbl_ProductNameTxt.Name = "lbl_ProductNameTxt";
-            this.lbl_ProductNameTxt.Size = new System.Drawing.Size(81, 13);
+            this.lbl_ProductNameTxt.Size = new System.Drawing.Size(109, 19);
             this.lbl_ProductNameTxt.TabIndex = 14;
             this.lbl_ProductNameTxt.Text = "Product Naam: ";
             // 
             // lbl_PreviewTxt
             // 
             this.lbl_PreviewTxt.AutoSize = true;
-            this.lbl_PreviewTxt.Location = new System.Drawing.Point(24, 21);
+            this.lbl_PreviewTxt.Font = new System.Drawing.Font("Roboto Condensed", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_PreviewTxt.Location = new System.Drawing.Point(6, 8);
             this.lbl_PreviewTxt.Name = "lbl_PreviewTxt";
-            this.lbl_PreviewTxt.Size = new System.Drawing.Size(300, 13);
+            this.lbl_PreviewTxt.Size = new System.Drawing.Size(409, 19);
             this.lbl_PreviewTxt.TabIndex = 0;
             this.lbl_PreviewTxt.Text = "Het product met de volgende waarden zal worden verwijderd: ";
             // 
@@ -210,10 +235,13 @@ namespace Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 234);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(420, 260);
             this.Controls.Add(this.pnl_VoorraadConfirm);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "VoorraadConfirmation";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Confirm?";
             this.pnl_VoorraadConfirm.ResumeLayout(false);
             this.pnl_VoorraadConfirm.PerformLayout();

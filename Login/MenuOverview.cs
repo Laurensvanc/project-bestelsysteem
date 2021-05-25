@@ -8,13 +8,13 @@ using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class MenuOverview : Form
+    public partial class MenuOverview : UserControl
     {
         private Menu_Service _menuService;
         private List<MenuName> _menus;
         private string _menuName;
         private string _menuType;
-        private Point _typeButtonsLocation = new Point(126, 396); // location submenu bar
+        private Point _typeButtonsLocation = new Point(370, 849); // location submenu bar
         private bool _deleting = false;
 
         public MenuOverview()
@@ -64,7 +64,7 @@ namespace Login
                                 Button btn = new Button();
                                 btn.Name = product.ProductId.ToString();
                                 btn.Text = product.ProductNaam;
-                                btn.Size = new Size(165, 75);
+                                btn.Size = new Size(215, 100);
                                 btn.FlatStyle = FlatStyle.Popup;
                                 btn.BackColor = Color.White;
                                 btn.Click += btn_Click;
@@ -140,15 +140,15 @@ namespace Login
                 _deleting = true;
                 button.BackColor = Color.Red;
                 lbl_Instruction.ForeColor = Color.Red;
-                lbl_Instruction.Text = "Klik een product om te verwijderen";
+                lbl_Instruction.Text = "Druk op een product om te verwijderen";
             }
             else
             {
                 // turn delete mode off and turn colours back
                 _deleting = false;
-                lbl_Instruction.ForeColor = SystemColors.ControlText;
-                lbl_Instruction.Text = "Klik een product voor meer info";
-                button.BackColor = SystemColors.Control;
+                lbl_Instruction.ForeColor = Color.White;
+                lbl_Instruction.Text = "Druk op een product voor meer info";
+                button.BackColor = Color.FromArgb(237, 99, 151);
                 if (String.IsNullOrEmpty(_menuType)) // if no submenu is selected hide button
                 {
                     button.Hide();
@@ -237,11 +237,12 @@ namespace Login
             {
                 if (b.Name != button.Name)
                 {
-                    b.BackColor = SystemColors.Control;
+                    //b.ForeColor = Color.FromArgb(112, 112, 112);
+                    b.FlatAppearance.BorderSize = 0;
                 }
                 else
                 {
-                    b.BackColor = SystemColors.GradientActiveCaption;
+                    b.FlatAppearance.BorderSize = 2;
                 }
             }
         }
@@ -251,7 +252,7 @@ namespace Login
             // reset colours to default
             foreach (Button b in pnl_MenuDrankButtons.Controls.OfType<Button>())
             {
-                b.BackColor = SystemColors.Control;
+                b.FlatAppearance.BorderSize = 0;
             }
         }
 
@@ -343,14 +344,6 @@ namespace Login
         private void btn_DinerN_Click(object sender, EventArgs e)
         {
             OverviewChanged(sender);
-        }
-
-        private void btn_Voorraad_Click(object sender, EventArgs e)
-        {
-            VoorraadOverview voorraadOverview = new VoorraadOverview();
-            voorraadOverview.FormClosing += (s, ev) => this.Show();
-            voorraadOverview.Show();
-            this.Hide();
         }
 
         private void btn_Refresh_Click(object sender, EventArgs e)

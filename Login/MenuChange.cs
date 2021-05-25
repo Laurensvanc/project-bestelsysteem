@@ -66,7 +66,7 @@ namespace Login
             Button btn = new Button();
             btn.Name = product.ProductId.ToString();
             btn.Text = product.ProductNaam;
-            btn.Size = new Size(130, 65);
+            btn.Size = new Size(137, 65);
             btn.FlatStyle = FlatStyle.Popup;
             btn.BackColor = Color.White;
             btn.Click += btn_Click;
@@ -265,6 +265,11 @@ namespace Login
             {
                 return myCombo.Width; // keep width
             }
+        }
+
+        private void btn_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

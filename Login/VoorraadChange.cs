@@ -19,6 +19,7 @@ namespace Login
             LoadFields(product);
             pnl_AddBtn.Hide();
             pnl_ChangeBtn.Show();
+            lbl_Instruction.Text = "Product aanpassen";
         }
 
         public VoorraadChange()
@@ -30,6 +31,7 @@ namespace Login
             pnl_AddBtn.Show();
             tb_MenuPrice.Clear();
             tb_PurchasePrice.Clear();
+            lbl_Instruction.Text = "Product aanmaken";
         }
 
         private void LoadFields(Product product)
