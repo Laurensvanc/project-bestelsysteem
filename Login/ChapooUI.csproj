@@ -177,6 +177,12 @@
     <Compile Include="BarKeukOverzicht.Designer.cs">
       <DependentUpon>BarKeukOverzicht.cs</DependentUpon>
     </Compile>
+    <Compile Include="BestellingOpnemenDesktop.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BestellingOpnemenDesktop.Designer.cs">
+      <DependentUpon>BestellingOpnemenDesktop.cs</DependentUpon>
+    </Compile>
     <Compile Include="BestellingOpnemen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -265,6 +271,9 @@
     </Compile>
     <EmbeddedResource Include="Afrekenen.resx">
       <DependentUpon>Afrekenen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BestellingOpnemenDesktop.resx">
+      <DependentUpon>BestellingOpnemenDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BestellingOpnemen.resx">
       <DependentUpon>BestellingOpnemen.cs</DependentUpon>

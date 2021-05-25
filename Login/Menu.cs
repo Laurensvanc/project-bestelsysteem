@@ -41,7 +41,7 @@ namespace Login
         void tmr_Tick(object sender, EventArgs e)
         {
             lbl_timeDisplay.Text = DateTime.Now.ToString("F",
-                  CultureInfo.CreateSpecificCulture("en-GB"));
+            CultureInfo.CreateSpecificCulture("en-GB"));
         }
 
         private void btn_navReserveringen_Click(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace Login
 
         private void btn_navBestellingen_Click(object sender, EventArgs e)
         {
-
+            LoadUserControl(new BestellingOpnemenDesktop());
         }
     }
 }

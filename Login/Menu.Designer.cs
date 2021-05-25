@@ -186,9 +186,9 @@ namespace Login
             // 
             // pnl_Display
             // 
-            this.pnl_Display.Location = new System.Drawing.Point(472, 178);
+            this.pnl_Display.Location = new System.Drawing.Point(397, 160);
             this.pnl_Display.Name = "pnl_Display";
-            this.pnl_Display.Size = new System.Drawing.Size(1358, 837);
+            this.pnl_Display.Size = new System.Drawing.Size(1433, 855);
             this.pnl_Display.TabIndex = 4;
             // 
             // Menu
