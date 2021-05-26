@@ -369,6 +369,7 @@
             this.txtOpmerking.AcceptsReturn = true;
             this.txtOpmerking.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.txtOpmerking.Location = new System.Drawing.Point(313, 106);
+            this.txtOpmerking.MaxLength = 250;
             this.txtOpmerking.Multiline = true;
             this.txtOpmerking.Name = "txtOpmerking";
             this.txtOpmerking.Size = new System.Drawing.Size(406, 327);

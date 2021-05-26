@@ -68,5 +68,10 @@ namespace Login
         {
             LoadUserControl(new BestellingOpnemenDesktop());
         }
+
+        private void btn_navRegistreren_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new MedewerkerRegistreren());
+        }
     }
 }

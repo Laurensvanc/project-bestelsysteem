@@ -43,6 +43,7 @@ namespace Login
             this.pnl_Display = new System.Windows.Forms.Panel();
             this.pnl_WhiteStrip = new System.Windows.Forms.Panel();
             this.pnl_PinkStrip = new System.Windows.Forms.Panel();
+            this.btn_navRegistreren = new System.Windows.Forms.ToolStripButton();
             this.ts_navigation.SuspendLayout();
             this.pnl_WhiteStrip.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +60,8 @@ namespace Login
             this.btn_navReserveringen,
             this.btn_navBarKeuken,
             this.btn_navBestellingen,
-            this.btn_navVoorraad});
+            this.btn_navVoorraad,
+            this.btn_navRegistreren});
             this.ts_navigation.Location = new System.Drawing.Point(0, 0);
             this.ts_navigation.Name = "ts_navigation";
             this.ts_navigation.Size = new System.Drawing.Size(344, 1080);
@@ -212,6 +214,19 @@ namespace Login
             this.pnl_PinkStrip.Size = new System.Drawing.Size(1600, 69);
             this.pnl_PinkStrip.TabIndex = 6;
             // 
+            // btn_navRegistreren
+            // 
+            this.btn_navRegistreren.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_navRegistreren.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.btn_navRegistreren.ForeColor = System.Drawing.Color.White;
+            this.btn_navRegistreren.Image = ((System.Drawing.Image)(resources.GetObject("btn_navRegistreren.Image")));
+            this.btn_navRegistreren.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_navRegistreren.Name = "btn_navRegistreren";
+            this.btn_navRegistreren.Size = new System.Drawing.Size(342, 59);
+            this.btn_navRegistreren.Text = "Registreren";
+            this.btn_navRegistreren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_navRegistreren.Click += new System.EventHandler(this.btn_navRegistreren_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,5 +264,6 @@ namespace Login
         private System.Windows.Forms.Panel pnl_Display;
         private System.Windows.Forms.Panel pnl_WhiteStrip;
         private System.Windows.Forms.Panel pnl_PinkStrip;
+        private System.Windows.Forms.ToolStripButton btn_navRegistreren;
     }
 }

@@ -34,8 +34,8 @@
             this.btnRemoveFromOrder = new System.Windows.Forms.Button();
             this.listOrderView = new System.Windows.Forms.ListView();
             this.pnl_Bestellen = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtKlacht = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblNotitieKlacht = new System.Windows.Forms.Label();
@@ -174,10 +174,21 @@
             this.pnl_Bestellen.Controls.Add(this.btnRemoveFromOrder);
             this.pnl_Bestellen.Controls.Add(this.btnAddToOrder);
             this.pnl_Bestellen.Controls.Add(this.btnPlaceOrder);
-            this.pnl_Bestellen.Location = new System.Drawing.Point(5, 12);
+            this.pnl_Bestellen.Location = new System.Drawing.Point(3, 3);
             this.pnl_Bestellen.Name = "pnl_Bestellen";
             this.pnl_Bestellen.Size = new System.Drawing.Size(1410, 878);
             this.pnl_Bestellen.TabIndex = 7;
+            // 
+            // txtKlacht
+            // 
+            this.txtKlacht.AcceptsReturn = true;
+            this.txtKlacht.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtKlacht.Location = new System.Drawing.Point(1156, 84);
+            this.txtKlacht.MaxLength = 250;
+            this.txtKlacht.Multiline = true;
+            this.txtKlacht.Name = "txtKlacht";
+            this.txtKlacht.Size = new System.Drawing.Size(205, 289);
+            this.txtKlacht.TabIndex = 11;
             // 
             // label3
             // 
@@ -188,16 +199,6 @@
             this.label3.Size = new System.Drawing.Size(95, 26);
             this.label3.TabIndex = 24;
             this.label3.Text = "Totaal: €";
-            // 
-            // txtKlacht
-            // 
-            this.txtKlacht.AcceptsReturn = true;
-            this.txtKlacht.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtKlacht.Location = new System.Drawing.Point(1156, 84);
-            this.txtKlacht.Multiline = true;
-            this.txtKlacht.Name = "txtKlacht";
-            this.txtKlacht.Size = new System.Drawing.Size(205, 289);
-            this.txtKlacht.TabIndex = 11;
             // 
             // label2
             // 
@@ -342,6 +343,7 @@
             this.txtNotities.AcceptsReturn = true;
             this.txtNotities.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.txtNotities.Location = new System.Drawing.Point(1156, 84);
+            this.txtNotities.MaxLength = 250;
             this.txtNotities.Multiline = true;
             this.txtNotities.Name = "txtNotities";
             this.txtNotities.Size = new System.Drawing.Size(205, 289);
@@ -555,7 +557,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnl_Bestellen);
             this.Name = "BestellingOpnemenDesktop";
-            this.Size = new System.Drawing.Size(1433, 855);
+            this.Size = new System.Drawing.Size(1433, 898);
             this.pnl_Bestellen.ResumeLayout(false);
             this.pnl_Bestellen.PerformLayout();
             this.pnl_MenuType.ResumeLayout(false);

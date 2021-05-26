@@ -335,7 +335,6 @@ namespace Login
                 lblTotal.Text = "0.00";
                 listOrderView.Clear();
                 txtNotities.Text = "";
-                _tableNr = 0;
                 ShowTables(); // Tafels
                 DisableButtons(); // Disable buttons before selecting a table
                 pnl_Drank.Hide();
@@ -343,6 +342,7 @@ namespace Login
                 txtNotities.Show();
                 txtKlacht.Hide();
                 MessageBox.Show($"Bestelling voor tafel {_tableNr} is geplaatst.");
+                _tableNr = 0;
             }
         }
         private void btnKlacht_Click(object sender, EventArgs e)

@@ -22,27 +22,30 @@ namespace Login
             pnl_Drank.Hide();
             pnl_Tafelnr.Hide();
             pnl_Klacht.Hide();
-            pnl_Instructies.Hide();
+            pnl_Notities.Hide();
         }
         public void ShowColumns()
         {
-            listOrderView.Columns.Add("Bestelling", 210);
-            listOrderView.Columns.Add("Prijs", 75);
+            listOrderView.Columns.Add("Bestelling", 208);
             listOrderView.Columns.Add("Aantal", 75);
+            listOrderView.Columns.Add("Prijs", 80);
             listOrderView.Columns.Add("ID", 40);
         }
         public void ShowMenuItems(int soortID)
         {
-            //productList = productService.GetProducts();
+            listMenuView.Columns.Clear();
+            listMenuView.Items.Clear();
             productList = productService.GetSpecificProduct(soortID);
 
-            listMenuView.Columns.Add("Menu", 295);
-            listMenuView.Columns.Add("Prijs", 75);
+            listMenuView.Columns.Add("Bestelling", 208);
+            listMenuView.Columns.Add("Aantal", 75);
+            listMenuView.Columns.Add("Prijs", 80);
             listMenuView.Columns.Add("ID", 40);
 
             foreach (Product product in productList)
             {
                 ListViewItem li = new ListViewItem(product.ProductNaam);
+                li.SubItems.Add(product.Aantal.ToString());
                 li.SubItems.Add(product.Prijs.ToString("0.00"));
                 li.SubItems.Add(product.ProductId.ToString());
                 listMenuView.Items.Add(li);
@@ -56,13 +59,12 @@ namespace Login
                 if (listMenuView.Items[i].Selected)
                 {
                     float total = float.Parse(lblTotal.Text);
-                    total += float.Parse(listMenuView.Items[i].SubItems[1].Text);
-                    lblTotal.Text = total.ToString("0.00");
+                    bool enoughStock = true;
                     if (listOrderView.Items.Count == 0)
                     {
                         ListViewItem li = new ListViewItem(productList[i].ProductNaam);
-                        li.SubItems.Add(productList[i].Prijs.ToString("0.00"));
                         li.SubItems.Add("1");
+                        li.SubItems.Add(productList[i].Prijs.ToString("0.00"));
                         li.SubItems.Add(productList[i].ProductId.ToString());
                         listOrderView.Items.Add(li);
                     }
@@ -72,25 +74,35 @@ namespace Login
                         bool duplicate = false;
                         do
                         {
-                            if (listOrderView.Items[item].SubItems[3].Text == listMenuView.Items[i].SubItems[2].Text)
+                            if (listOrderView.Items[item].SubItems[3].Text == listMenuView.Items[i].SubItems[3].Text && listMenuView.Items[i].SubItems[1].Text != listOrderView.Items[item].SubItems[1].Text)
                             {
-                                int quantity = int.Parse(listOrderView.Items[item].SubItems[2].Text) + 1;
-                                float totalProduct = float.Parse(listOrderView.Items[item].SubItems[1].Text) + float.Parse(listMenuView.Items[i].SubItems[1].Text);
-                                listOrderView.Items[item].SubItems[1].Text = totalProduct.ToString("0.00");
-                                listOrderView.Items[item].SubItems[2].Text = quantity.ToString();
+                                int quantity = int.Parse(listOrderView.Items[item].SubItems[1].Text) + 1;
+                                float totalProduct = float.Parse(listOrderView.Items[item].SubItems[2].Text) + float.Parse(listMenuView.Items[i].SubItems[2].Text);
+                                listOrderView.Items[item].SubItems[1].Text = quantity.ToString();
+                                listOrderView.Items[item].SubItems[2].Text = totalProduct.ToString("0.00");
                                 duplicate = true;
                                 break;
                             }
+                            else if (listMenuView.Items[i].SubItems[1].Text == listOrderView.Items[item].SubItems[1].Text)
+                            {
+                                MessageBox.Show($"Niet genoeg voorraad product '{listMenuView.Items[i].SubItems[0].Text}' voor bestelling", "Chapoo");
+                                enoughStock = false;
+                            }
                             item++;
                         } while (item < listOrderView.Items.Count);
-                        if (!duplicate)
+                        if (!duplicate && enoughStock)
                         {
                             ListViewItem li = new ListViewItem(productList[i].ProductNaam);
-                            li.SubItems.Add(productList[i].Prijs.ToString("0.00"));
                             li.SubItems.Add("1");
+                            li.SubItems.Add(productList[i].Prijs.ToString("0.00"));
                             li.SubItems.Add(productList[i].ProductId.ToString());
                             listOrderView.Items.Add(li);
                         }
+                    }
+                    if (enoughStock)
+                    {
+                        total += float.Parse(listMenuView.Items[i].SubItems[2].Text);
+                        lblTotal.Text = total.ToString("0.00");
                     }
                 }
             }
@@ -101,8 +113,8 @@ namespace Login
             {
                 if (listOrderView.Items[i].Selected)
                 {
-                    int quantity = int.Parse(listOrderView.Items[i].SubItems[2].Text);
-                    float individualPrice = float.Parse(listOrderView.Items[i].SubItems[1].Text) / float.Parse(quantity.ToString());
+                    int quantity = int.Parse(listOrderView.Items[i].SubItems[1].Text);
+                    float individualPrice = float.Parse(listOrderView.Items[i].SubItems[2].Text) / float.Parse(quantity.ToString());
 
                     float total = float.Parse(lblTotal.Text);
                     total -= individualPrice;
@@ -111,9 +123,9 @@ namespace Login
                     if (quantity > 1)
                     {
                         quantity--;
-                        float totalProduct = float.Parse(listOrderView.Items[i].SubItems[1].Text) - individualPrice;
-                        listOrderView.Items[i].SubItems[1].Text = totalProduct.ToString("0.00");
-                        listOrderView.Items[i].SubItems[2].Text = quantity.ToString();
+                        float totalProduct = float.Parse(listOrderView.Items[i].SubItems[2].Text) - individualPrice;
+                        listOrderView.Items[i].SubItems[2].Text = totalProduct.ToString("0.00");
+                        listOrderView.Items[i].SubItems[1].Text = quantity.ToString();
                     }
                     else
                     {
@@ -121,6 +133,34 @@ namespace Login
                     }
                 }
             }
+        }
+        public void OpenBottle(int soortID) // if whine glas=0: bottle-1, whine glas+5
+        {
+            for (int i = 0; i < listMenuView.Items.Count; i++)
+            {
+                if (listMenuView.Items[i].SubItems[0].Text.Contains("(glas)") && listMenuView.Items[i].SubItems[1].Text == "0")
+                {
+                    int bottleID = GetBottleID(listMenuView.Items[i].SubItems[0].Text);
+                    if (bottleID != 0)
+                    {
+                        productService.OpenBottle(bottleID, int.Parse(listMenuView.Items[i].SubItems[3].Text));
+                    }
+                }
+            }
+            ShowMenuItems(soortID);
+        }
+        public int GetBottleID(string glasNaam)
+        {
+            string flesNaam = glasNaam.Replace("(glas)", "(fles)");
+            int bottleID = 0;
+            for (int i = 0; i < listMenuView.Items.Count; i++)
+            {
+                if (listMenuView.Items[i].SubItems[0].Text.Contains(flesNaam) && listMenuView.Items[i].SubItems[1].Text != "0")
+                {
+                    bottleID = int.Parse(listMenuView.Items[i].SubItems[3].Text); // return id from bottle
+                }
+            }
+            return bottleID;
         }
         private void btnDrankKaart_Click(object sender, EventArgs e)
         {
@@ -164,6 +204,7 @@ namespace Login
         {
             pnl_Drank.Hide();
             ShowMenuItems(7);
+            OpenBottle(7);
         }
         private void btnGedestDrank_Click(object sender, EventArgs e)
         {
@@ -189,7 +230,7 @@ namespace Login
         private void btnKaartoverzicht3_Click(object sender, EventArgs e)
         {
             listMenuView.Clear();
-            pnl_Instructies.Hide();
+            pnl_Notities.Hide();
             pnl_MenuType.Show();
         }
         // tafels
@@ -289,7 +330,7 @@ namespace Login
                 int.Parse(lblTafelnr.Text),
                 float.Parse(lblTotal.Text),
                 txtKlacht.Text,
-                txtInstructies.Text,
+                txtNotities.Text,
                 "Nieuw",
                 OrderList
             );
@@ -311,9 +352,9 @@ namespace Login
             pnl_Klacht.Show();
         }
 
-        private void btnInstructies_Click(object sender, EventArgs e)
+        private void btnNotities_Click(object sender, EventArgs e)
         {
-            pnl_Instructies.Show();
+            pnl_Notities.Show();
         }
     }
 }
