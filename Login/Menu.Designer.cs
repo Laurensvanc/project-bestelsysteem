@@ -41,7 +41,11 @@ namespace Login
             this.lbl_userDisplay = new System.Windows.Forms.Label();
             this.lbl_timeDisplay = new System.Windows.Forms.Label();
             this.pnl_Display = new System.Windows.Forms.Panel();
+            this.pnl_WhiteStrip = new System.Windows.Forms.Panel();
+            this.pnl_PinkStrip = new System.Windows.Forms.Panel();
+            this.btn_navRegistreren = new System.Windows.Forms.ToolStripButton();
             this.ts_navigation.SuspendLayout();
+            this.pnl_WhiteStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // ts_navigation
@@ -56,10 +60,11 @@ namespace Login
             this.btn_navReserveringen,
             this.btn_navBarKeuken,
             this.btn_navBestellingen,
-            this.btn_navVoorraad});
+            this.btn_navVoorraad,
+            this.btn_navRegistreren});
             this.ts_navigation.Location = new System.Drawing.Point(0, 0);
             this.ts_navigation.Name = "ts_navigation";
-            this.ts_navigation.Size = new System.Drawing.Size(344, 1041);
+            this.ts_navigation.Size = new System.Drawing.Size(344, 1080);
             this.ts_navigation.TabIndex = 0;
             this.ts_navigation.Text = "toolStrip1";
             // 
@@ -153,9 +158,9 @@ namespace Login
             this.btn_closeForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_closeForm.ForeColor = System.Drawing.Color.Transparent;
             this.btn_closeForm.Image = global::Login.Properties.Resources.Shut_down;
-            this.btn_closeForm.Location = new System.Drawing.Point(1808, 23);
+            this.btn_closeForm.Location = new System.Drawing.Point(1517, 9);
             this.btn_closeForm.Name = "btn_closeForm";
-            this.btn_closeForm.Size = new System.Drawing.Size(49, 51);
+            this.btn_closeForm.Size = new System.Drawing.Size(44, 49);
             this.btn_closeForm.TabIndex = 1;
             this.btn_closeForm.TabStop = false;
             this.btn_closeForm.UseVisualStyleBackColor = false;
@@ -167,7 +172,7 @@ namespace Login
             this.lbl_userDisplay.BackColor = System.Drawing.Color.Transparent;
             this.lbl_userDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_userDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.lbl_userDisplay.Location = new System.Drawing.Point(374, 27);
+            this.lbl_userDisplay.Location = new System.Drawing.Point(44, 19);
             this.lbl_userDisplay.Name = "lbl_userDisplay";
             this.lbl_userDisplay.Size = new System.Drawing.Size(176, 31);
             this.lbl_userDisplay.TabIndex = 2;
@@ -179,29 +184,58 @@ namespace Login
             this.lbl_timeDisplay.BackColor = System.Drawing.Color.Transparent;
             this.lbl_timeDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_timeDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.lbl_timeDisplay.Location = new System.Drawing.Point(1525, 27);
+            this.lbl_timeDisplay.Location = new System.Drawing.Point(1106, 19);
             this.lbl_timeDisplay.Name = "lbl_timeDisplay";
-            this.lbl_timeDisplay.Size = new System.Drawing.Size(67, 31);
+            this.lbl_timeDisplay.Size = new System.Drawing.Size(0, 31);
             this.lbl_timeDisplay.TabIndex = 3;
-            this.lbl_timeDisplay.Text = "date";
             // 
             // pnl_Display
             // 
-            this.pnl_Display.Location = new System.Drawing.Point(397, 160);
+            this.pnl_Display.Location = new System.Drawing.Point(344, 138);
             this.pnl_Display.Name = "pnl_Display";
-            this.pnl_Display.Size = new System.Drawing.Size(1433, 855);
+            this.pnl_Display.Size = new System.Drawing.Size(1576, 942);
             this.pnl_Display.TabIndex = 4;
+            // 
+            // pnl_WhiteStrip
+            // 
+            this.pnl_WhiteStrip.Controls.Add(this.btn_closeForm);
+            this.pnl_WhiteStrip.Controls.Add(this.lbl_userDisplay);
+            this.pnl_WhiteStrip.Controls.Add(this.lbl_timeDisplay);
+            this.pnl_WhiteStrip.Location = new System.Drawing.Point(343, 0);
+            this.pnl_WhiteStrip.Name = "pnl_WhiteStrip";
+            this.pnl_WhiteStrip.Size = new System.Drawing.Size(1577, 69);
+            this.pnl_WhiteStrip.TabIndex = 5;
+            // 
+            // pnl_PinkStrip
+            // 
+            this.pnl_PinkStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.pnl_PinkStrip.Location = new System.Drawing.Point(338, 69);
+            this.pnl_PinkStrip.Name = "pnl_PinkStrip";
+            this.pnl_PinkStrip.Size = new System.Drawing.Size(1600, 69);
+            this.pnl_PinkStrip.TabIndex = 6;
+            // 
+            // btn_navRegistreren
+            // 
+            this.btn_navRegistreren.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_navRegistreren.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.btn_navRegistreren.ForeColor = System.Drawing.Color.White;
+            this.btn_navRegistreren.Image = ((System.Drawing.Image)(resources.GetObject("btn_navRegistreren.Image")));
+            this.btn_navRegistreren.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_navRegistreren.Name = "btn_navRegistreren";
+            this.btn_navRegistreren.Size = new System.Drawing.Size(342, 59);
+            this.btn_navRegistreren.Text = "Registreren";
+            this.btn_navRegistreren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_navRegistreren.Click += new System.EventHandler(this.btn_navRegistreren_Click);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.pnl_PinkStrip);
+            this.Controls.Add(this.pnl_WhiteStrip);
             this.Controls.Add(this.pnl_Display);
-            this.Controls.Add(this.lbl_timeDisplay);
-            this.Controls.Add(this.lbl_userDisplay);
-            this.Controls.Add(this.btn_closeForm);
             this.Controls.Add(this.ts_navigation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Menu";
@@ -209,8 +243,9 @@ namespace Login
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ts_navigation.ResumeLayout(false);
             this.ts_navigation.PerformLayout();
+            this.pnl_WhiteStrip.ResumeLayout(false);
+            this.pnl_WhiteStrip.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -227,5 +262,8 @@ namespace Login
         private System.Windows.Forms.Label lbl_userDisplay;
         private System.Windows.Forms.Label lbl_timeDisplay;
         private System.Windows.Forms.Panel pnl_Display;
+        private System.Windows.Forms.Panel pnl_WhiteStrip;
+        private System.Windows.Forms.Panel pnl_PinkStrip;
+        private System.Windows.Forms.ToolStripButton btn_navRegistreren;
     }
 }

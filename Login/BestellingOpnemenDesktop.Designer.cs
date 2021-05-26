@@ -35,18 +35,19 @@
             this.listOrderView = new System.Windows.Forms.ListView();
             this.pnl_Bestellen = new System.Windows.Forms.Panel();
             this.txtKlacht = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblInstructKlacht = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.btnKaartOverzicht = new System.Windows.Forms.Button();
-            this.txtInstructies = new System.Windows.Forms.TextBox();
+            this.lblNotitieKlacht = new System.Windows.Forms.Label();
             this.pnl_MenuType = new System.Windows.Forms.Panel();
             this.btnNagerecht = new System.Windows.Forms.Button();
             this.btnTussengerecht = new System.Windows.Forms.Button();
             this.btnHoofdgerecht = new System.Windows.Forms.Button();
             this.btnDrankKaart = new System.Windows.Forms.Button();
             this.btnVoorgerecht = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.btnKaartOverzicht = new System.Windows.Forms.Button();
+            this.txtNotities = new System.Windows.Forms.TextBox();
             this.pnl_Drank = new System.Windows.Forms.Panel();
             this.btnKoffieThee = new System.Windows.Forms.Button();
             this.btnGedestDrank = new System.Windows.Forms.Button();
@@ -64,10 +65,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnInstructies = new System.Windows.Forms.Button();
             this.btnKlacht = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.pnl_Bestellen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.pnl_MenuType.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.pnl_Drank.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -76,9 +76,9 @@
             // 
             // listMenuView
             // 
-            this.listMenuView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(60)))), ((int)(((byte)(93)))));
+            this.listMenuView.BackColor = System.Drawing.Color.White;
             this.listMenuView.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.listMenuView.ForeColor = System.Drawing.Color.White;
+            this.listMenuView.ForeColor = System.Drawing.Color.Black;
             this.listMenuView.FullRowSelect = true;
             this.listMenuView.GridLines = true;
             this.listMenuView.HideSelection = false;
@@ -133,9 +133,9 @@
             // 
             // listOrderView
             // 
-            this.listOrderView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(60)))), ((int)(((byte)(93)))));
+            this.listOrderView.BackColor = System.Drawing.Color.White;
             this.listOrderView.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.listOrderView.ForeColor = System.Drawing.Color.White;
+            this.listOrderView.ForeColor = System.Drawing.Color.Black;
             this.listOrderView.FullRowSelect = true;
             this.listOrderView.GridLines = true;
             this.listOrderView.HideSelection = false;
@@ -148,15 +148,15 @@
             // 
             // pnl_Bestellen
             // 
-            this.pnl_Bestellen.Controls.Add(this.label3);
             this.pnl_Bestellen.Controls.Add(this.txtKlacht);
+            this.pnl_Bestellen.Controls.Add(this.label3);
             this.pnl_Bestellen.Controls.Add(this.label2);
             this.pnl_Bestellen.Controls.Add(this.label1);
-            this.pnl_Bestellen.Controls.Add(this.lblInstructKlacht);
+            this.pnl_Bestellen.Controls.Add(this.lblNotitieKlacht);
+            this.pnl_Bestellen.Controls.Add(this.pnl_MenuType);
             this.pnl_Bestellen.Controls.Add(this.pictureBox4);
             this.pnl_Bestellen.Controls.Add(this.btnKaartOverzicht);
-            this.pnl_Bestellen.Controls.Add(this.txtInstructies);
-            this.pnl_Bestellen.Controls.Add(this.pnl_MenuType);
+            this.pnl_Bestellen.Controls.Add(this.txtNotities);
             this.pnl_Bestellen.Controls.Add(this.pnl_Drank);
             this.pnl_Bestellen.Controls.Add(this.label8);
             this.pnl_Bestellen.Controls.Add(this.pictureBox3);
@@ -174,7 +174,7 @@
             this.pnl_Bestellen.Controls.Add(this.btnRemoveFromOrder);
             this.pnl_Bestellen.Controls.Add(this.btnAddToOrder);
             this.pnl_Bestellen.Controls.Add(this.btnPlaceOrder);
-            this.pnl_Bestellen.Location = new System.Drawing.Point(5, 12);
+            this.pnl_Bestellen.Location = new System.Drawing.Point(3, 3);
             this.pnl_Bestellen.Name = "pnl_Bestellen";
             this.pnl_Bestellen.Size = new System.Drawing.Size(1410, 878);
             this.pnl_Bestellen.TabIndex = 7;
@@ -184,10 +184,21 @@
             this.txtKlacht.AcceptsReturn = true;
             this.txtKlacht.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.txtKlacht.Location = new System.Drawing.Point(1156, 84);
+            this.txtKlacht.MaxLength = 250;
             this.txtKlacht.Multiline = true;
             this.txtKlacht.Name = "txtKlacht";
             this.txtKlacht.Size = new System.Drawing.Size(205, 289);
             this.txtKlacht.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label3.Location = new System.Drawing.Point(608, 805);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(95, 26);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Totaal: €";
             // 
             // label2
             // 
@@ -209,60 +220,27 @@
             this.label1.TabIndex = 21;
             this.label1.Text = "Gerecht";
             // 
-            // lblInstructKlacht
+            // lblNotitieKlacht
             // 
-            this.lblInstructKlacht.AutoSize = true;
-            this.lblInstructKlacht.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
-            this.lblInstructKlacht.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblInstructKlacht.ForeColor = System.Drawing.Color.White;
-            this.lblInstructKlacht.Location = new System.Drawing.Point(1177, 47);
-            this.lblInstructKlacht.Name = "lblInstructKlacht";
-            this.lblInstructKlacht.Size = new System.Drawing.Size(93, 24);
-            this.lblInstructKlacht.TabIndex = 19;
-            this.lblInstructKlacht.Text = "Instructies";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
-            this.pictureBox4.Location = new System.Drawing.Point(1156, 34);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(205, 50);
-            this.pictureBox4.TabIndex = 20;
-            this.pictureBox4.TabStop = false;
-            // 
-            // btnKaartOverzicht
-            // 
-            this.btnKaartOverzicht.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
-            this.btnKaartOverzicht.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnKaartOverzicht.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnKaartOverzicht.ForeColor = System.Drawing.Color.White;
-            this.btnKaartOverzicht.Location = new System.Drawing.Point(631, 38);
-            this.btnKaartOverzicht.Name = "btnKaartOverzicht";
-            this.btnKaartOverzicht.Size = new System.Drawing.Size(194, 44);
-            this.btnKaartOverzicht.TabIndex = 7;
-            this.btnKaartOverzicht.Text = "Kaartoverzicht";
-            this.btnKaartOverzicht.UseVisualStyleBackColor = false;
-            this.btnKaartOverzicht.Click += new System.EventHandler(this.btnKaartOverzicht_Click);
-            // 
-            // txtInstructies
-            // 
-            this.txtInstructies.AcceptsReturn = true;
-            this.txtInstructies.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtInstructies.Location = new System.Drawing.Point(1156, 84);
-            this.txtInstructies.Multiline = true;
-            this.txtInstructies.Name = "txtInstructies";
-            this.txtInstructies.Size = new System.Drawing.Size(205, 289);
-            this.txtInstructies.TabIndex = 11;
+            this.lblNotitieKlacht.AutoSize = true;
+            this.lblNotitieKlacht.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
+            this.lblNotitieKlacht.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblNotitieKlacht.ForeColor = System.Drawing.Color.White;
+            this.lblNotitieKlacht.Location = new System.Drawing.Point(1177, 47);
+            this.lblNotitieKlacht.Name = "lblNotitieKlacht";
+            this.lblNotitieKlacht.Size = new System.Drawing.Size(71, 24);
+            this.lblNotitieKlacht.TabIndex = 19;
+            this.lblNotitieKlacht.Text = "Notities";
             // 
             // pnl_MenuType
             // 
-            this.pnl_MenuType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(60)))), ((int)(((byte)(93)))));
+            this.pnl_MenuType.BackColor = System.Drawing.Color.White;
             this.pnl_MenuType.Controls.Add(this.btnNagerecht);
             this.pnl_MenuType.Controls.Add(this.btnTussengerecht);
             this.pnl_MenuType.Controls.Add(this.btnHoofdgerecht);
             this.pnl_MenuType.Controls.Add(this.btnDrankKaart);
             this.pnl_MenuType.Controls.Add(this.btnVoorgerecht);
-            this.pnl_MenuType.Location = new System.Drawing.Point(13, 85);
+            this.pnl_MenuType.Location = new System.Drawing.Point(13, 84);
             this.pnl_MenuType.Name = "pnl_MenuType";
             this.pnl_MenuType.Size = new System.Drawing.Size(815, 344);
             this.pnl_MenuType.TabIndex = 8;
@@ -337,9 +315,43 @@
             this.btnVoorgerecht.UseVisualStyleBackColor = false;
             this.btnVoorgerecht.Click += new System.EventHandler(this.btnVoorgerecht_Click);
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
+            this.pictureBox4.Location = new System.Drawing.Point(1156, 34);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(205, 50);
+            this.pictureBox4.TabIndex = 20;
+            this.pictureBox4.TabStop = false;
+            // 
+            // btnKaartOverzicht
+            // 
+            this.btnKaartOverzicht.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnKaartOverzicht.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKaartOverzicht.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.btnKaartOverzicht.ForeColor = System.Drawing.Color.White;
+            this.btnKaartOverzicht.Location = new System.Drawing.Point(631, 38);
+            this.btnKaartOverzicht.Name = "btnKaartOverzicht";
+            this.btnKaartOverzicht.Size = new System.Drawing.Size(194, 44);
+            this.btnKaartOverzicht.TabIndex = 7;
+            this.btnKaartOverzicht.Text = "Kaartoverzicht";
+            this.btnKaartOverzicht.UseVisualStyleBackColor = false;
+            this.btnKaartOverzicht.Click += new System.EventHandler(this.btnKaartOverzicht_Click);
+            // 
+            // txtNotities
+            // 
+            this.txtNotities.AcceptsReturn = true;
+            this.txtNotities.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtNotities.Location = new System.Drawing.Point(1156, 84);
+            this.txtNotities.MaxLength = 250;
+            this.txtNotities.Multiline = true;
+            this.txtNotities.Name = "txtNotities";
+            this.txtNotities.Size = new System.Drawing.Size(205, 289);
+            this.txtNotities.TabIndex = 11;
+            // 
             // pnl_Drank
             // 
-            this.pnl_Drank.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(60)))), ((int)(((byte)(93)))));
+            this.pnl_Drank.BackColor = System.Drawing.Color.White;
             this.pnl_Drank.Controls.Add(this.btnKoffieThee);
             this.pnl_Drank.Controls.Add(this.btnGedestDrank);
             this.pnl_Drank.Controls.Add(this.btnFrisdrank);
@@ -521,9 +533,9 @@
             this.btnInstructies.Name = "btnInstructies";
             this.btnInstructies.Size = new System.Drawing.Size(97, 50);
             this.btnInstructies.TabIndex = 9;
-            this.btnInstructies.Text = "Instructies";
+            this.btnInstructies.Text = "Notities";
             this.btnInstructies.UseVisualStyleBackColor = false;
-            this.btnInstructies.Click += new System.EventHandler(this.btnInstructies_Click);
+            this.btnInstructies.Click += new System.EventHandler(this.btnNotities_Click);
             // 
             // btnKlacht
             // 
@@ -539,27 +551,17 @@
             this.btnKlacht.UseVisualStyleBackColor = false;
             this.btnKlacht.Click += new System.EventHandler(this.btnKlacht_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label3.Location = new System.Drawing.Point(608, 805);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 26);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "Totaal: €";
-            // 
             // BestellingOpnemenDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnl_Bestellen);
             this.Name = "BestellingOpnemenDesktop";
-            this.Size = new System.Drawing.Size(1433, 855);
+            this.Size = new System.Drawing.Size(1433, 898);
             this.pnl_Bestellen.ResumeLayout(false);
             this.pnl_Bestellen.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.pnl_MenuType.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.pnl_Drank.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -592,7 +594,7 @@
         private System.Windows.Forms.Button btnInstructies;
         private System.Windows.Forms.Button btnKlacht;
         private System.Windows.Forms.TextBox txtKlacht;
-        private System.Windows.Forms.TextBox txtInstructies;
+        private System.Windows.Forms.TextBox txtNotities;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
@@ -602,7 +604,7 @@
         private System.Windows.Forms.FlowLayoutPanel flp_TableSelect;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label lblInstructKlacht;
+        private System.Windows.Forms.Label lblNotitieKlacht;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
