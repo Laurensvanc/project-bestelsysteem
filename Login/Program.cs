@@ -21,7 +21,6 @@ namespace Login
             Application.Run(new Menu());
             //Application.Run(new Platform());
             //Application.Run(new RestaurantOverzicht());
-            //Application.Run(new Afrekenen());
             //Application.Run(new MedewerkerRegistreren());
             //Application.Run(new LoginForm());
             //Application.Run(new MenuOverview());

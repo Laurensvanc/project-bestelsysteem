@@ -73,5 +73,10 @@ namespace Login
         {
             LoadUserControl(new MedewerkerRegistreren());
         }
+
+        private void btn_navAfrekenen_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new Afrekenen());
+        }
     }
 }

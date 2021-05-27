@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class Afrekenen : Form
+    public partial class Afrekenen : UserControl
     {
         private Transaction_Service _transaction_Service = new Transaction_Service();
         private double _totaalPrijs;
@@ -20,12 +20,13 @@ namespace Login
         private Order_Info _orderInfo;
         private List<int> _bestellingIDs;
         private DateTime _nu = DateTime.Now;
+        private int _tafelID;
+        private Form _bon;
 
         public Afrekenen()
         {
             InitializeComponent();
             pnl_Afrekenen.Hide();
-            pnl_Opmerking.Hide();
             LoadTables();
         }
         public void LoadTables()
@@ -62,6 +63,7 @@ namespace Login
             listOrderView.Clear();
             listOrderViewTip.Clear();
             listOrderViewTotaal.Clear();
+            _tafelID = id;
             _totaalPrijs = 0;
             _bestellingIDs = new List<int>();
 
@@ -94,7 +96,6 @@ namespace Login
 
                 if (!_bestellingIDs.Contains(order.BestellingID)) _bestellingIDs.Add(order.BestellingID);
             }
-
             listOrderViewTip.Columns.Add("Tip:", 100);
             listOrderViewTotaal.Columns.Add("Totaal prijs:", 325);
             _totaalPrijs += double.Parse(nudTip.Text);
@@ -115,7 +116,7 @@ namespace Login
             int tafel = int.Parse(lblAfrekenen.Text.Replace("Afrekenen tafel ", ""));
             LoadListView(tafel);
 
-            DialogResult dialogResult = MessageBox.Show("print bon?", "Chapoo", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Wilt u de bon?", "Chapoo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 BonGeprint = true;
@@ -133,12 +134,15 @@ namespace Login
                 float.Parse(_totaalPrijs.ToString()), 
                 float.Parse(nudTip.Text),
                 betaalWijze);
-            if(_transaction_Service.UpdateTransaction(transactie))
+
+            _bon = new Bon(_orderList, _tafelID, _orderInfo.Naam, double.Parse(nudTip.Text), betaalWijze); // maak  bon
+
+            if (_transaction_Service.UpdateTransaction(transactie))
             {
                 MessageBox.Show($"Rekening tafel {tafel} van €{_totaalPrijs.ToString("0.00")} is betaald.", "Chapoo");
-                MessageBox.Show("Bon is uitgeprint.", "Chapoo");
+                if (BonGeprint) _bon.ShowDialog();
             }
-
+            nudTip.Value = 0;
             pnl_Afrekenen.Hide();
             LoadTables();
         }
@@ -150,16 +154,6 @@ namespace Login
         private void rbtnContant_CheckedChanged(object sender, EventArgs e)
         {
             btnBetaal.Enabled = true;
-        }
-        private void btnOpmerking_Click(object sender, EventArgs e)
-        {
-            pnl_Opmerking.Show();
-            pnl_Afrekenen.Hide();
-        }
-        private void btnTerug_Click(object sender, EventArgs e)
-        {
-            pnl_Opmerking.Hide();
-            pnl_Afrekenen.Show();
         }
         private void btnTerugOverzicht_Click(object sender, EventArgs e)
         {

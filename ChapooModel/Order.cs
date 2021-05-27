@@ -12,12 +12,14 @@ namespace ChapooModel
         public string ProductNaam { get; set; }
         public double Prijs { get; set; }
         public int Aantal { get; set; }
-        public Order(int BestellingID, string ProductNaam, double Prijs, int Aantal)
+        public bool isAlcohol { get; set; }
+        public Order(int BestellingID, string ProductNaam, double Prijs, int Aantal, bool isAlcohol)
         {
             this.BestellingID = BestellingID;
             this.ProductNaam = ProductNaam;
             this.Prijs = Prijs * Aantal;
             this.Aantal = Aantal;
+            this.isAlcohol = isAlcohol;
         }
     }
 }
