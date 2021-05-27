@@ -47,6 +47,7 @@ namespace Login
             this.ClientSize = new System.Drawing.Size(412, 887);
             this.Controls.Add(this.pnl_Display);
             this.Name = "MobileMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chapoo Home";
             this.ResumeLayout(false);
 

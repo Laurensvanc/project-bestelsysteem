@@ -14,15 +14,19 @@ namespace Login
 {
     public partial class BestellingOpnemen : UserControl
     {
+        private Platform _platform;
+        private MobileMenu _mobileMenu;
         public Product_Service productService = new Product_Service();
         public List<Product> productList = new List<Product>();
-        public BestellingOpnemen()
+        public BestellingOpnemen(Platform platform, MobileMenu mobileMenu)
         {
             InitializeComponent();
             pnl_Drank.Hide();
             pnl_Tafelnr.Hide();
             pnl_Klacht.Hide();
             pnl_Notities.Hide();
+            _platform = platform;
+            _mobileMenu = mobileMenu;
         }
         public void ShowColumns()
         {
@@ -355,6 +359,15 @@ namespace Login
         private void btnNotities_Click(object sender, EventArgs e)
         {
             pnl_Notities.Show();
+        }
+
+        private void btn_return_Click(object sender, EventArgs e)
+        {
+            MobileLogin mobileLogin = new MobileLogin(_platform);
+
+            mobileLogin.Show();
+            //this.Hide();
+            _mobileMenu.Hide();
         }
     }
 }

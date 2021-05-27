@@ -46,9 +46,9 @@
             this.lbl_gebruikersNaam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.lbl_gebruikersNaam.Location = new System.Drawing.Point(25, 372);
             this.lbl_gebruikersNaam.Name = "lbl_gebruikersNaam";
-            this.lbl_gebruikersNaam.Size = new System.Drawing.Size(260, 38);
+            this.lbl_gebruikersNaam.Size = new System.Drawing.Size(252, 38);
             this.lbl_gebruikersNaam.TabIndex = 1;
-            this.lbl_gebruikersNaam.Text = "Gebruikers naam";
+            this.lbl_gebruikersNaam.Text = "Gebruikersnaam";
             // 
             // txb_gebruikersNaam
             // 
@@ -65,6 +65,7 @@
             this.txb_wachtwoord.Name = "txb_wachtwoord";
             this.txb_wachtwoord.Size = new System.Drawing.Size(323, 36);
             this.txb_wachtwoord.TabIndex = 4;
+            this.txb_wachtwoord.UseSystemPasswordChar = true;
             // 
             // lbl_wachtwoord
             // 
@@ -87,6 +88,7 @@
             this.lbl_wachtwoordReset.Size = new System.Drawing.Size(342, 38);
             this.lbl_wachtwoordReset.TabIndex = 6;
             this.lbl_wachtwoordReset.Text = "Wachtwoord vergeten?";
+            this.lbl_wachtwoordReset.Click += new System.EventHandler(this.lbl_wachtwoordReset_Click);
             // 
             // btn_return
             // 
@@ -138,7 +140,7 @@
             this.Controls.Add(this.txb_gebruikersNaam);
             this.Controls.Add(this.lbl_gebruikersNaam);
             this.Controls.Add(this.pb_Logo);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MobileLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chapoo Login";

@@ -28,10 +28,17 @@ namespace Login
 
         private void btn_continue_Click(object sender, EventArgs e)
         {
-            MobileMenu menu = new MobileMenu(this);
+            // check login code
 
-            menu.Show();
+            MobileMenu mobileMenu = new MobileMenu(this, _platform);
+
+            mobileMenu.Show();
             this.Hide();
+        }
+
+        private void lbl_wachtwoordReset_Click(object sender, EventArgs e)
+        {
+            // wachtwoord vergeten code
         }
     }
 }

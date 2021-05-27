@@ -48,6 +48,7 @@
             this.btnVoorgerecht = new System.Windows.Forms.Button();
             this.lblTafelnr = new System.Windows.Forms.Label();
             this.pnl_TafelSelect = new System.Windows.Forms.Panel();
+            this.btn_return = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnTafel10 = new System.Windows.Forms.Button();
             this.btnTafel9 = new System.Windows.Forms.Button();
@@ -341,6 +342,7 @@
             // 
             // pnl_TafelSelect
             // 
+            this.pnl_TafelSelect.Controls.Add(this.btn_return);
             this.pnl_TafelSelect.Controls.Add(this.label2);
             this.pnl_TafelSelect.Controls.Add(this.btnTafel10);
             this.pnl_TafelSelect.Controls.Add(this.btnTafel9);
@@ -356,6 +358,19 @@
             this.pnl_TafelSelect.Name = "pnl_TafelSelect";
             this.pnl_TafelSelect.Size = new System.Drawing.Size(407, 878);
             this.pnl_TafelSelect.TabIndex = 10;
+            // 
+            // btn_return
+            // 
+            this.btn_return.BackColor = System.Drawing.Color.White;
+            this.btn_return.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_return.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_return.Image = global::Login.Properties.Resources.arrow_left_pink;
+            this.btn_return.Location = new System.Drawing.Point(2, 10);
+            this.btn_return.Name = "btn_return";
+            this.btn_return.Size = new System.Drawing.Size(60, 60);
+            this.btn_return.TabIndex = 17;
+            this.btn_return.UseVisualStyleBackColor = false;
+            this.btn_return.Click += new System.EventHandler(this.btn_return_Click);
             // 
             // label2
             // 
@@ -782,5 +797,6 @@
         private System.Windows.Forms.Button btnKaartoverzicht3;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btn_return;
     }
 }

@@ -34,7 +34,13 @@ namespace Login
             if (encryptedww != string.Empty)
             {
                 if (BCrypt.Net.BCrypt.Verify(wwtxt.Text, encryptedww)) { 
-                    new Menu().Show();
+                    new Menu(this).Show();
+
+                    // clear and select first textbox in case logout
+                    usertxt.Clear();
+                    wwtxt.Clear();
+                    usertxt.Select();
+
                     this.Hide();
                 }
                 else

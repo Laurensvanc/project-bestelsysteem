@@ -13,19 +13,15 @@ namespace Login
 {
     public partial class Menu : Form
     {
-        public Menu()
+        private LoginForm _loginForm;
+        public Menu(LoginForm loginForm)
         {
             InitializeComponent();
             btn_closeForm.FlatAppearance.MouseOverBackColor = btn_closeForm.BackColor;
             TimeDisplay();
-            //pnl_Reserveringen.Controls.Add((new RestaurantOverzicht()).Controls[0]);
-            //pnl_Reserveringen.Controls.Add((new RestaurantOverzicht()).Controls[1]);
+            _loginForm = loginForm;
         }
 
-        private void btn_closeForm_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
         public void TimeDisplay()
         {
             Timer tmr = null;
@@ -72,6 +68,29 @@ namespace Login
         private void btn_navRegistreren_Click(object sender, EventArgs e)
         {
             LoadUserControl(new MedewerkerRegistreren());
+        }
+
+        private void btn_closeForm_Click(object sender, EventArgs e)
+        {
+            if (!pnl_LogoutBorder.Visible)
+            {
+                pnl_LogoutBorder.Show();
+            }
+            else
+            {
+                pnl_LogoutBorder.Hide();
+            }
+            
+        }
+        private void btn_Uitloggen_Click(object sender, EventArgs e)
+        {
+            _loginForm.Show();
+            this.Hide();
+        }
+
+        private void btn_Afsluiten_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
