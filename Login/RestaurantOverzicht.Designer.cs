@@ -34,12 +34,10 @@
             this.btnMin = new System.Windows.Forms.Button();
             this.btnFresh = new System.Windows.Forms.Button();
             this.pnlReservering = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbTafel = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtAchternaam = new System.Windows.Forms.TextBox();
-            this.txtGeboorteDatum = new System.Windows.Forms.TextBox();
             this.btnSelectKlant = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTellie = new System.Windows.Forms.TextBox();
@@ -62,6 +60,8 @@
             this.btnTerug = new System.Windows.Forms.Button();
             this.btnKlantOpslaan = new System.Windows.Forms.Button();
             this.lstKlantSysteem = new System.Windows.Forms.ListView();
+            this.geboorteDatumPicker = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             this.pnlReservering.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericAantal)).BeginInit();
             this.pnlKlantSysteem.SuspendLayout();
@@ -125,11 +125,11 @@
             // 
             this.pnlReservering.BackColor = System.Drawing.Color.Transparent;
             this.pnlReservering.Controls.Add(this.label7);
+            this.pnlReservering.Controls.Add(this.geboorteDatumPicker);
             this.pnlReservering.Controls.Add(this.label6);
             this.pnlReservering.Controls.Add(this.cmbTafel);
             this.pnlReservering.Controls.Add(this.label5);
             this.pnlReservering.Controls.Add(this.txtAchternaam);
-            this.pnlReservering.Controls.Add(this.txtGeboorteDatum);
             this.pnlReservering.Controls.Add(this.btnSelectKlant);
             this.pnlReservering.Controls.Add(this.label2);
             this.pnlReservering.Controls.Add(this.txtTellie);
@@ -148,62 +148,51 @@
             this.pnlReservering.Name = "pnlReservering";
             this.pnlReservering.Size = new System.Drawing.Size(1305, 821);
             this.pnlReservering.TabIndex = 5;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(167, 263);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 13);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "Capaciteit:";
+            this.pnlReservering.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlReservering_Paint);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(160, 223);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(228, 405);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 13);
+            this.label6.Size = new System.Drawing.Size(51, 24);
             this.label6.TabIndex = 20;
             this.label6.Text = "Tafel";
             // 
             // cmbTafel
             // 
+            this.cmbTafel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTafel.FormattingEnabled = true;
-            this.cmbTafel.Location = new System.Drawing.Point(163, 239);
+            this.cmbTafel.Location = new System.Drawing.Point(232, 432);
             this.cmbTafel.Name = "cmbTafel";
-            this.cmbTafel.Size = new System.Drawing.Size(121, 21);
-            this.cmbTafel.TabIndex = 19;
+            this.cmbTafel.Size = new System.Drawing.Size(47, 33);
+            this.cmbTafel.TabIndex = 5;
             this.cmbTafel.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(146, 87);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(207, 119);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.Size = new System.Drawing.Size(112, 24);
             this.label5.TabIndex = 18;
             this.label5.Text = "Achternaam";
             // 
             // txtAchternaam
             // 
-            this.txtAchternaam.Location = new System.Drawing.Point(149, 103);
+            this.txtAchternaam.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAchternaam.Location = new System.Drawing.Point(211, 146);
             this.txtAchternaam.Name = "txtAchternaam";
-            this.txtAchternaam.Size = new System.Drawing.Size(107, 20);
-            this.txtAchternaam.TabIndex = 17;
-            // 
-            // txtGeboorteDatum
-            // 
-            this.txtGeboorteDatum.Location = new System.Drawing.Point(37, 142);
-            this.txtGeboorteDatum.Name = "txtGeboorteDatum";
-            this.txtGeboorteDatum.Size = new System.Drawing.Size(120, 20);
-            this.txtGeboorteDatum.TabIndex = 16;
+            this.txtAchternaam.Size = new System.Drawing.Size(155, 32);
+            this.txtAchternaam.TabIndex = 1;
             // 
             // btnSelectKlant
             // 
             this.btnSelectKlant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnSelectKlant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelectKlant.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectKlant.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectKlant.ForeColor = System.Drawing.Color.White;
             this.btnSelectKlant.Location = new System.Drawing.Point(1048, 12);
             this.btnSelectKlant.Name = "btnSelectKlant";
@@ -216,36 +205,39 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 165);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(36, 317);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 13);
+            this.label2.Size = new System.Drawing.Size(164, 24);
             this.label2.TabIndex = 14;
-            this.label2.Text = "TelefoonNummer";
+            this.label2.Text = "Telefoon Nummer";
             // 
             // txtTellie
             // 
-            this.txtTellie.Location = new System.Drawing.Point(37, 181);
+            this.txtTellie.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTellie.Location = new System.Drawing.Point(40, 344);
             this.txtTellie.Name = "txtTellie";
-            this.txtTellie.Size = new System.Drawing.Size(120, 20);
-            this.txtTellie.TabIndex = 13;
+            this.txtTellie.Size = new System.Drawing.Size(184, 32);
+            this.txtTellie.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 126);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(33, 215);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.Size = new System.Drawing.Size(148, 24);
             this.label1.TabIndex = 12;
-            this.label1.Text = "GeboorteDatum";
+            this.label1.Text = "Geboorte Datum";
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // lblDatum
             // 
             this.lblDatum.AutoSize = true;
-            this.lblDatum.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDatum.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDatum.Location = new System.Drawing.Point(413, 78);
             this.lblDatum.Name = "lblDatum";
-            this.lblDatum.Size = new System.Drawing.Size(384, 25);
+            this.lblDatum.Size = new System.Drawing.Size(401, 25);
             this.lblDatum.TabIndex = 10;
             this.lblDatum.Text = "Ingeplande Reserveringen voor vandaag";
             // 
@@ -262,16 +254,17 @@
             // 
             // NumericAantal
             // 
-            this.NumericAantal.Location = new System.Drawing.Point(37, 240);
+            this.NumericAantal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumericAantal.Location = new System.Drawing.Point(40, 432);
             this.NumericAantal.Name = "NumericAantal";
-            this.NumericAantal.Size = new System.Drawing.Size(120, 20);
-            this.NumericAantal.TabIndex = 8;
+            this.NumericAantal.Size = new System.Drawing.Size(120, 32);
+            this.NumericAantal.TabIndex = 4;
             // 
             // btnDeleteRes
             // 
             this.btnDeleteRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnDeleteRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteRes.Font = new System.Drawing.Font("Roboto", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteRes.ForeColor = System.Drawing.Color.White;
             this.btnDeleteRes.Location = new System.Drawing.Point(269, 673);
             this.btnDeleteRes.Name = "btnDeleteRes";
@@ -285,7 +278,7 @@
             // 
             this.btnUpdateRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnUpdateRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdateRes.Font = new System.Drawing.Font("Roboto", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateRes.ForeColor = System.Drawing.Color.White;
             this.btnUpdateRes.Location = new System.Drawing.Point(37, 673);
             this.btnUpdateRes.Name = "btnUpdateRes";
@@ -298,9 +291,10 @@
             // lblAantalPersonen
             // 
             this.lblAantalPersonen.AutoSize = true;
-            this.lblAantalPersonen.Location = new System.Drawing.Point(34, 224);
+            this.lblAantalPersonen.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAantalPersonen.Location = new System.Drawing.Point(36, 405);
             this.lblAantalPersonen.Name = "lblAantalPersonen";
-            this.lblAantalPersonen.Size = new System.Drawing.Size(85, 13);
+            this.lblAantalPersonen.Size = new System.Drawing.Size(149, 24);
             this.lblAantalPersonen.TabIndex = 5;
             this.lblAantalPersonen.Text = "Aantal Personen";
             this.lblAantalPersonen.Click += new System.EventHandler(this.label1_Click);
@@ -308,25 +302,29 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(34, 87);
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(36, 119);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(55, 13);
+            this.lblName.Size = new System.Drawing.Size(98, 24);
             this.lblName.TabIndex = 4;
             this.lblName.Text = "Voornaam";
+            this.lblName.Click += new System.EventHandler(this.lblName_Click);
             // 
             // dateTijd
             // 
-            this.dateTijd.Location = new System.Drawing.Point(37, 284);
+            this.dateTijd.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTijd.Location = new System.Drawing.Point(37, 522);
             this.dateTijd.Name = "dateTijd";
-            this.dateTijd.Size = new System.Drawing.Size(206, 20);
-            this.dateTijd.TabIndex = 3;
+            this.dateTijd.Size = new System.Drawing.Size(365, 32);
+            this.dateTijd.TabIndex = 6;
             this.dateTijd.ValueChanged += new System.EventHandler(this.dateTijd_ValueChanged);
             // 
             // txtNaam
             // 
-            this.txtNaam.Location = new System.Drawing.Point(37, 103);
+            this.txtNaam.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNaam.Location = new System.Drawing.Point(36, 146);
             this.txtNaam.Name = "txtNaam";
-            this.txtNaam.Size = new System.Drawing.Size(106, 20);
+            this.txtNaam.Size = new System.Drawing.Size(153, 32);
             this.txtNaam.TabIndex = 0;
             // 
             // pnlKlantSysteem
@@ -421,6 +419,24 @@
             this.lstKlantSysteem.View = System.Windows.Forms.View.Details;
             this.lstKlantSysteem.SelectedIndexChanged += new System.EventHandler(this.lstKlantSysteem_SelectedIndexChanged);
             // 
+            // geboorteDatumPicker
+            // 
+            this.geboorteDatumPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.geboorteDatumPicker.Location = new System.Drawing.Point(36, 242);
+            this.geboorteDatumPicker.Name = "geboorteDatumPicker";
+            this.geboorteDatumPicker.Size = new System.Drawing.Size(365, 32);
+            this.geboorteDatumPicker.TabIndex = 2;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(36, 495);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(171, 24);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "Reservering Datum";
+            // 
             // RestaurantOverzicht
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -475,11 +491,11 @@
         private System.Windows.Forms.ListView lstKlantSysteem;
         private System.Windows.Forms.Button btnSelectKlant;
         private System.Windows.Forms.Label lblZoeken;
-        private System.Windows.Forms.TextBox txtGeboorteDatum;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtAchternaam;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbTafel;
+        private System.Windows.Forms.DateTimePicker geboorteDatumPicker;
+        private System.Windows.Forms.Label label7;
     }
 }

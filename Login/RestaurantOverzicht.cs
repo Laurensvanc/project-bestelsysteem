@@ -20,6 +20,10 @@ namespace Login
         public RestaurantOverzicht()
         {
             InitializeComponent();
+
+            geboorteDatumPicker.Format = DateTimePickerFormat.Custom;
+            geboorteDatumPicker.CustomFormat = "dd-MM-yyyy";
+            geboorteDatumPicker.MaxDate = DateTime.Today;
         }
 
         private void lstTafelStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -77,7 +81,10 @@ namespace Login
             if (String.IsNullOrEmpty(txtNaam.Text) || String.IsNullOrEmpty(txtAchternaam.Text) || String.IsNullOrEmpty(txtTellie.Text) || String.IsNullOrEmpty(cmbTafel.Text))
             {
                 DialogResult dialogResult = MessageBox.Show("Vul Persoonsgegevens in", "Error");
-            } else 
+            } else  if (txtAchternaam.Text.Length > 50 || txtNaam.Text.Length > 50 || txtTellie.Text.Length > 30)
+            {
+                DialogResult dialogResult = MessageBox.Show("Maximaal Aantal Character overtreden", "Error");
+            } else
             {
                 LoadKlanten();
 
@@ -90,7 +97,7 @@ namespace Login
 
                         Reservering reservering = new Reservering(int.Parse(cmbTafel.Text), begintijd, begintijd.AddHours(2), KlantID, AantalPersonen);
                         reservering_Service.AddReservering(reservering);
-                        DialogResult dialogResult = MessageBox.Show("Reservering voor" + txtNaam.Text + "Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
+                        DialogResult dialogResult = MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
                     }
                     else
                     {
@@ -162,6 +169,7 @@ namespace Login
                 lstReservering.Items.Add(li);
                 // Update Tafelstatus
                 DateTime nu = dateTijd.Value;
+                dateTijd.MinDate = DateTime.Today;
                 if (r.BeginTijd < nu && r.EindTijd > nu || tableList.Contains(r.TafelID))
                 {
                     tafelToBezet.Add(r.TafelID);
@@ -320,13 +328,13 @@ namespace Login
 
         private void btnKlantOpslaan_Click(object sender, EventArgs e)
         {
+            string date = geboorteDatumPicker.Value.ToString();
             if (this.lstKlantSysteem.SelectedItems.Count == 0)
                 return;
             var i = lstKlantSysteem.SelectedItems[0];
-
             txtNaam.Text = i.SubItems[1].Text;
-            txtAchternaam.Text = i.SubItems[2].Text; 
-            txtGeboorteDatum.Text = i.SubItems[3].Text;
+            txtAchternaam.Text = i.SubItems[2].Text;
+            date = i.SubItems[3].Text;
             txtTellie.Text = i.SubItems[4].Text;
             KlantID = int.Parse(i.SubItems[0].Text);
 
@@ -334,8 +342,8 @@ namespace Login
         }
         private void VoegKlantToe()
         {
-
-            Klant klant = new Klant(txtNaam.Text, txtAchternaam.Text, txtGeboorteDatum.Text, txtTellie.Text);
+            string date = geboorteDatumPicker.Value.ToString();
+            Klant klant = new Klant(txtNaam.Text, txtAchternaam.Text, date, txtTellie.Text);
             klant_Service.AddKlant(klant);
         }
         private bool bestaatDeKlant()
@@ -353,6 +361,16 @@ namespace Login
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlReservering_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblName_Click(object sender, EventArgs e)
         {
 
         }
