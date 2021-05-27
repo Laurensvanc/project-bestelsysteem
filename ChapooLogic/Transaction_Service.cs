@@ -63,7 +63,7 @@ namespace ChapooLogic
             catch (Exception ex)
             {
                 List<Order> OrderList = new List<Order>();
-                Order order = new Order(404, "Error", 0.00, 0);
+                Order order = new Order(404, "Error", 0.00, 0, false);
                 OrderList.Add(order);
                 return OrderList;
 

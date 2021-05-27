@@ -92,5 +92,10 @@ namespace Login
         {
             Application.Exit();
         }
+
+        private void btn_navAfrekenen_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new Afrekenen());
+        }
     }
 }
