@@ -38,7 +38,7 @@ namespace Login
             this.btn_desktop.BackColor = System.Drawing.Color.White;
             this.btn_desktop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_desktop.Font = new System.Drawing.Font("Roboto", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_desktop.Location = new System.Drawing.Point(286, 101);
+            this.btn_desktop.Location = new System.Drawing.Point(91, 245);
             this.btn_desktop.Name = "btn_desktop";
             this.btn_desktop.Size = new System.Drawing.Size(222, 89);
             this.btn_desktop.TabIndex = 0;
@@ -51,7 +51,7 @@ namespace Login
             this.btn_mobiel.BackColor = System.Drawing.Color.White;
             this.btn_mobiel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_mobiel.Font = new System.Drawing.Font("Roboto", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_mobiel.Location = new System.Drawing.Point(286, 256);
+            this.btn_mobiel.Location = new System.Drawing.Point(91, 483);
             this.btn_mobiel.Name = "btn_mobiel";
             this.btn_mobiel.Size = new System.Drawing.Size(222, 89);
             this.btn_mobiel.TabIndex = 1;
@@ -64,7 +64,7 @@ namespace Login
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(412, 887);
             this.Controls.Add(this.btn_mobiel);
             this.Controls.Add(this.btn_desktop);
             this.Name = "Platform";
