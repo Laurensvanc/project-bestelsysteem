@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MobileLogin));
             this.lbl_gebruikersNaam = new System.Windows.Forms.Label();
             this.txb_gebruikersNaam = new System.Windows.Forms.TextBox();
             this.txb_wachtwoord = new System.Windows.Forms.TextBox();
@@ -141,6 +142,7 @@
             this.Controls.Add(this.lbl_gebruikersNaam);
             this.Controls.Add(this.pb_Logo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MobileLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chapoo Login";

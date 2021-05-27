@@ -91,7 +91,7 @@ namespace Login
             // 
             // btn_navHome
             // 
-            this.btn_navHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(61)))), ((int)(((byte)(102)))));
+            this.btn_navHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
             this.btn_navHome.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btn_navHome.Font = new System.Drawing.Font("Roboto", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_navHome.ForeColor = System.Drawing.Color.White;
@@ -120,7 +120,7 @@ namespace Login
             // 
             // btn_navBarKeuken
             // 
-            this.btn_navBarKeuken.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(61)))), ((int)(((byte)(102)))));
+            this.btn_navBarKeuken.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
             this.btn_navBarKeuken.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btn_navBarKeuken.Font = new System.Drawing.Font("Roboto", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_navBarKeuken.ForeColor = System.Drawing.Color.White;
@@ -147,7 +147,7 @@ namespace Login
             // 
             // btn_navAfrekenen
             // 
-            this.btn_navAfrekenen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(61)))), ((int)(((byte)(102)))));
+            this.btn_navAfrekenen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
             this.btn_navAfrekenen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btn_navAfrekenen.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
             this.btn_navAfrekenen.ForeColor = System.Drawing.Color.White;
@@ -175,7 +175,7 @@ namespace Login
             // 
             // btn_navRegistreren
             // 
-            this.btn_navRegistreren.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(61)))), ((int)(((byte)(102)))));
+            this.btn_navRegistreren.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
             this.btn_navRegistreren.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btn_navRegistreren.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
             this.btn_navRegistreren.ForeColor = System.Drawing.Color.White;
@@ -316,6 +316,7 @@ namespace Login
             this.Controls.Add(this.pnl_Display);
             this.Controls.Add(this.ts_navigation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Menu";
             this.Text = "Chapoo systeem";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

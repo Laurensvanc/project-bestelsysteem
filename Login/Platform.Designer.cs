@@ -29,6 +29,7 @@ namespace Login
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Platform));
             this.btn_desktop = new System.Windows.Forms.Button();
             this.btn_mobiel = new System.Windows.Forms.Button();
             this.btn_closeForm = new System.Windows.Forms.Button();
@@ -103,6 +104,7 @@ namespace Login
             this.Controls.Add(this.btn_mobiel);
             this.Controls.Add(this.btn_desktop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Platform";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Platform";
