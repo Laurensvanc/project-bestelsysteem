@@ -45,6 +45,7 @@
     <Compile Include="Bestelling_Service.cs" />
     <Compile Include="Klant_Service.cs" />
     <Compile Include="Menu_Service.cs" />
+    <Compile Include="Order_Product_Service.cs" />
     <Compile Include="Product_Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reservering_Service.cs" />

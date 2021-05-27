@@ -56,7 +56,7 @@ namespace Login
 
         private void btn_navBarKeuken_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new RestaurantOverzicht());
+            LoadUserControl(new BarKeukOverzicht());
         }
 
         private void btn_navHome_Click(object sender, EventArgs e)
