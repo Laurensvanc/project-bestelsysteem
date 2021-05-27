@@ -16,9 +16,9 @@ namespace Login
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Platform());
+            Application.Run(new Platform());
 
-            Application.Run(new Menu());
+            //Application.Run(new Menu());
             //Application.Run(new Platform());
             //Application.Run(new RestaurantOverzicht());
             //Application.Run(new MedewerkerRegistreren());
