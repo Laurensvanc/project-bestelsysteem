@@ -208,7 +208,7 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MedewerkerRegistreren.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MedewerkerRegistreren.Designer.cs">
       <DependentUpon>MedewerkerRegistreren.cs</DependentUpon>
@@ -220,7 +220,7 @@
       <DependentUpon>MenuChange.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuOverview.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MenuOverview.Designer.cs">
       <DependentUpon>MenuOverview.cs</DependentUpon>
@@ -263,7 +263,7 @@
       <DependentUpon>RestaurantOverzicht.cs</DependentUpon>
     </Compile>
     <Compile Include="VoorraadOverview.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="VoorraadOverview.Designer.cs">
       <DependentUpon>VoorraadOverview.cs</DependentUpon>
