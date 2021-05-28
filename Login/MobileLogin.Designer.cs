@@ -89,7 +89,6 @@
             this.lbl_wachtwoordReset.Size = new System.Drawing.Size(342, 38);
             this.lbl_wachtwoordReset.TabIndex = 6;
             this.lbl_wachtwoordReset.Text = "Wachtwoord vergeten?";
-            this.lbl_wachtwoordReset.Click += new System.EventHandler(this.lbl_wachtwoordReset_Click);
             // 
             // btn_return
             // 
