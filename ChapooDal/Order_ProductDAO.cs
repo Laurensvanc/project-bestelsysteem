@@ -19,14 +19,32 @@ namespace ChapooDal
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
             DataTable queryResult = ExecuteSelectQuery(query, sqlParameters);
-            List<Order_Product> order_products = ReadTables(queryResult);
+            List<Order_Product> orderProducts = ReadTables(queryResult);
 
-            return order_products;
+            return orderProducts;
+        }
+
+        public List<BarKeukenBestelling> Db_Get_All_BarKeuken_Bestellingen()
+        {
+            string query = @"SELECT op.OrderID, o.BestellingID, op.ProductID, b.TafelID, p.ProductNaam, b.[Status], op.Aantal
+                                FROM Order_Product AS op
+                                JOIN[Order] AS o
+                                ON op.OrderID = o.OrderID
+                                JOIN[Bestelling] AS b
+                                ON o.BestellingID = b.BestellingID
+                                JOIN Product AS p
+                                ON op.ProductID = p.ProductID";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+
+            DataTable queryResult = ExecuteSelectQuery(query, sqlParameters);
+            List<BarKeukenBestelling> barKeukenBestellingen = ReadBarKeukenBestellingTables(queryResult);
+
+            return barKeukenBestellingen;
         }
 
         private List<Order_Product> ReadTables(DataTable dataTable)
         {
-            List<Order_Product> order_products = new List<Order_Product>();
+            List<Order_Product> orderProducts = new List<Order_Product>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
@@ -36,9 +54,31 @@ namespace ChapooDal
                     (int)dr["Aantal"]
                     );
 
-                order_products.Add(order_product);
+                orderProducts.Add(order_product);
             }
-            return order_products;
+            return orderProducts;
+        }
+
+        private List<BarKeukenBestelling> ReadBarKeukenBestellingTables(DataTable dataTable)
+        {
+            List<BarKeukenBestelling> barKeukenBestellingen = new List<BarKeukenBestelling>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+
+                BarKeukenBestelling barKeukenBestelling = new BarKeukenBestelling(
+                    (int)dr["OrderID"],
+                    (int)dr["BestellingID"],
+                    (int)dr["ProductID"],
+                    (int)dr["TafelID"],
+                    (String)dr["ProductNaam"],
+                    (String)dr["Status"],
+                    (int)dr["Aantal"]
+                    );
+
+                barKeukenBestellingen.Add(barKeukenBestelling);
+            }
+            return barKeukenBestellingen;
         }
     }
 }

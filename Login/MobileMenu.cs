@@ -13,12 +13,14 @@ namespace Login
     public partial class MobileMenu : Form
     {
         private MobileLogin _mobileLogin;
+        private Platform _platform;
 
-        public MobileMenu(MobileLogin login)
+        public MobileMenu(MobileLogin login, Platform platform)
         {
             InitializeComponent();
             _mobileLogin = login;
-            LoadUserControl(new BestellingOpnemen());
+            _platform = platform;
+            LoadUserControl(new BestellingOpnemen(_platform, this));
         }
 
         private void LoadUserControl(UserControl userControl)

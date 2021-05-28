@@ -167,22 +167,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Afrekenen.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Afrekenen.Designer.cs">
       <DependentUpon>Afrekenen.cs</DependentUpon>
     </Compile>
     <Compile Include="BarKeukOverzicht.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="BarKeukOverzicht.Designer.cs">
       <DependentUpon>BarKeukOverzicht.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BestellingOpnemenDesktop.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BestellingOpnemenDesktop.Designer.cs">
+      <DependentUpon>BestellingOpnemenDesktop.cs</DependentUpon>
     </Compile>
     <Compile Include="BestellingOpnemen.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="BestellingOpnemen.Designer.cs">
       <DependentUpon>BestellingOpnemen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bon.Designer.cs">
+      <DependentUpon>Bon.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -197,7 +209,7 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MedewerkerRegistreren.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MedewerkerRegistreren.Designer.cs">
       <DependentUpon>MedewerkerRegistreren.cs</DependentUpon>
@@ -209,7 +221,7 @@
       <DependentUpon>MenuChange.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuOverview.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MenuOverview.Designer.cs">
       <DependentUpon>MenuOverview.cs</DependentUpon>
@@ -240,6 +252,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RestaurantOverzicht.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -247,7 +264,7 @@
       <DependentUpon>RestaurantOverzicht.cs</DependentUpon>
     </Compile>
     <Compile Include="VoorraadOverview.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="VoorraadOverview.Designer.cs">
       <DependentUpon>VoorraadOverview.cs</DependentUpon>
@@ -267,8 +284,17 @@
     <EmbeddedResource Include="Afrekenen.resx">
       <DependentUpon>Afrekenen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BarKeukOverzicht.resx">
+      <DependentUpon>BarKeukOverzicht.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BestellingOpnemenDesktop.resx">
+      <DependentUpon>BestellingOpnemenDesktop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BestellingOpnemen.resx">
       <DependentUpon>BestellingOpnemen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bon.resx">
+      <DependentUpon>Bon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -299,14 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="RestaurantOverzicht.resx">
       <DependentUpon>RestaurantOverzicht.cs</DependentUpon>
     </EmbeddedResource>
@@ -348,13 +369,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\arrow_right.png" />
-    <None Include="img\arrow_left_pink.png" />
-    <Content Include="img\chapoo.png" />
-    <None Include="img\Shut down.png" />
-    <None Include="img\chapoo_white.png" />
-    <None Include="img\chapoo_pink.png" />
-    <Content Include="img\img.png" />
+    <None Include="Resources\uitknop1.png" />
+    <None Include="Resources\arrow_right.png" />
+    <None Include="Resources\arrow_left_pink.png" />
+    <Content Include="Resources\chapoo.png" />
+    <None Include="Resources\Shut down.png" />
+    <None Include="Resources\chapoo_white.png" />
+    <None Include="Resources\chapoo_pink.png" />
+    <Content Include="Resources\img.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

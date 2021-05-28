@@ -21,6 +21,18 @@ namespace ChapooDAL
             sqlParameters[0] = new SqlParameter("@soortID", soortID);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+        public void Open_Bottle_Product(int bottleID, int glasID)
+        {
+            string query = "USE dbchapoo202104 UPDATE Product SET Aantal = Aantal - 1 WHERE ProductID = @bottleID";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@bottleID", bottleID);
+            ExecuteEditQuery(query, sqlParameters);
+
+            query = "USE dbchapoo202104 UPDATE Product SET Aantal = Aantal + 5 WHERE ProductID = @glasID";
+            sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@glasID", glasID);
+            ExecuteEditQuery(query, sqlParameters);
+        }
         public void AddProduct(Product product)
         {
             // Data gets written to database, primary key is automatically made

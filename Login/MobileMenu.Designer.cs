@@ -29,6 +29,7 @@ namespace Login
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MobileMenu));
             this.pnl_Display = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
@@ -46,7 +47,9 @@ namespace Login
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(412, 887);
             this.Controls.Add(this.pnl_Display);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MobileMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chapoo Home";
             this.ResumeLayout(false);
 

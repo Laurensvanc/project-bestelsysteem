@@ -57,10 +57,15 @@ namespace ChapooDal
                 // Data gets written to database, primary key is automatically made
                 query = "USE dbchapoo202104 INSERT INTO Order_Product (OrderID, ProductID, Aantal) VALUES(@OrderID, @ProductID, @Aantal)";
                 sqlParameters = new SqlParameter[3];
-
                 sqlParameters[0] = new SqlParameter("@OrderID", orderID);
                 sqlParameters[1] = new SqlParameter("@ProductID", productItem.ProductID);
                 sqlParameters[2] = new SqlParameter("@Aantal", productItem.Aantal);
+                ExecuteEditQuery(query, sqlParameters);
+                // Remove from stock
+                query = "USE dbchapoo202104 UPDATE Product SET Aantal = Aantal - @Aantal WHERE ProductID = @ProductID";
+                sqlParameters = new SqlParameter[2];
+                sqlParameters[0] = new SqlParameter("@ProductID", productItem.ProductID);
+                sqlParameters[1] = new SqlParameter("@Aantal", productItem.Aantal);
                 ExecuteEditQuery(query, sqlParameters);
             }
         }

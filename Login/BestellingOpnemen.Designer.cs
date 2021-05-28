@@ -36,7 +36,7 @@
             this.pnl_Bestellen = new System.Windows.Forms.Panel();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnInstructies = new System.Windows.Forms.Button();
+            this.btnNotities = new System.Windows.Forms.Button();
             this.btnKlacht = new System.Windows.Forms.Button();
             this.btnKaartOverzicht = new System.Windows.Forms.Button();
             this.pnl_MenuType = new System.Windows.Forms.Panel();
@@ -48,6 +48,7 @@
             this.btnVoorgerecht = new System.Windows.Forms.Button();
             this.lblTafelnr = new System.Windows.Forms.Label();
             this.pnl_TafelSelect = new System.Windows.Forms.Panel();
+            this.btn_return = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnTafel10 = new System.Windows.Forms.Button();
             this.btnTafel9 = new System.Windows.Forms.Button();
@@ -71,9 +72,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtKlacht = new System.Windows.Forms.TextBox();
             this.btnKaartoverzicht2 = new System.Windows.Forms.Button();
-            this.pnl_Instructies = new System.Windows.Forms.Panel();
+            this.pnl_Notities = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtInstructies = new System.Windows.Forms.TextBox();
+            this.txtNotities = new System.Windows.Forms.TextBox();
             this.btnKaartoverzicht3 = new System.Windows.Forms.Button();
             this.pnl_Bestellen.SuspendLayout();
             this.pnl_MenuType.SuspendLayout();
@@ -81,7 +82,7 @@
             this.pnl_Drank.SuspendLayout();
             this.pnl_Tafelnr.SuspendLayout();
             this.pnl_Klacht.SuspendLayout();
-            this.pnl_Instructies.SuspendLayout();
+            this.pnl_Notities.SuspendLayout();
             this.SuspendLayout();
             // 
             // listMenuView
@@ -156,7 +157,7 @@
             // 
             this.pnl_Bestellen.Controls.Add(this.lblTotal);
             this.pnl_Bestellen.Controls.Add(this.label5);
-            this.pnl_Bestellen.Controls.Add(this.btnInstructies);
+            this.pnl_Bestellen.Controls.Add(this.btnNotities);
             this.pnl_Bestellen.Controls.Add(this.btnKlacht);
             this.pnl_Bestellen.Controls.Add(this.btnKaartOverzicht);
             this.pnl_Bestellen.Controls.Add(this.listOrderView);
@@ -189,19 +190,19 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Totaal: €";
             // 
-            // btnInstructies
+            // btnNotities
             // 
-            this.btnInstructies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
-            this.btnInstructies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInstructies.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btnInstructies.ForeColor = System.Drawing.Color.White;
-            this.btnInstructies.Location = new System.Drawing.Point(203, 808);
-            this.btnInstructies.Name = "btnInstructies";
-            this.btnInstructies.Size = new System.Drawing.Size(180, 59);
-            this.btnInstructies.TabIndex = 9;
-            this.btnInstructies.Text = "Instructies";
-            this.btnInstructies.UseVisualStyleBackColor = false;
-            this.btnInstructies.Click += new System.EventHandler(this.btnInstructies_Click);
+            this.btnNotities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnNotities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNotities.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.btnNotities.ForeColor = System.Drawing.Color.White;
+            this.btnNotities.Location = new System.Drawing.Point(203, 808);
+            this.btnNotities.Name = "btnNotities";
+            this.btnNotities.Size = new System.Drawing.Size(180, 59);
+            this.btnNotities.TabIndex = 9;
+            this.btnNotities.Text = "Notities";
+            this.btnNotities.UseVisualStyleBackColor = false;
+            this.btnNotities.Click += new System.EventHandler(this.btnNotities_Click);
             // 
             // btnKlacht
             // 
@@ -341,6 +342,7 @@
             // 
             // pnl_TafelSelect
             // 
+            this.pnl_TafelSelect.Controls.Add(this.btn_return);
             this.pnl_TafelSelect.Controls.Add(this.label2);
             this.pnl_TafelSelect.Controls.Add(this.btnTafel10);
             this.pnl_TafelSelect.Controls.Add(this.btnTafel9);
@@ -356,6 +358,19 @@
             this.pnl_TafelSelect.Name = "pnl_TafelSelect";
             this.pnl_TafelSelect.Size = new System.Drawing.Size(407, 878);
             this.pnl_TafelSelect.TabIndex = 10;
+            // 
+            // btn_return
+            // 
+            this.btn_return.BackColor = System.Drawing.Color.White;
+            this.btn_return.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_return.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_return.Image = global::Login.Properties.Resources.arrow_left_pink;
+            this.btn_return.Location = new System.Drawing.Point(2, 10);
+            this.btn_return.Name = "btn_return";
+            this.btn_return.Size = new System.Drawing.Size(60, 60);
+            this.btn_return.TabIndex = 17;
+            this.btn_return.UseVisualStyleBackColor = false;
+            this.btn_return.Click += new System.EventHandler(this.btn_return_Click);
             // 
             // label2
             // 
@@ -636,6 +651,7 @@
             this.txtKlacht.AcceptsReturn = true;
             this.txtKlacht.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.txtKlacht.Location = new System.Drawing.Point(30, 85);
+            this.txtKlacht.MaxLength = 250;
             this.txtKlacht.Multiline = true;
             this.txtKlacht.Name = "txtKlacht";
             this.txtKlacht.Size = new System.Drawing.Size(347, 327);
@@ -656,15 +672,15 @@
             this.btnKaartoverzicht2.UseVisualStyleBackColor = false;
             this.btnKaartoverzicht2.Click += new System.EventHandler(this.btnKaartoverzicht2_Click);
             // 
-            // pnl_Instructies
+            // pnl_Notities
             // 
-            this.pnl_Instructies.Controls.Add(this.label4);
-            this.pnl_Instructies.Controls.Add(this.txtInstructies);
-            this.pnl_Instructies.Controls.Add(this.btnKaartoverzicht3);
-            this.pnl_Instructies.Location = new System.Drawing.Point(5, 12);
-            this.pnl_Instructies.Name = "pnl_Instructies";
-            this.pnl_Instructies.Size = new System.Drawing.Size(422, 907);
-            this.pnl_Instructies.TabIndex = 18;
+            this.pnl_Notities.Controls.Add(this.label4);
+            this.pnl_Notities.Controls.Add(this.txtNotities);
+            this.pnl_Notities.Controls.Add(this.btnKaartoverzicht3);
+            this.pnl_Notities.Location = new System.Drawing.Point(5, 12);
+            this.pnl_Notities.Name = "pnl_Notities";
+            this.pnl_Notities.Size = new System.Drawing.Size(422, 907);
+            this.pnl_Notities.TabIndex = 18;
             // 
             // label4
             // 
@@ -673,20 +689,21 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
             this.label4.Location = new System.Drawing.Point(23, 28);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(162, 37);
+            this.label4.Size = new System.Drawing.Size(124, 37);
             this.label4.TabIndex = 17;
-            this.label4.Text = "Instructies";
+            this.label4.Text = "Notities";
             // 
-            // txtInstructies
+            // txtNotities
             // 
-            this.txtInstructies.AcceptsReturn = true;
-            this.txtInstructies.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtInstructies.Location = new System.Drawing.Point(30, 85);
-            this.txtInstructies.Multiline = true;
-            this.txtInstructies.Name = "txtInstructies";
-            this.txtInstructies.Size = new System.Drawing.Size(356, 327);
-            this.txtInstructies.TabIndex = 11;
-            this.txtInstructies.Text = "\r\n\r\n";
+            this.txtNotities.AcceptsReturn = true;
+            this.txtNotities.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtNotities.Location = new System.Drawing.Point(30, 85);
+            this.txtNotities.MaxLength = 250;
+            this.txtNotities.Multiline = true;
+            this.txtNotities.Name = "txtNotities";
+            this.txtNotities.Size = new System.Drawing.Size(356, 327);
+            this.txtNotities.TabIndex = 11;
+            this.txtNotities.Text = "\r\n\r\n";
             // 
             // btnKaartoverzicht3
             // 
@@ -707,7 +724,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnl_TafelSelect);
-            this.Controls.Add(this.pnl_Instructies);
+            this.Controls.Add(this.pnl_Notities);
             this.Controls.Add(this.pnl_Klacht);
             this.Controls.Add(this.pnl_Tafelnr);
             this.Controls.Add(this.pnl_MenuType);
@@ -725,8 +742,8 @@
             this.pnl_Tafelnr.PerformLayout();
             this.pnl_Klacht.ResumeLayout(false);
             this.pnl_Klacht.PerformLayout();
-            this.pnl_Instructies.ResumeLayout(false);
-            this.pnl_Instructies.PerformLayout();
+            this.pnl_Notities.ResumeLayout(false);
+            this.pnl_Notities.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -768,17 +785,18 @@
         private System.Windows.Forms.Button btnNagerecht;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnl_Tafelnr;
-        private System.Windows.Forms.Button btnInstructies;
+        private System.Windows.Forms.Button btnNotities;
         private System.Windows.Forms.Button btnKlacht;
         private System.Windows.Forms.Panel pnl_Klacht;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtKlacht;
         private System.Windows.Forms.Button btnKaartoverzicht2;
-        private System.Windows.Forms.Panel pnl_Instructies;
+        private System.Windows.Forms.Panel pnl_Notities;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtInstructies;
+        private System.Windows.Forms.TextBox txtNotities;
         private System.Windows.Forms.Button btnKaartoverzicht3;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btn_return;
     }
 }

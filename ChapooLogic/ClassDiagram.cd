@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ChapooDal.AccountDAO">
+    <Position X="5.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooDal.BestellingDAO">
+    <Position X="9.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooDal.Order_ProductDAO">
+    <Position X="23.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooDal.TransactionDAO">
+    <Position X="18.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooDAL.Base" Collapsed="true">
+    <Position X="14.25" Y="1" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooDAL.KlantDAO">
+    <Position X="12" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooDAL.MenuDAO">
+    <Position X="16.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooDAL.ProductDAO">
+    <Position X="21" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooDAL.ReserveringDAO">
+    <Position X="7.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooDAL.TafelDAO">
+    <Position X="14.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooLogic.Account_Service">
+    <Position X="5.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Account_Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="accountDAO" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapooLogic.Bestelling_Service">
+    <Position X="9.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bestelling_Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="bestellingDAO" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapooLogic.Klant_Service">
+    <Position X="12" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAIgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Klant_Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="klantDAO" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapooLogic.Menu_Service">
+    <Position X="16.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAABAAACAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Menu_Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="menuDAO" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapooLogic.Product_Service">
+    <Position X="21" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAQAAAAAAQAgAgAAAAAAAQAAAAAAEAAA=</HashCode>
+      <FileName>Product_Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="productDAO" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapooLogic.Reservering_Service">
+    <Position X="7.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAIAAAAFAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reservering_Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="reserveringDAO" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapooLogic.Tafel_Service">
+    <Position X="14.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Tafel_Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="tafelDAO" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapooLogic.Transaction_Service">
+    <Position X="18.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAQAAAAAAEAAAAAAAAAAAAAAAAAAAEAIAAAAAAAI=</HashCode>
+      <FileName>Transaction_Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="transactionDAO" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapooModel.Account">
+    <Position X="5.25" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooModel.Bestelling">
+    <Position X="9.75" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooModel.Klant">
+    <Position X="11.75" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooModel.MenuName">
+    <Position X="16.5" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooModel.MenuType">
+    <Position X="16.5" Y="10" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooModel.Order">
+    <Position X="23.25" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooModel.Order_Info">
+    <Position X="23.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooModel.Order_Product">
+    <Position X="23.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooModel.Product">
+    <Position X="21" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooModel.Reservering">
+    <Position X="7.5" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooModel.Tafel">
+    <Position X="14.25" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapooModel.Transactie">
+    <Position X="18.75" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

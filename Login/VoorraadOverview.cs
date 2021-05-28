@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class VoorraadOverview : Form
+    public partial class VoorraadOverview : UserControl
     {
         private bool _showingDrinks = false;
         private List<Product> _products;
@@ -69,18 +69,31 @@ namespace Login
                 }
             }
             lv_Voorraad.Columns[0].Width = -2;
-            lv_Voorraad.Columns[2].Width = -2;
+            lv_Voorraad.Columns[3].Width = -2;
         }
 
         private void FillGridView(Product p)
         {
             // fill grid with product
-            string[] arr = new string[3];
+            string[] arr = new string[5];
             ListViewItem li;
+            double priceDifference = Math.Abs(p.Prijs - p.InkoopPrijs);
+            string priceProfit = "";
+            if (p.Prijs > p.InkoopPrijs)
+            {
+                priceProfit = "+";
+            }
+            else if (p.Prijs < p.InkoopPrijs)
+            {
+                priceProfit = "-";
+            }
 
             arr[0] = p.ProductId.ToString();
             arr[1] = p.ProductNaam;
-            arr[2] = p.Aantal.ToString();
+            arr[2] = "€" + p.InkoopPrijs.ToString("0.00");
+            arr[3] = "€" + p.Prijs.ToString("0.00") + $" ({priceProfit}€{priceDifference.ToString("0.00")})"; 
+            arr[4] = p.Aantal.ToString();
+            
 
             li = new ListViewItem(arr);
             lv_Voorraad.Items.Add(li);
@@ -165,14 +178,6 @@ namespace Login
             SearchVoorraad();
         }
 
-        private void btn_Menu_Click(object sender, EventArgs e)
-        {
-            // opens menu overview
-            FormClosingEventArgs f = new FormClosingEventArgs(0, false);
-            VoorraadOverview_FormClosing(sender, f);
-            this.Close();
-        }
-
         private void tb_Search_KeyUp(object sender, KeyEventArgs e)
         {
             // enables searching using the enter key
@@ -191,11 +196,6 @@ namespace Login
             }
         }
 
-        private void VoorraadOverview_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // transition between menu and voorraad overview (open, closing)
-        }
-
         private void lv_Voorraad_DoubleClick(object sender, EventArgs e)
         {
             // product info
@@ -210,6 +210,25 @@ namespace Login
                 alcohol = "Nee";
             }
             MessageBox.Show($"{product}\n\nProductID:\t{product.ProductId}\nPrijs:\t\t€{product.Prijs.ToString("0.00")}\nInkoop prijs:\t€{product.InkoopPrijs.ToString("0.00")}\nAantal:\t\t{product.Aantal}\nAlcoholisch:\t{alcohol}", "Product Info");
+        }
+
+        private void lv_Voorraad_DrawItem(object sender, DrawListViewItemEventArgs e)
+        {
+            e.DrawDefault = true;
+            if ((e.ItemIndex % 2) == 1)
+            {
+                e.Item.BackColor = Color.WhiteSmoke;
+                e.Item.UseItemStyleForSubItems = true;
+            }
+            else
+            {
+                e.Item.BackColor = Color.White;
+                e.Item.UseItemStyleForSubItems = true;
+            }
+        }
+        private void lv_Voorraad_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        {
+            e.DrawDefault = true;
         }
     }
 }
