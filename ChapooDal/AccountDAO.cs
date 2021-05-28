@@ -51,6 +51,18 @@ namespace ChapooDal
             ExecuteEditQuery(query, sqlParameters);
         }
 
+        public void UpdateLastLoginAccount(string account)
+        {
+           
+                string query = "USE dbchapoo202104 UPDATE [Account] SET LaatsteLogin = @time WHERE Inlognaam = @inlognaam";
+                SqlParameter[] sqlParameters = new SqlParameter[2];
+                sqlParameters[0] = new SqlParameter("@inlognaam", account);
+                sqlParameters[1] = new SqlParameter("@time", DateTime.Now);
+                ExecuteEditQuery(query, sqlParameters);
+                
+          
+        }
+
         public string LoginAccount(string account)
         {
             string query = "USE dbchapoo202104 SELECT Inlognaam,Wachtwoord FROM [Account] WHERE Inlognaam = @inlognaam";

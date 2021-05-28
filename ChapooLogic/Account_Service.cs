@@ -36,5 +36,19 @@ namespace ChapooLogic
                 throw;
             }
         }
+        public bool UpdateLastLoginAccount(string account)
+        {
+            try
+            {
+                 accountDAO.UpdateLastLoginAccount(account);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }
