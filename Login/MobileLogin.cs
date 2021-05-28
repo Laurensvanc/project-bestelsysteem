@@ -43,7 +43,7 @@ namespace Login
             {
                 if (BCrypt.Net.BCrypt.Verify(txb_wachtwoord.Text, encryptedww))
                 {
-                    MobileMenu menu = new MobileMenu(this);
+                    MobileMenu menu = new MobileMenu(this, _platform);
 
                     menu.Show();
                     this.Hide();
