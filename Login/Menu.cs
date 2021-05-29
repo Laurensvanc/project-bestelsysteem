@@ -97,5 +97,35 @@ namespace Login
         {
             LoadUserControl(new Afrekenen());
         }
+
+        private void tsm_overzicht_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new RestaurantOverzicht());
+        }
+
+        private void tsm_bestellen_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new BestellingOpnemenDesktop());
+        }
+
+        private void tsm_afrekenen_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new Afrekenen());
+        }
+
+        private void tsm_barKeuken_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new BarKeukOverzicht());
+        }
+
+        private void tsm_account_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new MedewerkerRegistreren());
+        }
+
+        private void tsm_voorraad_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new VoorraadOverview());
+        }
     }
 }

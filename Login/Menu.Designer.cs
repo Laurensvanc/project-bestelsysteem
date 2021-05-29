@@ -30,15 +30,6 @@ namespace Login
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
-            this.ts_navigation = new System.Windows.Forms.ToolStrip();
-            this.btn_navLogo = new System.Windows.Forms.ToolStripButton();
-            this.btn_navHome = new System.Windows.Forms.ToolStripButton();
-            this.btn_navReserveringen = new System.Windows.Forms.ToolStripButton();
-            this.btn_navBarKeuken = new System.Windows.Forms.ToolStripButton();
-            this.btn_navBestellingen = new System.Windows.Forms.ToolStripButton();
-            this.btn_navAfrekenen = new System.Windows.Forms.ToolStripButton();
-            this.btn_navVoorraad = new System.Windows.Forms.ToolStripButton();
-            this.btn_navRegistreren = new System.Windows.Forms.ToolStripButton();
             this.lbl_userDisplay = new System.Windows.Forms.Label();
             this.lbl_timeDisplay = new System.Windows.Forms.Label();
             this.pnl_Display = new System.Windows.Forms.Panel();
@@ -49,143 +40,20 @@ namespace Login
             this.pnl_Logout = new System.Windows.Forms.Panel();
             this.btn_Afsluiten = new System.Windows.Forms.Button();
             this.btn_Uitloggen = new System.Windows.Forms.Button();
-            this.ts_navigation.SuspendLayout();
+            this.ms_navigation = new System.Windows.Forms.MenuStrip();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.tsm_overzicht = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_bestellen = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_afrekenen = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_barKeuken = new System.Windows.Forms.ToolStripMenuItem();
+            this.administratieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_account = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_voorraad = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_WhiteStrip.SuspendLayout();
             this.pnl_LogoutBorder.SuspendLayout();
             this.pnl_Logout.SuspendLayout();
+            this.ms_navigation.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ts_navigation
-            // 
-            this.ts_navigation.AutoSize = false;
-            this.ts_navigation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
-            this.ts_navigation.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ts_navigation.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.ts_navigation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btn_navLogo,
-            this.btn_navHome,
-            this.btn_navReserveringen,
-            this.btn_navBarKeuken,
-            this.btn_navBestellingen,
-            this.btn_navAfrekenen,
-            this.btn_navVoorraad,
-            this.btn_navRegistreren});
-            this.ts_navigation.Location = new System.Drawing.Point(0, 0);
-            this.ts_navigation.Name = "ts_navigation";
-            this.ts_navigation.Size = new System.Drawing.Size(344, 1080);
-            this.ts_navigation.TabIndex = 0;
-            this.ts_navigation.Text = "toolStrip1";
-            // 
-            // btn_navLogo
-            // 
-            this.btn_navLogo.AutoSize = false;
-            this.btn_navLogo.BackgroundImage = global::Login.Properties.Resources.chapoo_white;
-            this.btn_navLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_navLogo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_navLogo.Enabled = false;
-            this.btn_navLogo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btn_navLogo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_navLogo.Name = "btn_navLogo";
-            this.btn_navLogo.Size = new System.Drawing.Size(344, 199);
-            this.btn_navLogo.Text = "Logo";
-            // 
-            // btn_navHome
-            // 
-            this.btn_navHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
-            this.btn_navHome.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_navHome.Font = new System.Drawing.Font("Roboto", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_navHome.ForeColor = System.Drawing.Color.White;
-            this.btn_navHome.Image = ((System.Drawing.Image)(resources.GetObject("btn_navHome.Image")));
-            this.btn_navHome.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_navHome.Name = "btn_navHome";
-            this.btn_navHome.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_navHome.Size = new System.Drawing.Size(342, 62);
-            this.btn_navHome.Text = "Home";
-            this.btn_navHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_navHome.ToolTipText = "Home";
-            this.btn_navHome.Click += new System.EventHandler(this.btn_navHome_Click);
-            // 
-            // btn_navReserveringen
-            // 
-            this.btn_navReserveringen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_navReserveringen.Font = new System.Drawing.Font("Roboto", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_navReserveringen.ForeColor = System.Drawing.Color.White;
-            this.btn_navReserveringen.Image = ((System.Drawing.Image)(resources.GetObject("btn_navReserveringen.Image")));
-            this.btn_navReserveringen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_navReserveringen.Name = "btn_navReserveringen";
-            this.btn_navReserveringen.Size = new System.Drawing.Size(342, 62);
-            this.btn_navReserveringen.Text = "Reserveringen";
-            this.btn_navReserveringen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_navReserveringen.Click += new System.EventHandler(this.btn_navReserveringen_Click);
-            // 
-            // btn_navBarKeuken
-            // 
-            this.btn_navBarKeuken.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
-            this.btn_navBarKeuken.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_navBarKeuken.Font = new System.Drawing.Font("Roboto", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_navBarKeuken.ForeColor = System.Drawing.Color.White;
-            this.btn_navBarKeuken.Image = ((System.Drawing.Image)(resources.GetObject("btn_navBarKeuken.Image")));
-            this.btn_navBarKeuken.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_navBarKeuken.Name = "btn_navBarKeuken";
-            this.btn_navBarKeuken.Size = new System.Drawing.Size(342, 62);
-            this.btn_navBarKeuken.Text = "Bar/Keuken";
-            this.btn_navBarKeuken.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_navBarKeuken.Click += new System.EventHandler(this.btn_navBarKeuken_Click);
-            // 
-            // btn_navBestellingen
-            // 
-            this.btn_navBestellingen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_navBestellingen.Font = new System.Drawing.Font("Roboto", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_navBestellingen.ForeColor = System.Drawing.Color.White;
-            this.btn_navBestellingen.Image = ((System.Drawing.Image)(resources.GetObject("btn_navBestellingen.Image")));
-            this.btn_navBestellingen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_navBestellingen.Name = "btn_navBestellingen";
-            this.btn_navBestellingen.Size = new System.Drawing.Size(342, 62);
-            this.btn_navBestellingen.Text = "Bestellingen";
-            this.btn_navBestellingen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_navBestellingen.Click += new System.EventHandler(this.btn_navBestellingen_Click);
-            // 
-            // btn_navAfrekenen
-            // 
-            this.btn_navAfrekenen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
-            this.btn_navAfrekenen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_navAfrekenen.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.btn_navAfrekenen.ForeColor = System.Drawing.Color.White;
-            this.btn_navAfrekenen.Image = ((System.Drawing.Image)(resources.GetObject("btn_navAfrekenen.Image")));
-            this.btn_navAfrekenen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_navAfrekenen.Name = "btn_navAfrekenen";
-            this.btn_navAfrekenen.Size = new System.Drawing.Size(342, 59);
-            this.btn_navAfrekenen.Text = "Afrekenen";
-            this.btn_navAfrekenen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_navAfrekenen.Click += new System.EventHandler(this.btn_navAfrekenen_Click);
-            // 
-            // btn_navVoorraad
-            // 
-            this.btn_navVoorraad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
-            this.btn_navVoorraad.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_navVoorraad.Font = new System.Drawing.Font("Roboto", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_navVoorraad.ForeColor = System.Drawing.Color.White;
-            this.btn_navVoorraad.Image = ((System.Drawing.Image)(resources.GetObject("btn_navVoorraad.Image")));
-            this.btn_navVoorraad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_navVoorraad.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_navVoorraad.Name = "btn_navVoorraad";
-            this.btn_navVoorraad.Size = new System.Drawing.Size(342, 62);
-            this.btn_navVoorraad.Text = "Voorraad";
-            this.btn_navVoorraad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btn_navRegistreren
-            // 
-            this.btn_navRegistreren.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
-            this.btn_navRegistreren.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_navRegistreren.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.btn_navRegistreren.ForeColor = System.Drawing.Color.White;
-            this.btn_navRegistreren.Image = ((System.Drawing.Image)(resources.GetObject("btn_navRegistreren.Image")));
-            this.btn_navRegistreren.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_navRegistreren.Name = "btn_navRegistreren";
-            this.btn_navRegistreren.Size = new System.Drawing.Size(342, 59);
-            this.btn_navRegistreren.Text = "Registreren";
-            this.btn_navRegistreren.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_navRegistreren.Click += new System.EventHandler(this.btn_navRegistreren_Click);
             // 
             // lbl_userDisplay
             // 
@@ -193,9 +61,10 @@ namespace Login
             this.lbl_userDisplay.BackColor = System.Drawing.Color.Transparent;
             this.lbl_userDisplay.Font = new System.Drawing.Font("Roboto", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_userDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.lbl_userDisplay.Location = new System.Drawing.Point(44, 19);
+            this.lbl_userDisplay.Location = new System.Drawing.Point(59, 23);
+            this.lbl_userDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_userDisplay.Name = "lbl_userDisplay";
-            this.lbl_userDisplay.Size = new System.Drawing.Size(176, 33);
+            this.lbl_userDisplay.Size = new System.Drawing.Size(218, 41);
             this.lbl_userDisplay.TabIndex = 2;
             this.lbl_userDisplay.Text = "Logged in as:";
             // 
@@ -205,16 +74,18 @@ namespace Login
             this.lbl_timeDisplay.BackColor = System.Drawing.Color.Transparent;
             this.lbl_timeDisplay.Font = new System.Drawing.Font("Roboto", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_timeDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.lbl_timeDisplay.Location = new System.Drawing.Point(1091, 19);
+            this.lbl_timeDisplay.Location = new System.Drawing.Point(1455, 23);
+            this.lbl_timeDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_timeDisplay.Name = "lbl_timeDisplay";
-            this.lbl_timeDisplay.Size = new System.Drawing.Size(0, 33);
+            this.lbl_timeDisplay.Size = new System.Drawing.Size(0, 41);
             this.lbl_timeDisplay.TabIndex = 3;
             // 
             // pnl_Display
             // 
-            this.pnl_Display.Location = new System.Drawing.Point(344, 138);
+            this.pnl_Display.Location = new System.Drawing.Point(459, 170);
+            this.pnl_Display.Margin = new System.Windows.Forms.Padding(4);
             this.pnl_Display.Name = "pnl_Display";
-            this.pnl_Display.Size = new System.Drawing.Size(1576, 942);
+            this.pnl_Display.Size = new System.Drawing.Size(2101, 1159);
             this.pnl_Display.TabIndex = 4;
             // 
             // pnl_WhiteStrip
@@ -222,9 +93,10 @@ namespace Login
             this.pnl_WhiteStrip.Controls.Add(this.btn_closeForm);
             this.pnl_WhiteStrip.Controls.Add(this.lbl_userDisplay);
             this.pnl_WhiteStrip.Controls.Add(this.lbl_timeDisplay);
-            this.pnl_WhiteStrip.Location = new System.Drawing.Point(343, 0);
+            this.pnl_WhiteStrip.Location = new System.Drawing.Point(457, 0);
+            this.pnl_WhiteStrip.Margin = new System.Windows.Forms.Padding(4);
             this.pnl_WhiteStrip.Name = "pnl_WhiteStrip";
-            this.pnl_WhiteStrip.Size = new System.Drawing.Size(1577, 69);
+            this.pnl_WhiteStrip.Size = new System.Drawing.Size(2103, 85);
             this.pnl_WhiteStrip.TabIndex = 5;
             // 
             // btn_closeForm
@@ -235,10 +107,10 @@ namespace Login
             this.btn_closeForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_closeForm.ForeColor = System.Drawing.Color.Transparent;
             this.btn_closeForm.Image = ((System.Drawing.Image)(resources.GetObject("btn_closeForm.Image")));
-            this.btn_closeForm.Location = new System.Drawing.Point(1519, 5);
+            this.btn_closeForm.Location = new System.Drawing.Point(2025, 6);
             this.btn_closeForm.Margin = new System.Windows.Forms.Padding(0);
             this.btn_closeForm.Name = "btn_closeForm";
-            this.btn_closeForm.Size = new System.Drawing.Size(49, 57);
+            this.btn_closeForm.Size = new System.Drawing.Size(65, 70);
             this.btn_closeForm.TabIndex = 1;
             this.btn_closeForm.TabStop = false;
             this.btn_closeForm.UseVisualStyleBackColor = false;
@@ -247,18 +119,20 @@ namespace Login
             // pnl_PinkStrip
             // 
             this.pnl_PinkStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
-            this.pnl_PinkStrip.Location = new System.Drawing.Point(338, 69);
+            this.pnl_PinkStrip.Location = new System.Drawing.Point(402, 85);
+            this.pnl_PinkStrip.Margin = new System.Windows.Forms.Padding(4);
             this.pnl_PinkStrip.Name = "pnl_PinkStrip";
-            this.pnl_PinkStrip.Size = new System.Drawing.Size(1600, 69);
+            this.pnl_PinkStrip.Size = new System.Drawing.Size(2182, 85);
             this.pnl_PinkStrip.TabIndex = 6;
             // 
             // pnl_LogoutBorder
             // 
             this.pnl_LogoutBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.pnl_LogoutBorder.Controls.Add(this.pnl_Logout);
-            this.pnl_LogoutBorder.Location = new System.Drawing.Point(1782, 69);
+            this.pnl_LogoutBorder.Location = new System.Drawing.Point(2376, 85);
+            this.pnl_LogoutBorder.Margin = new System.Windows.Forms.Padding(4);
             this.pnl_LogoutBorder.Name = "pnl_LogoutBorder";
-            this.pnl_LogoutBorder.Size = new System.Drawing.Size(138, 120);
+            this.pnl_LogoutBorder.Size = new System.Drawing.Size(184, 148);
             this.pnl_LogoutBorder.TabIndex = 4;
             this.pnl_LogoutBorder.Visible = false;
             // 
@@ -267,9 +141,10 @@ namespace Login
             this.pnl_Logout.BackColor = System.Drawing.Color.White;
             this.pnl_Logout.Controls.Add(this.btn_Afsluiten);
             this.pnl_Logout.Controls.Add(this.btn_Uitloggen);
-            this.pnl_Logout.Location = new System.Drawing.Point(2, 2);
+            this.pnl_Logout.Location = new System.Drawing.Point(3, 2);
+            this.pnl_Logout.Margin = new System.Windows.Forms.Padding(4);
             this.pnl_Logout.Name = "pnl_Logout";
-            this.pnl_Logout.Size = new System.Drawing.Size(134, 116);
+            this.pnl_Logout.Size = new System.Drawing.Size(179, 143);
             this.pnl_Logout.TabIndex = 5;
             // 
             // btn_Afsluiten
@@ -279,9 +154,10 @@ namespace Login
             this.btn_Afsluiten.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Afsluiten.Font = new System.Drawing.Font("Roboto", 18F);
             this.btn_Afsluiten.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.btn_Afsluiten.Location = new System.Drawing.Point(0, 58);
+            this.btn_Afsluiten.Location = new System.Drawing.Point(0, 71);
+            this.btn_Afsluiten.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Afsluiten.Name = "btn_Afsluiten";
-            this.btn_Afsluiten.Size = new System.Drawing.Size(134, 58);
+            this.btn_Afsluiten.Size = new System.Drawing.Size(179, 71);
             this.btn_Afsluiten.TabIndex = 1;
             this.btn_Afsluiten.TabStop = false;
             this.btn_Afsluiten.Text = "Afsluiten";
@@ -296,60 +172,172 @@ namespace Login
             this.btn_Uitloggen.Font = new System.Drawing.Font("Roboto", 18F);
             this.btn_Uitloggen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.btn_Uitloggen.Location = new System.Drawing.Point(0, 0);
+            this.btn_Uitloggen.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Uitloggen.Name = "btn_Uitloggen";
-            this.btn_Uitloggen.Size = new System.Drawing.Size(134, 58);
+            this.btn_Uitloggen.Size = new System.Drawing.Size(179, 71);
             this.btn_Uitloggen.TabIndex = 1;
             this.btn_Uitloggen.TabStop = false;
             this.btn_Uitloggen.Text = "Uitloggen";
             this.btn_Uitloggen.UseVisualStyleBackColor = true;
             this.btn_Uitloggen.Click += new System.EventHandler(this.btn_Uitloggen_Click);
             // 
+            // ms_navigation
+            // 
+            this.ms_navigation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.ms_navigation.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ms_navigation.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ms_navigation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton2,
+            this.tsm_overzicht,
+            this.tsm_bestellen,
+            this.tsm_afrekenen,
+            this.tsm_barKeuken,
+            this.administratieToolStripMenuItem});
+            this.ms_navigation.Location = new System.Drawing.Point(0, 0);
+            this.ms_navigation.Name = "ms_navigation";
+            this.ms_navigation.Size = new System.Drawing.Size(410, 1088);
+            this.ms_navigation.TabIndex = 8;
+            this.ms_navigation.Text = "menuStrip1";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.AutoSize = false;
+            this.toolStripButton2.BackgroundImage = global::Login.Properties.Resources.chapoo_white;
+            this.toolStripButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Enabled = false;
+            this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(344, 199);
+            this.toolStripButton2.Text = "Logo";
+            // 
+            // tsm_overzicht
+            // 
+            this.tsm_overzicht.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
+            this.tsm_overzicht.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsm_overzicht.ForeColor = System.Drawing.Color.White;
+            this.tsm_overzicht.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsm_overzicht.Name = "tsm_overzicht";
+            this.tsm_overzicht.Size = new System.Drawing.Size(395, 85);
+            this.tsm_overzicht.Text = "Overzicht";
+            this.tsm_overzicht.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.tsm_overzicht.Click += new System.EventHandler(this.tsm_overzicht_Click);
+            // 
+            // tsm_bestellen
+            // 
+            this.tsm_bestellen.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsm_bestellen.ForeColor = System.Drawing.Color.White;
+            this.tsm_bestellen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsm_bestellen.Name = "tsm_bestellen";
+            this.tsm_bestellen.Size = new System.Drawing.Size(395, 85);
+            this.tsm_bestellen.Text = "Bestellen";
+            this.tsm_bestellen.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.tsm_bestellen.Click += new System.EventHandler(this.tsm_bestellen_Click);
+            // 
+            // tsm_afrekenen
+            // 
+            this.tsm_afrekenen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
+            this.tsm_afrekenen.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsm_afrekenen.ForeColor = System.Drawing.Color.White;
+            this.tsm_afrekenen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsm_afrekenen.Name = "tsm_afrekenen";
+            this.tsm_afrekenen.Size = new System.Drawing.Size(395, 85);
+            this.tsm_afrekenen.Text = "Afrekenen";
+            this.tsm_afrekenen.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.tsm_afrekenen.Click += new System.EventHandler(this.tsm_afrekenen_Click);
+            // 
+            // tsm_barKeuken
+            // 
+            this.tsm_barKeuken.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsm_barKeuken.ForeColor = System.Drawing.Color.White;
+            this.tsm_barKeuken.Name = "tsm_barKeuken";
+            this.tsm_barKeuken.Size = new System.Drawing.Size(395, 85);
+            this.tsm_barKeuken.Text = "Bar/Keuken";
+            this.tsm_barKeuken.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.tsm_barKeuken.Click += new System.EventHandler(this.tsm_barKeuken_Click);
+            // 
+            // administratieToolStripMenuItem
+            // 
+            this.administratieToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
+            this.administratieToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsm_account,
+            this.tsm_voorraad});
+            this.administratieToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.administratieToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.administratieToolStripMenuItem.Name = "administratieToolStripMenuItem";
+            this.administratieToolStripMenuItem.Size = new System.Drawing.Size(395, 85);
+            this.administratieToolStripMenuItem.Text = "Administratie";
+            this.administratieToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            // 
+            // tsm_account
+            // 
+            this.tsm_account.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.tsm_account.Font = new System.Drawing.Font("Roboto", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsm_account.ForeColor = System.Drawing.Color.White;
+            this.tsm_account.Name = "tsm_account";
+            this.tsm_account.Size = new System.Drawing.Size(383, 76);
+            this.tsm_account.Text = "Account";
+            this.tsm_account.Click += new System.EventHandler(this.tsm_account_Click);
+            // 
+            // tsm_voorraad
+            // 
+            this.tsm_voorraad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.tsm_voorraad.Font = new System.Drawing.Font("Roboto", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsm_voorraad.ForeColor = System.Drawing.Color.White;
+            this.tsm_voorraad.Name = "tsm_voorraad";
+            this.tsm_voorraad.Size = new System.Drawing.Size(383, 76);
+            this.tsm_voorraad.Text = "Voorraad";
+            this.tsm_voorraad.Click += new System.EventHandler(this.tsm_voorraad_Click);
+            // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1942, 1088);
             this.Controls.Add(this.pnl_LogoutBorder);
-            this.Controls.Add(this.pnl_PinkStrip);
             this.Controls.Add(this.pnl_WhiteStrip);
             this.Controls.Add(this.pnl_Display);
-            this.Controls.Add(this.ts_navigation);
+            this.Controls.Add(this.ms_navigation);
+            this.Controls.Add(this.pnl_PinkStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.ms_navigation;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Menu";
             this.Text = "Chapoo systeem";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.ts_navigation.ResumeLayout(false);
-            this.ts_navigation.PerformLayout();
             this.pnl_WhiteStrip.ResumeLayout(false);
             this.pnl_WhiteStrip.PerformLayout();
             this.pnl_LogoutBorder.ResumeLayout(false);
             this.pnl_Logout.ResumeLayout(false);
+            this.ms_navigation.ResumeLayout(false);
+            this.ms_navigation.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip ts_navigation;
-        private System.Windows.Forms.ToolStripButton btn_navLogo;
-        private System.Windows.Forms.ToolStripButton btn_navHome;
-        private System.Windows.Forms.ToolStripButton btn_navReserveringen;
-        private System.Windows.Forms.ToolStripButton btn_navBarKeuken;
-        private System.Windows.Forms.ToolStripButton btn_navBestellingen;
-        private System.Windows.Forms.ToolStripButton btn_navVoorraad;
         private System.Windows.Forms.Button btn_closeForm;
         private System.Windows.Forms.Label lbl_userDisplay;
         private System.Windows.Forms.Label lbl_timeDisplay;
         private System.Windows.Forms.Panel pnl_Display;
         private System.Windows.Forms.Panel pnl_WhiteStrip;
         private System.Windows.Forms.Panel pnl_PinkStrip;
-        private System.Windows.Forms.ToolStripButton btn_navRegistreren;
         private System.Windows.Forms.Panel pnl_LogoutBorder;
         private System.Windows.Forms.Panel pnl_Logout;
         private System.Windows.Forms.Button btn_Afsluiten;
         private System.Windows.Forms.Button btn_Uitloggen;
-        private System.Windows.Forms.ToolStripButton btn_navAfrekenen;
+        private System.Windows.Forms.MenuStrip ms_navigation;
+        private System.Windows.Forms.ToolStripMenuItem tsm_overzicht;
+        private System.Windows.Forms.ToolStripMenuItem tsm_bestellen;
+        private System.Windows.Forms.ToolStripMenuItem tsm_afrekenen;
+        private System.Windows.Forms.ToolStripMenuItem tsm_barKeuken;
+        private System.Windows.Forms.ToolStripMenuItem administratieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsm_account;
+        private System.Windows.Forms.ToolStripMenuItem tsm_voorraad;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }

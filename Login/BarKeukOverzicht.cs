@@ -32,7 +32,7 @@ namespace Login
 
         private void GetOrders()
         {
-            _orderList = orderProductService.GetAllBarKeukenBestellingen();
+            //_orderList = orderProductService.GetAllBarKeukenBestellingen();
             txb_header.Text = "Bestelling";
         }
     }
