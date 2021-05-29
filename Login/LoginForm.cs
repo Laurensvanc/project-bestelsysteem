@@ -73,5 +73,51 @@ namespace Login
                 Inlogbtn_Click(sender,e);
             }
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            user2txt.Text = usertxt.Text;
+            pnlpassword.Show();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            usertxt.Text = user2txt.Text;
+
+            pnlpassword.Hide();
+
+        }
+
+        private void resetbtn_Click(object sender, EventArgs e)
+        {
+            if (secrettxtbox.Text.ToLower() == "hond")
+            {
+
+
+                if (newwwtxt.Text == herhalingwwtxt.Text)
+                {
+                    string password = newwwtxt.Text;
+                    string encryptedwachtwoord = BCrypt.Net.BCrypt.HashPassword(password);
+                    Account_Service service = new Account_Service();
+                    if(service.ResetPassword(user2txt.Text, encryptedwachtwoord))
+                    {
+                        MessageBox.Show("Wachtwoord gereset!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Er is iets fout gegaan!");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Wachtwoorden komen niet overeen!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Antwoord op je geheime vraag klopt niet");
+            }
+        }
     }
 }

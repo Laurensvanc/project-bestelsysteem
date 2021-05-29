@@ -37,7 +37,19 @@
             this.btn_return = new System.Windows.Forms.Button();
             this.btn_continue = new System.Windows.Forms.Button();
             this.pb_Logo = new System.Windows.Forms.PictureBox();
+            this.wwresetpnl = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.resetbtn = new System.Windows.Forms.Label();
+            this.herhalingwwtxt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.newwwtxt = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.secrettxtbox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.user2txt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Logo)).BeginInit();
+            this.wwresetpnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbl_gebruikersNaam
@@ -89,6 +101,7 @@
             this.lbl_wachtwoordReset.Size = new System.Drawing.Size(342, 38);
             this.lbl_wachtwoordReset.TabIndex = 6;
             this.lbl_wachtwoordReset.Text = "Wachtwoord vergeten?";
+            this.lbl_wachtwoordReset.Click += new System.EventHandler(this.lbl_wachtwoordReset_Click);
             // 
             // btn_return
             // 
@@ -126,12 +139,133 @@
             this.pb_Logo.TabIndex = 0;
             this.pb_Logo.TabStop = false;
             // 
+            // wwresetpnl
+            // 
+            this.wwresetpnl.Controls.Add(this.label6);
+            this.wwresetpnl.Controls.Add(this.resetbtn);
+            this.wwresetpnl.Controls.Add(this.herhalingwwtxt);
+            this.wwresetpnl.Controls.Add(this.label4);
+            this.wwresetpnl.Controls.Add(this.newwwtxt);
+            this.wwresetpnl.Controls.Add(this.label3);
+            this.wwresetpnl.Controls.Add(this.secrettxtbox);
+            this.wwresetpnl.Controls.Add(this.label2);
+            this.wwresetpnl.Controls.Add(this.user2txt);
+            this.wwresetpnl.Controls.Add(this.label1);
+            this.wwresetpnl.Location = new System.Drawing.Point(0, 317);
+            this.wwresetpnl.Name = "wwresetpnl";
+            this.wwresetpnl.Size = new System.Drawing.Size(412, 570);
+            this.wwresetpnl.TabIndex = 8;
+            this.wwresetpnl.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Roboto", 24F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.label6.Location = new System.Drawing.Point(65, 474);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(273, 38);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Opnieuw inloggen";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // resetbtn
+            // 
+            this.resetbtn.AutoSize = true;
+            this.resetbtn.Font = new System.Drawing.Font("Roboto", 24F);
+            this.resetbtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.resetbtn.Location = new System.Drawing.Point(45, 418);
+            this.resetbtn.Name = "resetbtn";
+            this.resetbtn.Size = new System.Drawing.Size(320, 38);
+            this.resetbtn.TabIndex = 11;
+            this.resetbtn.Text = "Wachtwoord resetten";
+            this.resetbtn.Click += new System.EventHandler(this.resetbtn_Click);
+            // 
+            // herhalingwwtxt
+            // 
+            this.herhalingwwtxt.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.herhalingwwtxt.Location = new System.Drawing.Point(32, 301);
+            this.herhalingwwtxt.Name = "herhalingwwtxt";
+            this.herhalingwwtxt.Size = new System.Drawing.Size(323, 36);
+            this.herhalingwwtxt.TabIndex = 10;
+            this.herhalingwwtxt.UseSystemPasswordChar = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Roboto", 24F);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.label4.Location = new System.Drawing.Point(25, 259);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(306, 38);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "herhaal wachtwoord";
+            // 
+            // newwwtxt
+            // 
+            this.newwwtxt.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newwwtxt.Location = new System.Drawing.Point(32, 220);
+            this.newwwtxt.Name = "newwwtxt";
+            this.newwwtxt.Size = new System.Drawing.Size(323, 36);
+            this.newwwtxt.TabIndex = 8;
+            this.newwwtxt.UseSystemPasswordChar = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Roboto", 24F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.label3.Location = new System.Drawing.Point(25, 178);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(302, 38);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "nieuwe wachtwoord";
+            // 
+            // secrettxtbox
+            // 
+            this.secrettxtbox.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.secrettxtbox.Location = new System.Drawing.Point(32, 139);
+            this.secrettxtbox.Name = "secrettxtbox";
+            this.secrettxtbox.Size = new System.Drawing.Size(323, 36);
+            this.secrettxtbox.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Roboto", 24F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.label2.Location = new System.Drawing.Point(25, 97);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(366, 38);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Wat is uw lievelingsdier?";
+            // 
+            // user2txt
+            // 
+            this.user2txt.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.user2txt.Location = new System.Drawing.Point(32, 53);
+            this.user2txt.Name = "user2txt";
+            this.user2txt.Size = new System.Drawing.Size(323, 36);
+            this.user2txt.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Roboto", 24F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.label1.Location = new System.Drawing.Point(25, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(252, 38);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Gebruikersnaam";
+            // 
             // MobileLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(412, 887);
+            this.Controls.Add(this.wwresetpnl);
             this.Controls.Add(this.btn_return);
             this.Controls.Add(this.lbl_wachtwoordReset);
             this.Controls.Add(this.btn_continue);
@@ -146,6 +280,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chapoo Login";
             ((System.ComponentModel.ISupportInitialize)(this.pb_Logo)).EndInit();
+            this.wwresetpnl.ResumeLayout(false);
+            this.wwresetpnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,5 +297,16 @@
         private System.Windows.Forms.Button btn_continue;
         private System.Windows.Forms.Label lbl_wachtwoordReset;
         private System.Windows.Forms.Button btn_return;
+        private System.Windows.Forms.Panel wwresetpnl;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label resetbtn;
+        private System.Windows.Forms.TextBox herhalingwwtxt;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox newwwtxt;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox secrettxtbox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox user2txt;
+        private System.Windows.Forms.Label label1;
     }
 }

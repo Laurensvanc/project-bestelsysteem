@@ -37,9 +37,21 @@ namespace Login
             this.inlogbtn = new System.Windows.Forms.Button();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlpassword = new System.Windows.Forms.Panel();
+            this.resetbtn = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.user2txt = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.herhalingwwtxt = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.newwwtxt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.secrettxtbox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
+            this.pnlpassword.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,6 +113,7 @@ namespace Login
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.panel2.Controls.Add(this.pnlpassword);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.usertxt);
             this.panel2.Controls.Add(this.wwlbl);
@@ -114,16 +127,132 @@ namespace Login
             this.panel2.TabIndex = 6;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // pnlpassword
+            // 
+            this.pnlpassword.Controls.Add(this.resetbtn);
+            this.pnlpassword.Controls.Add(this.label7);
+            this.pnlpassword.Controls.Add(this.user2txt);
+            this.pnlpassword.Controls.Add(this.label6);
+            this.pnlpassword.Controls.Add(this.herhalingwwtxt);
+            this.pnlpassword.Controls.Add(this.label5);
+            this.pnlpassword.Controls.Add(this.newwwtxt);
+            this.pnlpassword.Controls.Add(this.label4);
+            this.pnlpassword.Controls.Add(this.secrettxtbox);
+            this.pnlpassword.Controls.Add(this.label3);
+            this.pnlpassword.Location = new System.Drawing.Point(15, 194);
+            this.pnlpassword.Name = "pnlpassword";
+            this.pnlpassword.Size = new System.Drawing.Size(371, 272);
+            this.pnlpassword.TabIndex = 6;
+            // 
+            // resetbtn
+            // 
+            this.resetbtn.AutoSize = true;
+            this.resetbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetbtn.ForeColor = System.Drawing.SystemColors.Control;
+            this.resetbtn.Location = new System.Drawing.Point(104, 198);
+            this.resetbtn.Name = "resetbtn";
+            this.resetbtn.Size = new System.Drawing.Size(134, 16);
+            this.resetbtn.TabIndex = 13;
+            this.resetbtn.Text = "Reset wachtwoord";
+            this.resetbtn.Click += new System.EventHandler(this.resetbtn_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label7.Location = new System.Drawing.Point(83, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(75, 15);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Inlognaam";
+            // 
+            // user2txt
+            // 
+            this.user2txt.Location = new System.Drawing.Point(86, 34);
+            this.user2txt.Name = "user2txt";
+            this.user2txt.Size = new System.Drawing.Size(179, 20);
+            this.user2txt.TabIndex = 7;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label6.Location = new System.Drawing.Point(86, 144);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(138, 15);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Herhaal wachtwoord";
+            // 
+            // herhalingwwtxt
+            // 
+            this.herhalingwwtxt.Location = new System.Drawing.Point(86, 163);
+            this.herhalingwwtxt.Name = "herhalingwwtxt";
+            this.herhalingwwtxt.Size = new System.Drawing.Size(185, 20);
+            this.herhalingwwtxt.TabIndex = 10;
+            this.herhalingwwtxt.UseSystemPasswordChar = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label5.Location = new System.Drawing.Point(86, 98);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(135, 15);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Nieuwe wachtwoord";
+            // 
+            // newwwtxt
+            // 
+            this.newwwtxt.Location = new System.Drawing.Point(86, 117);
+            this.newwwtxt.Name = "newwwtxt";
+            this.newwwtxt.Size = new System.Drawing.Size(185, 20);
+            this.newwwtxt.TabIndex = 8;
+            this.newwwtxt.UseSystemPasswordChar = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
+            this.label4.Location = new System.Drawing.Point(104, 236);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(131, 16);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Opnieuw inloggen";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // secrettxtbox
+            // 
+            this.secrettxtbox.Location = new System.Drawing.Point(86, 75);
+            this.secrettxtbox.Name = "secrettxtbox";
+            this.secrettxtbox.Size = new System.Drawing.Size(185, 20);
+            this.secrettxtbox.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(83, 57);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(185, 15);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Wat is je favoriete huisdier?";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(153, 417);
+            this.label2.Location = new System.Drawing.Point(119, 414);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(158, 16);
             this.label2.TabIndex = 5;
             this.label2.Text = "Wachtwoord vergeten";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // pictureBox1
             // 
@@ -144,12 +273,13 @@ namespace Login
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.pnlpassword.ResumeLayout(false);
+            this.pnlpassword.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -166,5 +296,16 @@ namespace Login
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel pnlpassword;
+        private System.Windows.Forms.Label resetbtn;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox user2txt;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox herhalingwwtxt;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox newwwtxt;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox secrettxtbox;
+        private System.Windows.Forms.Label label3;
     }
 }

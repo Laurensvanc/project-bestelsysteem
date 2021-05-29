@@ -46,6 +46,21 @@ namespace ChapooLogic
             }
             catch (Exception e)
             {
+                
+                throw;
+            }
+        }
+
+        public bool ResetPassword(string user2txt, string encryptedwachtwoord)
+        {
+            try
+            {
+                accountDAO.ResetPassword(user2txt,encryptedwachtwoord);
+
+                return true;
+            }
+            catch (Exception e)
+            {
                 Console.WriteLine(e);
                 throw;
             }

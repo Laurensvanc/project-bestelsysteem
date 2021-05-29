@@ -51,6 +51,16 @@ namespace ChapooDal
             ExecuteEditQuery(query, sqlParameters);
         }
 
+        public void ResetPassword(string account, string encryptedwachtwoord)
+        {
+            string query = "USE dbchapoo202104 UPDATE [Account] SET Wachtwoord = @Wachtwoord WHERE Inlognaam = @inlognaam";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@inlognaam", account);
+            sqlParameters[1] = new SqlParameter("@Wachtwoord", encryptedwachtwoord);
+            ExecuteEditQuery(query, sqlParameters);
+
+        }
+
         public void UpdateLastLoginAccount(string account)
         {
            
