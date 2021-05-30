@@ -15,10 +15,12 @@ namespace Login
 {
     public partial class LoginForm : Form
     {
-        public LoginForm()
+        Platform _platform = new Platform();
+        public LoginForm(Platform platform)
         {
             InitializeComponent();
             CenterToScreen();
+            _platform = platform;
         }
 
         private void Inlogbtn_Click(object sender, EventArgs e)
@@ -120,6 +122,12 @@ namespace Login
             {
                 MessageBox.Show("Antwoord op je geheime vraag klopt niet");
             }
+        }
+
+        private void btn_return_Click(object sender, EventArgs e)
+        {
+            _platform.Show();
+            this.Close();
         }
     }
 }

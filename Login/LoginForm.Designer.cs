@@ -50,6 +50,7 @@ namespace Login
             this.secrettxtbox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btn_return = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             this.pnlpassword.SuspendLayout();
@@ -114,6 +115,7 @@ namespace Login
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.panel2.Controls.Add(this.btn_return);
             this.panel2.Controls.Add(this.pnlpassword);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.usertxt);
@@ -247,6 +249,7 @@ namespace Login
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
             this.label2.Location = new System.Drawing.Point(119, 414);
@@ -255,6 +258,21 @@ namespace Login
             this.label2.TabIndex = 5;
             this.label2.Text = "Wachtwoord vergeten";
             this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // btn_return
+            // 
+            this.btn_return.BackColor = System.Drawing.Color.White;
+            this.btn_return.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_return.FlatAppearance.BorderSize = 0;
+            this.btn_return.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_return.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_return.Image = global::Login.Properties.Resources.return_btn;
+            this.btn_return.Location = new System.Drawing.Point(27, 14);
+            this.btn_return.Name = "btn_return";
+            this.btn_return.Size = new System.Drawing.Size(48, 43);
+            this.btn_return.TabIndex = 14;
+            this.btn_return.UseVisualStyleBackColor = false;
+            this.btn_return.Click += new System.EventHandler(this.btn_return_Click);
             // 
             // pictureBox1
             // 
@@ -310,5 +328,6 @@ namespace Login
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox secrettxtbox;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btn_return;
     }
 }

@@ -369,6 +369,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\return_btn.png" />
     <None Include="Resources\uitknop1.png" />
     <None Include="Resources\arrow_right.png" />
     <None Include="Resources\arrow_left_pink.png" />
