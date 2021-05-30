@@ -36,7 +36,9 @@ namespace Login
             {
                 if (BCrypt.Net.BCrypt.Verify(wwtxt.Text, encryptedww)) { 
                     new Menu(this).Show();
-
+                    usertxt.Clear();
+                    wwtxt.Clear();
+                    usertxt.Select();
                     this.Hide();
                     service.UpdateLastLoginAccount(usertxt.Text);
                 }
