@@ -13,9 +13,9 @@ namespace Login
 {
     public partial class MobileLogin : Form
     {
-        private Platform _platform;
+        private ChoosePlatform _platform;
 
-        public MobileLogin(Platform platfrom)
+        public MobileLogin(ChoosePlatform platfrom)
         {
             InitializeComponent();
             _platform = platfrom;
@@ -43,7 +43,7 @@ namespace Login
             {
                 if (BCrypt.Net.BCrypt.Verify(txb_wachtwoord.Text, encryptedww))
                 {
-                    MobileMenu menu = new MobileMenu(this, _platform);
+                    MobileHome menu = new MobileHome(this, _platform);
 
                     menu.Show();
                     this.Hide();

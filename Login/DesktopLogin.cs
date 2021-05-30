@@ -13,10 +13,10 @@ using ChapooLogic;
 
 namespace Login
 {
-    public partial class LoginForm : Form
+    public partial class DesktopLogin : Form
     {
-        Platform _platform = new Platform();
-        public LoginForm(Platform platform)
+        ChoosePlatform _platform = new ChoosePlatform();
+        public DesktopLogin(ChoosePlatform platform)
         {
             InitializeComponent();
             CenterToScreen();
@@ -37,7 +37,7 @@ namespace Login
             if (encryptedww != string.Empty)
             {
                 if (BCrypt.Net.BCrypt.Verify(wwtxt.Text, encryptedww)) { 
-                    new Menu(this).Show();
+                    new DesktopHome(this).Show();
                     usertxt.Clear();
                     wwtxt.Clear();
                     usertxt.Select();

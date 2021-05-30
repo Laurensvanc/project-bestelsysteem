@@ -1,7 +1,7 @@
 ﻿
 namespace Login
 {
-    partial class LoginForm
+    partial class DesktopLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Login
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DesktopLogin));
             this.label1 = new System.Windows.Forms.Label();
             this.usertxt = new System.Windows.Forms.TextBox();
             this.wwtxt = new System.Windows.Forms.TextBox();

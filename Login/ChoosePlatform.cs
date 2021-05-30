@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class Platform : Form
+    public partial class ChoosePlatform : Form
     {
-        public Platform()
+        public ChoosePlatform()
         {
             InitializeComponent();
         }
 
         private void btn_desktop_Click(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm(this);
+            DesktopLogin loginForm = new DesktopLogin(this);
 
             loginForm.Show();
             this.Hide();

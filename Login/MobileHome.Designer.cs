@@ -1,7 +1,7 @@
 ﻿
 namespace Login
 {
-    partial class MobileMenu
+    partial class MobileHome
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Login
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MobileMenu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MobileHome));
             this.pnl_Display = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 

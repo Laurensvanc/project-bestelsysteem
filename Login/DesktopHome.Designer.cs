@@ -1,7 +1,7 @@
 ﻿
 namespace Login
 {
-    partial class Menu
+    partial class DesktopHome
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Login
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DesktopHome));
             this.lbl_userDisplay = new System.Windows.Forms.Label();
             this.lbl_timeDisplay = new System.Windows.Forms.Label();
             this.pnl_Display = new System.Windows.Forms.Panel();

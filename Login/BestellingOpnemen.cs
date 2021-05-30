@@ -14,11 +14,11 @@ namespace Login
 {
     public partial class BestellingOpnemen : UserControl
     {
-        private Platform _platform;
-        private MobileMenu _mobileMenu;
+        private ChoosePlatform _platform;
+        private MobileHome _mobileMenu;
         public Product_Service productService = new Product_Service();
         public List<Product> productList = new List<Product>();
-        public BestellingOpnemen(Platform platform, MobileMenu mobileMenu)
+        public BestellingOpnemen(ChoosePlatform platform, MobileHome mobileMenu)
         {
             InitializeComponent();
             pnl_Drank.Hide();

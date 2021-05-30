@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class MobileMenu : Form
+    public partial class MobileHome : Form
     {
         private MobileLogin _mobileLogin;
-        private Platform _platform;
+        private ChoosePlatform _platform;
 
-        public MobileMenu(MobileLogin login, Platform platform)
+        public MobileHome(MobileLogin login, ChoosePlatform platform)
         {
             InitializeComponent();
             _mobileLogin = login;

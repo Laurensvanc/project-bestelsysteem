@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class Menu : Form
+    public partial class DesktopHome : Form
     {
-        private LoginForm _loginForm;
-        public Menu(LoginForm loginForm)
+        private DesktopLogin _loginForm;
+        public DesktopHome(DesktopLogin loginForm)
         {
             InitializeComponent();
             btn_closeForm.FlatAppearance.MouseOverBackColor = btn_closeForm.BackColor;

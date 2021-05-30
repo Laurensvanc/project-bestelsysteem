@@ -196,17 +196,17 @@
     <Compile Include="Bon.Designer.cs">
       <DependentUpon>Bon.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs">
+    <Compile Include="DesktopHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <Compile Include="DesktopHome.Designer.cs">
+      <DependentUpon>DesktopHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="DesktopLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <Compile Include="DesktopLogin.Designer.cs">
+      <DependentUpon>DesktopLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="MedewerkerRegistreren.cs">
       <SubType>UserControl</SubType>
@@ -232,11 +232,11 @@
     <Compile Include="MobileLogin.Designer.cs">
       <DependentUpon>MobileLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="MobileMenu.cs">
+    <Compile Include="MobileHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MobileMenu.Designer.cs">
-      <DependentUpon>MobileMenu.cs</DependentUpon>
+    <Compile Include="MobileHome.Designer.cs">
+      <DependentUpon>MobileHome.cs</DependentUpon>
     </Compile>
     <Compile Include="OmzetOverzicht.cs">
       <SubType>Form</SubType>
@@ -244,11 +244,11 @@
     <Compile Include="OmzetOverzicht.Designer.cs">
       <DependentUpon>OmzetOverzicht.cs</DependentUpon>
     </Compile>
-    <Compile Include="Platform.cs">
+    <Compile Include="ChoosePlatform.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Platform.Designer.cs">
-      <DependentUpon>Platform.cs</DependentUpon>
+    <Compile Include="ChoosePlatform.Designer.cs">
+      <DependentUpon>ChoosePlatform.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -296,14 +296,14 @@
     <EmbeddedResource Include="Bon.resx">
       <DependentUpon>Bon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <EmbeddedResource Include="DesktopLogin.resx">
+      <DependentUpon>DesktopLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MedewerkerRegistreren.resx">
       <DependentUpon>MedewerkerRegistreren.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <EmbeddedResource Include="DesktopHome.resx">
+      <DependentUpon>DesktopHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuChange.resx">
       <DependentUpon>MenuChange.cs</DependentUpon>
@@ -314,14 +314,14 @@
     <EmbeddedResource Include="MobileLogin.resx">
       <DependentUpon>MobileLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MobileMenu.resx">
-      <DependentUpon>MobileMenu.cs</DependentUpon>
+    <EmbeddedResource Include="MobileHome.resx">
+      <DependentUpon>MobileHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OmzetOverzicht.resx">
       <DependentUpon>OmzetOverzicht.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Platform.resx">
-      <DependentUpon>Platform.cs</DependentUpon>
+    <EmbeddedResource Include="ChoosePlatform.resx">
+      <DependentUpon>ChoosePlatform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
