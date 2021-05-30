@@ -13,16 +13,18 @@ namespace ChapooModel
         public int ProductID { get; set; }
         public int TafelID { get; set; }
         public string ProductNaam { get; set; }
+        public bool IsDrinken { get; set; }
         public string Status { get; set; }
         public int Aantal { get; set; }
 
-        public BarKeukenBestelling(int orderId, int bestellingId, int productId, int tafelId, string productNaam, string status, int aantal)
+        public BarKeukenBestelling(int orderId, int bestellingId, int productId, int tafelId, string productNaam, bool isDrinken, string status, int aantal)
         {
             OrderID = orderId;
             BestellingID = bestellingId;
             ProductID = productId;
             TafelID = tafelId;
             ProductNaam = productNaam;
+            IsDrinken = isDrinken;
             Status = status;
             Aantal = aantal;
         }

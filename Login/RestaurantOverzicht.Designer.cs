@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstReservering = new System.Windows.Forms.ListView();
             this.lstTafelStatus = new System.Windows.Forms.ListView();
             this.btnPlus = new System.Windows.Forms.Button();
             this.btnMin = new System.Windows.Forms.Button();
             this.btnFresh = new System.Windows.Forms.Button();
             this.pnlReservering = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.geboorteDatumPicker = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbTafel = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -60,29 +61,26 @@
             this.btnTerug = new System.Windows.Forms.Button();
             this.btnKlantOpslaan = new System.Windows.Forms.Button();
             this.lstKlantSysteem = new System.Windows.Forms.ListView();
-            this.geboorteDatumPicker = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
+            this.pnl_overzicht = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel_Header = new System.Windows.Forms.Panel();
+            this.lstReservering = new System.Windows.Forms.ListView();
+            this.label11 = new System.Windows.Forms.Label();
             this.pnlReservering.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericAantal)).BeginInit();
             this.pnlKlantSysteem.SuspendLayout();
+            this.pnl_overzicht.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel_Header.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lstReservering
-            // 
-            this.lstReservering.HideSelection = false;
-            this.lstReservering.Location = new System.Drawing.Point(12, 29);
-            this.lstReservering.Name = "lstReservering";
-            this.lstReservering.Size = new System.Drawing.Size(395, 245);
-            this.lstReservering.TabIndex = 0;
-            this.lstReservering.UseCompatibleStateImageBehavior = false;
-            this.lstReservering.View = System.Windows.Forms.View.Details;
             // 
             // lstTafelStatus
             // 
             this.lstTafelStatus.HideSelection = false;
-            this.lstTafelStatus.Location = new System.Drawing.Point(430, 29);
+            this.lstTafelStatus.Location = new System.Drawing.Point(3, 55);
             this.lstTafelStatus.Name = "lstTafelStatus";
-            this.lstTafelStatus.Size = new System.Drawing.Size(358, 245);
+            this.lstTafelStatus.Size = new System.Drawing.Size(346, 679);
             this.lstTafelStatus.TabIndex = 1;
             this.lstTafelStatus.UseCompatibleStateImageBehavior = false;
             this.lstTafelStatus.View = System.Windows.Forms.View.Details;
@@ -90,35 +88,44 @@
             // 
             // btnPlus
             // 
+            this.btnPlus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPlus.Location = new System.Drawing.Point(26, 359);
+            this.btnPlus.Font = new System.Drawing.Font("Roboto", 32F);
+            this.btnPlus.ForeColor = System.Drawing.Color.White;
+            this.btnPlus.Location = new System.Drawing.Point(40, 781);
             this.btnPlus.Name = "btnPlus";
-            this.btnPlus.Size = new System.Drawing.Size(44, 34);
+            this.btnPlus.Size = new System.Drawing.Size(429, 114);
             this.btnPlus.TabIndex = 2;
-            this.btnPlus.Text = "+";
-            this.btnPlus.UseVisualStyleBackColor = true;
+            this.btnPlus.Text = "Maak Reservering";
+            this.btnPlus.UseVisualStyleBackColor = false;
             this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
             // 
             // btnMin
             // 
+            this.btnMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnMin.Location = new System.Drawing.Point(92, 359);
+            this.btnMin.Font = new System.Drawing.Font("Roboto", 32F);
+            this.btnMin.ForeColor = System.Drawing.Color.White;
+            this.btnMin.Location = new System.Drawing.Point(502, 781);
             this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(44, 34);
+            this.btnMin.Size = new System.Drawing.Size(239, 114);
             this.btnMin.TabIndex = 3;
-            this.btnMin.Text = "-";
-            this.btnMin.UseVisualStyleBackColor = true;
+            this.btnMin.Text = "Verwijder";
+            this.btnMin.UseVisualStyleBackColor = false;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             // 
             // btnFresh
             // 
+            this.btnFresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnFresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnFresh.Location = new System.Drawing.Point(161, 359);
+            this.btnFresh.Font = new System.Drawing.Font("Roboto", 32F);
+            this.btnFresh.ForeColor = System.Drawing.Color.White;
+            this.btnFresh.Location = new System.Drawing.Point(1119, 781);
             this.btnFresh.Name = "btnFresh";
-            this.btnFresh.Size = new System.Drawing.Size(76, 34);
+            this.btnFresh.Size = new System.Drawing.Size(239, 114);
             this.btnFresh.TabIndex = 4;
-            this.btnFresh.Text = "refresh";
-            this.btnFresh.UseVisualStyleBackColor = true;
+            this.btnFresh.Text = "Update";
+            this.btnFresh.UseVisualStyleBackColor = false;
             this.btnFresh.Click += new System.EventHandler(this.btnFresh_Click);
             // 
             // pnlReservering
@@ -146,9 +153,27 @@
             this.pnlReservering.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlReservering.Location = new System.Drawing.Point(0, 0);
             this.pnlReservering.Name = "pnlReservering";
-            this.pnlReservering.Size = new System.Drawing.Size(1305, 821);
+            this.pnlReservering.Size = new System.Drawing.Size(1576, 942);
             this.pnlReservering.TabIndex = 5;
             this.pnlReservering.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlReservering_Paint);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(36, 495);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(171, 24);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "Reservering Datum";
+            // 
+            // geboorteDatumPicker
+            // 
+            this.geboorteDatumPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.geboorteDatumPicker.Location = new System.Drawing.Point(36, 242);
+            this.geboorteDatumPicker.Name = "geboorteDatumPicker";
+            this.geboorteDatumPicker.Size = new System.Drawing.Size(365, 32);
+            this.geboorteDatumPicker.TabIndex = 2;
             // 
             // label6
             // 
@@ -340,7 +365,7 @@
             this.pnlKlantSysteem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlKlantSysteem.Location = new System.Drawing.Point(0, 0);
             this.pnlKlantSysteem.Name = "pnlKlantSysteem";
-            this.pnlKlantSysteem.Size = new System.Drawing.Size(1305, 821);
+            this.pnlKlantSysteem.Size = new System.Drawing.Size(1576, 942);
             this.pnlKlantSysteem.TabIndex = 16;
             // 
             // lblZoeken
@@ -419,51 +444,96 @@
             this.lstKlantSysteem.View = System.Windows.Forms.View.Details;
             this.lstKlantSysteem.SelectedIndexChanged += new System.EventHandler(this.lstKlantSysteem_SelectedIndexChanged);
             // 
-            // geboorteDatumPicker
+            // pnl_overzicht
             // 
-            this.geboorteDatumPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.geboorteDatumPicker.Location = new System.Drawing.Point(36, 242);
-            this.geboorteDatumPicker.Name = "geboorteDatumPicker";
-            this.geboorteDatumPicker.Size = new System.Drawing.Size(365, 32);
-            this.geboorteDatumPicker.TabIndex = 2;
+            this.pnl_overzicht.Controls.Add(this.btnFresh);
+            this.pnl_overzicht.Controls.Add(this.btnPlus);
+            this.pnl_overzicht.Controls.Add(this.btnMin);
+            this.pnl_overzicht.Controls.Add(this.panel2);
+            this.pnl_overzicht.Controls.Add(this.panel_Header);
+            this.pnl_overzicht.Location = new System.Drawing.Point(0, 0);
+            this.pnl_overzicht.Name = "pnl_overzicht";
+            this.pnl_overzicht.Size = new System.Drawing.Size(1576, 942);
+            this.pnl_overzicht.TabIndex = 22;
             // 
-            // label7
+            // panel2
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(36, 495);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(171, 24);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "Reservering Datum";
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.lstTafelStatus);
+            this.panel2.Location = new System.Drawing.Point(1057, 12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(352, 737);
+            this.panel2.TabIndex = 31;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(14, 15);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(154, 37);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "Bestelling";
+            // 
+            // panel_Header
+            // 
+            this.panel_Header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.panel_Header.Controls.Add(this.lstReservering);
+            this.panel_Header.Controls.Add(this.label11);
+            this.panel_Header.Location = new System.Drawing.Point(15, 12);
+            this.panel_Header.Name = "panel_Header";
+            this.panel_Header.Size = new System.Drawing.Size(1027, 737);
+            this.panel_Header.TabIndex = 30;
+            // 
+            // lstReservering
+            // 
+            this.lstReservering.HideSelection = false;
+            this.lstReservering.Location = new System.Drawing.Point(3, 55);
+            this.lstReservering.Name = "lstReservering";
+            this.lstReservering.Size = new System.Drawing.Size(1021, 679);
+            this.lstReservering.TabIndex = 0;
+            this.lstReservering.UseCompatibleStateImageBehavior = false;
+            this.lstReservering.View = System.Windows.Forms.View.Details;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(14, 15);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(154, 37);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Bestelling";
             // 
             // RestaurantOverzicht
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.pnl_overzicht);
             this.Controls.Add(this.pnlReservering);
             this.Controls.Add(this.pnlKlantSysteem);
-            this.Controls.Add(this.btnFresh);
-            this.Controls.Add(this.btnMin);
-            this.Controls.Add(this.btnPlus);
-            this.Controls.Add(this.lstTafelStatus);
-            this.Controls.Add(this.lstReservering);
             this.Name = "RestaurantOverzicht";
-            this.Size = new System.Drawing.Size(1305, 821);
+            this.Size = new System.Drawing.Size(1576, 942);
             this.Load += new System.EventHandler(this.RestaurantOverzicht_Load);
             this.pnlReservering.ResumeLayout(false);
             this.pnlReservering.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericAantal)).EndInit();
             this.pnlKlantSysteem.ResumeLayout(false);
             this.pnlKlantSysteem.PerformLayout();
+            this.pnl_overzicht.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel_Header.ResumeLayout(false);
+            this.panel_Header.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView lstReservering;
         private System.Windows.Forms.ListView lstTafelStatus;
         private System.Windows.Forms.Button btnPlus;
         private System.Windows.Forms.Button btnMin;
@@ -497,5 +567,11 @@
         private System.Windows.Forms.ComboBox cmbTafel;
         private System.Windows.Forms.DateTimePicker geboorteDatumPicker;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel pnl_overzicht;
+        private System.Windows.Forms.ListView lstReservering;
+        private System.Windows.Forms.Panel panel_Header;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label8;
     }
 }

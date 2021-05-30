@@ -143,6 +143,7 @@ namespace Login
             this.pnlpassword.Name = "pnlpassword";
             this.pnlpassword.Size = new System.Drawing.Size(371, 272);
             this.pnlpassword.TabIndex = 6;
+            this.pnlpassword.Visible = false;
             // 
             // resetbtn
             // 

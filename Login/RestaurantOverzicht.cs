@@ -50,6 +50,7 @@ namespace Login
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
+            pnl_overzicht.Hide();
             pnlReservering.Show();
         }
 

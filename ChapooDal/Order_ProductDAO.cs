@@ -24,9 +24,28 @@ namespace ChapooDal
             return orderProducts;
         }
 
+        public void Update_Order_Status(int orderId, int productId, string status)
+        {
+            string query = @"UPDATE Bestelling
+                                SET [Status] = @status
+                                FROM Bestelling AS b
+                                JOIN Order_Product AS op
+                                ON op.ProductID = @productId
+                                JOIN [Order] AS o
+                                ON o.OrderID = @orderId
+                                WHERE o.BestellingID = b.BestellingID ";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+
+            sqlParameters[0] = new SqlParameter("@status", status);
+            sqlParameters[1] = new SqlParameter("@productId", productId);
+            sqlParameters[2] = new SqlParameter("@orderId", orderId);
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
         public List<BarKeukenBestelling> Db_Get_All_BarKeuken_Bestellingen()
         {
-            string query = @"SELECT op.OrderID, o.BestellingID, op.ProductID, b.TafelID, p.ProductNaam, b.[Status], op.Aantal
+            string query = @"SELECT op.OrderID, o.BestellingID, op.ProductID, b.TafelID, p.ProductNaam, p.IsDrinken, b.[Status], op.Aantal
                                 FROM Order_Product AS op
                                 JOIN[Order] AS o
                                 ON op.OrderID = o.OrderID
@@ -72,6 +91,7 @@ namespace ChapooDal
                     (int)dr["ProductID"],
                     (int)dr["TafelID"],
                     (String)dr["ProductNaam"],
+                    (bool)dr["IsDrinken"],
                     (String)dr["Status"],
                     (int)dr["Aantal"]
                     );

@@ -23,5 +23,19 @@ namespace ChapooLogic
                 throw (err);
             }
         }
+
+        public bool UpdateOrderStatus(int orderId, int productId, string status)
+        {
+            try
+            {
+                orderProductDAO.Update_Order_Status(orderId, productId, status);
+                return true;
+            }
+            catch (Exception err)
+            {
+                return false;
+                throw (err);
+            }
+        }
     }
 }

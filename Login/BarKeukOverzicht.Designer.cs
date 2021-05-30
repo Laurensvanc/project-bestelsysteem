@@ -28,23 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.orderList = new System.Windows.Forms.ListView();
             this.btn_complete = new System.Windows.Forms.Button();
             this.btn_workingOn = new System.Windows.Forms.Button();
             this.btn_setOpen = new System.Windows.Forms.Button();
             this.btn_update = new System.Windows.Forms.Button();
             this.btn_removeCompleted = new System.Windows.Forms.Button();
-            this.txb_header = new System.Windows.Forms.TextBox();
+            this.panel_Header = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.orderList = new System.Windows.Forms.ListView();
+            this.panel_Header.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // orderList
-            // 
-            this.orderList.HideSelection = false;
-            this.orderList.Location = new System.Drawing.Point(35, 72);
-            this.orderList.Name = "orderList";
-            this.orderList.Size = new System.Drawing.Size(994, 509);
-            this.orderList.TabIndex = 0;
-            this.orderList.UseCompatibleStateImageBehavior = false;
             // 
             // btn_complete
             // 
@@ -58,6 +51,7 @@
             this.btn_complete.TabIndex = 1;
             this.btn_complete.Text = "Compleet";
             this.btn_complete.UseVisualStyleBackColor = false;
+            this.btn_complete.Click += new System.EventHandler(this.btn_complete_Click);
             // 
             // btn_workingOn
             // 
@@ -71,6 +65,7 @@
             this.btn_workingOn.TabIndex = 2;
             this.btn_workingOn.Text = "Bezig";
             this.btn_workingOn.UseVisualStyleBackColor = false;
+            this.btn_workingOn.Click += new System.EventHandler(this.btn_workingOn_Click);
             // 
             // btn_setOpen
             // 
@@ -82,8 +77,9 @@
             this.btn_setOpen.Name = "btn_setOpen";
             this.btn_setOpen.Size = new System.Drawing.Size(243, 144);
             this.btn_setOpen.TabIndex = 3;
-            this.btn_setOpen.Text = "Open";
+            this.btn_setOpen.Text = "Nieuw";
             this.btn_setOpen.UseVisualStyleBackColor = false;
+            this.btn_setOpen.Click += new System.EventHandler(this.btn_setOpen_Click);
             // 
             // btn_update
             // 
@@ -112,44 +108,64 @@
             this.btn_removeCompleted.Text = "Verwijder Compleet";
             this.btn_removeCompleted.UseVisualStyleBackColor = false;
             // 
-            // txb_header
+            // panel_Header
             // 
-            this.txb_header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(61)))), ((int)(((byte)(102)))));
-            this.txb_header.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_header.ForeColor = System.Drawing.Color.White;
-            this.txb_header.Location = new System.Drawing.Point(35, 29);
-            this.txb_header.Name = "txb_header";
-            this.txb_header.ReadOnly = true;
-            this.txb_header.Size = new System.Drawing.Size(994, 46);
-            this.txb_header.TabIndex = 7;
-            this.txb_header.TabStop = false;
+            this.panel_Header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
+            this.panel_Header.Controls.Add(this.orderList);
+            this.panel_Header.Controls.Add(this.label11);
+            this.panel_Header.Location = new System.Drawing.Point(35, 29);
+            this.panel_Header.Name = "panel_Header";
+            this.panel_Header.Size = new System.Drawing.Size(994, 552);
+            this.panel_Header.TabIndex = 29;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(14, 15);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(154, 37);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Bestelling";
+            // 
+            // orderList
+            // 
+            this.orderList.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderList.FullRowSelect = true;
+            this.orderList.HideSelection = false;
+            this.orderList.Location = new System.Drawing.Point(3, 55);
+            this.orderList.Name = "orderList";
+            this.orderList.Size = new System.Drawing.Size(988, 494);
+            this.orderList.TabIndex = 28;
+            this.orderList.UseCompatibleStateImageBehavior = false;
             // 
             // BarKeukOverzicht
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.txb_header);
+            this.Controls.Add(this.panel_Header);
             this.Controls.Add(this.btn_removeCompleted);
             this.Controls.Add(this.btn_update);
             this.Controls.Add(this.btn_setOpen);
             this.Controls.Add(this.btn_workingOn);
             this.Controls.Add(this.btn_complete);
-            this.Controls.Add(this.orderList);
             this.Name = "BarKeukOverzicht";
             this.Size = new System.Drawing.Size(1421, 794);
+            this.panel_Header.ResumeLayout(false);
+            this.panel_Header.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView orderList;
         private System.Windows.Forms.Button btn_complete;
         private System.Windows.Forms.Button btn_workingOn;
         private System.Windows.Forms.Button btn_setOpen;
         private System.Windows.Forms.Button btn_update;
         private System.Windows.Forms.Button btn_removeCompleted;
-        private System.Windows.Forms.TextBox txb_header;
+        private System.Windows.Forms.Panel panel_Header;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ListView orderList;
     }
 }
