@@ -1,5 +1,4 @@
-﻿
-namespace ChapooModel
+﻿namespace ChapooModel
 {
     public class Product
     {
@@ -36,11 +35,7 @@ namespace ChapooModel
         {
             var other = obj as Product;
 
-            if ((ProductId != other.ProductId || ProductNaam != other.ProductNaam || Prijs != other.Prijs || InkoopPrijs != other.InkoopPrijs || Aantal != other.Aantal || IsAlcohol != other.IsAlcohol || IsDrinken != other.IsDrinken) || other is null)
-            {
-                return false;
-            }
-            return true;
+            return (ProductId == other.ProductId && ProductNaam == other.ProductNaam && Prijs == other.Prijs && InkoopPrijs == other.InkoopPrijs && Aantal == other.Aantal && IsAlcohol == other.IsAlcohol && IsDrinken == other.IsDrinken);
         }
     }
 }

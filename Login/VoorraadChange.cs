@@ -8,10 +8,10 @@ namespace Login
     public partial class VoorraadChange : Form
     {
         private Product _product;
-        private bool _nameValidated = false;
-        private bool _menuPriceValidated = false;
-        private bool _purchasePriceValidated = false;
-        private bool _typeValidated = false;
+        private bool _nameValidated;
+        private bool _menuPriceValidated;
+        private bool _purchasePriceValidated;
+        private bool _typeValidated;
 
         public VoorraadChange(Product product)
         {
@@ -75,7 +75,7 @@ namespace Login
             }
 
             // Check if '.' pressed
-            char sepratorChar = 'a';
+            char separatorChar = 'a';
             if (e.KeyChar == '.')
             {
                 // Check if it's in the beginning of text not accept
@@ -83,14 +83,14 @@ namespace Login
                 // Check if it's in the beginning of text not accept
                 if (textBox.SelectionStart == 0) e.Handled = true;
                 // Check if there is already exist a '.' , ','
-                if (alreadyExist(textBox.Text, ref sepratorChar)) e.Handled = true;
+                if (alreadyExist(textBox.Text, ref separatorChar)) e.Handled = true;
                 // Check if '.' or ',' is in middle of a number and after it is not a number greater than 99
                 if (textBox.SelectionStart != textBox.Text.Length && e.Handled == false)
                 {
                     // '.' or ',' is in the middle
-                    string AfterDotString = textBox.Text.Substring(textBox.SelectionStart);
+                    string afterDotString = textBox.Text.Substring(textBox.SelectionStart);
 
-                    if (AfterDotString.Length > 2)
+                    if (afterDotString.Length > 2)
                     {
                         e.Handled = true;
                     }
@@ -101,11 +101,11 @@ namespace Login
             if (Char.IsDigit(e.KeyChar))
             {
                 // Check if a dot exist
-                if (alreadyExist(textBox.Text, ref sepratorChar))
+                if (alreadyExist(textBox.Text, ref separatorChar))
                 {
-                    int sepratorPosition = textBox.Text.IndexOf(sepratorChar);
-                    string afterSepratorString = textBox.Text.Substring(sepratorPosition + 1);
-                    if (textBox.SelectionStart > sepratorPosition && afterSepratorString.Length > 1)
+                    int separatorPosition = textBox.Text.IndexOf(separatorChar);
+                    string afterSeparatorString = textBox.Text.Substring(separatorPosition + 1);
+                    if (textBox.SelectionStart > separatorPosition && afterSeparatorString.Length > 1)
                     {
                         e.Handled = true;
                     }
@@ -113,12 +113,12 @@ namespace Login
             }
         }
 
-        private bool alreadyExist(string _text, ref char KeyChar)
+        private bool alreadyExist(string text, ref char keyChar)
         {
             // check if '.' exists
-            if (_text.IndexOf('.') > -1)
+            if (text.IndexOf('.') > -1)
             {
-                KeyChar = '.';
+                keyChar = '.';
                 return true;
             }
 
@@ -143,7 +143,7 @@ namespace Login
             // change product
             if (ValidateChildren(ValidationConstraints.Enabled)) // validate input not empty
             {
-                if ((_nameValidated && _menuPriceValidated && _purchasePriceValidated && _typeValidated) == true) // if validation succesful open confirmation window
+                if (_nameValidated && _menuPriceValidated && _purchasePriceValidated && _typeValidated) // if validation successful open confirmation window
                 {
                     Product product = new Product(_product.ProductId, tb_ProductName.Text, double.Parse(tb_MenuPrice.Text), double.Parse(tb_PurchasePrice.Text), Convert.ToInt32(nud_Amount.Value), cb_Alcoholic.Checked, TypeToBool());
                     if (!product.Equals(_product)) // check if object has changed
@@ -175,7 +175,7 @@ namespace Login
             // add product
             if (ValidateChildren(ValidationConstraints.Enabled)) // validate input not empty
             {
-                if ((_nameValidated && _menuPriceValidated && _purchasePriceValidated && _typeValidated) == true) // if validation succesful open confirmation window
+                if (_nameValidated && _menuPriceValidated && _purchasePriceValidated && _typeValidated) // if validation successful open confirmation window
                 {
                     Product product = new Product(-1, tb_ProductName.Text, double.Parse(tb_MenuPrice.Text), double.Parse(tb_PurchasePrice.Text), Convert.ToInt32(nud_Amount.Value), cb_Alcoholic.Checked, TypeToBool());
                     using (VoorraadConfirmation voorraadConfirmation = new VoorraadConfirmation(product, "Het product met de volgende waarden zal worden toegevoegd: ", false, this))
@@ -186,12 +186,12 @@ namespace Login
             }
         }
 
-        private bool ValidationTextBox(TextBox textBox, CancelEventArgs e, string Error)
+        private bool ValidationTextBox(TextBox textBox, string error)
         {
             // check if textboxes aren't empty
             if (string.IsNullOrEmpty(textBox.Text))
             {
-                errorProvider.SetError(textBox, Error);
+                errorProvider.SetError(textBox, error);
                 return false;
                 //e.Cancel = true;
             }
@@ -202,12 +202,12 @@ namespace Login
             }
         }
 
-        private bool ValidationComboBox(ComboBox comboBox, CancelEventArgs e, string Error)
+        private bool ValidationComboBox(ComboBox comboBox, string error)
         {
             // check if index is selected
             if (comboBox.SelectedIndex == -1)
             {
-                errorProvider.SetError(comboBox, Error);
+                errorProvider.SetError(comboBox, error);
                 return false;
             }
             else
@@ -219,22 +219,22 @@ namespace Login
 
         private void tb_ProductName_Validating(object sender, CancelEventArgs e)
         {
-            _nameValidated = ValidationTextBox(tb_ProductName, e, "Product naam mag niet leeg zijn!");
+            _nameValidated = ValidationTextBox(tb_ProductName, "Product naam mag niet leeg zijn!");
         }
 
         private void tb_MenuPrice_Validating(object sender, CancelEventArgs e)
         {
-            _menuPriceValidated = ValidationTextBox(tb_MenuPrice, e, "Menu prijs mag niet leeg zijn!");
+            _menuPriceValidated = ValidationTextBox(tb_MenuPrice, "Menu prijs mag niet leeg zijn!");
         }
 
         private void tb_PurchasePrice_Validating(object sender, CancelEventArgs e)
         {
-            _purchasePriceValidated = ValidationTextBox(tb_PurchasePrice, e, "Inkoop prijs mag niet leeg zijn!");
+            _purchasePriceValidated = ValidationTextBox(tb_PurchasePrice, "Inkoop prijs mag niet leeg zijn!");
         }
 
         private void cbox_Type_Validating(object sender, CancelEventArgs e)
         {
-            _typeValidated = ValidationComboBox(cbox_Type, e, "Soort mag niet leeg zijn!");
+            _typeValidated = ValidationComboBox(cbox_Type, "Soort mag niet leeg zijn!");
         }
 
         private void btn_CancelAdd_Click(object sender, EventArgs e)

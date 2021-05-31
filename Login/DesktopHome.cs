@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Login
@@ -14,6 +7,7 @@ namespace Login
     public partial class DesktopHome : Form
     {
         private DesktopLogin _loginForm;
+
         public DesktopHome(DesktopLogin loginForm)
         {
             InitializeComponent();
@@ -27,6 +21,7 @@ namespace Login
             Timer tmr = null;
             StartTimer(tmr);
         }
+
         private void StartTimer(Timer tmr)
         {
             tmr = new Timer();
@@ -34,7 +29,8 @@ namespace Login
             tmr.Tick += new EventHandler(tmr_Tick);
             tmr.Enabled = true;
         }
-        void tmr_Tick(object sender, EventArgs e)
+
+        private void tmr_Tick(object sender, EventArgs e)
         {
             lbl_timeDisplay.Text = DateTime.Now.ToString("F", CultureInfo.CreateSpecificCulture("nl-NL"));
         }
@@ -80,8 +76,8 @@ namespace Login
             {
                 pnl_LogoutBorder.Hide();
             }
-            
         }
+
         private void btn_Uitloggen_Click(object sender, EventArgs e)
         {
             _loginForm.Show();
@@ -126,6 +122,11 @@ namespace Login
         private void tsm_voorraad_Click(object sender, EventArgs e)
         {
             LoadUserControl(new VoorraadOverview());
+        }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new MenuOverview());
         }
     }
 }

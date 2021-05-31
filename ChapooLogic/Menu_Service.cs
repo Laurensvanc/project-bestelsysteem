@@ -7,20 +7,17 @@ namespace ChapooLogic
 {
     public class Menu_Service
     {
-        private MenuDAO menuDAO = new MenuDAO();
+        private readonly MenuDAO _menuDao = new MenuDAO();
+
         public List<MenuName> GetMenus()
         {
             try
             {
-                List<MenuName> menus = menuDAO.Db_Get_All_Menus();
+                List<MenuName> menus = _menuDao.Db_Get_All_Menus();
                 return menus;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                //ErrorText = e.Message;
-                //Error = true;
-                // throw new Exception(e.Message);
-                // something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!
                 List<MenuName> menus = new List<MenuName>();
                 MenuName m = new MenuName("ERROR", 404);
                 menus.Add(m);
@@ -28,26 +25,28 @@ namespace ChapooLogic
                 return menus;
             }
         }
+
         public void ChangeMenu(MenuName menuName)
         {
             try
             {
-                menuDAO.ChangeMenuItem(menuName);
+                _menuDao.ChangeMenuItem(menuName);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                throw new Exception(e.Message);
             }
         }
+
         public void RemoveMenu(MenuName menuName)
         {
             try
             {
-                menuDAO.RemoveMenuItem(menuName);
+                _menuDao.RemoveMenuItem(menuName);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                throw new Exception(e.Message);
             }
         }
     }

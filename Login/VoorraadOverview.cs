@@ -9,11 +9,9 @@ namespace Login
 {
     public partial class VoorraadOverview : UserControl
     {
-        private bool _showingDrinks = false;
+        private bool _showingDrinks;
         private List<Product> _products;
-        private Product_Service product_Service;
-
-        public VoorraadChange VoorraadChange { get; private set; }
+        private Product_Service _productService;
 
         public VoorraadOverview()
         {
@@ -22,7 +20,7 @@ namespace Login
 
         private void VoorraadOverview_Load(object sender, EventArgs e)
         {
-            product_Service = new Product_Service();
+            _productService = new Product_Service();
             // add grid lines, rows
             Point point = new Point(12, 12);
             pnl_VoorraadOverview.Location = point;
@@ -35,7 +33,7 @@ namespace Login
 
         private void Voorraad_Refresh()
         {
-            _products = product_Service.GetProducts();
+            _products = _productService.GetProducts();
 
             // clear list
             lv_Voorraad.Items.Clear();
@@ -62,7 +60,7 @@ namespace Login
                 }
                 else
                 {
-                    if (p.IsDrinken == true)
+                    if (p.IsDrinken)
                     {
                         FillGridView(p);
                     }
@@ -76,7 +74,6 @@ namespace Login
         {
             // fill grid with product
             string[] arr = new string[5];
-            ListViewItem li;
             double priceDifference = Math.Abs(p.Prijs - p.InkoopPrijs);
             string priceProfit = "";
             if (p.Prijs > p.InkoopPrijs)
@@ -91,11 +88,10 @@ namespace Login
             arr[0] = p.ProductId.ToString();
             arr[1] = p.ProductNaam;
             arr[2] = "€" + p.InkoopPrijs.ToString("0.00");
-            arr[3] = "€" + p.Prijs.ToString("0.00") + $" ({priceProfit}€{priceDifference.ToString("0.00")})"; 
+            arr[3] = "€" + p.Prijs.ToString("0.00") + $" ({priceProfit}€{priceDifference.ToString("0.00")})";
             arr[4] = p.Aantal.ToString();
-            
 
-            li = new ListViewItem(arr);
+            ListViewItem li = new ListViewItem(arr);
             lv_Voorraad.Items.Add(li);
         }
 
@@ -160,7 +156,7 @@ namespace Login
                 {
                     if (p.ProductId.ToString().ToLower().Contains(tb_Search.Text.ToLower()) || p.ProductNaam.ToLower().Contains(tb_Search.Text.ToLower()))
                     {
-                        if ((p.IsDrinken == true && _showingDrinks == true) || (p.IsDrinken == false && _showingDrinks == false))
+                        if ((p.IsDrinken && _showingDrinks) || (p.IsDrinken == false && _showingDrinks == false))
                         {
                             FillGridView(p);
                         }
@@ -201,7 +197,7 @@ namespace Login
             // product info
             Product product = _products.Find(p => p.ProductId == int.Parse(lv_Voorraad.SelectedItems[0].Text));
             string alcohol;
-            if (product.IsAlcohol == true)
+            if (product.IsAlcohol)
             {
                 alcohol = "Ja";
             }
@@ -226,6 +222,7 @@ namespace Login
                 e.Item.UseItemStyleForSubItems = true;
             }
         }
+
         private void lv_Voorraad_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
             e.DrawDefault = true;
