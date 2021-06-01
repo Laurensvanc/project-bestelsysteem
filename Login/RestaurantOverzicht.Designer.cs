@@ -174,27 +174,27 @@
             this.panel_Header.Controls.Add(this.label11);
             this.panel_Header.Location = new System.Drawing.Point(15, 12);
             this.panel_Header.Name = "panel_Header";
-            this.panel_Header.Size = new System.Drawing.Size(1027, 737);
+            this.panel_Header.Size = new System.Drawing.Size(1098, 737);
             this.panel_Header.TabIndex = 30;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.label11.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(14, 15);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(154, 37);
+            this.label11.Size = new System.Drawing.Size(158, 38);
             this.label11.TabIndex = 27;
             this.label11.Text = "Bestelling";
             // 
             // lstReservering
             // 
-            this.lstReservering.Font = new System.Drawing.Font("Roboto", 16F);
+            this.lstReservering.Font = new System.Drawing.Font("Roboto", 17F);
             this.lstReservering.HideSelection = false;
             this.lstReservering.Location = new System.Drawing.Point(3, 55);
             this.lstReservering.Name = "lstReservering";
-            this.lstReservering.Size = new System.Drawing.Size(1021, 679);
+            this.lstReservering.Size = new System.Drawing.Size(1092, 679);
             this.lstReservering.TabIndex = 0;
             this.lstReservering.UseCompatibleStateImageBehavior = false;
             this.lstReservering.View = System.Windows.Forms.View.Details;
@@ -204,17 +204,18 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.lstTafelStatus);
-            this.panel2.Location = new System.Drawing.Point(1057, 12);
+            this.panel2.Location = new System.Drawing.Point(1119, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(352, 737);
+            this.panel2.Size = new System.Drawing.Size(444, 737);
             this.panel2.TabIndex = 31;
             // 
             // lstTafelStatus
             // 
+            this.lstTafelStatus.Font = new System.Drawing.Font("Roboto", 17F);
             this.lstTafelStatus.HideSelection = false;
             this.lstTafelStatus.Location = new System.Drawing.Point(3, 55);
             this.lstTafelStatus.Name = "lstTafelStatus";
-            this.lstTafelStatus.Size = new System.Drawing.Size(346, 679);
+            this.lstTafelStatus.Size = new System.Drawing.Size(438, 679);
             this.lstTafelStatus.TabIndex = 1;
             this.lstTafelStatus.UseCompatibleStateImageBehavior = false;
             this.lstTafelStatus.View = System.Windows.Forms.View.Details;
@@ -223,11 +224,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.label8.Font = new System.Drawing.Font("Roboto", 24F);
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(14, 15);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(154, 37);
+            this.label8.Size = new System.Drawing.Size(158, 38);
             this.label8.TabIndex = 27;
             this.label8.Text = "Bestelling";
             // 

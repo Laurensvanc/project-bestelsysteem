@@ -140,22 +140,22 @@ namespace Login
             lstReservering.Clear();
             lstReserveringDag.Clear();
 
-            lstReservering.Columns.Add("Reservering#", 75);
-            lstReservering.Columns.Add("Tafel Nummer", 75);
-            lstReservering.Columns.Add("Begin Tijd", 75);
-            lstReservering.Columns.Add("Eind Tijd", 75);
-            lstReservering.Columns.Add("Klant Naam", 75);
-            lstReservering.Columns.Add("Aantal", 75);
+            lstReservering.Columns.Add("Reservering Nummer");
+            lstReservering.Columns.Add("Tafel Nummer");
+            lstReservering.Columns.Add("Begin Tijd");
+            lstReservering.Columns.Add("Eind Tijd");
+            lstReservering.Columns.Add("Klant Naam");
+            lstReservering.Columns.Add("Aantal");
 
             lstReservering.FullRowSelect = true;
             lstReservering.GridLines = true;
 
-            lstReserveringDag.Columns.Add("Reservering Nummer", 75);
-            lstReserveringDag.Columns.Add("Tafel Nummer", 75);
-            lstReserveringDag.Columns.Add("Begin Tijd", 75);
-            lstReserveringDag.Columns.Add("Eind Tijd", 75);
-            lstReserveringDag.Columns.Add("Klant Naam", 75);
-            lstReserveringDag.Columns.Add("Aantal", 75);
+            lstReserveringDag.Columns.Add("Reservering Nummer");
+            lstReserveringDag.Columns.Add("Tafel Nummer");
+            lstReserveringDag.Columns.Add("Begin Tijd");
+            lstReserveringDag.Columns.Add("Eind Tijd");
+            lstReserveringDag.Columns.Add("Klant Naam");
+            lstReserveringDag.Columns.Add("Aantal");
 
             lstReserveringDag.FullRowSelect = true;
             lstReserveringDag.GridLines = true;
@@ -185,6 +185,10 @@ namespace Login
                 {
                     ch.Width = -2;
                 }
+
+                
+
+                
             }
             // Tafel & status
             ChapooLogic.Tafel_Service tafel_Service = new ChapooLogic.Tafel_Service();
@@ -225,7 +229,10 @@ namespace Login
                 cmbTafel.Items.Add(t.TafelNummer);
                 lstTafelStatus.Items.Add(li);
             }
-
+            foreach (ColumnHeader ch in lstTafelStatus.Columns)
+            {
+                ch.Width = -2;
+            }
 
             dateTijd.Format = DateTimePickerFormat.Custom;
             dateTijd.CustomFormat = "MM/dd/yyyy HH:mm:ss";
@@ -245,6 +252,10 @@ namespace Login
 
                     lstReserveringDag.Items.Add(li);
                 } 
+            }
+            foreach (ColumnHeader ch in lstReserveringDag.Columns)
+            {
+                ch.Width = -2;
             }
         }
 
