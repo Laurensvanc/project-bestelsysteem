@@ -10,13 +10,14 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using BCrypt.Net;
 using ChapooLogic;
+using ChapooModel;
 
 namespace Login
 {
-    public partial class LoginForm : Form
+    public partial class DesktopLogin : Form
     {
-        Platform _platform = new Platform();
-        public LoginForm(Platform platform)
+        ChoosePlatform _platform = new ChoosePlatform();
+        public DesktopLogin(ChoosePlatform platform)
         {
             InitializeComponent();
             CenterToScreen();
@@ -32,12 +33,13 @@ namespace Login
             }
             
             Account_Service service = new Account_Service();
-            string encryptedww = service.LoginAccount(usertxt.Text);
+            Account account = service.LoginAccount(usertxt.Text);
 
-            if (encryptedww != string.Empty)
+            if (account.Wachtwoord != string.Empty && account.Voornaam != string.Empty)
             {
-                if (BCrypt.Net.BCrypt.Verify(wwtxt.Text, encryptedww)) { 
-                    new Menu(this).Show();
+                if (BCrypt.Net.BCrypt.Verify(wwtxt.Text, account.Wachtwoord)) { 
+
+                    new DesktopHome(this, account).Show();
                     usertxt.Clear();
                     wwtxt.Clear();
                     usertxt.Select();

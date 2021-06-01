@@ -13,11 +13,11 @@ namespace Login
         private Product_Service _productService;
         private List<Product> _products;
         private List<MenuName> _menus;
-        private int _selectedProduct = 0;
+        private int _selectedProduct;
         private string _productName;
-        private bool _drinks = false;
-        private string _menuName;
-        private int _menuId;
+        private readonly bool _drinks; // readonly because only set in constructor
+        private readonly string _menuName;
+        private readonly int _menuId;
         private List<Button> _buttons;
 
         public MenuChange(string menuName, int menuId, bool drinks)
@@ -52,7 +52,7 @@ namespace Login
             _buttons.Clear();
             foreach (Product product in _products) // make buttons for every item matching filter
             {
-                if ((product.IsDrinken == true && _drinks == true) || (product.IsDrinken == false && _drinks == false))
+                if ((product.IsDrinken && _drinks) || (product.IsDrinken == false && _drinks == false))
                 {
                     MakeButton(product);
                 }
@@ -63,12 +63,14 @@ namespace Login
         private void MakeButton(Product product)
         {
             // make button for flowlayoutpanel
-            Button btn = new Button();
-            btn.Name = product.ProductId.ToString();
-            btn.Text = product.ProductNaam;
-            btn.Size = new Size(137, 65);
-            btn.FlatStyle = FlatStyle.Popup;
-            btn.BackColor = Color.White;
+            Button btn = new Button
+            {
+                Name = product.ProductId.ToString(),
+                Text = product.ProductNaam,
+                Size = new Size(137, 65),
+                FlatStyle = FlatStyle.Popup,
+                BackColor = Color.White
+            };
             btn.Click += btn_Click;
             _buttons.Add(btn);
         }
@@ -106,7 +108,7 @@ namespace Login
                     int typeId = 0;
                     foreach (MenuName m in _menus)
                     {
-                        foreach (MenuType mt in m.menuTypes)
+                        foreach (MenuType mt in m.MenuTypes)
                         {
                             if (mt.Type == (String)cbox_Category.SelectedItem) // find matching category ID
                             {
@@ -120,9 +122,9 @@ namespace Login
                         // add all ID's into product > menutype > menu
                         Product product = new Product(_selectedProduct);
                         MenuType menuType = new MenuType(typeId);
-                        menuType.products.Add(product);
+                        menuType.Products.Add(product);
                         MenuName menu = new MenuName(_menuId);
-                        menu.menuTypes.Add(menuType);
+                        menu.MenuTypes.Add(menuType);
                         if (!Exists(menu)) // checks if product is already on the menu
                         {
                             DialogResult confirm = MessageBox.Show($"{_productName} zal op de {_menuName} worden toegevoegd bij {(String)cbox_Category.SelectedItem}", "Confirmation", MessageBoxButtons.OKCancel);
@@ -156,13 +158,13 @@ namespace Login
             {
                 if (m.MenuId == menu.MenuId)
                 {
-                    foreach (MenuType mt in m.menuTypes)
+                    foreach (MenuType mt in m.MenuTypes)
                     {
-                        if (mt.SoortID == menu.menuTypes[0].SoortID)
+                        if (mt.SoortID == menu.MenuTypes[0].SoortID)
                         {
-                            foreach (Product p in mt.products)
+                            foreach (Product p in mt.Products)
                             {
-                                if (p.ProductId == menu.menuTypes[0].products[0].ProductId)
+                                if (p.ProductId == menu.MenuTypes[0].Products[0].ProductId)
                                 {
                                     return true;
                                 }
@@ -184,7 +186,7 @@ namespace Login
                 {
                     if (p.ProductId.ToString().ToLower().Contains(tb_Search.Text.ToLower()) || p.ProductNaam.ToLower().Contains(tb_Search.Text.ToLower()))
                     {
-                        if ((p.IsDrinken == true && _drinks == true) || (p.IsDrinken == false && _drinks == false))
+                        if ((p.IsDrinken && _drinks) || (p.IsDrinken == false && _drinks == false))
                         {
                             MakeButton(p);
                         }
@@ -229,7 +231,7 @@ namespace Login
             {
                 if (menu.Name == _menuName)
                 {
-                    foreach (MenuType menuType in menu.menuTypes)
+                    foreach (MenuType menuType in menu.MenuTypes)
                     {
                         if (!menuTypes.Exists(m => m.Type == menuType.Type))
                         {
@@ -248,10 +250,10 @@ namespace Login
         private int DropDownWidth(ComboBox myCombo)
         {
             // Get width of longest item in combobox
-            int maxWidth = 0, temp = 0;
+            int maxWidth = 0;
             foreach (var obj in myCombo.Items)
             {
-                temp = TextRenderer.MeasureText(obj.ToString(), myCombo.Font).Width;
+                int temp = TextRenderer.MeasureText(obj.ToString(), myCombo.Font).Width;
                 if (temp > maxWidth)
                 {
                     maxWidth = temp;

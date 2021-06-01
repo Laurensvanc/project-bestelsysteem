@@ -14,8 +14,8 @@ namespace Login
         private List<MenuName> _menus;
         private string _menuName;
         private string _menuType;
-        private Point _typeButtonsLocation = new Point(370, 849); // location submenu bar
-        private bool _deleting = false;
+        private readonly Point _typeButtonsLocation = new Point(370, 849); // location submenu bar
+        private bool _deleting;
 
         public MenuOverview()
         {
@@ -50,27 +50,24 @@ namespace Login
         private void FillOverview()
         {
             // fill flowlayoutpanel
-            List<Button> buttons = new List<Button>();
             foreach (MenuName menu in _menus) // make buttons for every item matching filter
             {
-                if (menu.Name == _menuName)
+                if (menu.Name != _menuName) continue; // if not match continue
+                foreach (MenuType menuType in menu.MenuTypes)
                 {
-                    foreach (MenuType menuType in menu.menuTypes)
+                    if (menuType.Type != _menuType) continue; // if not match continue
+                    foreach (Product product in menuType.Products)
                     {
-                        if (menuType.Type == _menuType)
+                        Button btn = new Button
                         {
-                            foreach (Product product in menuType.products)
-                            {
-                                Button btn = new Button();
-                                btn.Name = product.ProductId.ToString();
-                                btn.Text = product.ProductNaam;
-                                btn.Size = new Size(215, 100);
-                                btn.FlatStyle = FlatStyle.Popup;
-                                btn.BackColor = Color.White;
-                                btn.Click += btn_Click;
-                                flp_MenuOverview.Controls.Add(btn);
-                            }
-                        }
+                            Name = product.ProductId.ToString(),
+                            Text = product.ProductNaam,
+                            Size = new Size(215, 100),
+                            FlatStyle = FlatStyle.Popup,
+                            BackColor = Color.White
+                        };
+                        btn.Click += btn_Click;
+                        flp_MenuOverview.Controls.Add(btn);
                     }
                 }
             }
@@ -89,10 +86,10 @@ namespace Login
             // searches for item clicked
             Button button = (Button)sender;
             MenuName menu = _menus.Find(m => m.Name == _menuName);
-            MenuType menuType = menu.menuTypes.Find(mt => mt.Type == _menuType);
-            Product product = menuType.products.Find(p => p.ProductId == int.Parse(button.Name));
+            MenuType menuType = menu.MenuTypes.Find(mt => mt.Type == _menuType);
+            Product product = menuType.Products.Find(p => p.ProductId == int.Parse(button.Name));
 
-            if (_deleting == true) // check if deleting mode is on
+            if (_deleting) // check if deleting mode is on
             {
                 // delete item from menu
                 DeleteFromMenu(product, menuType, menu);
@@ -101,7 +98,7 @@ namespace Login
             {
                 // display info when clicking on a product
                 string alcohol;
-                if (product.IsAlcohol == true)
+                if (product.IsAlcohol)
                 {
                     alcohol = "Ja";
                 }
@@ -112,14 +109,15 @@ namespace Login
                 MessageBox.Show($"Aantal:\t\t{product.Aantal}\nPrijs:\t\t€{product.Prijs.ToString("0.00")}\nAlcoholisch:\t{alcohol}", product.ToString());
             }
         }
+
         private void DeleteFromMenu(Product product, MenuType menuType, MenuName menu)
         {
             // put product in correct menutype and menu
             Product p = new Product(product.ProductId);
             MenuType mt = new MenuType(menuType.SoortID);
-            mt.products.Add(p);
+            mt.Products.Add(p);
             MenuName m = new MenuName(menu.MenuId);
-            m.menuTypes.Add(mt);
+            m.MenuTypes.Add(mt);
 
             DialogResult confirm = MessageBox.Show($"[{product}] zal verwijderd worden van de [{menu.Name}] onder de categorie [{menuType.Type}].\n\nWeet je het zeker?", "Confirmation", MessageBoxButtons.OKCancel);
             if (confirm == DialogResult.OK) // if confirmed delete product from menu
@@ -237,7 +235,6 @@ namespace Login
             {
                 if (b.Name != button.Name)
                 {
-                    //b.ForeColor = Color.FromArgb(112, 112, 112);
                     b.FlatAppearance.BorderSize = 0;
                 }
                 else

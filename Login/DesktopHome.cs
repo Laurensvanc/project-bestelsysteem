@@ -1,25 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using ChapooModel;
+using System;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class Menu : Form
+    public partial class DesktopHome : Form
     {
-        private LoginForm _loginForm;
-        public Menu(LoginForm loginForm)
+        private DesktopLogin _loginForm;
+        private readonly Account _account;
+
+        public DesktopHome(DesktopLogin loginForm, Account account)
         {
             InitializeComponent();
+            
             btn_closeForm.FlatAppearance.MouseOverBackColor = btn_closeForm.BackColor;
             TimeDisplay();
+
             _loginForm = loginForm;
+            _account = account;
+            lbl_username.Text = account.Inlognaam;
         }
 
         public void TimeDisplay()
@@ -27,6 +27,7 @@ namespace Login
             Timer tmr = null;
             StartTimer(tmr);
         }
+
         private void StartTimer(Timer tmr)
         {
             tmr = new Timer();
@@ -34,7 +35,8 @@ namespace Login
             tmr.Tick += new EventHandler(tmr_Tick);
             tmr.Enabled = true;
         }
-        void tmr_Tick(object sender, EventArgs e)
+
+        private void tmr_Tick(object sender, EventArgs e)
         {
             lbl_timeDisplay.Text = DateTime.Now.ToString("F", CultureInfo.CreateSpecificCulture("nl-NL"));
         }
@@ -80,8 +82,8 @@ namespace Login
             {
                 pnl_LogoutBorder.Hide();
             }
-            
         }
+
         private void btn_Uitloggen_Click(object sender, EventArgs e)
         {
             _loginForm.Show();
@@ -126,6 +128,11 @@ namespace Login
         private void tsm_voorraad_Click(object sender, EventArgs e)
         {
             LoadUserControl(new VoorraadOverview());
+        }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new MenuOverview());
         }
     }
 }

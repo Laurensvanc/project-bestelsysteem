@@ -14,25 +14,28 @@ namespace ChapooDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
-        public List<Product> Db_Get_All_SpecificProduct(int soortID)
+
+        public List<Product> Db_Get_All_SpecificProduct(int soortId)
         {
             string query = "USE dbchapoo202104 SELECT P.ProductID, ProductNaam, Prijs, InkoopPrijs, Aantal, IsAlcohol, IsDrinken FROM [Product] AS P INNER JOIN Menu_Product AS MP ON MP.ProductID = P.ProductID WHERE MP.SoortID = @soortID; ";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@soortID", soortID);
+            sqlParameters[0] = new SqlParameter("@soortID", soortId);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
-        public void Open_Bottle_Product(int bottleID, int glasID)
+
+        public void Open_Bottle_Product(int bottleId, int glasId)
         {
             string query = "USE dbchapoo202104 UPDATE Product SET Aantal = Aantal - 1 WHERE ProductID = @bottleID";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@bottleID", bottleID);
+            sqlParameters[0] = new SqlParameter("@bottleID", bottleId);
             ExecuteEditQuery(query, sqlParameters);
 
             query = "USE dbchapoo202104 UPDATE Product SET Aantal = Aantal + 5 WHERE ProductID = @glasID";
             sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@glasID", glasID);
+            sqlParameters[0] = new SqlParameter("@glasID", glasId);
             ExecuteEditQuery(query, sqlParameters);
         }
+
         public void AddProduct(Product product)
         {
             // Data gets written to database, primary key is automatically made

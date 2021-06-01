@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChapooModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,16 +11,20 @@ using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class MobileMenu : Form
+    public partial class MobileHome : Form
     {
         private MobileLogin _mobileLogin;
-        private Platform _platform;
+        private ChoosePlatform _platform;
+        private Account _account;
 
-        public MobileMenu(MobileLogin login, Platform platform)
+
+        public MobileHome(MobileLogin login, ChoosePlatform platform,Account account)
         {
             InitializeComponent();
             _mobileLogin = login;
             _platform = platform;
+            _account = account;
+
             LoadUserControl(new BestellingOpnemen(_platform, this));
         }
 

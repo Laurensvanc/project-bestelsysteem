@@ -14,12 +14,7 @@ namespace ChapooDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadMenuTables(ExecuteSelectQuery(query, sqlParameters));
         }
-        //public List<MenuName> Db_Get_All_MenuTypes()
-        //{
-        //    string query = "USE dbchapoo202104 select SoortID, Soort from Menu_ProductSoort;; ";
-        //    SqlParameter[] sqlParameters = new SqlParameter[0];
-        //    return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-        //}
+
         public void ChangeMenuItem(MenuName menu)
         {
             // Data gets changed in database
@@ -29,11 +24,12 @@ namespace ChapooDAL
             SqlParameter[] sqlParameters = new SqlParameter[3];
 
             sqlParameters[0] = new SqlParameter("@MenuID", menu.MenuId);
-            sqlParameters[1] = new SqlParameter("@ProductID", menu.menuTypes[0].products[0].ProductId);
-            sqlParameters[2] = new SqlParameter("@SoortID", menu.menuTypes[0].SoortID);
+            sqlParameters[1] = new SqlParameter("@ProductID", menu.MenuTypes[0].Products[0].ProductId);
+            sqlParameters[2] = new SqlParameter("@SoortID", menu.MenuTypes[0].SoortID);
 
             ExecuteEditQuery(query, sqlParameters);
         }
+
         public void RemoveMenuItem(MenuName menu)
         {
             // Data gets changed in database
@@ -43,16 +39,15 @@ namespace ChapooDAL
             SqlParameter[] sqlParameters = new SqlParameter[3];
 
             sqlParameters[0] = new SqlParameter("@MenuID", menu.MenuId);
-            sqlParameters[1] = new SqlParameter("@ProductID", menu.menuTypes[0].products[0].ProductId);
-            sqlParameters[2] = new SqlParameter("@SoortID", menu.menuTypes[0].SoortID);
+            sqlParameters[1] = new SqlParameter("@ProductID", menu.MenuTypes[0].Products[0].ProductId);
+            sqlParameters[2] = new SqlParameter("@SoortID", menu.MenuTypes[0].SoortID);
 
             ExecuteEditQuery(query, sqlParameters);
         }
+
         private List<MenuName> ReadMenuTables(DataTable dataTable)
         {
             List<MenuName> menus = new List<MenuName>();
-            List<MenuType> menuTypes = new List<MenuType>();
-            List<Product> products = new List<Product>();
             string menuName;
             string menuType;
 
@@ -86,19 +81,19 @@ namespace ChapooDAL
                 {
                     if (m.Name == menuName) // check for menu name if match
                     {
-                        if (!m.menuTypes.Exists(mt => mt.Type == menuType)) // if menutype doesnt exist in menu make menuType and add product
+                        if (!m.MenuTypes.Exists(mt => mt.Type == menuType)) // if menutype doesnt exist in menu make menuType and add product
                         {
                             MenuType type = new MenuType(menuType, (int)dr["SoortID"]);
-                            type.products.Add(product);
-                            m.menuTypes.Add(type);
+                            type.Products.Add(product);
+                            m.MenuTypes.Add(type);
                         }
                         else // else search for menutype and add
                         {
-                            foreach (MenuType mt in m.menuTypes)
+                            foreach (MenuType mt in m.MenuTypes)
                             {
                                 if (mt.Type == menuType)
                                 {
-                                    mt.products.Add(product);
+                                    mt.Products.Add(product);
                                 }
                             }
                         }

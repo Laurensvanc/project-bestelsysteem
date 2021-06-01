@@ -1,7 +1,7 @@
 ﻿
 namespace Login
 {
-    partial class Platform
+    partial class ChoosePlatform
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Login
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Platform));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChoosePlatform));
             this.btn_desktop = new System.Windows.Forms.Button();
             this.btn_mobiel = new System.Windows.Forms.Button();
             this.btn_closeForm = new System.Windows.Forms.Button();

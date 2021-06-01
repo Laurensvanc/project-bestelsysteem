@@ -1,4 +1,5 @@
 ﻿using ChapooLogic;
+using ChapooModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,9 @@ namespace Login
 {
     public partial class MobileLogin : Form
     {
-        private Platform _platform;
+        private ChoosePlatform _platform;
 
-        public MobileLogin(Platform platfrom)
+        public MobileLogin(ChoosePlatform platfrom)
         {
             InitializeComponent();
             _platform = platfrom;
@@ -37,17 +38,18 @@ namespace Login
             }
 
             Account_Service service = new Account_Service();
-            string encryptedww = service.LoginAccount(txb_gebruikersNaam.Text);
+            Account account = service.LoginAccount(txb_gebruikersNaam.Text);
+            
 
-            if (encryptedww != string.Empty)
+            if (account.Wachtwoord != string.Empty && account.Voornaam != string.Empty)
             {
-                if (BCrypt.Net.BCrypt.Verify(txb_wachtwoord.Text, encryptedww))
+                if (BCrypt.Net.BCrypt.Verify(txb_wachtwoord.Text, account.Wachtwoord))
                 {
-                    MobileMenu menu = new MobileMenu(this, _platform);
+                    MobileHome menu = new MobileHome(this, _platform,account);
 
                     menu.Show();
                     this.Hide();
-                    service.UpdateLastLoginAccount(txb_gebruikersNaam.Text);
+                    service.UpdateLastLoginAccount(account.Inlognaam);
                 }
                 else
                 {
@@ -74,6 +76,7 @@ namespace Login
                     string password = newwwtxt.Text;
                     string encryptedwachtwoord = BCrypt.Net.BCrypt.HashPassword(password);
                     Account_Service service = new Account_Service();
+
                     if (service.ResetPassword(user2txt.Text, encryptedwachtwoord))
                     {
                         MessageBox.Show("Wachtwoord gereset!");
