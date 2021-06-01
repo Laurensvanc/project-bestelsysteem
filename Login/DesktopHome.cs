@@ -19,7 +19,11 @@ namespace Login
 
             _loginForm = loginForm;
             _account = account;
-            lbl_username.Text = account.Inlognaam;
+            lbl_username.Text = account.Voornaam + " " + account.Achternaam;
+            if (_account.Manager == 1)
+            {
+                administratieToolStripMenuItem.Visible = true;
+            }
         }
 
         public void TimeDisplay()
@@ -39,11 +43,6 @@ namespace Login
         private void tmr_Tick(object sender, EventArgs e)
         {
             lbl_timeDisplay.Text = DateTime.Now.ToString("F", CultureInfo.CreateSpecificCulture("nl-NL"));
-        }
-
-        private void btn_navReserveringen_Click(object sender, EventArgs e)
-        {
-            LoadUserControl(new RestaurantOverzicht());
         }
 
         private void LoadUserControl(UserControl userControl)

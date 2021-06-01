@@ -34,6 +34,7 @@ namespace Login
             this.lbl_timeDisplay = new System.Windows.Forms.Label();
             this.pnl_Display = new System.Windows.Forms.Panel();
             this.pnl_WhiteStrip = new System.Windows.Forms.Panel();
+            this.lbl_username = new System.Windows.Forms.Label();
             this.btn_closeForm = new System.Windows.Forms.Button();
             this.pnl_PinkStrip = new System.Windows.Forms.Panel();
             this.pnl_LogoutBorder = new System.Windows.Forms.Panel();
@@ -50,7 +51,6 @@ namespace Login
             this.tsm_account = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_voorraad = new System.Windows.Forms.ToolStripMenuItem();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbl_username = new System.Windows.Forms.Label();
             this.pnl_WhiteStrip.SuspendLayout();
             this.pnl_LogoutBorder.SuspendLayout();
             this.pnl_Logout.SuspendLayout();
@@ -97,6 +97,18 @@ namespace Login
             this.pnl_WhiteStrip.Name = "pnl_WhiteStrip";
             this.pnl_WhiteStrip.Size = new System.Drawing.Size(1577, 69);
             this.pnl_WhiteStrip.TabIndex = 5;
+            // 
+            // lbl_username
+            // 
+            this.lbl_username.AutoSize = true;
+            this.lbl_username.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_username.Font = new System.Drawing.Font("Roboto", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_username.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.lbl_username.Location = new System.Drawing.Point(202, 19);
+            this.lbl_username.Name = "lbl_username";
+            this.lbl_username.Size = new System.Drawing.Size(61, 33);
+            this.lbl_username.TabIndex = 4;
+            this.lbl_username.Text = "test";
             // 
             // btn_closeForm
             // 
@@ -265,6 +277,7 @@ namespace Login
             this.administratieToolStripMenuItem.Size = new System.Drawing.Size(339, 69);
             this.administratieToolStripMenuItem.Text = "Administratie";
             this.administratieToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.administratieToolStripMenuItem.Visible = false;
             // 
             // tsm_account
             // 
@@ -295,18 +308,6 @@ namespace Login
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(307, 62);
             this.menuToolStripMenuItem.Text = "Menu";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
-            // 
-            // lbl_username
-            // 
-            this.lbl_username.AutoSize = true;
-            this.lbl_username.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_username.Font = new System.Drawing.Font("Roboto", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_username.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.lbl_username.Location = new System.Drawing.Point(202, 19);
-            this.lbl_username.Name = "lbl_username";
-            this.lbl_username.Size = new System.Drawing.Size(61, 33);
-            this.lbl_username.TabIndex = 4;
-            this.lbl_username.Text = "test";
             // 
             // DesktopHome
             // 

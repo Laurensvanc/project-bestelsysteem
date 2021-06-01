@@ -2,21 +2,17 @@
 using ChapooModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Login
 {
     public partial class RestaurantOverzicht : UserControl
     {
-        private ChapooLogic.Reservering_Service reservering_Service;
-        private ChapooLogic.Klant_Service klant_Service;
-        private int KlantID;
+        private ChapooLogic.Reservering_Service _reservering_Service;
+        private ChapooLogic.Klant_Service _klant_Service;
+        private int _klantId;
+
         public RestaurantOverzicht()
         {
             InitializeComponent();
@@ -24,11 +20,6 @@ namespace Login
             geboorteDatumPicker.Format = DateTimePickerFormat.Custom;
             geboorteDatumPicker.CustomFormat = "dd-MM-yyyy";
             geboorteDatumPicker.MaxDate = DateTime.Today;
-        }
-
-        private void lstTafelStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void RestaurantOverzicht_Load(object sender, EventArgs e)
@@ -43,11 +34,6 @@ namespace Login
             Refresh();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnPlus_Click(object sender, EventArgs e)
         {
             pnl_overzicht.Hide();
@@ -57,20 +43,28 @@ namespace Login
         private void btnDeleteRes_Click(object sender, EventArgs e)
         {
             pnlReservering.Hide();
+            pnl_overzicht.Show();
         }
 
         private void btnMin_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Weet je het zeker?", "Verwijderen Reservering", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (lstReservering.SelectedItems.Count >= 1)
             {
-                var i = lstReservering.SelectedItems[0];
+                DialogResult dialogResult = MessageBox.Show("Weet je het zeker?", "Verwijderen Reservering", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    var i = lstReservering.SelectedItems[0];
 
-                Reservering reservering = new Reservering(
-                    int.Parse(i.SubItems[0].Text));
-                
-                reservering_Service.DeleteReservering(reservering);
-                loadLists();
+                    Reservering reservering = new Reservering(
+                        int.Parse(i.SubItems[0].Text));
+
+                    _reservering_Service.DeleteReservering(reservering);
+                    loadLists();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Geen reservering geselecteerd", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -82,10 +76,12 @@ namespace Login
             if (String.IsNullOrEmpty(txtNaam.Text) || String.IsNullOrEmpty(txtAchternaam.Text) || String.IsNullOrEmpty(txtTellie.Text) || String.IsNullOrEmpty(cmbTafel.Text))
             {
                 DialogResult dialogResult = MessageBox.Show("Vul Persoonsgegevens in", "Error");
-            } else  if (txtAchternaam.Text.Length > 50 || txtNaam.Text.Length > 50 || txtTellie.Text.Length > 30)
+            }
+            else if (txtAchternaam.Text.Length > 50 || txtNaam.Text.Length > 50 || txtTellie.Text.Length > 30)
             {
                 DialogResult dialogResult = MessageBox.Show("Maximaal Aantal Character overtreden", "Error");
-            } else
+            }
+            else
             {
                 LoadKlanten();
 
@@ -95,20 +91,20 @@ namespace Login
                     LoadKlanten();
                     if (bestaatDeKlant())
                     {
-
-                        Reservering reservering = new Reservering(int.Parse(cmbTafel.Text), begintijd, begintijd.AddHours(2), KlantID, AantalPersonen);
-                        reservering_Service.AddReservering(reservering);
-                        DialogResult dialogResult = MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
+                        Reservering reservering = new Reservering(int.Parse(cmbTafel.Text), begintijd, begintijd.AddHours(2), _klantId, AantalPersonen);
+                        _reservering_Service.AddReservering(reservering);
+                        MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
                     }
                     else
                     {
-                        DialogResult dialogResult = MessageBox.Show("Geen Persoon gevonden", "Error");
+                        MessageBox.Show("Geen Persoon gevonden", "Error");
                     }
-                } else
+                }
+                else
                 {
-                    Reservering reservering = new Reservering(int.Parse(cmbTafel.Text), begintijd, begintijd.AddHours(2), KlantID, AantalPersonen);
-                    reservering_Service.AddReservering(reservering);
-                    DialogResult dialogResult = MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
+                    Reservering reservering = new Reservering(int.Parse(cmbTafel.Text), begintijd, begintijd.AddHours(2), _klantId, AantalPersonen);
+                    _reservering_Service.AddReservering(reservering);
+                    MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
                 }
 
                 pnlReservering.Hide();
@@ -117,21 +113,21 @@ namespace Login
                 txtAchternaam.Clear();
                 txtTellie.Clear();
             }
-
-
         }
+
         private void Refresh()
         {
             loadLists();
         }
+
         private void loadLists()
         {
             // Tafels bezet
             Transaction_Service transaction_Service = new Transaction_Service();
             List<int> tableList = transaction_Service.GetTables();
             // Reservering
-            reservering_Service = new ChapooLogic.Reservering_Service();
-            List<Reservering> reserverings = reservering_Service.GetReserverings();
+            _reservering_Service = new Reservering_Service();
+            List<Reservering> reserverings = _reservering_Service.GetReserverings();
 
             List<int> tafelToBezet = new List<int>();
             List<int> tafelToGereserveerd = new List<int>();
@@ -139,27 +135,27 @@ namespace Login
             lstReservering.Clear();
             lstReserveringDag.Clear();
 
-            lstReservering.Columns.Add("Reservering Nummer", 75);
-            lstReservering.Columns.Add("Tafel Nummer", 75);
-            lstReservering.Columns.Add("Begin Tijd", 75);
-            lstReservering.Columns.Add("Eind Tijd", 75);
-            lstReservering.Columns.Add("Klant Naam", 75);
-            lstReservering.Columns.Add("Aantal", 75);
+            lstReservering.Columns.Add("Reservering Nummer");
+            lstReservering.Columns.Add("Tafel Nummer");
+            lstReservering.Columns.Add("Begin Tijd");
+            lstReservering.Columns.Add("Eind Tijd");
+            lstReservering.Columns.Add("Klant Naam");
+            lstReservering.Columns.Add("Aantal");
 
             lstReservering.FullRowSelect = true;
             lstReservering.GridLines = true;
 
-            lstReserveringDag.Columns.Add("Reservering Nummer", 75);
-            lstReserveringDag.Columns.Add("Tafel Nummer", 75);
-            lstReserveringDag.Columns.Add("Begin Tijd", 75);
-            lstReserveringDag.Columns.Add("Eind Tijd", 75);
-            lstReserveringDag.Columns.Add("Klant Naam", 75);
-            lstReserveringDag.Columns.Add("Aantal", 75);
+            lstReserveringDag.Columns.Add("Reservering Nummer");
+            lstReserveringDag.Columns.Add("Tafel Nummer");
+            lstReserveringDag.Columns.Add("Begin Tijd");
+            lstReserveringDag.Columns.Add("Eind Tijd");
+            lstReserveringDag.Columns.Add("Klant Naam");
+            lstReserveringDag.Columns.Add("Aantal");
 
             lstReserveringDag.FullRowSelect = true;
             lstReserveringDag.GridLines = true;
 
-            foreach (ChapooModel.Reservering r in reserverings)
+            foreach (Reservering r in reserverings)
             {
                 ListViewItem li = new ListViewItem(r.ReserveringID.ToString());
                 li.SubItems.Add(r.TafelID.ToString());
@@ -179,14 +175,19 @@ namespace Login
                 {
                     tafelToGereserveerd.Add(r.TafelID);
                 }
+
+                foreach (ColumnHeader ch in lstReservering.Columns)
+                {
+                    ch.Width = -2;
+                }
             }
             // Tafel & status
-            ChapooLogic.Tafel_Service tafel_Service = new ChapooLogic.Tafel_Service();
+            ChapooLogic.Tafel_Service tafel_Service = new Tafel_Service();
             List<Tafel> tafels = tafel_Service.GetTafels();
             cmbTafel.Items.Clear();
             lstTafelStatus.Clear();
 
-            lstTafelStatus.Columns.Add("TafelNummer", 75);
+            lstTafelStatus.Columns.Add("Tafel#", 75);
             lstTafelStatus.Columns.Add("Capaciteit", 75);
             lstTafelStatus.Columns.Add("Werknemer", 100);
             lstTafelStatus.Columns.Add("Status", 75);
@@ -194,7 +195,7 @@ namespace Login
             lstTafelStatus.FullRowSelect = true;
             lstTafelStatus.GridLines = true;
 
-            foreach (ChapooModel.Tafel t in tafels)
+            foreach (Tafel t in tafels)
             {
                 if (tafelToBezet.Contains(t.TafelNummer)) t.Status = "Bezet";
                 if (tafelToGereserveerd.Contains(t.TafelNummer)) t.Status = "Gereserveerd";
@@ -219,14 +220,17 @@ namespace Login
                 cmbTafel.Items.Add(t.TafelNummer);
                 lstTafelStatus.Items.Add(li);
             }
-
+            foreach (ColumnHeader ch in lstTafelStatus.Columns)
+            {
+                ch.Width = -2;
+            }
 
             dateTijd.Format = DateTimePickerFormat.Custom;
             dateTijd.CustomFormat = "MM/dd/yyyy HH:mm:ss";
 
             DateTime time = dateTijd.Value;
 
-            foreach (ChapooModel.Reservering r in reserverings)
+            foreach (Reservering r in reserverings)
             {
                 if (r.BeginTijd.Date == time.Date)
                 {
@@ -238,13 +242,12 @@ namespace Login
                     li.SubItems.Add(r.AantalPersonen.ToString());
 
                     lstReserveringDag.Items.Add(li);
-                } 
+                }
             }
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            foreach (ColumnHeader ch in lstReserveringDag.Columns)
+            {
+                ch.Width = -2;
+            }
         }
 
         private void dateTijd_ValueChanged(object sender, EventArgs e)
@@ -253,25 +256,23 @@ namespace Login
             lblDatum.Text = "Reserveringen voor: " + dateTijd.Value.Date.ToShortDateString();
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSelectKlant_Click(object sender, EventArgs e)
         {
             LoadKlanten();
+            pnlReservering.Hide();
             pnlKlantSysteem.Show();
         }
 
         private void btnTerug_Click(object sender, EventArgs e)
         {
             pnlKlantSysteem.Hide();
+            pnlReservering.Show();
         }
+
         private void LoadKlanten()
         {
-            klant_Service = new ChapooLogic.Klant_Service();
-            List<Klant> klanten = klant_Service.GetKlants();
+            _klant_Service = new Klant_Service();
+            List<Klant> klanten = _klant_Service.GetKlants();
 
             lstKlantSysteem.Clear();
 
@@ -284,11 +285,11 @@ namespace Login
             lstKlantSysteem.FullRowSelect = true;
             lstKlantSysteem.GridLines = true;
 
-            foreach (ChapooModel.Klant k in klanten)
+            foreach (Klant k in klanten)
             {
                 if (!String.IsNullOrEmpty(txtNaamKlant.Text))
                 {
-                    if (k.Voornaam.Contains(txtNaamKlant.Text)|| k.Achternaam.Contains(txtNaamKlant.Text))
+                    if (k.Voornaam.Contains(txtNaamKlant.Text) || k.Achternaam.Contains(txtNaamKlant.Text))
                     {
                         ListViewItem li = new ListViewItem(k.KlantID.ToString());
                         li.SubItems.Add(k.Voornaam.ToString());
@@ -298,8 +299,8 @@ namespace Login
 
                         lstKlantSysteem.Items.Add(li);
                     }
-
-                } else
+                }
+                else
                 {
                     ListViewItem li = new ListViewItem(k.KlantID.ToString());
                     li.SubItems.Add(k.Voornaam.ToString());
@@ -330,23 +331,25 @@ namespace Login
         private void btnKlantOpslaan_Click(object sender, EventArgs e)
         {
             string date = geboorteDatumPicker.Value.ToString();
-            if (this.lstKlantSysteem.SelectedItems.Count == 0)
+            if (lstKlantSysteem.SelectedItems.Count == 0)
                 return;
             var i = lstKlantSysteem.SelectedItems[0];
             txtNaam.Text = i.SubItems[1].Text;
             txtAchternaam.Text = i.SubItems[2].Text;
             date = i.SubItems[3].Text;
             txtTellie.Text = i.SubItems[4].Text;
-            KlantID = int.Parse(i.SubItems[0].Text);
+            _klantId = int.Parse(i.SubItems[0].Text);
 
             pnlKlantSysteem.Hide();
         }
+
         private void VoegKlantToe()
         {
             string date = geboorteDatumPicker.Value.ToString();
             Klant klant = new Klant(txtNaam.Text, txtAchternaam.Text, date, txtTellie.Text);
-            klant_Service.AddKlant(klant);
+            _klant_Service.AddKlant(klant);
         }
+
         private bool bestaatDeKlant()
         {
             bool bestaat = false;
@@ -354,26 +357,11 @@ namespace Login
             {
                 if (lstKlantSysteem.Items[i].SubItems[1].Text.Contains(txtNaam.Text) && lstKlantSysteem.Items[i].SubItems[2].Text.Contains(txtAchternaam.Text))
                 {
-                    KlantID = int.Parse(lstKlantSysteem.Items[i].SubItems[0].Text);
+                    _klantId = int.Parse(lstKlantSysteem.Items[i].SubItems[0].Text);
                     bestaat = true;
                 }
             }
             return bestaat;
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnlReservering_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblName_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
