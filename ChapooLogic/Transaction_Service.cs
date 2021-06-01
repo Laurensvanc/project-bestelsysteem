@@ -34,12 +34,10 @@ namespace ChapooLogic
                 Order_Info orderInfo = transactionDAO.DB_Get_Order_Info(tafelID);
                 return orderInfo;
             }
-            catch (Exception ex)
+            catch
             {
                 Order_Info orderInfo = new Order_Info(DateTime.Now, "Error", 404, 404, false);
                 return orderInfo;
-
-                throw new Exception("Chapoo kon niet verbinden met de database");
             }
         }
         public void AddTransaction()
