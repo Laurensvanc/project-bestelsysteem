@@ -219,7 +219,6 @@
             this.lstTafelStatus.TabIndex = 1;
             this.lstTafelStatus.UseCompatibleStateImageBehavior = false;
             this.lstTafelStatus.View = System.Windows.Forms.View.Details;
-            this.lstTafelStatus.SelectedIndexChanged += new System.EventHandler(this.lstTafelStatus_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -312,7 +311,6 @@
             this.lblName.Size = new System.Drawing.Size(98, 24);
             this.lblName.TabIndex = 4;
             this.lblName.Text = "Voornaam";
-            this.lblName.Click += new System.EventHandler(this.lblName_Click);
             // 
             // lblAantalPersonen
             // 
@@ -323,7 +321,6 @@
             this.lblAantalPersonen.Size = new System.Drawing.Size(149, 24);
             this.lblAantalPersonen.TabIndex = 5;
             this.lblAantalPersonen.Text = "Aantal Personen";
-            this.lblAantalPersonen.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnUpdateRes
             // 
@@ -370,7 +367,6 @@
             this.lstReserveringDag.TabIndex = 9;
             this.lstReserveringDag.UseCompatibleStateImageBehavior = false;
             this.lstReserveringDag.View = System.Windows.Forms.View.Details;
-            this.lstReserveringDag.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // lblDatum
             // 
@@ -391,7 +387,6 @@
             this.label1.Size = new System.Drawing.Size(148, 24);
             this.label1.TabIndex = 12;
             this.label1.Text = "Geboorte Datum";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // txtTellie
             // 
@@ -437,7 +432,6 @@
             this.cmbTafel.Name = "cmbTafel";
             this.cmbTafel.Size = new System.Drawing.Size(47, 33);
             this.cmbTafel.TabIndex = 5;
-            this.cmbTafel.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -494,7 +488,6 @@
             this.pnlReservering.Name = "pnlReservering";
             this.pnlReservering.Size = new System.Drawing.Size(1576, 942);
             this.pnlReservering.TabIndex = 5;
-            this.pnlReservering.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlReservering_Paint);
             // 
             // btnSelectKlant
             // 

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Login
@@ -17,16 +14,6 @@ namespace Login
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ChoosePlatform());
-
-            //Application.Run(new Menu());
-            //Application.Run(new Platform());
-            //Application.Run(new RestaurantOverzicht());
-            //Application.Run(new MedewerkerRegistreren());
-            //Application.Run(new LoginForm());
-            //Application.Run(new MenuOverview());
-            //Application.Run(new BestellingOpnemen());
-            //Application.Run(new BestellingOpnemenDesktop());
-
         }
     }
 }
