@@ -103,21 +103,18 @@ namespace ChapooDal
         
 
             foreach (DataRow dr in dataTable.Rows)
-                {
-                    Wachtwoord = dr["Wachtwoord"].ToString();
-                   Inlognaam = dr["Inlognaam"].ToString();
-                    WerknemerID = Int32.Parse(dr["WerknemerID"].ToString());
+            {
+                Wachtwoord = dr["Wachtwoord"].ToString();
+                Inlognaam = dr["Inlognaam"].ToString();
+                WerknemerID = Int32.Parse(dr["WerknemerID"].ToString());
                 Manager = Convert.ToInt32(Convert.ToBoolean(dr["Manager"].ToString()));
-                
+
                 Chef = Convert.ToInt32(Convert.ToBoolean(dr["Chef"].ToString()));
                 Bediening = Convert.ToInt32(Convert.ToBoolean(dr["Bediening"].ToString()));
                 Keuken = Convert.ToInt32(Convert.ToBoolean(dr["Keuken"].ToString()));
                 Sommelier = Convert.ToInt32(Convert.ToBoolean(dr["Sommelier"].ToString()));
                 Maitre = Convert.ToInt32(Convert.ToBoolean(dr["Maitre"].ToString()));
                 Bar = Convert.ToInt32(Convert.ToBoolean(dr["Bar"].ToString()));
-
-
-
             }
 
             string query = "USE dbchapoo202104 SELECT WerknemerID,Voornaam,Achternaam,Mobiel,Email,Geboortedatum FROM [Werknemer] WHERE WerknemerID = @werknemerid";
@@ -134,7 +131,7 @@ namespace ChapooDal
             }
 
             
-                return new Account(Voornaam, Achternaam, Inlognaam, GeboorteDatum, Telefoonnummer, Email, Wachtwoord, Manager, Chef, Bediening, Keuken, Sommelier, Maitre, Bar);
+                return new Account(WerknemerID, Voornaam, Achternaam, Inlognaam, GeboorteDatum, Telefoonnummer, Email, Wachtwoord, Manager, Chef, Bediening, Keuken, Sommelier, Maitre, Bar);
             
         }
 

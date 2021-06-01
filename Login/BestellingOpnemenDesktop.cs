@@ -16,9 +16,11 @@ namespace Login
     {
         public Product_Service productService = new Product_Service();
         public List<Product> productList = new List<Product>();
-        private int _tableNr;
-        public BestellingOpnemenDesktop()
+        private int _tableNr = 0;
+        private Account _account;
+        public BestellingOpnemenDesktop(Account account)
         {
+            _account = account;
             InitializeComponent();
             ShowTables(); // Tafels
             DisableButtons(); // Disable buttons before selecting a table
@@ -43,6 +45,8 @@ namespace Login
                 btn.Click += btn_Click;
                 flp_TableSelect.Controls.Add(btn);
             }
+            if (_tableNr == 0) lblTafelSelectAlert.Text = "Selecteer tafel:";
+            else lblTafelSelectAlert.Text = "";
         }
         public void DisableButtons()
         {
@@ -114,6 +118,7 @@ namespace Login
                 li.SubItems.Add(product.Aantal.ToString());
                 li.SubItems.Add(product.Prijs.ToString("0.00"));
                 li.SubItems.Add(product.ProductId.ToString());
+                if (product.Aantal == 0) li.ForeColor = Color.Red;
                 listMenuView.Items.Add(li);
             }
         }
@@ -122,7 +127,7 @@ namespace Login
         {
             for (int i = 0; i < listMenuView.Items.Count; i++)
             {
-                if (listMenuView.Items[i].Selected)
+                if (listMenuView.Items[i].Selected && int.Parse(listMenuView.Items[i].SubItems[1].Text) != 0)
                 {
                     float total = float.Parse(lblTotal.Text);
                     bool enoughStock = true;
@@ -324,6 +329,7 @@ namespace Login
                 txtKlacht.Text,
                 txtNotities.Text,
                 "Nieuw",
+                _account.WerknemerID,
                 OrderList
             );
             Bestelling_Service bestellingService = new Bestelling_Service();
@@ -332,6 +338,8 @@ namespace Login
                 MessageBox.Show("Geen bestelling gevonden, probeer nog een keer.");
             } else if  (bestellingService.AddBestelling(bestelling))
             {
+                Tafel_Service tafelService = new Tafel_Service();
+                tafelService.UpdateTafelMedewerker(_account.WerknemerID, _tableNr);
                 lblTotal.Text = "0.00";
                 listOrderView.Clear();
                 txtNotities.Text = "";

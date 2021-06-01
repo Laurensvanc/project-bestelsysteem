@@ -65,6 +65,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnInstructies = new System.Windows.Forms.Button();
             this.btnKlacht = new System.Windows.Forms.Button();
+            this.lblTafelSelectAlert = new System.Windows.Forms.Label();
             this.pnl_Bestellen.SuspendLayout();
             this.pnl_MenuType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -148,6 +149,7 @@
             // 
             // pnl_Bestellen
             // 
+            this.pnl_Bestellen.Controls.Add(this.lblTafelSelectAlert);
             this.pnl_Bestellen.Controls.Add(this.txtKlacht);
             this.pnl_Bestellen.Controls.Add(this.label3);
             this.pnl_Bestellen.Controls.Add(this.label2);
@@ -551,6 +553,16 @@
             this.btnKlacht.UseVisualStyleBackColor = false;
             this.btnKlacht.Click += new System.EventHandler(this.btnKlacht_Click);
             // 
+            // lblTafelSelectAlert
+            // 
+            this.lblTafelSelectAlert.AutoSize = true;
+            this.lblTafelSelectAlert.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lblTafelSelectAlert.Location = new System.Drawing.Point(921, 5);
+            this.lblTafelSelectAlert.Name = "lblTafelSelectAlert";
+            this.lblTafelSelectAlert.Size = new System.Drawing.Size(151, 26);
+            this.lblTafelSelectAlert.TabIndex = 25;
+            this.lblTafelSelectAlert.Text = "Selecteer tafel";
+            // 
             // BestellingOpnemenDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -609,5 +621,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblTafelSelectAlert;
     }
 }

@@ -82,6 +82,7 @@ namespace Login
                 lblTransID.Text = "ID: " + _orderInfo.TransactieID.ToString();
                 lblTijd.Text = "Tijd: " + _orderInfo.Tijd.TotalMinutes.ToString("00:00");
                 lblGeholpen.Text = "Geholpen door: " + _orderInfo.Naam;
+                MessageBox.Show($"{_tafelID} met naam= {_orderInfo.Naam}");
             }
 
             _orderList = _transaction_Service.GetOrders(id);

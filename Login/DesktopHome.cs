@@ -64,7 +64,7 @@ namespace Login
 
         private void btn_navBestellingen_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new BestellingOpnemenDesktop());
+            LoadUserControl(new BestellingOpnemenDesktop(_account));
         }
 
         private void btn_navRegistreren_Click(object sender, EventArgs e)
@@ -107,7 +107,7 @@ namespace Login
 
         private void tsm_bestellen_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new BestellingOpnemenDesktop());
+            LoadUserControl(new BestellingOpnemenDesktop(_account));
         }
 
         private void tsm_afrekenen_Click(object sender, EventArgs e)
