@@ -19,7 +19,11 @@ namespace Login
 
             _loginForm = loginForm;
             _account = account;
-            lbl_username.Text = account.Inlognaam;
+            lbl_username.Text = account.Voornaam + " " + account.Achternaam;
+            if (_account.Manager == 1)
+            {
+                administratieToolStripMenuItem.Visible = true;
+            }
         }
 
         public void TimeDisplay()
@@ -41,35 +45,10 @@ namespace Login
             lbl_timeDisplay.Text = DateTime.Now.ToString("F", CultureInfo.CreateSpecificCulture("nl-NL"));
         }
 
-        private void btn_navReserveringen_Click(object sender, EventArgs e)
-        {
-            LoadUserControl(new RestaurantOverzicht());
-        }
-
         private void LoadUserControl(UserControl userControl)
         {
             pnl_Display.Controls.Clear();
             pnl_Display.Controls.Add(userControl);
-        }
-
-        private void btn_navBarKeuken_Click(object sender, EventArgs e)
-        {
-            LoadUserControl(new BarKeukOverzicht());
-        }
-
-        private void btn_navHome_Click(object sender, EventArgs e)
-        {
-            LoadUserControl(new RestaurantOverzicht());
-        }
-
-        private void btn_navBestellingen_Click(object sender, EventArgs e)
-        {
-            LoadUserControl(new BestellingOpnemenDesktop());
-        }
-
-        private void btn_navRegistreren_Click(object sender, EventArgs e)
-        {
-            LoadUserControl(new MedewerkerRegistreren());
         }
 
         private void btn_closeForm_Click(object sender, EventArgs e)

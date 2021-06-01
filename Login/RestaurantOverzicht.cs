@@ -57,6 +57,7 @@ namespace Login
         private void btnDeleteRes_Click(object sender, EventArgs e)
         {
             pnlReservering.Hide();
+            pnl_overzicht.Show();
         }
 
         private void btnMin_Click(object sender, EventArgs e)
@@ -139,7 +140,7 @@ namespace Login
             lstReservering.Clear();
             lstReserveringDag.Clear();
 
-            lstReservering.Columns.Add("Reservering Nummer", 75);
+            lstReservering.Columns.Add("Reservering#", 75);
             lstReservering.Columns.Add("Tafel Nummer", 75);
             lstReservering.Columns.Add("Begin Tijd", 75);
             lstReservering.Columns.Add("Eind Tijd", 75);
@@ -179,6 +180,11 @@ namespace Login
                 {
                     tafelToGereserveerd.Add(r.TafelID);
                 }
+
+                foreach (ColumnHeader ch in lstReservering.Columns)
+                {
+                    ch.Width = -2;
+                }
             }
             // Tafel & status
             ChapooLogic.Tafel_Service tafel_Service = new ChapooLogic.Tafel_Service();
@@ -186,7 +192,7 @@ namespace Login
             cmbTafel.Items.Clear();
             lstTafelStatus.Clear();
 
-            lstTafelStatus.Columns.Add("TafelNummer", 75);
+            lstTafelStatus.Columns.Add("Tafel#", 75);
             lstTafelStatus.Columns.Add("Capaciteit", 75);
             lstTafelStatus.Columns.Add("Werknemer", 100);
             lstTafelStatus.Columns.Add("Status", 75);
@@ -261,12 +267,14 @@ namespace Login
         private void btnSelectKlant_Click(object sender, EventArgs e)
         {
             LoadKlanten();
+            pnlReservering.Hide();
             pnlKlantSysteem.Show();
         }
 
         private void btnTerug_Click(object sender, EventArgs e)
         {
             pnlKlantSysteem.Hide();
+            pnlReservering.Show();
         }
         private void LoadKlanten()
         {
