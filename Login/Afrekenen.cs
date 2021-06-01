@@ -37,13 +37,18 @@ namespace Login
 
             foreach (int t in tableList)
             {
-                Button btn = new Button();
-                btn.Name = t.ToString();
-                btn.Text = t.ToString();
-                btn.Size = new Size(300, 75);
-                btn.FlatStyle = FlatStyle.Popup;
-                btn.BackColor = Color.White;
+                Button btn = new Button
+                {
+                    Name = t.ToString(),
+                    Text = t.ToString(),
+                    Size = new Size(300, 75),
+                    FlatStyle = FlatStyle.Popup,
+                    BackColor = Color.FromArgb(237, 99, 151),
+                    ForeColor = Color.White
+                };
                 btn.Click += btn_Click;
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.FlatAppearance.BorderSize = 0;
                 flp_TableSelect.Controls.Add(btn);
             }
         }

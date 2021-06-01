@@ -45,8 +45,9 @@ namespace Login
                 btn.Click += btn_Click;
                 flp_TableSelect.Controls.Add(btn);
             }
-            if (_tableNr == 0) lblTafelSelectAlert.Text = "Selecteer tafel:";
-            else lblTafelSelectAlert.Text = "";
+
+            if (_tableNr == 0) lblTafelSelectAlert.Show();
+            else lblTafelSelectAlert.Hide();
         }
         public void DisableButtons()
         {
