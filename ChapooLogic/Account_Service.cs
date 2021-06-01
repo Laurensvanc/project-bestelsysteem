@@ -23,16 +23,17 @@ namespace ChapooLogic
                 throw;
             }
         }
-        public string LoginAccount(string account)
+        public Account LoginAccount(string account)
         {
             try
             {
-                string ww =  accountDAO.LoginAccount(account);
+                Account account1 =  accountDAO.GetAccount(account);
                 
-                return ww;
+                return account1;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Console.WriteLine(e);
                 throw;
             }
         }

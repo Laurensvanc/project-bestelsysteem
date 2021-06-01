@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChapooModel;
+using System;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -7,13 +8,18 @@ namespace Login
     public partial class DesktopHome : Form
     {
         private DesktopLogin _loginForm;
+        private readonly Account _account;
 
-        public DesktopHome(DesktopLogin loginForm)
+        public DesktopHome(DesktopLogin loginForm, Account account)
         {
             InitializeComponent();
+            
             btn_closeForm.FlatAppearance.MouseOverBackColor = btn_closeForm.BackColor;
             TimeDisplay();
+
             _loginForm = loginForm;
+            _account = account;
+            lbl_username.Text = account.Inlognaam;
         }
 
         public void TimeDisplay()

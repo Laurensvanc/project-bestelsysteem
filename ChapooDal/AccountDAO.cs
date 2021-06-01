@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,21 +74,68 @@ namespace ChapooDal
           
         }
 
-        public string LoginAccount(string account)
+        public Account GetAccount(string account)
         {
-            string query = "USE dbchapoo202104 SELECT Inlognaam,Wachtwoord FROM [Account] WHERE Inlognaam = @inlognaam";
+            string query = "USE dbchapoo202104 SELECT WerknemerID,Inlognaam,Wachtwoord,Manager,Chef,Bediening,Keuken,Sommelier,Maitre,Bar FROM [Account] WHERE Inlognaam = @inlognaam";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@inlognaam", account);
-            return Readpassword(ExecuteSelectQuery(query, sqlParameters));
+            return ReadAccount(ExecuteSelectQuery(query, sqlParameters));
         }
-        private string Readpassword(DataTable dataTable)
+        CultureInfo provider = CultureInfo.InvariantCulture;
+        private Account ReadAccount(DataTable dataTable)
         {
-            string a = "";
+            string Voornaam = string.Empty;
+            string Achternaam = string.Empty;
+            string Inlognaam = string.Empty;
+            DateTime GeboorteDatum = DateTime.MinValue;
+            int Telefoonnummer = 0;
+            string Email = string.Empty;
+            string Wachtwoord = string.Empty;
+            int Manager = 0;
+            int Chef = 0;
+            int Bediening = 0;
+            int Keuken = 0;
+            int Sommelier = 0;
+            int Maitre = 0;
+            int Bar = 0;
+
+            int WerknemerID = 0;
+        
+
             foreach (DataRow dr in dataTable.Rows)
-            {
-                a = dr["Wachtwoord"].ToString();
+                {
+                    Wachtwoord = dr["Wachtwoord"].ToString();
+                   Inlognaam = dr["Inlognaam"].ToString();
+                    WerknemerID = Int32.Parse(dr["WerknemerID"].ToString());
+                Manager = Convert.ToInt32(Convert.ToBoolean(dr["Manager"].ToString()));
+                
+                Chef = Convert.ToInt32(Convert.ToBoolean(dr["Chef"].ToString()));
+                Bediening = Convert.ToInt32(Convert.ToBoolean(dr["Bediening"].ToString()));
+                Keuken = Convert.ToInt32(Convert.ToBoolean(dr["Keuken"].ToString()));
+                Sommelier = Convert.ToInt32(Convert.ToBoolean(dr["Sommelier"].ToString()));
+                Maitre = Convert.ToInt32(Convert.ToBoolean(dr["Maitre"].ToString()));
+                Bar = Convert.ToInt32(Convert.ToBoolean(dr["Bar"].ToString()));
+
+
+
             }
-            return a;
+
+            string query = "USE dbchapoo202104 SELECT WerknemerID,Voornaam,Achternaam,Mobiel,Email,Geboortedatum FROM [Werknemer] WHERE WerknemerID = @werknemerid";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@werknemerid", WerknemerID);
+            DataTable data = ExecuteSelectQuery(query, sqlParameters);
+            foreach (DataRow dr in data.Rows)
+            {
+                Voornaam = dr["Voornaam"].ToString();
+                Achternaam = dr["Achternaam"].ToString();
+                GeboorteDatum = DateTime.Parse(dr["Geboortedatum"].ToString());
+                Telefoonnummer = Int32.Parse(dr["Mobiel"].ToString());
+                Email = dr["Email"].ToString();
+            }
+
+            
+                return new Account(Voornaam, Achternaam, Inlognaam, GeboorteDatum, Telefoonnummer, Email, Wachtwoord, Manager, Chef, Bediening, Keuken, Sommelier, Maitre, Bar);
+            
         }
 
         private int ReadTables(DataTable dataTable)

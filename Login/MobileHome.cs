@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChapooModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,12 +15,16 @@ namespace Login
     {
         private MobileLogin _mobileLogin;
         private ChoosePlatform _platform;
+        private Account _account;
 
-        public MobileHome(MobileLogin login, ChoosePlatform platform)
+
+        public MobileHome(MobileLogin login, ChoosePlatform platform,Account account)
         {
             InitializeComponent();
             _mobileLogin = login;
             _platform = platform;
+            _account = account;
+
             LoadUserControl(new BestellingOpnemen(_platform, this));
         }
 
