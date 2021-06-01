@@ -21,19 +21,18 @@ namespace ChapooDal
             bestelling.WerknemerID = ReadTables(ExecuteSelectQuery(query, sqlParameters), "WerknemerID");
 
             // Data gets written to database, primary key is automatically made
-             query = "USE dbchapoo202104 INSERT INTO Bestelling (TafelID, TotaalPrijs, Opgenomen, Klacht, Instructies, [Status], Aangepast, WerknemerID) VALUES(@TafelID, @TotaalPrijs, @Opgenomen, @Klacht, @Instructies, @Status, @Aangepast, @WerknemerID)";
+             query = "USE dbchapoo202104 INSERT INTO Bestelling (TafelID, TotaalPrijs, Opgenomen, Klacht, Instructies, Aangepast, WerknemerID) VALUES(@TafelID, @TotaalPrijs, @Opgenomen, @Klacht, @Instructies, @Aangepast, @WerknemerID)";
 
             // Setting the parameters from the parameter order
-            sqlParameters = new SqlParameter[8];
+            sqlParameters = new SqlParameter[7];
 
             sqlParameters[0] = new SqlParameter("@TafelID", bestelling.TafelID);
             sqlParameters[1] = new SqlParameter("@TotaalPrijs", bestelling.TotaalPrijs);
             sqlParameters[2] = new SqlParameter("@Opgenomen", bestelling.Opgenomen);
             sqlParameters[3] = new SqlParameter("@Klacht", bestelling.Klacht);
             sqlParameters[4] = new SqlParameter("@Instructies", bestelling.Instructies);
-            sqlParameters[5] = new SqlParameter("@Status", bestelling.Status);
-            sqlParameters[6] = new SqlParameter("@Aangepast", bestelling.Aangepast);
-            sqlParameters[7] = new SqlParameter("@WerknemerID", bestelling.WerknemerID);
+            sqlParameters[5] = new SqlParameter("@Aangepast", bestelling.Aangepast);
+            sqlParameters[6] = new SqlParameter("@WerknemerID", bestelling.WerknemerID);
             ExecuteEditQuery(query, sqlParameters);
 
             // Get last BestellingID from database
@@ -55,11 +54,12 @@ namespace ChapooDal
             foreach (Order_Product productItem in bestelling.OrderList)
             {
                 // Data gets written to database, primary key is automatically made
-                query = "USE dbchapoo202104 INSERT INTO Order_Product (OrderID, ProductID, Aantal) VALUES(@OrderID, @ProductID, @Aantal)";
-                sqlParameters = new SqlParameter[3];
+                query = "USE dbchapoo202104 INSERT INTO Order_Product (OrderID, ProductID, Aantal, Status) VALUES(@OrderID, @ProductID, @Aantal, @Status)";
+                sqlParameters = new SqlParameter[4];
                 sqlParameters[0] = new SqlParameter("@OrderID", orderID);
                 sqlParameters[1] = new SqlParameter("@ProductID", productItem.ProductID);
                 sqlParameters[2] = new SqlParameter("@Aantal", productItem.Aantal);
+                sqlParameters[3] = new SqlParameter("@Status", bestelling.Status);
                 ExecuteEditQuery(query, sqlParameters);
                 // Remove from stock
                 query = "USE dbchapoo202104 UPDATE Product SET Aantal = Aantal - @Aantal WHERE ProductID = @ProductID";
