@@ -52,6 +52,50 @@ namespace ChapooDal
             ExecuteEditQuery(query, sqlParameters);
         }
 
+        public bool checkanswer(string v,string i)
+        {
+            string query = "USE dbchapoo202104 SELECT Secreta FROM [Account] WHERE Inlognaam = @inlognaam";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@inlognaam", i);
+            if (readanswer(ExecuteSelectQuery(query, sqlParameters)) == v)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public string readanswer(DataTable dataTable)
+        {
+            string antwoord = string.Empty;
+            foreach (DataRow dr in dataTable.Rows)
+            {
+
+                antwoord = dr["Secreta"].ToString();
+
+            }
+            return antwoord;
+        }
+
+        public string loginPincode(int pincode)
+        {
+            string query = "USE dbchapoo202104 SELECT Pincode,WerknemerID,Inlognaam,Wachtwoord,Manager,Chef,Bediening,Keuken,Sommelier,Maitre,Bar FROM [Account] WHERE Pincode = @pincode";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@pincode", pincode);
+            return ReadPincode(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        private string ReadPincode(DataTable dataTable)
+        {
+            string Inlognaam= string.Empty;
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                
+                Inlognaam = dr["Inlognaam"].ToString();
+                
+            }
+            return Inlognaam;
+        }
+
         public void ResetPassword(string account, string encryptedwachtwoord)
         {
             string query = "USE dbchapoo202104 UPDATE [Account] SET Wachtwoord = @Wachtwoord WHERE Inlognaam = @inlognaam";

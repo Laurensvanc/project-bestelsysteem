@@ -49,8 +49,8 @@ namespace Login
             this.label4 = new System.Windows.Forms.Label();
             this.secrettxtbox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.btn_return = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             this.pnlpassword.SuspendLayout();
@@ -97,9 +97,9 @@ namespace Login
             // 
             // inlogbtn
             // 
-            this.inlogbtn.BackColor = System.Drawing.Color.Transparent;
+            this.inlogbtn.BackColor = System.Drawing.Color.White;
             this.inlogbtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.inlogbtn.Location = new System.Drawing.Point(150, 345);
+            this.inlogbtn.Location = new System.Drawing.Point(140, 345);
             this.inlogbtn.Name = "inlogbtn";
             this.inlogbtn.Size = new System.Drawing.Size(92, 44);
             this.inlogbtn.TabIndex = 4;
@@ -115,8 +115,8 @@ namespace Login
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
-            this.panel2.Controls.Add(this.btn_return);
             this.panel2.Controls.Add(this.pnlpassword);
+            this.panel2.Controls.Add(this.btn_return);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.usertxt);
             this.panel2.Controls.Add(this.wwlbl);
@@ -246,19 +246,6 @@ namespace Login
             this.label3.TabIndex = 0;
             this.label3.Text = "Wat is je favoriete huisdier?";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(119, 414);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 16);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Wachtwoord vergeten";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
             // btn_return
             // 
             this.btn_return.BackColor = System.Drawing.Color.White;
@@ -274,6 +261,19 @@ namespace Login
             this.btn_return.UseVisualStyleBackColor = false;
             this.btn_return.Click += new System.EventHandler(this.btn_return_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(108, 430);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(158, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Wachtwoord vergeten";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Login.Properties.Resources.chapoo_white;
@@ -284,7 +284,7 @@ namespace Login
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // LoginForm
+            // DesktopLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -294,7 +294,7 @@ namespace Login
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "LoginForm";
+            this.Name = "DesktopLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
             this.panel2.ResumeLayout(false);
