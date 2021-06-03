@@ -8,6 +8,7 @@ namespace ChapooModel
 {
     public class Account
     {
+        public int WerknemerID { get; set; }
         public string Voornaam { get; set; }
         public string Achternaam { get; set; }
         public string Inlognaam { get; set; }
@@ -22,8 +23,9 @@ namespace ChapooModel
         public int Sommelier { get; set; }
         public int Maitre { get; set; }
         public int Bar { get; set; }
-        public Account(string Voornaam, string Achternaam, string Inlognaam, DateTime GeboorteDatum, int Telefoonnummer, string Email, string Wachtwoord, int Manager, int Chef, int Bediening, int Keuken, int Sommelier, int Maitre, int Bar)
+        public Account(int WerknemerID, string Voornaam, string Achternaam, string Inlognaam, DateTime GeboorteDatum, int Telefoonnummer, string Email, string Wachtwoord, int Manager, int Chef, int Bediening, int Keuken, int Sommelier, int Maitre, int Bar)
         {
+            this.WerknemerID = WerknemerID;
             this.Voornaam = Voornaam;
             this.Achternaam = Achternaam;
             this.Inlognaam = Inlognaam;

@@ -51,6 +51,26 @@ namespace Login
             pnl_Display.Controls.Add(userControl);
         }
 
+        private void btn_navBarKeuken_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new BarKeukOverzicht());
+        }
+
+        private void btn_navHome_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new RestaurantOverzicht());
+        }
+
+        private void btn_navBestellingen_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new BestellingOpnemenDesktop(_account));
+        }
+
+        private void btn_navRegistreren_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new MedewerkerRegistreren());
+        }
+
         private void btn_closeForm_Click(object sender, EventArgs e)
         {
             if (!pnl_LogoutBorder.Visible)
@@ -86,7 +106,7 @@ namespace Login
 
         private void tsm_bestellen_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new BestellingOpnemenDesktop());
+            LoadUserControl(new BestellingOpnemenDesktop(_account));
         }
 
         private void tsm_afrekenen_Click(object sender, EventArgs e)

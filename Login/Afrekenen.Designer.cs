@@ -42,10 +42,10 @@
             this.rbtnPinnen = new System.Windows.Forms.RadioButton();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.nudTip = new System.Windows.Forms.NumericUpDown();
             this.listOrderView = new System.Windows.Forms.ListView();
             this.listOrderViewTip = new System.Windows.Forms.ListView();
             this.listOrderViewTotaal = new System.Windows.Forms.ListView();
-            this.nudTip = new System.Windows.Forms.NumericUpDown();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblTijd = new System.Windows.Forms.Label();
@@ -81,6 +81,7 @@
             // 
             // flp_TableSelect
             // 
+            this.flp_TableSelect.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flp_TableSelect.Location = new System.Drawing.Point(346, 180);
             this.flp_TableSelect.Name = "flp_TableSelect";
             this.flp_TableSelect.Size = new System.Drawing.Size(658, 455);
@@ -89,11 +90,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 34F);
+            this.label1.Font = new System.Drawing.Font("Roboto", 34F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
-            this.label1.Location = new System.Drawing.Point(355, 92);
+            this.label1.Location = new System.Drawing.Point(344, 92);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(640, 53);
+            this.label1.Size = new System.Drawing.Size(628, 56);
             this.label1.TabIndex = 1;
             this.label1.Text = "Selecteer tafel voor afrekenen";
             // 
@@ -229,6 +230,16 @@
             this.panel9.Size = new System.Drawing.Size(411, 463);
             this.panel9.TabIndex = 34;
             // 
+            // nudTip
+            // 
+            this.nudTip.DecimalPlaces = 2;
+            this.nudTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.nudTip.Location = new System.Drawing.Point(296, 390);
+            this.nudTip.Name = "nudTip";
+            this.nudTip.Size = new System.Drawing.Size(112, 35);
+            this.nudTip.TabIndex = 26;
+            this.nudTip.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // listOrderView
             // 
             this.listOrderView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -264,16 +275,6 @@
             this.listOrderViewTotaal.TabIndex = 25;
             this.listOrderViewTotaal.UseCompatibleStateImageBehavior = false;
             this.listOrderViewTotaal.View = System.Windows.Forms.View.Details;
-            // 
-            // nudTip
-            // 
-            this.nudTip.DecimalPlaces = 2;
-            this.nudTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.nudTip.Location = new System.Drawing.Point(296, 390);
-            this.nudTip.Name = "nudTip";
-            this.nudTip.Size = new System.Drawing.Size(112, 35);
-            this.nudTip.TabIndex = 26;
-            this.nudTip.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // panel8
             // 

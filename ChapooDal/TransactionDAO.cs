@@ -23,7 +23,7 @@ namespace ChapooDal
         }
         public Order_Info DB_Get_Order_Info(int TafelID)
         {
-            string query = "USE dbchapoo202104 SELECT TOP 1[Bestelling].Opgenomen, [Werknemer].Voornaam + ' ' + [Werknemer].Achternaam AS Naam, [Werknemer].WerknemerID, [Transactie].TransactieID, [Transactie].Betaald FROM Bestelling  INNER JOIN Werknemer ON[Werknemer].WerknemerID = [Bestelling].WerknemerID CROSS JOIN Transactie ORDER BY TransactieID DESC";
+            string query = "SELECT TOP 1 [Bestelling].Opgenomen, [Werknemer].Voornaam + ' ' + [Werknemer].Achternaam AS Naam, [Tafel].WerknemerID, [Transactie].TransactieID, [Transactie].Betaald FROM Bestelling  INNER JOIN Tafel ON [Tafel].TafelID = [Bestelling].TafelID INNER JOIN Werknemer ON [Werknemer].WerknemerID = [Tafel].WerknemerID CROSS JOIN Transactie WHERE [Tafel].TafelID = @TafelID ORDER BY TransactieID DESC ";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@TafelID", TafelID);
             Order_Info info = ReadTablesInfo(ExecuteSelectQuery(query, sqlParameters));

@@ -37,5 +37,16 @@ namespace ChapooLogic
                 throw new Exception("Chapoo kon niet verbinden met de database");
             }
         }
+        public void UpdateTafelMedewerker(int WerknemerID, int TafelID)
+        {
+            try
+            {
+                tafelDAO.Db_Update_Tafel_Medewerker(WerknemerID, TafelID);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

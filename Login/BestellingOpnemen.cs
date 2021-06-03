@@ -18,7 +18,8 @@ namespace Login
         private MobileHome _mobileMenu;
         public Product_Service productService = new Product_Service();
         public List<Product> productList = new List<Product>();
-        public BestellingOpnemen(ChoosePlatform platform, MobileHome mobileMenu)
+        public Account _account;
+        public BestellingOpnemen(ChoosePlatform platform, MobileHome mobileMenu, Account account)
         {
             InitializeComponent();
             pnl_Drank.Hide();
@@ -27,6 +28,7 @@ namespace Login
             pnl_Notities.Hide();
             _platform = platform;
             _mobileMenu = mobileMenu;
+            _account = account;
         }
         public void ShowColumns()
         {
@@ -52,6 +54,7 @@ namespace Login
                 li.SubItems.Add(product.Aantal.ToString());
                 li.SubItems.Add(product.Prijs.ToString("0.00"));
                 li.SubItems.Add(product.ProductId.ToString());
+                if (product.Aantal == 0) li.ForeColor = Color.Red;
                 listMenuView.Items.Add(li);
             }
         }
@@ -60,7 +63,7 @@ namespace Login
         {
             for (int i = 0; i < listMenuView.Items.Count; i++)
             {
-                if (listMenuView.Items[i].Selected)
+                if (listMenuView.Items[i].Selected && int.Parse(listMenuView.Items[i].SubItems[1].Text) != 0)
                 {
                     float total = float.Parse(lblTotal.Text);
                     bool enoughStock = true;
@@ -325,7 +328,7 @@ namespace Login
             for (int i = 0; i < listOrderView.Items.Count; i++)
             {
                 int id = int.Parse(listOrderView.Items[i].SubItems[3].Text);
-                int aantal = int.Parse(listOrderView.Items[i].SubItems[2].Text);
+                int aantal = int.Parse(listOrderView.Items[i].SubItems[1].Text);
                 Order_Product orderItem = new Order_Product(id, aantal);
                 OrderList.Add(orderItem);
             }
@@ -336,6 +339,7 @@ namespace Login
                 txtKlacht.Text,
                 txtNotities.Text,
                 "Nieuw",
+                _account.WerknemerID,
                 OrderList
             );
             Bestelling_Service bestellingService = new Bestelling_Service();
@@ -344,6 +348,8 @@ namespace Login
                 MessageBox.Show("Geen bestelling gevonden, probeer nog een keer.");
             } else if  (bestellingService.AddBestelling(bestelling))
             {
+                Tafel_Service tafelService = new Tafel_Service();
+                tafelService.UpdateTafelMedewerker(_account.WerknemerID, int.Parse(lblTafelnr.Text));
                 lblTotal.Text = "0.00";
                 listOrderView.Clear();
                 pnl_Tafelnr.Hide();

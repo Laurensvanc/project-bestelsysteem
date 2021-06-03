@@ -19,7 +19,7 @@ namespace ChapooModel
         public int WerknemerID { get; set; }
         public List<Order_Product> OrderList { get; set; }
 
-        public Bestelling(int TafelID, float TotaalPrijs, string Klacht, string Instructies, string Status, List<Order_Product> OrderList)
+        public Bestelling(int TafelID, float TotaalPrijs, string Klacht, string Instructies, string Status, int WerknemerID, List<Order_Product> OrderList)
         {
             this.TafelID = TafelID;
             this.TotaalPrijs = TotaalPrijs;
@@ -28,6 +28,7 @@ namespace ChapooModel
             this.Instructies = Instructies;
             this.Status = Status;
             Aangepast = DateTime.Now;
+            this.WerknemerID = WerknemerID;
             this.OrderList = OrderList;
         }
     }

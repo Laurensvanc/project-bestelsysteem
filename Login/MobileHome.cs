@@ -15,7 +15,6 @@ namespace Login
     {
         private MobileLogin _mobileLogin;
         private ChoosePlatform _platform;
-        private Account _account;
 
 
         public MobileHome(MobileLogin login, ChoosePlatform platform,Account account)
@@ -23,9 +22,8 @@ namespace Login
             InitializeComponent();
             _mobileLogin = login;
             _platform = platform;
-            _account = account;
 
-            LoadUserControl(new BestellingOpnemen(_platform, this));
+            LoadUserControl(new BestellingOpnemen(_platform, this, account));
         }
 
         private void LoadUserControl(UserControl userControl)

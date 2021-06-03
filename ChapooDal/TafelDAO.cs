@@ -14,6 +14,14 @@ namespace ChapooDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+        public void Db_Update_Tafel_Medewerker(int WerknemerID, int TafelID)
+        {
+            string query = "USE dbchapoo202104 UPDATE Tafel SET WerknemerID = @WerknemerID WHERE TafelID = @TafelID";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@WerknemerID", WerknemerID);
+            sqlParameters[1] = new SqlParameter("@TafelID", TafelID);
+            ExecuteEditQuery(query, sqlParameters);
+        }
 
         private List<Tafel> ReadTables(DataTable dataTable)
         {

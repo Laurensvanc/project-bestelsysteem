@@ -47,6 +47,7 @@ namespace Login
                     int Mobiel = int.Parse(txtTelNummer.Text);
                     string encryptedwachtwoord = BCrypt.Net.BCrypt.HashPassword(txtWachtwoord.Text);
                     Account account = new Account(
+                        0, // 0 komt niet in de database
                         txtVoornaam.Text,
                         txtAchternaam.Text,
                         txtInlogNaam.Text,
