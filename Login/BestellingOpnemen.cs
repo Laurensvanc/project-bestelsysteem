@@ -18,6 +18,7 @@ namespace Login
         private MobileHome _mobileMenu;
         public Product_Service productService = new Product_Service();
         public List<Product> productList = new List<Product>();
+        private Tafel_Service TafelService = new Tafel_Service();
         public Account _account;
         public BestellingOpnemen(ChoosePlatform platform, MobileHome mobileMenu, Account account)
         {
@@ -334,7 +335,7 @@ namespace Login
             }
             Bestelling bestelling = new Bestelling 
             (
-                int.Parse(lblTafelnr.Text),
+                TafelService.GetTafel(int.Parse(lblTafelnr.Text)),
                 float.Parse(lblTotal.Text),
                 txtKlacht.Text,
                 txtNotities.Text,

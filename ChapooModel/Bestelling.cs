@@ -8,7 +8,8 @@ namespace ChapooModel
 {
     public class Bestelling
     {
-        public int TafelID{ get; set; }
+        public int BestellingID { get; set; }
+        public Tafel Tafel{ get; set; }
         public float TotaalPrijs { get; set; }
         public DateTime Opgenomen { get; set; }
         public string Klacht { get; set; }
@@ -19,9 +20,9 @@ namespace ChapooModel
         public int WerknemerID { get; set; }
         public List<Order_Product> OrderList { get; set; }
 
-        public Bestelling(int TafelID, float TotaalPrijs, string Klacht, string Instructies, string Status, int WerknemerID, List<Order_Product> OrderList)
+        public Bestelling(Tafel Tafel, float TotaalPrijs, string Klacht, string Instructies, string Status, int WerknemerID, List<Order_Product> OrderList)
         {
-            this.TafelID = TafelID;
+            this.Tafel = Tafel;
             this.TotaalPrijs = TotaalPrijs;
             Opgenomen = DateTime.Now;
             this.Klacht = Klacht;
@@ -30,6 +31,10 @@ namespace ChapooModel
             Aangepast = DateTime.Now;
             this.WerknemerID = WerknemerID;
             this.OrderList = OrderList;
+        }
+        public Bestelling(int BestellingID)
+        {
+            this.BestellingID = BestellingID;
         }
     }
 }

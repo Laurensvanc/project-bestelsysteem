@@ -28,5 +28,9 @@ namespace ChapooModel
             this.Fooi = Fooi;
             this.Betaalwijze = Betaalwijze;
         }
+        public Transactie(int TransactieID)
+        {
+            this.TransactieID = TransactieID;
+        }
     }
 }

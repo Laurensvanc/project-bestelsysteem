@@ -11,14 +11,14 @@ namespace ChapooModel
         public TimeSpan Tijd { get; set; }
         public string Naam { get; set; }
         public int WerknemerID { get; set; }
-        public int TransactieID { get; set; }
+        public Transactie Transactie { get; set; }
         public bool Betaald { get; set; }
-        public Order_Info(DateTime StartTijd, string Naam, int WerknemerID, int TransactieID, bool Betaald)
+        public Order_Info(DateTime StartTijd, string Naam, int WerknemerID, Transactie Transactie, bool Betaald)
         {
             Tijd = DateTime.Now.Subtract(StartTijd);
             this.Naam = Naam;
             this.WerknemerID = WerknemerID;
-            this.TransactieID = TransactieID;
+            this.Transactie = Transactie;
             this.Betaald = Betaald;
         }
     }

@@ -81,14 +81,16 @@ namespace ChapooDal
         }
         private Order_Info ReadTablesInfo(DataTable dataTable)
         {
-            Order_Info info = new Order_Info(DateTime.Now, "Empty", 0, 0, false);
+            Transactie transactie = new Transactie(0);
+            Order_Info info = new Order_Info(DateTime.Now, "Empty", 0, transactie, false);
             foreach (DataRow dr in dataTable.Rows)
             {
+                transactie = new Transactie((int)dr["TransactieID"]);
                 info = new Order_Info(
                     (DateTime)dr["Opgenomen"],
                     (string)dr["Naam"],
                     (int)dr["WerknemerID"],
-                    (int)dr["TransactieID"],
+                    transactie,
                     (bool)dr["Betaald"]);
             }
             return info;
@@ -98,8 +100,9 @@ namespace ChapooDal
             List<Order> orderList = new List<Order>();
             foreach (DataRow dr in dataTable.Rows)
             {
+                Bestelling bestelling = new Bestelling((int)dr["BestellingID"]);
                 Order order = new Order(
-                    (int)dr["BestellingID"],
+                    bestelling,
                     (string)dr["ProductNaam"],
                     (double)dr["Prijs"],
                     (int)dr["Aantal"],

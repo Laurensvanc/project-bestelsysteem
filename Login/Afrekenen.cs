@@ -15,6 +15,7 @@ namespace Login
     public partial class Afrekenen : UserControl
     {
         private Transaction_Service _transaction_Service = new Transaction_Service();
+        private Bestelling_Service _bestelling_Service = new Bestelling_Service();
         private double _totaalPrijs;
         private List<Order> _orderList;
         private Order_Info _orderInfo;
@@ -84,7 +85,7 @@ namespace Login
                 LoadListView(id);
             } else
             {
-                lblTransID.Text = "ID: " + _orderInfo.TransactieID.ToString();
+                lblTransID.Text = "ID: " + _orderInfo.Transactie.TransactieID.ToString();
                 lblTijd.Text = "Tijd: " + _orderInfo.Tijd.TotalMinutes.ToString("00:00");
                 lblGeholpen.Text = "Geholpen door: " + _orderInfo.Naam;
             }
@@ -92,14 +93,14 @@ namespace Login
             _orderList = _transaction_Service.GetOrders(id);
             foreach (Order order in _orderList)
             {
-                ListViewItem li = new ListViewItem(order.BestellingID.ToString());
+                ListViewItem li = new ListViewItem(order.Bestelling.BestellingID.ToString());
                 li.SubItems.Add(order.ProductNaam);
                 li.SubItems.Add(order.Aantal.ToString());
                 li.SubItems.Add("€ " + order.Prijs.ToString("00.00"));
                 listOrderView.Items.Add(li);
                 _totaalPrijs += order.Prijs;
 
-                if (!_bestellingIDs.Contains(order.BestellingID)) _bestellingIDs.Add(order.BestellingID);
+                if (!_bestellingIDs.Contains(order.Bestelling.BestellingID)) _bestellingIDs.Add(order.Bestelling.BestellingID);
             }
             listOrderViewTip.Columns.Add("Tip:", 100);
             listOrderViewTotaal.Columns.Add("Totaal prijs:", 325);
@@ -132,7 +133,7 @@ namespace Login
 
             Transactie transactie = new Transactie(
                 _bestellingIDs,
-                _orderInfo.TransactieID,
+                _orderInfo.Transactie.TransactieID,
                 BonGeprint, 
                 _orderInfo.WerknemerID,
                 txtOpmerking.Text, 

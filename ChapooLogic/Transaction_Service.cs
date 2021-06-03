@@ -34,10 +34,9 @@ namespace ChapooLogic
                 Order_Info orderInfo = transactionDAO.DB_Get_Order_Info(tafelID);
                 return orderInfo;
             }
-            catch
+            catch (Exception)
             {
-                Order_Info orderInfo = new Order_Info(DateTime.Now, "Error", 404, 404, false);
-                return orderInfo;
+                throw;
             }
         }
         public void AddTransaction()
@@ -60,12 +59,7 @@ namespace ChapooLogic
             }
             catch (Exception ex)
             {
-                List<Order> OrderList = new List<Order>();
-                Order order = new Order(404, "Error", 0.00, 0, false);
-                OrderList.Add(order);
-                return OrderList;
-
-                throw new Exception("Chapoo kon niet verbinden met de database");
+                throw ex;
             }
         }
         public bool UpdateTransaction(Transactie transactie)

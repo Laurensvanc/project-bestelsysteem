@@ -16,6 +16,7 @@ namespace Login
     {
         public Product_Service productService = new Product_Service();
         public List<Product> productList = new List<Product>();
+        private Tafel_Service TafelService = new Tafel_Service();
         private int _tableNr = 0;
         private Account _account;
         public BestellingOpnemenDesktop(Account account)
@@ -325,7 +326,7 @@ namespace Login
             }
             Bestelling bestelling = new Bestelling 
             (
-                _tableNr,
+                TafelService.GetTafel(_tableNr),
                 float.Parse(lblTotal.Text),
                 txtKlacht.Text,
                 txtNotities.Text,

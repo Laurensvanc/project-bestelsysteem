@@ -20,7 +20,7 @@ namespace ChapooDal
             // Setting the parameters from the parameter order
             SqlParameter[] sqlParameters = new SqlParameter[6];
 
-            sqlParameters[0] = new SqlParameter("@TafelID", bestelling.TafelID);
+            sqlParameters[0] = new SqlParameter("@TafelID", bestelling.Tafel.TafelNummer);
             sqlParameters[1] = new SqlParameter("@TotaalPrijs", bestelling.TotaalPrijs);
             sqlParameters[2] = new SqlParameter("@Opgenomen", bestelling.Opgenomen);
             sqlParameters[3] = new SqlParameter("@Klacht", bestelling.Klacht);

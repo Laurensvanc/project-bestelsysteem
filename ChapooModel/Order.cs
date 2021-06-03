@@ -8,14 +8,14 @@ namespace ChapooModel
 {
     public class Order
     {
-        public int BestellingID { get; set; }
+        public Bestelling Bestelling { get; set; }
         public string ProductNaam { get; set; }
         public double Prijs { get; set; }
         public int Aantal { get; set; }
         public bool isAlcohol { get; set; }
-        public Order(int BestellingID, string ProductNaam, double Prijs, int Aantal, bool isAlcohol)
+        public Order(Bestelling Bestelling, string ProductNaam, double Prijs, int Aantal, bool isAlcohol)
         {
-            this.BestellingID = BestellingID;
+            this.Bestelling = Bestelling;
             this.ProductNaam = ProductNaam;
             this.Prijs = Prijs * Aantal;
             this.Aantal = Aantal;
