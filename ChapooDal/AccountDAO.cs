@@ -34,10 +34,10 @@ namespace ChapooDal
             int werknemerID = ReadTables(ExecuteSelectQuery(query, sqlParameters));
 
             // Data gets written to database, primary key is automatically made
-            query = "USE dbchapoo202104 INSERT INTO Account (WerknemerID, Inlognaam, Wachtwoord, Manager, Chef, Bediening, Keuken, Sommelier, Maitre, Bar) VALUES(@WerknemerID, @Inlognaam, @Wachtwoord, @Manager, @Chef, @Bediening, @Keuken, @Sommelier, @Maitre, @Bar)";
+            query = "USE dbchapoo202104 INSERT INTO Account (WerknemerID, Inlognaam, Wachtwoord, Manager, Chef, Bediening, Keuken, Sommelier, Maitre, Bar, Pincode, Secreta) VALUES(@WerknemerID, @Inlognaam, @Wachtwoord, @Manager, @Chef, @Bediening, @Keuken, @Sommelier, @Maitre, @Bar, @Pincode, @Secreta)";
 
             // Setting the parameters from the parameter order
-            sqlParameters = new SqlParameter[10];
+            sqlParameters = new SqlParameter[12];
 
             sqlParameters[0] = new SqlParameter("@WerknemerID", werknemerID);
             sqlParameters[1] = new SqlParameter("@Inlognaam", account.Inlognaam);
@@ -49,7 +49,53 @@ namespace ChapooDal
             sqlParameters[7] = new SqlParameter("@Sommelier", account.Sommelier);
             sqlParameters[8] = new SqlParameter("@Maitre", account.Maitre);
             sqlParameters[9] = new SqlParameter("@Bar", account.Bar);
+            sqlParameters[10] = new SqlParameter("@Pincode", account.Pincode);
+            sqlParameters[11] = new SqlParameter("@Secreta", account.SecretAnswer);
             ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public bool checkanswer(string v,string i)
+        {
+            string query = "USE dbchapoo202104 SELECT Secreta FROM [Account] WHERE Inlognaam = @inlognaam";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@inlognaam", i);
+            if (readanswer(ExecuteSelectQuery(query, sqlParameters)) == v)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public string readanswer(DataTable dataTable)
+        {
+            string antwoord = string.Empty;
+            foreach (DataRow dr in dataTable.Rows)
+            {
+
+                antwoord = dr["Secreta"].ToString();
+
+            }
+            return antwoord;
+        }
+
+        public string loginPincode(int pincode)
+        {
+            string query = "USE dbchapoo202104 SELECT Pincode,WerknemerID,Inlognaam,Wachtwoord,Manager,Chef,Bediening,Keuken,Sommelier,Maitre,Bar FROM [Account] WHERE Pincode = @pincode";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@pincode", pincode);
+            return ReadPincode(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        private string ReadPincode(DataTable dataTable)
+        {
+            string Inlognaam= string.Empty;
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                
+                Inlognaam = dr["Inlognaam"].ToString();
+                
+            }
+            return Inlognaam;
         }
 
         public void ResetPassword(string account, string encryptedwachtwoord)
@@ -98,6 +144,8 @@ namespace ChapooDal
             int Sommelier = 0;
             int Maitre = 0;
             int Bar = 0;
+            int Pincode = 0;
+            string SecretAnswer = string.Empty;
 
             int WerknemerID = 0;
         
@@ -131,7 +179,7 @@ namespace ChapooDal
             }
 
             
-                return new Account(WerknemerID, Voornaam, Achternaam, Inlognaam, GeboorteDatum, Telefoonnummer, Email, Wachtwoord, Manager, Chef, Bediening, Keuken, Sommelier, Maitre, Bar);
+                return new Account(WerknemerID, Voornaam, Achternaam, Inlognaam, GeboorteDatum, Telefoonnummer, Email, Wachtwoord, Pincode, SecretAnswer, Manager, Chef, Bediening, Keuken, Sommelier, Maitre, Bar);
             
         }
 

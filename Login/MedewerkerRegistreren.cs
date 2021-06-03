@@ -47,7 +47,9 @@ namespace Login
                         mobiel,
                         txtEmail.Text,
                         encryptedwachtwoord,
-                        Manager, Chef, Bediening, Keuken, Sommelier, Maitre, Bar);
+                        int.Parse(nudPin.Text),
+                        txtSecretA.Text,
+                        Manager, Chef, Bediening, Keuken, Sommelier, Maitre, Bar); ;
                     Account_Service service = new Account_Service();
                     if (service.AddAccount(account)) MessageBox.Show($"{txtVoornaam.Text} is succesvol geregistreerd.");
                     ClearTextBoxes();

@@ -58,8 +58,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.nudPin = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtSecretA = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPin)).BeginInit();
             this.SuspendLayout();
             // 
             // txtVoornaam
@@ -298,7 +304,7 @@
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.btnRegister.ForeColor = System.Drawing.Color.White;
-            this.btnRegister.Location = new System.Drawing.Point(209, 448);
+            this.btnRegister.Location = new System.Drawing.Point(210, 528);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(399, 64);
             this.btnRegister.TabIndex = 23;
@@ -338,6 +344,11 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.txtSecretA);
+            this.panel1.Controls.Add(this.nudPin);
+            this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.txtAchternaam);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.rbBediening);
@@ -364,18 +375,18 @@
             this.panel1.Controls.Add(this.txtWachtwoord);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Location = new System.Drawing.Point(291, 180);
+            this.panel1.Location = new System.Drawing.Point(291, 100);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(829, 550);
+            this.panel1.Size = new System.Drawing.Size(829, 630);
             this.panel1.TabIndex = 27;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
             this.panel2.Controls.Add(this.label11);
-            this.panel2.Location = new System.Drawing.Point(286, 115);
+            this.panel2.Location = new System.Drawing.Point(286, 35);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(839, 620);
+            this.panel2.Size = new System.Drawing.Size(839, 700);
             this.panel2.TabIndex = 28;
             // 
             // label11
@@ -388,6 +399,60 @@
             this.label11.Size = new System.Drawing.Size(180, 37);
             this.label11.TabIndex = 27;
             this.label11.Text = "Registreren";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label12.Location = new System.Drawing.Point(97, 418);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(91, 26);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "Pincode";
+            // 
+            // nudPin
+            // 
+            this.nudPin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.nudPin.Location = new System.Drawing.Point(321, 416);
+            this.nudPin.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.nudPin.Name = "nudPin";
+            this.nudPin.Size = new System.Drawing.Size(229, 32);
+            this.nudPin.TabIndex = 29;
+            this.nudPin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label13.Location = new System.Drawing.Point(97, 493);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(183, 26);
+            this.label13.TabIndex = 31;
+            this.label13.Text = "Beveiligingsvraag";
+            // 
+            // txtSecretA
+            // 
+            this.txtSecretA.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.txtSecretA.Location = new System.Drawing.Point(321, 490);
+            this.txtSecretA.MaxLength = 32;
+            this.txtSecretA.Name = "txtSecretA";
+            this.txtSecretA.PasswordChar = '●';
+            this.txtSecretA.Size = new System.Drawing.Size(229, 32);
+            this.txtSecretA.TabIndex = 30;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label14.Location = new System.Drawing.Point(321, 463);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(229, 24);
+            this.label14.TabIndex = 32;
+            this.label14.Text = "\"Wat is uw lievelingsdier?\"";
             // 
             // MedewerkerRegistreren
             // 
@@ -402,6 +467,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -438,5 +504,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtSecretA;
+        private System.Windows.Forms.NumericUpDown nudPin;
+        private System.Windows.Forms.Label label12;
     }
 }
