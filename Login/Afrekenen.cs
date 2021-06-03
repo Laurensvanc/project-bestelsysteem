@@ -15,6 +15,7 @@ namespace Login
     public partial class Afrekenen : UserControl
     {
         private Transaction_Service _transaction_Service = new Transaction_Service();
+        private Bestelling_Service _bestelling_Service = new Bestelling_Service();
         private double _totaalPrijs;
         private List<Order> _orderList;
         private Order_Info _orderInfo;
@@ -65,7 +66,7 @@ namespace Login
         }
         public void LoadListView(int id)
         {   
-            //listOrderView.Clear();
+            listOrderView.Items.Clear();
             listOrderViewTip.Clear();
             listOrderViewTotaal.Clear();
             _tafelID = id;
@@ -79,7 +80,7 @@ namespace Login
                 LoadListView(id);
             } else
             {
-                lblTransID.Text = "ID: " + _orderInfo.TransactieID.ToString();
+                lblTransID.Text = "ID: " + _orderInfo.Transactie.TransactieID.ToString();
                 lblTijd.Text = "Tijd: " + _orderInfo.Tijd.TotalMinutes.ToString("00:00");
                 lblGeholpen.Text = "Geholpen door: " + _orderInfo.Naam;
             }
@@ -87,14 +88,15 @@ namespace Login
             _orderList = _transaction_Service.GetOrders(id);
             foreach (Order order in _orderList)
             {
-                arr[0] = order.BestellingID.ToString();
+                arr[0] = order.Bestelling.BestellingID.ToString();
                 arr[1] = order.ProductNaam;
                 arr[2] = order.Aantal.ToString();
                 arr[3] = "€ " + order.Prijs.ToString("00.00");
                 ListViewItem li = new ListViewItem(arr);
                 listOrderView.Items.Add(li);
                 _totaalPrijs += order.Prijs;
-                if (!_bestellingIDs.Contains(order.BestellingID)) _bestellingIDs.Add(order.BestellingID);
+
+                if (!_bestellingIDs.Contains(order.Bestelling.BestellingID)) _bestellingIDs.Add(order.Bestelling.BestellingID);
             }
             listOrderViewTip.Columns.Add("Tip:", 308);
             listOrderViewTotaal.Columns.Add("Totaal prijs:", 380);
@@ -127,7 +129,7 @@ namespace Login
 
             Transactie transactie = new Transactie(
                 _bestellingIDs,
-                _orderInfo.TransactieID,
+                _orderInfo.Transactie.TransactieID,
                 BonGeprint, 
                 _orderInfo.WerknemerID,
                 txtOpmerking.Text, 
@@ -150,10 +152,12 @@ namespace Login
         private void rbtnPinnen_CheckedChanged(object sender, EventArgs e)
         {
             btnBetaal.Enabled = true;
+            lbl_Instructions.Hide();
         }
         private void rbtnContant_CheckedChanged(object sender, EventArgs e)
         {
             btnBetaal.Enabled = true;
+            lbl_Instructions.Hide();
         }
         private void btnTerugOverzicht_Click(object sender, EventArgs e)
         {

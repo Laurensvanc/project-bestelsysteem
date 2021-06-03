@@ -22,7 +22,13 @@ namespace ChapooDAL
             sqlParameters[1] = new SqlParameter("@TafelID", TafelID);
             ExecuteEditQuery(query, sqlParameters);
         }
-
+        public Tafel Db_Get_Tafel(int tafelNr)
+        {
+            string query = "USE dbchapoo202104 SELECT [Tafel].TafelID, [Tafel].Capaciteit, [Werknemer].Voornaam FROM [Tafel] JOIN [Werknemer] ON [Tafel].WerknemerID = [Werknemer].WerknemerID WHERE [Tafel].TafelID = @TafelID";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@TafelID", tafelNr);
+            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
+        }
         private List<Tafel> ReadTables(DataTable dataTable)
         {
             List<Tafel> tafels = new List<Tafel>();
@@ -39,6 +45,21 @@ namespace ChapooDAL
                 tafels.Add(tafel);
             }
             return tafels;
+        }
+        private Tafel ReadTable(DataTable dataTable)
+        {
+            Tafel tafel = new Tafel("404", 0, "404", 0);
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                tafel = new Tafel(
+                    (string)dr["Voornaam"],
+                    (int)dr["Capaciteit"],
+                    "Vrij",
+                    (int)dr["TafelID"]
+                    );
+            }
+            return tafel;
         }
     }
 }

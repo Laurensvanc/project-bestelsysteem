@@ -440,7 +440,6 @@
             this.txtSecretA.Location = new System.Drawing.Point(321, 490);
             this.txtSecretA.MaxLength = 32;
             this.txtSecretA.Name = "txtSecretA";
-            this.txtSecretA.PasswordChar = '●';
             this.txtSecretA.Size = new System.Drawing.Size(229, 32);
             this.txtSecretA.TabIndex = 30;
             // 

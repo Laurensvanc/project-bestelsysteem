@@ -68,6 +68,7 @@
             this.chBestelling = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chAantal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chPrijs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lbl_Instructions = new System.Windows.Forms.Label();
             this.pnl_Afrekenen.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -104,6 +105,7 @@
             // 
             // pnl_Afrekenen
             // 
+            this.pnl_Afrekenen.Controls.Add(this.lbl_Instructions);
             this.pnl_Afrekenen.Controls.Add(this.panel12);
             this.pnl_Afrekenen.Controls.Add(this.panel10);
             this.pnl_Afrekenen.Controls.Add(this.panel11);
@@ -398,11 +400,11 @@
             // 
             this.btnTerugOverzicht.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnTerugOverzicht.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTerugOverzicht.Font = new System.Drawing.Font("Roboto", 15F);
+            this.btnTerugOverzicht.Font = new System.Drawing.Font("Roboto", 20F);
             this.btnTerugOverzicht.ForeColor = System.Drawing.Color.White;
             this.btnTerugOverzicht.Location = new System.Drawing.Point(240, 643);
             this.btnTerugOverzicht.Name = "btnTerugOverzicht";
-            this.btnTerugOverzicht.Size = new System.Drawing.Size(241, 65);
+            this.btnTerugOverzicht.Size = new System.Drawing.Size(304, 65);
             this.btnTerugOverzicht.TabIndex = 30;
             this.btnTerugOverzicht.Text = "< Terug naar overzicht";
             this.btnTerugOverzicht.UseVisualStyleBackColor = false;
@@ -412,11 +414,11 @@
             // 
             this.btnBetaal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnBetaal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBetaal.Font = new System.Drawing.Font("Roboto", 30F);
+            this.btnBetaal.Font = new System.Drawing.Font("Roboto", 35F);
             this.btnBetaal.ForeColor = System.Drawing.Color.White;
-            this.btnBetaal.Location = new System.Drawing.Point(866, 643);
+            this.btnBetaal.Location = new System.Drawing.Point(825, 643);
             this.btnBetaal.Name = "btnBetaal";
-            this.btnBetaal.Size = new System.Drawing.Size(271, 65);
+            this.btnBetaal.Size = new System.Drawing.Size(330, 65);
             this.btnBetaal.TabIndex = 28;
             this.btnBetaal.Text = "Betaal";
             this.btnBetaal.UseVisualStyleBackColor = false;
@@ -426,11 +428,11 @@
             // 
             this.btnUpdatePrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnUpdatePrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdatePrice.Font = new System.Drawing.Font("Roboto", 15F);
+            this.btnUpdatePrice.Font = new System.Drawing.Font("Roboto", 18F);
             this.btnUpdatePrice.ForeColor = System.Drawing.Color.White;
-            this.btnUpdatePrice.Location = new System.Drawing.Point(1143, 643);
+            this.btnUpdatePrice.Location = new System.Drawing.Point(1161, 643);
             this.btnUpdatePrice.Name = "btnUpdatePrice";
-            this.btnUpdatePrice.Size = new System.Drawing.Size(134, 65);
+            this.btnUpdatePrice.Size = new System.Drawing.Size(157, 65);
             this.btnUpdatePrice.TabIndex = 27;
             this.btnUpdatePrice.Text = "Update prijs";
             this.btnUpdatePrice.UseVisualStyleBackColor = false;
@@ -483,12 +485,23 @@
             // chAantal
             // 
             this.chAantal.Text = "Aantal";
-            this.chAantal.Width = 74;
+            this.chAantal.Width = 70;
             // 
             // chPrijs
             // 
             this.chPrijs.Text = "Prijs";
             this.chPrijs.Width = 101;
+            // 
+            // lbl_Instructions
+            // 
+            this.lbl_Instructions.AutoSize = true;
+            this.lbl_Instructions.Font = new System.Drawing.Font("Roboto", 15F);
+            this.lbl_Instructions.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Instructions.Location = new System.Drawing.Point(877, 711);
+            this.lbl_Instructions.Name = "lbl_Instructions";
+            this.lbl_Instructions.Size = new System.Drawing.Size(241, 24);
+            this.lbl_Instructions.TabIndex = 22;
+            this.lbl_Instructions.Text = "Selecteer betaal methode";
             // 
             // Afrekenen
             // 
@@ -566,5 +579,6 @@
         private System.Windows.Forms.ColumnHeader chBestelling;
         private System.Windows.Forms.ColumnHeader chAantal;
         private System.Windows.Forms.ColumnHeader chPrijs;
+        private System.Windows.Forms.Label lbl_Instructions;
     }
 }

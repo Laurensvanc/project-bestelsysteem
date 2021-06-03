@@ -60,26 +60,28 @@ namespace Login
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Roboto", 11F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Location = new System.Drawing.Point(98, 246);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 16);
+            this.label1.Size = new System.Drawing.Size(78, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Inlognaam";
             // 
             // usertxt
             // 
+            this.usertxt.Font = new System.Drawing.Font("Roboto", 9F);
             this.usertxt.Location = new System.Drawing.Point(101, 265);
             this.usertxt.Name = "usertxt";
-            this.usertxt.Size = new System.Drawing.Size(176, 20);
+            this.usertxt.Size = new System.Drawing.Size(176, 22);
             this.usertxt.TabIndex = 1;
             // 
             // wwtxt
             // 
+            this.wwtxt.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold);
             this.wwtxt.Location = new System.Drawing.Point(101, 319);
             this.wwtxt.Name = "wwtxt";
-            this.wwtxt.Size = new System.Drawing.Size(176, 20);
+            this.wwtxt.Size = new System.Drawing.Size(176, 22);
             this.wwtxt.TabIndex = 2;
             this.wwtxt.UseSystemPasswordChar = true;
             this.wwtxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.wwtxt_KeyDown);
@@ -87,17 +89,20 @@ namespace Login
             // wwlbl
             // 
             this.wwlbl.AutoSize = true;
-            this.wwlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wwlbl.Font = new System.Drawing.Font("Roboto", 11F, System.Drawing.FontStyle.Bold);
             this.wwlbl.ForeColor = System.Drawing.SystemColors.Control;
             this.wwlbl.Location = new System.Drawing.Point(98, 300);
             this.wwlbl.Name = "wwlbl";
-            this.wwlbl.Size = new System.Drawing.Size(93, 16);
+            this.wwlbl.Size = new System.Drawing.Size(90, 18);
             this.wwlbl.TabIndex = 3;
             this.wwlbl.Text = "Wachtwoord";
             // 
             // inlogbtn
             // 
             this.inlogbtn.BackColor = System.Drawing.Color.White;
+            this.inlogbtn.FlatAppearance.BorderSize = 0;
+            this.inlogbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inlogbtn.Font = new System.Drawing.Font("Roboto", 10F);
             this.inlogbtn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.inlogbtn.Location = new System.Drawing.Point(140, 345);
             this.inlogbtn.Name = "inlogbtn";
@@ -151,11 +156,11 @@ namespace Login
             // resetbtn
             // 
             this.resetbtn.AutoSize = true;
-            this.resetbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetbtn.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold);
             this.resetbtn.ForeColor = System.Drawing.SystemColors.Control;
-            this.resetbtn.Location = new System.Drawing.Point(104, 198);
+            this.resetbtn.Location = new System.Drawing.Point(122, 198);
             this.resetbtn.Name = "resetbtn";
-            this.resetbtn.Size = new System.Drawing.Size(134, 16);
+            this.resetbtn.Size = new System.Drawing.Size(106, 14);
             this.resetbtn.TabIndex = 13;
             this.resetbtn.Text = "Reset wachtwoord";
             this.resetbtn.Click += new System.EventHandler(this.resetbtn_Click);
@@ -163,86 +168,90 @@ namespace Login
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label7.Location = new System.Drawing.Point(83, 16);
+            this.label7.Location = new System.Drawing.Point(86, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 15);
+            this.label7.Size = new System.Drawing.Size(64, 14);
             this.label7.TabIndex = 12;
             this.label7.Text = "Inlognaam";
             // 
             // user2txt
             // 
-            this.user2txt.Location = new System.Drawing.Point(86, 34);
+            this.user2txt.Font = new System.Drawing.Font("Roboto", 9F);
+            this.user2txt.Location = new System.Drawing.Point(86, 33);
             this.user2txt.Name = "user2txt";
-            this.user2txt.Size = new System.Drawing.Size(179, 20);
+            this.user2txt.Size = new System.Drawing.Size(185, 22);
             this.user2txt.TabIndex = 7;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label6.Location = new System.Drawing.Point(86, 144);
+            this.label6.Location = new System.Drawing.Point(86, 154);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(138, 15);
+            this.label6.Size = new System.Drawing.Size(116, 14);
             this.label6.TabIndex = 11;
             this.label6.Text = "Herhaal wachtwoord";
             // 
             // herhalingwwtxt
             // 
-            this.herhalingwwtxt.Location = new System.Drawing.Point(86, 163);
+            this.herhalingwwtxt.Font = new System.Drawing.Font("Roboto", 9F);
+            this.herhalingwwtxt.Location = new System.Drawing.Point(86, 171);
             this.herhalingwwtxt.Name = "herhalingwwtxt";
-            this.herhalingwwtxt.Size = new System.Drawing.Size(185, 20);
+            this.herhalingwwtxt.Size = new System.Drawing.Size(185, 22);
             this.herhalingwwtxt.TabIndex = 10;
             this.herhalingwwtxt.UseSystemPasswordChar = true;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(86, 98);
+            this.label5.Location = new System.Drawing.Point(86, 108);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(135, 15);
+            this.label5.Size = new System.Drawing.Size(115, 14);
             this.label5.TabIndex = 9;
             this.label5.Text = "Nieuwe wachtwoord";
             // 
             // newwwtxt
             // 
-            this.newwwtxt.Location = new System.Drawing.Point(86, 117);
+            this.newwwtxt.Font = new System.Drawing.Font("Roboto", 9F);
+            this.newwwtxt.Location = new System.Drawing.Point(86, 125);
             this.newwwtxt.Name = "newwwtxt";
-            this.newwwtxt.Size = new System.Drawing.Size(185, 20);
+            this.newwwtxt.Size = new System.Drawing.Size(185, 22);
             this.newwwtxt.TabIndex = 8;
             this.newwwtxt.UseSystemPasswordChar = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(104, 236);
+            this.label4.Location = new System.Drawing.Point(122, 238);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(131, 16);
+            this.label4.Size = new System.Drawing.Size(104, 14);
             this.label4.TabIndex = 7;
             this.label4.Text = "Opnieuw inloggen";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // secrettxtbox
             // 
-            this.secrettxtbox.Location = new System.Drawing.Point(86, 75);
+            this.secrettxtbox.Font = new System.Drawing.Font("Roboto", 9F);
+            this.secrettxtbox.Location = new System.Drawing.Point(86, 79);
             this.secrettxtbox.Name = "secrettxtbox";
-            this.secrettxtbox.Size = new System.Drawing.Size(185, 20);
+            this.secrettxtbox.Size = new System.Drawing.Size(185, 22);
             this.secrettxtbox.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(83, 57);
+            this.label3.Location = new System.Drawing.Point(86, 62);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(185, 15);
+            this.label3.Size = new System.Drawing.Size(153, 14);
             this.label3.TabIndex = 0;
             this.label3.Text = "Wat is je favoriete huisdier?";
             // 
@@ -265,11 +274,11 @@ namespace Login
             // 
             this.label2.AutoSize = true;
             this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Roboto", 11F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
             this.label2.Location = new System.Drawing.Point(108, 430);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 16);
+            this.label2.Size = new System.Drawing.Size(153, 18);
             this.label2.TabIndex = 5;
             this.label2.Text = "Wachtwoord vergeten";
             this.label2.Click += new System.EventHandler(this.label2_Click);
