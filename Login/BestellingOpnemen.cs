@@ -1,13 +1,9 @@
-﻿using ChapooModel;
-using ChapooLogic;
+﻿using ChapooLogic;
+using ChapooModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Login
@@ -16,10 +12,13 @@ namespace Login
     {
         private ChoosePlatform _platform;
         private MobileHome _mobileMenu;
-        public Product_Service productService = new Product_Service();
+        public Product_Service productService;
+        private Reservering_Service _reserveringService;
+        private Transaction_Service _transactionService;
         public List<Product> productList = new List<Product>();
         private Tafel_Service TafelService = new Tafel_Service();
         public Account _account;
+
         public BestellingOpnemen(ChoosePlatform platform, MobileHome mobileMenu, Account account)
         {
             InitializeComponent();
@@ -30,7 +29,11 @@ namespace Login
             _platform = platform;
             _mobileMenu = mobileMenu;
             _account = account;
+            _reserveringService = new Reservering_Service();
+            _transactionService = new Transaction_Service();
+            UpdateTables();
         }
+
         public void ShowColumns()
         {
             listOrderView.Columns.Add("Bestelling", 208);
@@ -38,6 +41,7 @@ namespace Login
             listOrderView.Columns.Add("Prijs", 80);
             listOrderView.Columns.Add("ID", 40);
         }
+
         public void ShowMenuItems(int soortID)
         {
             listMenuView.Columns.Clear();
@@ -57,6 +61,55 @@ namespace Login
                 li.SubItems.Add(product.ProductId.ToString());
                 if (product.Aantal == 0) li.ForeColor = Color.Red;
                 listMenuView.Items.Add(li);
+            }
+        }
+
+        private void UpdateTables()
+        {
+            List<Button> btns = new List<Button>();
+
+            foreach (Control c in pnl_TafelSelect.Controls)
+            {
+                if (c is Button && c.Text.Contains("Tafel"))
+                {
+                    btns.Add((Button)c);
+                }
+            }
+            GetTableStatus(btns);
+        }
+
+        private void GetTableStatus(List<Button> btns)
+        {
+            List<Reservering> reserverings = _reserveringService.GetReserverings();
+
+            List<int> tableList = _transactionService.GetTables();
+            List<int> tafelToBezet = new List<int>();
+            List<int> tafelToGereserveerd = new List<int>();
+            DateTime nu = DateTime.Now;
+            foreach (Reservering r in reserverings)
+            {
+                if (r.BeginTijd < nu && r.EindTijd > nu || tableList.Contains(r.TafelID))
+                {
+                    tafelToBezet.Add(r.TafelID);
+                }
+                else if (r.BeginTijd < nu.AddHours(2) && r.EindTijd > nu)
+                {
+                    tafelToGereserveerd.Add(r.TafelID);
+                }
+            }
+
+            btns.Reverse();
+            for (int i = 0; i < 10; i++)
+            {
+                if (tafelToBezet.Contains(i + 1))
+                {
+                    btns[i].Text = $"Tafel {i+1}\n[Bezet]";
+                }
+
+                if (tafelToGereserveerd.Contains(i + 1))
+                {
+                    btns[i].Text = $"Tafel {i+1}\n[Gereserveerd]";
+                }
             }
         }
 
@@ -115,6 +168,7 @@ namespace Login
                 }
             }
         }
+
         private void btnRemoveFromOrder_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < listOrderView.Items.Count; i++)
@@ -142,6 +196,7 @@ namespace Login
                 }
             }
         }
+
         public void OpenBottle(int soortID) // if whine glas=0: bottle-1, whine glas+5
         {
             for (int i = 0; i < listMenuView.Items.Count; i++)
@@ -157,6 +212,7 @@ namespace Login
             }
             ShowMenuItems(soortID);
         }
+
         public int GetBottleID(string glasNaam)
         {
             string flesNaam = glasNaam.Replace("(glas)", "(fles)");
@@ -170,134 +226,159 @@ namespace Login
             }
             return bottleID;
         }
+
         private void btnDrankKaart_Click(object sender, EventArgs e)
         {
             pnl_MenuType.Hide();
             pnl_Drank.Show();
         }
+
         private void btnVoorgerecht_Click(object sender, EventArgs e)
         {
             pnl_MenuType.Hide();
             pnl_Drank.Hide();
             ShowMenuItems(1);
         }
+
         private void btnHoofdgerecht_Click(object sender, EventArgs e)
         {
             pnl_MenuType.Hide();
             pnl_Drank.Hide();
             ShowMenuItems(2);
         }
+
         private void btnNagerecht_Click(object sender, EventArgs e)
         {
             pnl_MenuType.Hide();
             pnl_Drank.Hide();
             ShowMenuItems(3);
         }
+
         private void btnTussengerecht_Click(object sender, EventArgs e)
         {
             pnl_MenuType.Hide();
             ShowMenuItems(4);
         }
+
         private void btnFrisdrank_Click(object sender, EventArgs e)
         {
             pnl_Drank.Hide();
             ShowMenuItems(5);
         }
+
         private void btnBieren_Click(object sender, EventArgs e)
         {
             pnl_Drank.Hide();
             ShowMenuItems(6);
         }
+
         private void btnWijnen_Click(object sender, EventArgs e)
         {
             pnl_Drank.Hide();
             ShowMenuItems(7);
             OpenBottle(7);
         }
+
         private void btnGedestDrank_Click(object sender, EventArgs e)
         {
             pnl_Drank.Hide();
             ShowMenuItems(8);
         }
+
         private void btnKoffieThee_Click(object sender, EventArgs e)
         {
             pnl_Drank.Hide();
             ShowMenuItems(9);
         }
+
         private void btnKaartOverzicht_Click(object sender, EventArgs e)
         {
             listMenuView.Clear();
             pnl_MenuType.Show();
         }
+
         private void btnKaartoverzicht2_Click(object sender, EventArgs e)
         {
             listMenuView.Clear();
             pnl_Klacht.Hide();
             pnl_MenuType.Show();
         }
+
         private void btnKaartoverzicht3_Click(object sender, EventArgs e)
         {
             listMenuView.Clear();
             pnl_Notities.Hide();
             pnl_MenuType.Show();
         }
+
         // tafels
         private void btnTafel1_Click(object sender, EventArgs e)
         {
             lblTafelnr.Text = "1";
             HideTableShowMenu();
         }
+
         private void btnTafel2_Click(object sender, EventArgs e)
         {
             lblTafelnr.Text = "2";
             HideTableShowMenu();
         }
+
         private void btnTafel3_Click(object sender, EventArgs e)
         {
             lblTafelnr.Text = "3";
             HideTableShowMenu();
         }
+
         private void btnTafel4_Click(object sender, EventArgs e)
         {
             lblTafelnr.Text = "4";
             HideTableShowMenu();
         }
+
         private void btnTafel5_Click(object sender, EventArgs e)
         {
             lblTafelnr.Text = "5";
             HideTableShowMenu();
         }
+
         private void btnTafel6_Click(object sender, EventArgs e)
         {
             lblTafelnr.Text = "6";
             HideTableShowMenu();
         }
+
         private void btnTafel7_Click(object sender, EventArgs e)
         {
             lblTafelnr.Text = "7";
             HideTableShowMenu();
         }
+
         private void btnTafel8_Click(object sender, EventArgs e)
         {
             lblTafelnr.Text = "8";
             HideTableShowMenu();
         }
+
         private void btnTafel9_Click(object sender, EventArgs e)
         {
             lblTafelnr.Text = "9";
             HideTableShowMenu();
         }
+
         private void btnTafel10_Click(object sender, EventArgs e)
         {
             lblTafelnr.Text = "10";
             HideTableShowMenu();
         }
+
         public void HideTableShowMenu()
         {
             pnl_TafelSelect.Hide();
             pnl_Tafelnr.Show();
             ShowColumns();
         }
+
         private void btnTafelOverzicht_Click(object sender, EventArgs e)
         {
             if (listOrderView.Items.Count > 0)
@@ -316,13 +397,14 @@ namespace Login
                     pnl_Tafelnr.Hide();
                 }
             }
-            else 
+            else
             {
                 pnl_TafelSelect.Show();
                 listOrderView.Clear();
                 pnl_Tafelnr.Hide();
             }
         }
+
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
             List<Order_Product> OrderList = new List<Order_Product>();
@@ -333,7 +415,7 @@ namespace Login
                 Order_Product orderItem = new Order_Product(id, aantal);
                 OrderList.Add(orderItem);
             }
-            Bestelling bestelling = new Bestelling 
+            Bestelling bestelling = new Bestelling
             (
                 TafelService.GetTafel(int.Parse(lblTafelnr.Text)),
                 float.Parse(lblTotal.Text),
@@ -347,7 +429,8 @@ namespace Login
             if (OrderList.Count() == 0)
             {
                 MessageBox.Show("Geen bestelling gevonden, probeer nog een keer.");
-            } else if  (bestellingService.AddBestelling(bestelling))
+            }
+            else if (bestellingService.AddBestelling(bestelling))
             {
                 Tafel_Service tafelService = new Tafel_Service();
                 tafelService.UpdateTafelMedewerker(_account.WerknemerID, int.Parse(lblTafelnr.Text));
@@ -358,6 +441,7 @@ namespace Login
                 MessageBox.Show($"Bestelling voor tafel {lblTafelnr.Text} is geplaatst.");
             }
         }
+
         private void btnKlacht_Click(object sender, EventArgs e)
         {
             pnl_Klacht.Show();
@@ -375,6 +459,11 @@ namespace Login
             mobileLogin.Show();
             //this.Hide();
             _mobileMenu.Hide();
+        }
+
+        private void btn_RefreshTables_Click(object sender, EventArgs e)
+        {
+            UpdateTables();
         }
     }
 }

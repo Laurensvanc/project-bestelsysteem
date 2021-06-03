@@ -38,11 +38,11 @@
             this.btnKlantOpslaan = new System.Windows.Forms.Button();
             this.lstKlantSysteem = new System.Windows.Forms.ListView();
             this.panel_Header = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
             this.lstReservering = new System.Windows.Forms.ListView();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lstTafelStatus = new System.Windows.Forms.ListView();
             this.label8 = new System.Windows.Forms.Label();
+            this.lstTafelStatus = new System.Windows.Forms.ListView();
             this.btnMin = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
             this.btnFresh = new System.Windows.Forms.Button();
@@ -177,17 +177,6 @@
             this.panel_Header.Size = new System.Drawing.Size(1098, 737);
             this.panel_Header.TabIndex = 30;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(14, 15);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(158, 38);
-            this.label11.TabIndex = 27;
-            this.label11.Text = "Bestelling";
-            // 
             // lstReservering
             // 
             this.lstReservering.Font = new System.Drawing.Font("Roboto", 17F);
@@ -199,6 +188,17 @@
             this.lstReservering.UseCompatibleStateImageBehavior = false;
             this.lstReservering.View = System.Windows.Forms.View.Details;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(14, 15);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(158, 38);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Bestelling";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
@@ -208,17 +208,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(444, 737);
             this.panel2.TabIndex = 31;
-            // 
-            // lstTafelStatus
-            // 
-            this.lstTafelStatus.Font = new System.Drawing.Font("Roboto", 17F);
-            this.lstTafelStatus.HideSelection = false;
-            this.lstTafelStatus.Location = new System.Drawing.Point(3, 55);
-            this.lstTafelStatus.Name = "lstTafelStatus";
-            this.lstTafelStatus.Size = new System.Drawing.Size(438, 679);
-            this.lstTafelStatus.TabIndex = 1;
-            this.lstTafelStatus.UseCompatibleStateImageBehavior = false;
-            this.lstTafelStatus.View = System.Windows.Forms.View.Details;
             // 
             // label8
             // 
@@ -230,6 +219,17 @@
             this.label8.Size = new System.Drawing.Size(158, 38);
             this.label8.TabIndex = 27;
             this.label8.Text = "Bestelling";
+            // 
+            // lstTafelStatus
+            // 
+            this.lstTafelStatus.Font = new System.Drawing.Font("Roboto", 17F);
+            this.lstTafelStatus.HideSelection = false;
+            this.lstTafelStatus.Location = new System.Drawing.Point(3, 55);
+            this.lstTafelStatus.Name = "lstTafelStatus";
+            this.lstTafelStatus.Size = new System.Drawing.Size(438, 679);
+            this.lstTafelStatus.TabIndex = 1;
+            this.lstTafelStatus.UseCompatibleStateImageBehavior = false;
+            this.lstTafelStatus.View = System.Windows.Forms.View.Details;
             // 
             // btnMin
             // 
