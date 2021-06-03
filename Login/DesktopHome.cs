@@ -24,6 +24,7 @@ namespace Login
             {
                 administratieToolStripMenuItem.Visible = true;
             }
+            LoadUserControl(new RestaurantOverzicht());
         }
 
         public void TimeDisplay()
@@ -50,27 +51,6 @@ namespace Login
             pnl_Display.Controls.Clear();
             pnl_Display.Controls.Add(userControl);
         }
-
-        private void btn_navBarKeuken_Click(object sender, EventArgs e)
-        {
-            LoadUserControl(new BarKeukOverzicht());
-        }
-
-        private void btn_navHome_Click(object sender, EventArgs e)
-        {
-            LoadUserControl(new RestaurantOverzicht());
-        }
-
-        private void btn_navBestellingen_Click(object sender, EventArgs e)
-        {
-            LoadUserControl(new BestellingOpnemenDesktop(_account));
-        }
-
-        private void btn_navRegistreren_Click(object sender, EventArgs e)
-        {
-            LoadUserControl(new MedewerkerRegistreren());
-        }
-
         private void btn_closeForm_Click(object sender, EventArgs e)
         {
             if (!pnl_LogoutBorder.Visible)
@@ -92,11 +72,6 @@ namespace Login
         private void btn_Afsluiten_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void btn_navAfrekenen_Click(object sender, EventArgs e)
-        {
-            LoadUserControl(new Afrekenen());
         }
 
         private void tsm_overzicht_Click(object sender, EventArgs e)

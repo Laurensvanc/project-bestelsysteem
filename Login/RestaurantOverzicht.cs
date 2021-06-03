@@ -157,13 +157,16 @@ namespace Login
 
             foreach (Reservering r in reserverings)
             {
-                ListViewItem li = new ListViewItem(r.ReserveringID.ToString());
-                li.SubItems.Add(r.TafelID.ToString());
-                li.SubItems.Add(r.BeginTijd.ToString());
-                li.SubItems.Add(r.EindTijd.ToString());
-                li.SubItems.Add(r.KlantNaam.ToString());
-                li.SubItems.Add(r.AantalPersonen.ToString());
-                lstReservering.Items.Add(li);
+                if (r.EindTijd.AddHours(1)  > DateTime.Today) // show only reservations with end time lower than time now (1 hour leeway)
+                {
+                    ListViewItem li = new ListViewItem(r.ReserveringID.ToString());
+                    li.SubItems.Add(r.TafelID.ToString());
+                    li.SubItems.Add(r.BeginTijd.ToString());
+                    li.SubItems.Add(r.EindTijd.ToString());
+                    li.SubItems.Add(r.KlantNaam.ToString());
+                    li.SubItems.Add(r.AantalPersonen.ToString());
+                    lstReservering.Items.Add(li);
+                }
                 // Update Tafelstatus
                 DateTime nu = dateTijd.Value;
                 dateTijd.MinDate = DateTime.Today;
@@ -175,11 +178,10 @@ namespace Login
                 {
                     tafelToGereserveerd.Add(r.TafelID);
                 }
-
-                foreach (ColumnHeader ch in lstReservering.Columns)
-                {
-                    ch.Width = -2;
-                }
+            }
+            foreach (ColumnHeader ch in lstReservering.Columns)
+            {
+                ch.Width = -2;
             }
             // Tafel & status
             ChapooLogic.Tafel_Service tafel_Service = new Tafel_Service();

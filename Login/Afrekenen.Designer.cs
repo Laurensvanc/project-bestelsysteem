@@ -64,6 +64,10 @@
             this.img_Logo = new System.Windows.Forms.PictureBox();
             this.lblAfrekenen = new System.Windows.Forms.Label();
             this.rbtnPin = new System.Windows.Forms.RadioButton();
+            this.chBestellingID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chBestelling = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chAantal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chPrijs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnl_Afrekenen.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -134,11 +138,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label4.Font = new System.Drawing.Font("Roboto", 20F);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(15, 10);
+            this.label4.Location = new System.Drawing.Point(3, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 26);
+            this.label4.Size = new System.Drawing.Size(147, 33);
             this.label4.TabIndex = 22;
             this.label4.Text = "Opmerking";
             // 
@@ -155,7 +159,7 @@
             // txtOpmerking
             // 
             this.txtOpmerking.AcceptsReturn = true;
-            this.txtOpmerking.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtOpmerking.Font = new System.Drawing.Font("Roboto", 15F);
             this.txtOpmerking.Location = new System.Drawing.Point(3, 48);
             this.txtOpmerking.MaxLength = 250;
             this.txtOpmerking.Multiline = true;
@@ -177,10 +181,10 @@
             // rbtnContant
             // 
             this.rbtnContant.AutoSize = true;
-            this.rbtnContant.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.rbtnContant.Location = new System.Drawing.Point(43, 70);
+            this.rbtnContant.Font = new System.Drawing.Font("Roboto", 15F);
+            this.rbtnContant.Location = new System.Drawing.Point(19, 69);
             this.rbtnContant.Name = "rbtnContant";
-            this.rbtnContant.Size = new System.Drawing.Size(75, 21);
+            this.rbtnContant.Size = new System.Drawing.Size(99, 28);
             this.rbtnContant.TabIndex = 21;
             this.rbtnContant.TabStop = true;
             this.rbtnContant.Text = "Contant";
@@ -190,20 +194,20 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(19, 15);
+            this.label3.Font = new System.Drawing.Font("Roboto", 15F);
+            this.label3.Location = new System.Drawing.Point(15, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 20);
+            this.label3.Size = new System.Drawing.Size(124, 24);
             this.label3.TabIndex = 19;
             this.label3.Text = "Betalen met:";
             // 
             // rbtnPinnen
             // 
             this.rbtnPinnen.AutoSize = true;
-            this.rbtnPinnen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.rbtnPinnen.Location = new System.Drawing.Point(43, 43);
+            this.rbtnPinnen.Font = new System.Drawing.Font("Roboto", 15F);
+            this.rbtnPinnen.Location = new System.Drawing.Point(19, 42);
             this.rbtnPinnen.Name = "rbtnPinnen";
-            this.rbtnPinnen.Size = new System.Drawing.Size(46, 21);
+            this.rbtnPinnen.Size = new System.Drawing.Size(57, 28);
             this.rbtnPinnen.TabIndex = 20;
             this.rbtnPinnen.TabStop = true;
             this.rbtnPinnen.Text = "Pin";
@@ -227,51 +231,56 @@
             this.panel9.Controls.Add(this.listOrderViewTotaal);
             this.panel9.Location = new System.Drawing.Point(825, 173);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(411, 463);
+            this.panel9.Size = new System.Drawing.Size(493, 463);
             this.panel9.TabIndex = 34;
             // 
             // nudTip
             // 
             this.nudTip.DecimalPlaces = 2;
-            this.nudTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.nudTip.Location = new System.Drawing.Point(296, 390);
+            this.nudTip.Font = new System.Drawing.Font("Roboto", 16F);
+            this.nudTip.Location = new System.Drawing.Point(384, 391);
             this.nudTip.Name = "nudTip";
-            this.nudTip.Size = new System.Drawing.Size(112, 35);
+            this.nudTip.Size = new System.Drawing.Size(104, 33);
             this.nudTip.TabIndex = 26;
             this.nudTip.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // listOrderView
             // 
-            this.listOrderView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.listOrderView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chBestellingID,
+            this.chBestelling,
+            this.chAantal,
+            this.chPrijs});
+            this.listOrderView.Font = new System.Drawing.Font("Roboto", 15F);
             this.listOrderView.GridLines = true;
             this.listOrderView.HideSelection = false;
             this.listOrderView.Location = new System.Drawing.Point(3, 3);
             this.listOrderView.Name = "listOrderView";
-            this.listOrderView.Size = new System.Drawing.Size(405, 388);
+            this.listOrderView.Size = new System.Drawing.Size(487, 388);
             this.listOrderView.TabIndex = 23;
             this.listOrderView.UseCompatibleStateImageBehavior = false;
             this.listOrderView.View = System.Windows.Forms.View.Details;
             // 
             // listOrderViewTip
             // 
-            this.listOrderViewTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.listOrderViewTip.Font = new System.Drawing.Font("Roboto", 15F);
             this.listOrderViewTip.GridLines = true;
             this.listOrderViewTip.HideSelection = false;
             this.listOrderViewTip.Location = new System.Drawing.Point(3, 390);
             this.listOrderViewTip.Name = "listOrderViewTip";
-            this.listOrderViewTip.Size = new System.Drawing.Size(405, 35);
+            this.listOrderViewTip.Size = new System.Drawing.Size(487, 35);
             this.listOrderViewTip.TabIndex = 24;
             this.listOrderViewTip.UseCompatibleStateImageBehavior = false;
             this.listOrderViewTip.View = System.Windows.Forms.View.Details;
             // 
             // listOrderViewTotaal
             // 
-            this.listOrderViewTotaal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.listOrderViewTotaal.Font = new System.Drawing.Font("Roboto", 15F);
             this.listOrderViewTotaal.GridLines = true;
             this.listOrderViewTotaal.HideSelection = false;
             this.listOrderViewTotaal.Location = new System.Drawing.Point(3, 424);
             this.listOrderViewTotaal.Name = "listOrderViewTotaal";
-            this.listOrderViewTotaal.Size = new System.Drawing.Size(405, 36);
+            this.listOrderViewTotaal.Size = new System.Drawing.Size(487, 36);
             this.listOrderViewTotaal.TabIndex = 25;
             this.listOrderViewTotaal.UseCompatibleStateImageBehavior = false;
             this.listOrderViewTotaal.View = System.Windows.Forms.View.Details;
@@ -297,10 +306,10 @@
             // lblTijd
             // 
             this.lblTijd.AutoSize = true;
-            this.lblTijd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblTijd.Location = new System.Drawing.Point(18, 19);
+            this.lblTijd.Font = new System.Drawing.Font("Roboto", 15F);
+            this.lblTijd.Location = new System.Drawing.Point(18, 21);
             this.lblTijd.Name = "lblTijd";
-            this.lblTijd.Size = new System.Drawing.Size(96, 24);
+            this.lblTijd.Size = new System.Drawing.Size(102, 24);
             this.lblTijd.TabIndex = 19;
             this.lblTijd.Text = "Tijd: 00:00";
             // 
@@ -325,10 +334,10 @@
             // lblTransID
             // 
             this.lblTransID.AutoSize = true;
-            this.lblTransID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblTransID.Location = new System.Drawing.Point(28, 19);
+            this.lblTransID.Font = new System.Drawing.Font("Roboto", 15F);
+            this.lblTransID.Location = new System.Drawing.Point(15, 21);
             this.lblTransID.Name = "lblTransID";
-            this.lblTransID.Size = new System.Drawing.Size(50, 24);
+            this.lblTransID.Size = new System.Drawing.Size(51, 24);
             this.lblTransID.TabIndex = 19;
             this.lblTransID.Text = "Id: ...";
             // 
@@ -343,10 +352,10 @@
             // lblGeholpen
             // 
             this.lblGeholpen.AutoSize = true;
-            this.lblGeholpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblGeholpen.Location = new System.Drawing.Point(19, 25);
+            this.lblGeholpen.Font = new System.Drawing.Font("Roboto", 15F);
+            this.lblGeholpen.Location = new System.Drawing.Point(19, 26);
             this.lblGeholpen.Name = "lblGeholpen";
-            this.lblGeholpen.Size = new System.Drawing.Size(163, 24);
+            this.lblGeholpen.Size = new System.Drawing.Size(165, 24);
             this.lblGeholpen.TabIndex = 19;
             this.lblGeholpen.Text = "Geholpen door: ...";
             // 
@@ -369,11 +378,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F);
+            this.label2.Font = new System.Drawing.Font("Roboto", 30F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
-            this.label2.Location = new System.Drawing.Point(75, 12);
+            this.label2.Location = new System.Drawing.Point(66, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 44);
+            this.label2.Size = new System.Drawing.Size(158, 48);
             this.label2.TabIndex = 19;
             this.label2.Text = "Chapoo";
             // 
@@ -389,7 +398,7 @@
             // 
             this.btnTerugOverzicht.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnTerugOverzicht.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTerugOverzicht.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.btnTerugOverzicht.Font = new System.Drawing.Font("Roboto", 15F);
             this.btnTerugOverzicht.ForeColor = System.Drawing.Color.White;
             this.btnTerugOverzicht.Location = new System.Drawing.Point(240, 643);
             this.btnTerugOverzicht.Name = "btnTerugOverzicht";
@@ -403,9 +412,9 @@
             // 
             this.btnBetaal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnBetaal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBetaal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.btnBetaal.Font = new System.Drawing.Font("Roboto", 30F);
             this.btnBetaal.ForeColor = System.Drawing.Color.White;
-            this.btnBetaal.Location = new System.Drawing.Point(825, 643);
+            this.btnBetaal.Location = new System.Drawing.Point(866, 643);
             this.btnBetaal.Name = "btnBetaal";
             this.btnBetaal.Size = new System.Drawing.Size(271, 65);
             this.btnBetaal.TabIndex = 28;
@@ -417,9 +426,9 @@
             // 
             this.btnUpdatePrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnUpdatePrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdatePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.btnUpdatePrice.Font = new System.Drawing.Font("Roboto", 15F);
             this.btnUpdatePrice.ForeColor = System.Drawing.Color.White;
-            this.btnUpdatePrice.Location = new System.Drawing.Point(1102, 643);
+            this.btnUpdatePrice.Location = new System.Drawing.Point(1143, 643);
             this.btnUpdatePrice.Name = "btnUpdatePrice";
             this.btnUpdatePrice.Size = new System.Drawing.Size(134, 65);
             this.btnUpdatePrice.TabIndex = 27;
@@ -441,11 +450,11 @@
             // lblAfrekenen
             // 
             this.lblAfrekenen.AutoSize = true;
-            this.lblAfrekenen.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.lblAfrekenen.Font = new System.Drawing.Font("Roboto", 20F);
             this.lblAfrekenen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
             this.lblAfrekenen.Location = new System.Drawing.Point(236, 124);
             this.lblAfrekenen.Name = "lblAfrekenen";
-            this.lblAfrekenen.Size = new System.Drawing.Size(267, 37);
+            this.lblAfrekenen.Size = new System.Drawing.Size(226, 33);
             this.lblAfrekenen.TabIndex = 17;
             this.lblAfrekenen.Text = "Afrekenen tafel ...";
             // 
@@ -460,6 +469,26 @@
             this.rbtnPin.TabStop = true;
             this.rbtnPin.Text = "Pin";
             this.rbtnPin.UseVisualStyleBackColor = true;
+            // 
+            // chBestellingID
+            // 
+            this.chBestellingID.Text = "ID";
+            this.chBestellingID.Width = 33;
+            // 
+            // chBestelling
+            // 
+            this.chBestelling.Text = "Bestelling";
+            this.chBestelling.Width = 273;
+            // 
+            // chAantal
+            // 
+            this.chAantal.Text = "Aantal";
+            this.chAantal.Width = 74;
+            // 
+            // chPrijs
+            // 
+            this.chPrijs.Text = "Prijs";
+            this.chPrijs.Width = 101;
             // 
             // Afrekenen
             // 
@@ -533,5 +562,9 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Label lblGeholpen;
+        private System.Windows.Forms.ColumnHeader chBestellingID;
+        private System.Windows.Forms.ColumnHeader chBestelling;
+        private System.Windows.Forms.ColumnHeader chAantal;
+        private System.Windows.Forms.ColumnHeader chPrijs;
     }
 }

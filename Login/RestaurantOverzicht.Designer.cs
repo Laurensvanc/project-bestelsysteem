@@ -193,11 +193,11 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(14, 15);
+            this.label11.Location = new System.Drawing.Point(14, 10);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(158, 38);
+            this.label11.Size = new System.Drawing.Size(222, 38);
             this.label11.TabIndex = 27;
-            this.label11.Text = "Bestelling";
+            this.label11.Text = "Reserveringen";
             // 
             // panel2
             // 
@@ -214,11 +214,11 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Roboto", 24F);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(14, 15);
+            this.label8.Location = new System.Drawing.Point(12, 10);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(158, 38);
+            this.label8.Size = new System.Drawing.Size(186, 38);
             this.label8.TabIndex = 27;
-            this.label8.Text = "Bestelling";
+            this.label8.Text = "Tafel Status";
             // 
             // lstTafelStatus
             // 
@@ -234,7 +234,8 @@
             // btnMin
             // 
             this.btnMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
-            this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMin.FlatAppearance.BorderSize = 0;
+            this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMin.Font = new System.Drawing.Font("Roboto", 32F);
             this.btnMin.ForeColor = System.Drawing.Color.White;
             this.btnMin.Location = new System.Drawing.Point(502, 781);
@@ -248,7 +249,8 @@
             // btnPlus
             // 
             this.btnPlus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
-            this.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPlus.FlatAppearance.BorderSize = 0;
+            this.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlus.Font = new System.Drawing.Font("Roboto", 32F);
             this.btnPlus.ForeColor = System.Drawing.Color.White;
             this.btnPlus.Location = new System.Drawing.Point(40, 781);
@@ -262,7 +264,8 @@
             // btnFresh
             // 
             this.btnFresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
-            this.btnFresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFresh.FlatAppearance.BorderSize = 0;
+            this.btnFresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFresh.Font = new System.Drawing.Font("Roboto", 32F);
             this.btnFresh.ForeColor = System.Drawing.Color.White;
             this.btnFresh.Location = new System.Drawing.Point(1119, 781);
@@ -325,6 +328,7 @@
             // btnUpdateRes
             // 
             this.btnUpdateRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnUpdateRes.FlatAppearance.BorderSize = 0;
             this.btnUpdateRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateRes.ForeColor = System.Drawing.Color.White;
@@ -339,6 +343,7 @@
             // btnDeleteRes
             // 
             this.btnDeleteRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnDeleteRes.FlatAppearance.BorderSize = 0;
             this.btnDeleteRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteRes.ForeColor = System.Drawing.Color.White;
@@ -360,6 +365,7 @@
             // 
             // lstReserveringDag
             // 
+            this.lstReserveringDag.Font = new System.Drawing.Font("Roboto", 15F);
             this.lstReserveringDag.HideSelection = false;
             this.lstReserveringDag.Location = new System.Drawing.Point(413, 103);
             this.lstReserveringDag.Name = "lstReserveringDag";
@@ -492,6 +498,7 @@
             // btnSelectKlant
             // 
             this.btnSelectKlant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnSelectKlant.FlatAppearance.BorderSize = 0;
             this.btnSelectKlant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSelectKlant.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectKlant.ForeColor = System.Drawing.Color.White;
