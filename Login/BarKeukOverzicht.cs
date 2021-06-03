@@ -186,9 +186,9 @@ namespace Login
                 return;
             }
 
-            bool succes = orderProductService.UpdateOrderStatus(order.OrderID, order.ProductID, "Compleet", order.Aantal);
+            bool success = orderProductService.UpdateOrderStatus(order.OrderID, order.ProductID, "Compleet", order.Aantal);
 
-            if (!succes)
+            if (!success)
             {
                 MessageBox.Show("Kon geen order updaten");
             }

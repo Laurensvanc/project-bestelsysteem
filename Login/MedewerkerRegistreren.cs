@@ -1,15 +1,7 @@
 ﻿using ChapooLogic;
 using ChapooModel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using BCrypt.Net;
 
 namespace Login
 {
@@ -44,7 +36,7 @@ namespace Login
                 CheckTextBox(txtWachtwoord) &&
                 CheckTextBox(txtBevestigwachtwoord) && txtWachtwoord.Text == txtBevestigwachtwoord.Text)
                 {
-                    int Mobiel = int.Parse(txtTelNummer.Text);
+                    int mobiel = int.Parse(txtTelNummer.Text);
                     string encryptedwachtwoord = BCrypt.Net.BCrypt.HashPassword(txtWachtwoord.Text);
                     Account account = new Account(
                         0, // 0 komt niet in de database
@@ -52,12 +44,12 @@ namespace Login
                         txtAchternaam.Text,
                         txtInlogNaam.Text,
                         dtGeboorteDatum.Value,
-                        Mobiel,
+                        mobiel,
                         txtEmail.Text,
                         encryptedwachtwoord,
                         Manager, Chef, Bediening, Keuken, Sommelier, Maitre, Bar);
                     Account_Service service = new Account_Service();
-                    if (service.AddAccount(account)) System.Windows.Forms.MessageBox.Show($"{txtVoornaam.Text} is succesvol geregistreerd.");
+                    if (service.AddAccount(account)) MessageBox.Show($"{txtVoornaam.Text} is succesvol geregistreerd.");
                     ClearTextBoxes();
                 }
                 else if (txtWachtwoord.Text != txtBevestigwachtwoord.Text)

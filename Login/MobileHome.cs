@@ -31,5 +31,10 @@ namespace Login
             pnl_Display.Controls.Clear();
             pnl_Display.Controls.Add(userControl);
         }
+
+        private void MobileHome_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

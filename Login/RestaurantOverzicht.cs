@@ -341,6 +341,7 @@ namespace Login
             _klantId = int.Parse(i.SubItems[0].Text);
 
             pnlKlantSysteem.Hide();
+            pnlReservering.Show();
         }
 
         private void VoegKlantToe()

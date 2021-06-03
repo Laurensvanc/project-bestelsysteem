@@ -40,7 +40,7 @@ namespace Login
             this.pnl_Display.Size = new System.Drawing.Size(412, 887);
             this.pnl_Display.TabIndex = 0;
             // 
-            // MobileMenu
+            // MobileHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -48,9 +48,10 @@ namespace Login
             this.ClientSize = new System.Drawing.Size(412, 887);
             this.Controls.Add(this.pnl_Display);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "MobileMenu";
+            this.Name = "MobileHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chapoo Home";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MobileHome_FormClosed);
             this.ResumeLayout(false);
 
         }

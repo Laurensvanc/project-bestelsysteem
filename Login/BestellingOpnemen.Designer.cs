@@ -76,6 +76,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtNotities = new System.Windows.Forms.TextBox();
             this.btnKaartoverzicht3 = new System.Windows.Forms.Button();
+            this.btn_RefreshTables = new System.Windows.Forms.Button();
             this.pnl_Bestellen.SuspendLayout();
             this.pnl_MenuType.SuspendLayout();
             this.pnl_TafelSelect.SuspendLayout();
@@ -342,6 +343,7 @@
             // 
             // pnl_TafelSelect
             // 
+            this.pnl_TafelSelect.Controls.Add(this.btn_RefreshTables);
             this.pnl_TafelSelect.Controls.Add(this.btn_return);
             this.pnl_TafelSelect.Controls.Add(this.label2);
             this.pnl_TafelSelect.Controls.Add(this.btnTafel10);
@@ -377,7 +379,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
-            this.label2.Location = new System.Drawing.Point(87, 23);
+            this.label2.Location = new System.Drawing.Point(101, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(218, 37);
             this.label2.TabIndex = 11;
@@ -719,6 +721,22 @@
             this.btnKaartoverzicht3.UseVisualStyleBackColor = false;
             this.btnKaartoverzicht3.Click += new System.EventHandler(this.btnKaartoverzicht3_Click);
             // 
+            // btn_RefreshTables
+            // 
+            this.btn_RefreshTables.BackColor = System.Drawing.Color.White;
+            this.btn_RefreshTables.FlatAppearance.BorderSize = 0;
+            this.btn_RefreshTables.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_RefreshTables.Font = new System.Drawing.Font("Roboto", 30F);
+            this.btn_RefreshTables.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btn_RefreshTables.Location = new System.Drawing.Point(340, 15);
+            this.btn_RefreshTables.Name = "btn_RefreshTables";
+            this.btn_RefreshTables.Padding = new System.Windows.Forms.Padding(4, 0, 0, 2);
+            this.btn_RefreshTables.Size = new System.Drawing.Size(60, 60);
+            this.btn_RefreshTables.TabIndex = 18;
+            this.btn_RefreshTables.Text = "🔄";
+            this.btn_RefreshTables.UseVisualStyleBackColor = false;
+            this.btn_RefreshTables.Click += new System.EventHandler(this.btn_RefreshTables_Click);
+            // 
             // BestellingOpnemen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -798,5 +816,6 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btn_return;
+        private System.Windows.Forms.Button btn_RefreshTables;
     }
 }

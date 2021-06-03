@@ -18,9 +18,9 @@ namespace ChapooLogic
                 accountDAO.RegisterAccount(account);
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception(ex.Message);
             }
         }
         public Account LoginAccount(string account)
