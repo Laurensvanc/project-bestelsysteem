@@ -16,8 +16,9 @@ namespace ChapooModel
         public bool IsDrinken { get; set; }
         public string Status { get; set; }
         public int Aantal { get; set; }
+        public DateTime Opgenomen { get; set; }
 
-        public BarKeukenBestelling(int orderId, int bestellingId, int productId, int tafelId, string productNaam, bool isDrinken, string status, int aantal)
+        public BarKeukenBestelling(int orderId, int bestellingId, int productId, int tafelId, string productNaam, bool isDrinken, string status, int aantal, DateTime opgenomen)
         {
             OrderID = orderId;
             BestellingID = bestellingId;
@@ -27,6 +28,7 @@ namespace ChapooModel
             IsDrinken = isDrinken;
             Status = status;
             Aantal = aantal;
+            Opgenomen = opgenomen;
         }
     }
 }

@@ -34,8 +34,8 @@
             this.btn_update = new System.Windows.Forms.Button();
             this.btn_removeCompleted = new System.Windows.Forms.Button();
             this.panel_Header = new System.Windows.Forms.Panel();
+            this.lv_orderList = new System.Windows.Forms.ListView();
             this.label11 = new System.Windows.Forms.Label();
-            this.orderList = new System.Windows.Forms.ListView();
             this.panel_Header.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,12 +111,23 @@
             // panel_Header
             // 
             this.panel_Header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
-            this.panel_Header.Controls.Add(this.orderList);
+            this.panel_Header.Controls.Add(this.lv_orderList);
             this.panel_Header.Controls.Add(this.label11);
             this.panel_Header.Location = new System.Drawing.Point(35, 29);
             this.panel_Header.Name = "panel_Header";
             this.panel_Header.Size = new System.Drawing.Size(994, 552);
             this.panel_Header.TabIndex = 29;
+            // 
+            // lv_orderList
+            // 
+            this.lv_orderList.Font = new System.Drawing.Font("Roboto", 18F);
+            this.lv_orderList.FullRowSelect = true;
+            this.lv_orderList.HideSelection = false;
+            this.lv_orderList.Location = new System.Drawing.Point(3, 55);
+            this.lv_orderList.Name = "lv_orderList";
+            this.lv_orderList.Size = new System.Drawing.Size(988, 494);
+            this.lv_orderList.TabIndex = 28;
+            this.lv_orderList.UseCompatibleStateImageBehavior = false;
             // 
             // label11
             // 
@@ -128,17 +139,6 @@
             this.label11.Size = new System.Drawing.Size(154, 37);
             this.label11.TabIndex = 27;
             this.label11.Text = "Bestelling";
-            // 
-            // orderList
-            // 
-            this.orderList.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderList.FullRowSelect = true;
-            this.orderList.HideSelection = false;
-            this.orderList.Location = new System.Drawing.Point(3, 55);
-            this.orderList.Name = "orderList";
-            this.orderList.Size = new System.Drawing.Size(988, 494);
-            this.orderList.TabIndex = 28;
-            this.orderList.UseCompatibleStateImageBehavior = false;
             // 
             // BarKeukOverzicht
             // 
@@ -166,6 +166,6 @@
         private System.Windows.Forms.Button btn_removeCompleted;
         private System.Windows.Forms.Panel panel_Header;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ListView orderList;
+        private System.Windows.Forms.ListView lv_orderList;
     }
 }

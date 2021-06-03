@@ -15,36 +15,33 @@ namespace Login
 {
     public partial class BarKeukOverzicht : UserControl
     {
-        private List<BarKeukenBestelling> _orderList;
+        private List<BarKeukenBestelling> _orderList = new List<BarKeukenBestelling>();
         private Order_Product_Service orderProductService = new Order_Product_Service();
 
         public BarKeukOverzicht()
         {
             InitializeComponent();
 
-            SetListView();
-            GetOrders();
-            InsertListView();
+            UpdateList();
         }
 
         private void btn_update_Click(object sender, EventArgs e)
         {
-            SetListView();
-            GetOrders();
-            InsertListView();
+            UpdateList();
         }
 
         private void SetListView()
         {
             // reset list
-            orderList.Clear();
+            lv_orderList.Clear();
 
-            orderList.View = View.Details;
+            lv_orderList.View = View.Details;
 
             // place headers
-            orderList.Columns.Add("Tafelnr", 120, HorizontalAlignment.Center);
-            orderList.Columns.Add("Gerecht", 550);
-            orderList.Columns.Add("Status", 150, HorizontalAlignment.Center);
+            lv_orderList.Columns.Add("Tafelnr", 100, HorizontalAlignment.Center);
+            lv_orderList.Columns.Add("Gerecht", 425);
+            lv_orderList.Columns.Add("Status", 150, HorizontalAlignment.Center);
+            lv_orderList.Columns.Add("Opgenomen", 275, HorizontalAlignment.Left);
         }
 
         private void InsertListView()
@@ -70,7 +67,8 @@ namespace Login
                             li.SubItems.Add(item.Status.ToString()).ForeColor = Color.Green;
                             break;
                     }
-                    orderList.Items.Add(li);
+                    li.SubItems.Add(item.Opgenomen.ToString());
+                    lv_orderList.Items.Add(li);
 
                 }
             }
@@ -89,7 +87,7 @@ namespace Login
                     li.SubItems.Add(item.ProductNaam);
                     li.SubItems.Add(item.Status.ToString());
 
-                    orderList.Items.Add(li);
+                    lv_orderList.Items.Add(li);
                 }
             }
         }
@@ -107,7 +105,7 @@ namespace Login
                     li.SubItems.Add(item.ProductNaam);
                     li.SubItems.Add(item.Status.ToString());
 
-                    orderList.Items.Add(li);
+                    lv_orderList.Items.Add(li);
                 }
             }
         }
@@ -125,25 +123,84 @@ namespace Login
 
         private void btn_workingOn_Click(object sender, EventArgs e)
         {
-            ListViewItem item = orderList.SelectedItems[0];
+            if (lv_orderList.SelectedItems.Count <= 0)
+                return;
+
+            ListViewItem item = lv_orderList.SelectedItems[0];
 
             BarKeukenBestelling order = _orderList[item.Index];
-            //orderProductService.UpdateOrderStatus(order.OrderID, order.ProductID, "Bezig");
 
-            GetOrders();
-            item.SubItems[2].Text = "Bezig";
+            if (order.Status == "Bezig") 
+            {
+                MessageBox.Show("Dit is de huidige status");
+                return;
+            }
+
+            bool succes = orderProductService.UpdateOrderStatus(order.OrderID, order.ProductID, "Bezig", order.Aantal);
+
+            if (!succes)
+            {
+                MessageBox.Show("Kon geen order updaten");
+            }
+
+            UpdateList();
         }
 
         private void btn_setOpen_Click(object sender, EventArgs e)
         {
-            ListViewItem item = orderList.SelectedItems[0];
-            item.SubItems[2].Text = "Nieuw";
+            if (lv_orderList.SelectedItems.Count <= 0)
+                return;
+
+            ListViewItem item = lv_orderList.SelectedItems[0];
+
+            BarKeukenBestelling order = _orderList[item.Index];
+
+            if (order.Status == "Nieuw")
+            {
+                MessageBox.Show("Dit is de huidige status");
+                return;
+            }
+
+            bool succes = orderProductService.UpdateOrderStatus(order.OrderID, order.ProductID, "Nieuw", order.Aantal);
+
+            if (!succes)
+            {
+                MessageBox.Show("Kon geen order updaten");
+            }
+
+            UpdateList();
         }
 
         private void btn_complete_Click(object sender, EventArgs e)
         {
-            ListViewItem item = orderList.SelectedItems[0];
-            item.SubItems[2].Text = "Compleet";
+            if (lv_orderList.SelectedItems.Count <= 0)
+                return;
+
+            ListViewItem item = lv_orderList.SelectedItems[0];
+
+            BarKeukenBestelling order = _orderList[item.Index];
+
+            if (order.Status == "Compleet")
+            {
+                MessageBox.Show("Dit is de huidige status");
+                return;
+            }
+
+            bool succes = orderProductService.UpdateOrderStatus(order.OrderID, order.ProductID, "Compleet", order.Aantal);
+
+            if (!succes)
+            {
+                MessageBox.Show("Kon geen order updaten");
+            }
+
+            UpdateList();
+        }
+
+        void UpdateList()
+        {
+            SetListView();
+            GetOrders();
+            InsertListView();
         }
     }
 }

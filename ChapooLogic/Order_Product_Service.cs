@@ -24,11 +24,11 @@ namespace ChapooLogic
             }
         }
 
-        public bool UpdateOrderStatus(int orderId, int productId, string status)
+        public bool UpdateOrderStatus(int orderId, int productId, string status, int aantal)
         {
             try
             {
-                orderProductDAO.Update_Order_Status(orderId, productId, status);
+                orderProductDAO.Update_Order_Status(orderId, productId, status, aantal);
                 return true;
             }
             catch (Exception err)
