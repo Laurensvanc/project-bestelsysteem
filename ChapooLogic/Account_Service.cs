@@ -52,6 +52,19 @@ namespace ChapooLogic
             }
         }
 
+        public Account loginPincode(int code)
+        {
+            try
+            {
+               string inlognaam = accountDAO.loginPincode(code);
+               return accountDAO.GetAccount(inlognaam);
+            }catch (Exception e)
+            {
+                throw;
+
+            }
+        }
+
         public bool ResetPassword(string user2txt, string encryptedwachtwoord)
         {
             try
@@ -62,9 +75,15 @@ namespace ChapooLogic
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                
                 throw;
             }
+        }
+
+        public bool checkanswer(string v,string i)
+        {
+
+            return accountDAO.checkanswer(v,i);
         }
     }
 }
