@@ -14,17 +14,11 @@ namespace ChapooDal
     {
         public void Add_Bestelling(Bestelling bestelling)
         {
-            // Get werknemerID from database
-            string query = "USE dbchapoo202104 SELECT WerknemerID FROM Tafel WHERE TafelID = @TafelID";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@TafelID", bestelling.TafelID);
-            bestelling.WerknemerID = ReadTables(ExecuteSelectQuery(query, sqlParameters), "WerknemerID");
-
             // Data gets written to database, primary key is automatically made
-             query = "USE dbchapoo202104 INSERT INTO Bestelling (TafelID, TotaalPrijs, Opgenomen, Klacht, Instructies, Aangepast, WerknemerID) VALUES(@TafelID, @TotaalPrijs, @Opgenomen, @Klacht, @Instructies, @Aangepast, @WerknemerID)";
+            string query = "USE dbchapoo202104 INSERT INTO Bestelling (TafelID, TotaalPrijs, Opgenomen, Klacht, Instructies, Aangepast) VALUES(@TafelID, @TotaalPrijs, @Opgenomen, @Klacht, @Instructies, @Aangepast)";
 
             // Setting the parameters from the parameter order
-            sqlParameters = new SqlParameter[7];
+            SqlParameter[] sqlParameters = new SqlParameter[6];
 
             sqlParameters[0] = new SqlParameter("@TafelID", bestelling.TafelID);
             sqlParameters[1] = new SqlParameter("@TotaalPrijs", bestelling.TotaalPrijs);
@@ -32,7 +26,6 @@ namespace ChapooDal
             sqlParameters[3] = new SqlParameter("@Klacht", bestelling.Klacht);
             sqlParameters[4] = new SqlParameter("@Instructies", bestelling.Instructies);
             sqlParameters[5] = new SqlParameter("@Aangepast", bestelling.Aangepast);
-            sqlParameters[6] = new SqlParameter("@WerknemerID", bestelling.WerknemerID);
             ExecuteEditQuery(query, sqlParameters);
 
             // Get last BestellingID from database
