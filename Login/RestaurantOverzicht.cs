@@ -58,12 +58,12 @@ namespace Login
                     pnlReservering.Hide();
                     pnl_overzicht.Show();
                 }
-            } else
-                {
-                    pnlReservering.Hide();
-                    pnl_overzicht.Show();
-                }
-
+            }
+            else
+            {
+                pnlReservering.Hide();
+                pnl_overzicht.Show();
+            }
         }
 
         private void btnMin_Click(object sender, EventArgs e)
@@ -93,7 +93,8 @@ namespace Login
             if (NoReservationPossible(cmbTafel.Text))
             {
                 MessageBox.Show($"Voor tafel {cmbTafel.Text} is al een reservering geplaatst op dit tijdstip", "Error: Geen dubbele reservering mogelijk");
-            } else
+            }
+            else
             {
                 if (String.IsNullOrEmpty(txtNaam.Text) || String.IsNullOrEmpty(txtAchternaam.Text) || String.IsNullOrEmpty(txtTellie.Text) || String.IsNullOrEmpty(cmbTafel.Text))
                 {
@@ -111,7 +112,6 @@ namespace Login
                     UpdateResSettings();
                 }
             }
-
         }
 
         //loads everything related to reservering/tafel
@@ -173,7 +173,6 @@ namespace Login
 
             //load klanten list
             KlantList();
-
         }
 
         private void lstKlantSysteem_SelectedIndexChanged(object sender, EventArgs e)
@@ -187,13 +186,12 @@ namespace Login
 
         private void txtNaamKlant_TextChanged(object sender, EventArgs e)
         {
-         LoadKlanten();
-         lblZoeken.Text = "Zoeken op: " + txtNaamKlant.Text;
+            LoadKlanten();
+            lblZoeken.Text = "Zoeken op: " + txtNaamKlant.Text;
         }
 
         private void btnKlantOpslaan_Click(object sender, EventArgs e)
         {
-
             if (lstKlantSysteem.SelectedItems.Count == 0)
                 return;
             var i = lstKlantSysteem.SelectedItems[0];
@@ -237,9 +235,9 @@ namespace Login
                 txtTellie.Text = txtTellie.Text.Remove(txtTellie.Text.Length - 1);
             }
         }
+
         private void ReserveringList(List<Reservering> reserverings)
         {
-
             DateTime time = dateTijd.Value;
 
             foreach (Reservering r in reserverings)
@@ -261,6 +259,7 @@ namespace Login
                 ch.Width = -2;
             }
         }
+
         private void TafelsList(List<Tafel> tafels)
         {
             foreach (Tafel t in tafels)
@@ -293,6 +292,7 @@ namespace Login
                 ch.Width = -2;
             }
         }
+
         private void reserveringStatusList(List<Reservering> reserverings)
         {
             foreach (Reservering r in reserverings)
@@ -324,6 +324,7 @@ namespace Login
                 ch.Width = -2;
             }
         }
+
         private void reserveringColummSettings()
         {
             lstReservering.Columns.Add("Reservering Nummer");
@@ -346,6 +347,7 @@ namespace Login
             lstReserveringDag.FullRowSelect = true;
             lstReserveringDag.GridLines = true;
         }
+
         private void tafelColummSettings()
         {
             lstTafelStatus.Columns.Add("Tafel#", 75);
@@ -356,6 +358,7 @@ namespace Login
             lstTafelStatus.FullRowSelect = true;
             lstTafelStatus.GridLines = true;
         }
+
         private void klantColummSettings()
         {
             lstKlantSysteem.Columns.Add("KlantNummer", 100);
@@ -367,6 +370,7 @@ namespace Login
             lstKlantSysteem.FullRowSelect = true;
             lstKlantSysteem.GridLines = true;
         }
+
         private void KlantBestaat()
         {
             DateTime begintijd = dateTijd.Value;
@@ -398,6 +402,7 @@ namespace Login
                 MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
             }
         }
+
         private void KlantList()
         {
             foreach (Klant k in klanten)
@@ -427,6 +432,7 @@ namespace Login
                 }
             }
         }
+
         private void UpdateResSettings()
         {
             pnlReservering.Hide();
@@ -436,17 +442,18 @@ namespace Login
             txtAchternaam.Clear();
             txtTellie.Clear();
         }
+
         private bool NoReservationPossible(string tafelID)
         {
             bool Bezet = false;
 
             foreach (ListViewItem row in lstReservering.Items)
             {
-            if (tafelID == row.SubItems[1].Text)
+                if (tafelID == row.SubItems[1].Text)
                 {
-                DateTime start = DateTime.Parse(row.SubItems[2].Text);
-                DateTime end = DateTime.Parse(row.SubItems[3].Text);
-                DateTime now = dateTijd.Value;
+                    DateTime start = DateTime.Parse(row.SubItems[2].Text);
+                    DateTime end = DateTime.Parse(row.SubItems[3].Text);
+                    DateTime now = dateTijd.Value;
                     if ((now > start) && (now < end))
                     {
                         foreach (ListViewItem row2 in lstTafelStatus.Items)
@@ -458,7 +465,6 @@ namespace Login
                                     Bezet = true;
                                 }
                             }
-
                         }
                     }
                 }
@@ -471,9 +477,8 @@ namespace Login
             {
                 return false;
             }
-
-
         }
+
         private void DatetimepickerSettings()
         {
             geboorteDatumPicker.Format = DateTimePickerFormat.Custom;
