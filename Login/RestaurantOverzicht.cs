@@ -1,6 +1,7 @@
 ﻿using ChapooLogic;
 using ChapooModel;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,6 +13,7 @@ namespace Login
         private ChapooLogic.Reservering_Service _reservering_Service;
         private ChapooLogic.Klant_Service _klant_Service;
         private ChapooLogic.Tafel_Service tafel_Service;
+        private ListViewColumnSorter lvwColumnSorter; // column sort functionality
         private List<int> tafelToBezet;
         private List<Tafel> tafels;
         private List<int> tafelToGereserveerd;
@@ -24,6 +26,11 @@ namespace Login
         {
             InitializeComponent();
             DatetimepickerSettings();
+            lvwColumnSorter = new ListViewColumnSorter();
+            this.lstReservering.ListViewItemSorter = lvwColumnSorter;
+            this.lstTafelStatus.ListViewItemSorter = lvwColumnSorter;
+            this.lstReserveringDag.ListViewItemSorter = lvwColumnSorter;
+            this.lstKlantSysteem.ListViewItemSorter = lvwColumnSorter;
         }
 
         private void RestaurantOverzicht_Load(object sender, EventArgs e)
@@ -487,6 +494,49 @@ namespace Login
 
             dateTijd.Format = DateTimePickerFormat.Custom;
             dateTijd.CustomFormat = "MM/dd/yyyy HH:mm:ss";
+        }
+
+        private void ColumnSort(ColumnClickEventArgs e, ListView lv)
+        {
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+            lv.Sort();
+        }
+        private void lstReservering_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSort(e, (ListView)sender);
+        }
+
+        private void lstTafelStatus_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSort(e, (ListView)sender);
+        }
+
+        private void lstReserveringDag_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSort(e, (ListView)sender);
+        }
+
+        private void lstKlantSysteem_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSort(e, (ListView)sender);
         }
     }
 }

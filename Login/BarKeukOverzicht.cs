@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using ChapooLogic;
 using ChapooModel;
-using ChapooLogic;
-
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Login
 {
@@ -57,19 +51,21 @@ namespace Login
                         default:
                             li.SubItems.Add(item.Status.ToString());
                             break;
+
                         case "Nieuw":
                             li.SubItems.Add(item.Status.ToString()).ForeColor = Color.Orange;
                             break;
+
                         case "Bezig":
                             li.SubItems.Add(item.Status.ToString()).ForeColor = Color.Red;
                             break;
+
                         case "Compleet":
                             li.SubItems.Add(item.Status.ToString()).ForeColor = Color.Green;
                             break;
                     }
                     li.SubItems.Add(item.Opgenomen.ToString());
                     lv_orderList.Items.Add(li);
-
                 }
             }
         }
@@ -130,7 +126,7 @@ namespace Login
 
             BarKeukenBestelling order = _orderList[item.Index];
 
-            if (order.Status == "Bezig") 
+            if (order.Status == "Bezig")
             {
                 MessageBox.Show("Dit is de huidige status");
                 return;
@@ -196,7 +192,7 @@ namespace Login
             UpdateList();
         }
 
-        void UpdateList()
+        private void UpdateList()
         {
             SetListView();
             GetOrders();

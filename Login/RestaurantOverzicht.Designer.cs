@@ -111,11 +111,13 @@
             this.lstKlantSysteem.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstKlantSysteem.HideSelection = false;
             this.lstKlantSysteem.Location = new System.Drawing.Point(3, 65);
+            this.lstKlantSysteem.MultiSelect = false;
             this.lstKlantSysteem.Name = "lstKlantSysteem";
             this.lstKlantSysteem.Size = new System.Drawing.Size(995, 572);
             this.lstKlantSysteem.TabIndex = 0;
             this.lstKlantSysteem.UseCompatibleStateImageBehavior = false;
             this.lstKlantSysteem.View = System.Windows.Forms.View.Details;
+            this.lstKlantSysteem.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lstKlantSysteem_ColumnClick);
             this.lstKlantSysteem.SelectedIndexChanged += new System.EventHandler(this.lstKlantSysteem_SelectedIndexChanged);
             // 
             // lblKlantSysteem
@@ -181,6 +183,8 @@
             // btnTerug
             // 
             this.btnTerug.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnTerug.FlatAppearance.BorderSize = 0;
+            this.btnTerug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTerug.Font = new System.Drawing.Font("Roboto", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTerug.ForeColor = System.Drawing.Color.White;
             this.btnTerug.Location = new System.Drawing.Point(270, 705);
@@ -196,6 +200,7 @@
             this.btnKlantOpslaan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnKlantOpslaan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnKlantOpslaan.FlatAppearance.BorderSize = 0;
+            this.btnKlantOpslaan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKlantOpslaan.Font = new System.Drawing.Font("Roboto", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKlantOpslaan.ForeColor = System.Drawing.Color.White;
             this.btnKlantOpslaan.Location = new System.Drawing.Point(1039, 703);
@@ -221,11 +226,13 @@
             this.lstReservering.Font = new System.Drawing.Font("Roboto", 17F);
             this.lstReservering.HideSelection = false;
             this.lstReservering.Location = new System.Drawing.Point(3, 55);
+            this.lstReservering.MultiSelect = false;
             this.lstReservering.Name = "lstReservering";
             this.lstReservering.Size = new System.Drawing.Size(1092, 679);
             this.lstReservering.TabIndex = 0;
             this.lstReservering.UseCompatibleStateImageBehavior = false;
             this.lstReservering.View = System.Windows.Forms.View.Details;
+            this.lstReservering.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lstReservering_ColumnClick);
             // 
             // label11
             // 
@@ -264,11 +271,13 @@
             this.lstTafelStatus.Font = new System.Drawing.Font("Roboto", 17F);
             this.lstTafelStatus.HideSelection = false;
             this.lstTafelStatus.Location = new System.Drawing.Point(3, 55);
+            this.lstTafelStatus.MultiSelect = false;
             this.lstTafelStatus.Name = "lstTafelStatus";
             this.lstTafelStatus.Size = new System.Drawing.Size(438, 679);
             this.lstTafelStatus.TabIndex = 1;
             this.lstTafelStatus.UseCompatibleStateImageBehavior = false;
             this.lstTafelStatus.View = System.Windows.Forms.View.Details;
+            this.lstTafelStatus.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lstTafelStatus_ColumnClick);
             // 
             // btnMin
             // 
@@ -423,11 +432,13 @@
             this.lstReserveringDag.Font = new System.Drawing.Font("Roboto", 15F);
             this.lstReserveringDag.HideSelection = false;
             this.lstReserveringDag.Location = new System.Drawing.Point(3, 60);
+            this.lstReserveringDag.MultiSelect = false;
             this.lstReserveringDag.Name = "lstReserveringDag";
             this.lstReserveringDag.Size = new System.Drawing.Size(943, 561);
             this.lstReserveringDag.TabIndex = 9;
             this.lstReserveringDag.UseCompatibleStateImageBehavior = false;
             this.lstReserveringDag.View = System.Windows.Forms.View.Details;
+            this.lstReserveringDag.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lstReserveringDag_ColumnClick);
             // 
             // lblDatum
             // 

@@ -103,12 +103,12 @@ namespace Login
             {
                 if (tafelToBezet.Contains(i + 1))
                 {
-                    btns[i].Text = $"Tafel {i+1}\n[Bezet]";
+                    btns[i].Text = $"Tafel {i + 1}\n[Bezet]";
                 }
 
                 if (tafelToGereserveerd.Contains(i + 1))
                 {
-                    btns[i].Text = $"Tafel {i+1}\n[Gereserveerd]";
+                    btns[i].Text = $"Tafel {i + 1}\n[Gereserveerd]";
                 }
             }
         }
