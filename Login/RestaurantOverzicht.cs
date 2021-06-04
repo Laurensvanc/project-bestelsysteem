@@ -17,6 +17,7 @@ namespace Login
         private List<int> tafelToGereserveerd;
         private List<int> tableList;
         private List<Klant> klanten;
+        private Klant klant;
         private int _klantId;
 
         public RestaurantOverzicht()
@@ -371,13 +372,15 @@ namespace Login
             DateTime begintijd = dateTijd.Value;
             int AantalPersonen = (int)NumericAantal.Value;
             Tafel tafel = new Tafel(int.Parse(cmbTafel.Text));
-            Klant klant = new Klant(_klantId);
+            klant = new Klant(_klantId);
             if (!bestaatDeKlant())
             {
                 VoegKlantToe();
                 LoadKlanten();
+
                 if (bestaatDeKlant())
                 {
+                    klant.KlantID = _klantId;
                     Reservering reservering = new Reservering(tafel, begintijd, begintijd.AddHours(2), klant, AantalPersonen);
                     _reservering_Service.AddReservering(reservering);
                     MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
@@ -389,6 +392,7 @@ namespace Login
             }
             else
             {
+                klant.KlantID = _klantId;
                 Reservering reservering = new Reservering(tafel, begintijd, begintijd.AddHours(2), klant, AantalPersonen);
                 _reservering_Service.AddReservering(reservering);
                 MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");

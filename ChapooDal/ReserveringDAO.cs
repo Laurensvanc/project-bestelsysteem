@@ -57,6 +57,7 @@ namespace ChapooDAL
             sqlParameters[4] = new SqlParameter("@Aantal", reservering.AantalPersonen);
             ExecuteEditQuery(query, sqlParameters);
         }
+
         public void DeleteReservering(Reservering reservering)
         {
             // Data gets changed in database
