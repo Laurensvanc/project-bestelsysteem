@@ -331,9 +331,11 @@
             // 
             this.txtNaam.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNaam.Location = new System.Drawing.Point(36, 146);
+            this.txtNaam.MaxLength = 30;
             this.txtNaam.Name = "txtNaam";
             this.txtNaam.Size = new System.Drawing.Size(153, 32);
             this.txtNaam.TabIndex = 0;
+            this.txtNaam.TextChanged += new System.EventHandler(this.txtNaam_TextChanged);
             // 
             // dateTijd
             // 
@@ -390,7 +392,7 @@
             this.btnDeleteRes.Name = "btnDeleteRes";
             this.btnDeleteRes.Size = new System.Drawing.Size(238, 102);
             this.btnDeleteRes.TabIndex = 7;
-            this.btnDeleteRes.Text = "Verwijder";
+            this.btnDeleteRes.Text = "Terug";
             this.btnDeleteRes.UseVisualStyleBackColor = false;
             this.btnDeleteRes.Click += new System.EventHandler(this.btnDeleteRes_Click);
             // 
@@ -398,9 +400,24 @@
             // 
             this.NumericAantal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NumericAantal.Location = new System.Drawing.Point(40, 432);
+            this.NumericAantal.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.NumericAantal.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.NumericAantal.Name = "NumericAantal";
             this.NumericAantal.Size = new System.Drawing.Size(120, 32);
             this.NumericAantal.TabIndex = 4;
+            this.NumericAantal.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // lstReserveringDag
             // 
@@ -438,9 +455,11 @@
             // 
             this.txtTellie.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTellie.Location = new System.Drawing.Point(40, 344);
+            this.txtTellie.MaxLength = 20;
             this.txtTellie.Name = "txtTellie";
             this.txtTellie.Size = new System.Drawing.Size(184, 32);
             this.txtTellie.TabIndex = 3;
+            this.txtTellie.TextChanged += new System.EventHandler(this.txtTellie_TextChanged);
             // 
             // label2
             // 
@@ -456,9 +475,11 @@
             // 
             this.txtAchternaam.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAchternaam.Location = new System.Drawing.Point(211, 146);
+            this.txtAchternaam.MaxLength = 30;
             this.txtAchternaam.Name = "txtAchternaam";
             this.txtAchternaam.Size = new System.Drawing.Size(155, 32);
             this.txtAchternaam.TabIndex = 1;
+            this.txtAchternaam.TextChanged += new System.EventHandler(this.txtAchternaam_TextChanged);
             // 
             // label5
             // 
@@ -565,9 +586,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.pnl_overzicht);
-            this.Controls.Add(this.pnlReservering);
             this.Controls.Add(this.pnlKlantSysteem);
+            this.Controls.Add(this.pnlReservering);
+            this.Controls.Add(this.pnl_overzicht);
             this.Name = "RestaurantOverzicht";
             this.Size = new System.Drawing.Size(1576, 942);
             this.Load += new System.EventHandler(this.RestaurantOverzicht_Load);

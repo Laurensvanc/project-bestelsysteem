@@ -11,15 +11,18 @@ namespace Login
     {
         private ChapooLogic.Reservering_Service _reservering_Service;
         private ChapooLogic.Klant_Service _klant_Service;
+        private ChapooLogic.Tafel_Service tafel_Service;
+        private List<int> tafelToBezet;
+        private List<Tafel> tafels;
+        private List<int> tafelToGereserveerd;
+        private List<int> tableList;
+        private List<Klant> klanten;
         private int _klantId;
 
         public RestaurantOverzicht()
         {
             InitializeComponent();
-
-            geboorteDatumPicker.Format = DateTimePickerFormat.Custom;
-            geboorteDatumPicker.CustomFormat = "dd-MM-yyyy";
-            geboorteDatumPicker.MaxDate = DateTime.Today;
+            DatetimepickerSettings();
         }
 
         private void RestaurantOverzicht_Load(object sender, EventArgs e)
@@ -31,7 +34,7 @@ namespace Login
 
         private void btnFresh_Click(object sender, EventArgs e)
         {
-            Refresh();
+            loadLists();
         }
 
         private void btnPlus_Click(object sender, EventArgs e)
@@ -42,8 +45,24 @@ namespace Login
 
         private void btnDeleteRes_Click(object sender, EventArgs e)
         {
-            pnlReservering.Hide();
-            pnl_overzicht.Show();
+            if (!String.IsNullOrEmpty(txtNaam.Text) || !String.IsNullOrEmpty(txtAchternaam.Text) || !String.IsNullOrEmpty(txtTellie.Text))
+            {
+                DialogResult dialogResult = MessageBox.Show("Weet je het zeker?", "Verwijder ingevulde gegevens", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    txtAchternaam.Clear();
+                    txtNaam.Clear();
+                    txtTellie.Clear();
+
+                    pnlReservering.Hide();
+                    pnl_overzicht.Show();
+                }
+            } else
+                {
+                    pnlReservering.Hide();
+                    pnl_overzicht.Show();
+                }
+
         }
 
         private void btnMin_Click(object sender, EventArgs e)
@@ -70,133 +89,186 @@ namespace Login
 
         private void btnUpdateRes_Click(object sender, EventArgs e)
         {
-            DateTime begintijd = dateTijd.Value;
-            int AantalPersonen = (int)NumericAantal.Value;
-
-            if (String.IsNullOrEmpty(txtNaam.Text) || String.IsNullOrEmpty(txtAchternaam.Text) || String.IsNullOrEmpty(txtTellie.Text) || String.IsNullOrEmpty(cmbTafel.Text))
+            if (NoReservationPossible(cmbTafel.Text))
             {
-                DialogResult dialogResult = MessageBox.Show("Vul Persoonsgegevens in", "Error");
-            }
-            else if (txtAchternaam.Text.Length > 50 || txtNaam.Text.Length > 50 || txtTellie.Text.Length > 30)
+                MessageBox.Show("Kan niet reserveren op dit tijdstip", "Error");
+            } else
             {
-                DialogResult dialogResult = MessageBox.Show("Maximaal Aantal Character overtreden", "Error");
-            }
-            else
-            {
-                LoadKlanten();
-
-                if (!bestaatDeKlant())
+                if (String.IsNullOrEmpty(txtNaam.Text) || String.IsNullOrEmpty(txtAchternaam.Text) || String.IsNullOrEmpty(txtTellie.Text) || String.IsNullOrEmpty(cmbTafel.Text))
                 {
-                    VoegKlantToe();
-                    LoadKlanten();
-                    if (bestaatDeKlant())
-                    {
-                        Reservering reservering = new Reservering(int.Parse(cmbTafel.Text), begintijd, begintijd.AddHours(2), _klantId, AantalPersonen);
-                        _reservering_Service.AddReservering(reservering);
-                        MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Geen Persoon gevonden", "Error");
-                    }
+                    MessageBox.Show("Vul Persoonsgegevens in", "Error");
+                }
+                else if (txtAchternaam.Text.Length > 50 || txtNaam.Text.Length > 50 || txtTellie.Text.Length > 15)
+                {
+                    MessageBox.Show("Maximaal Aantal Character overtreden", "Error");
                 }
                 else
                 {
-                    Reservering reservering = new Reservering(int.Parse(cmbTafel.Text), begintijd, begintijd.AddHours(2), _klantId, AantalPersonen);
-                    _reservering_Service.AddReservering(reservering);
-                    MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
+                    LoadKlanten();
+                    KlantBestaat();
+
+                    UpdateResSettings();
                 }
-
-                pnlReservering.Hide();
-                Refresh();
-                txtNaam.Clear();
-                txtAchternaam.Clear();
-                txtTellie.Clear();
             }
+
         }
 
-        private void Refresh()
-        {
-            loadLists();
-        }
-
+        //loads everything related to reservering/tafel
         private void loadLists()
         {
             // Tafels bezet
             Transaction_Service transaction_Service = new Transaction_Service();
-            List<int> tableList = transaction_Service.GetTables();
+            tableList = transaction_Service.GetTables();
             // Reservering
             _reservering_Service = new Reservering_Service();
             List<Reservering> reserverings = _reservering_Service.GetReserverings();
-
-            List<int> tafelToBezet = new List<int>();
-            List<int> tafelToGereserveerd = new List<int>();
-
+            tafelToBezet = new List<int>();
+            tafelToGereserveerd = new List<int>();
             lstReservering.Clear();
             lstReserveringDag.Clear();
+            //Load List Settings
+            reserveringColummSettings();
+            //Fill Status List
+            reserveringStatusList(reserverings);
+            // Tafel & status
+            tafel_Service = new Tafel_Service();
+            tafels = tafel_Service.GetTafels();
+            cmbTafel.Items.Clear();
+            lstTafelStatus.Clear();
+            tafelColummSettings();
+            //Fill Tafel/Reservering Lists
+            TafelsList(tafels);
+            ReserveringList(reserverings);
+        }
 
-            lstReservering.Columns.Add("Reservering Nummer");
-            lstReservering.Columns.Add("Tafel Nummer");
-            lstReservering.Columns.Add("Begin Tijd");
-            lstReservering.Columns.Add("Eind Tijd");
-            lstReservering.Columns.Add("Klant Naam");
-            lstReservering.Columns.Add("Aantal");
+        private void dateTijd_ValueChanged(object sender, EventArgs e)
+        {
+            loadLists();
+            lblDatum.Text = "Reserveringen voor: " + dateTijd.Value.Date.ToShortDateString();
+        }
 
-            lstReservering.FullRowSelect = true;
-            lstReservering.GridLines = true;
+        private void btnSelectKlant_Click(object sender, EventArgs e)
+        {
+            LoadKlanten();
+            pnlReservering.Hide();
+            pnlKlantSysteem.Show();
+        }
 
-            lstReserveringDag.Columns.Add("Reservering Nummer");
-            lstReserveringDag.Columns.Add("Tafel Nummer");
-            lstReserveringDag.Columns.Add("Begin Tijd");
-            lstReserveringDag.Columns.Add("Eind Tijd");
-            lstReserveringDag.Columns.Add("Klant Naam");
-            lstReserveringDag.Columns.Add("Aantal");
+        private void btnTerug_Click(object sender, EventArgs e)
+        {
+            pnlKlantSysteem.Hide();
+            pnlReservering.Show();
+        }
 
-            lstReserveringDag.FullRowSelect = true;
-            lstReserveringDag.GridLines = true;
+        private void LoadKlanten()
+        {
+            _klant_Service = new Klant_Service();
+            klanten = _klant_Service.GetKlants();
+
+            lstKlantSysteem.Clear();
+
+            //load klant collum Settings
+            klantColummSettings();
+
+            //load klanten list
+            KlantList();
+
+        }
+
+        private void lstKlantSysteem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.lstKlantSysteem.SelectedItems.Count == 0)
+                return;
+
+            var i = lstKlantSysteem.SelectedItems[0];
+            lblKlantGeselct.Text = "U Heeft: " + i.SubItems[1].Text + " " + i.SubItems[2].Text + " Geselecteerd";
+        }
+
+        private void txtNaamKlant_TextChanged(object sender, EventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txtNaamKlant.Text, "^[a-zA-Z ]"))
+            {
+                MessageBox.Show("Een naam bestaat uit letters");
+                txtNaamKlant.Text.Remove(txtNaamKlant.Text.Length - 1);
+            } else
+            {
+                LoadKlanten();
+                lblZoeken.Text = "Zoeken op: " + txtNaamKlant.Text;
+            }
+        }
+
+        private void btnKlantOpslaan_Click(object sender, EventArgs e)
+        {
+
+            if (lstKlantSysteem.SelectedItems.Count == 0)
+                return;
+            var i = lstKlantSysteem.SelectedItems[0];
+            txtNaam.Text = i.SubItems[1].Text;
+            txtAchternaam.Text = i.SubItems[2].Text;
+            DateTime date = DateTime.Parse(i.SubItems[3].Text);
+            geboorteDatumPicker.Value = date;
+            txtTellie.Text = i.SubItems[4].Text;
+            _klantId = int.Parse(i.SubItems[0].Text);
+
+            pnlKlantSysteem.Hide();
+            pnlReservering.Show();
+        }
+
+        private void VoegKlantToe()
+        {
+            string date = geboorteDatumPicker.Value.ToString("dd-MM-yyyy");
+            Klant klant = new Klant(txtNaam.Text, txtAchternaam.Text, date, txtTellie.Text);
+            _klant_Service.AddKlant(klant);
+        }
+
+        private bool bestaatDeKlant()
+        {
+            bool bestaat = false;
+            for (int i = 0; i < lstKlantSysteem.Items.Count; i++)
+            {
+                if (lstKlantSysteem.Items[i].SubItems[1].Text.Contains(txtNaam.Text) && lstKlantSysteem.Items[i].SubItems[2].Text.Contains(txtAchternaam.Text))
+                {
+                    _klantId = int.Parse(lstKlantSysteem.Items[i].SubItems[0].Text);
+                    bestaat = true;
+                }
+            }
+            return bestaat;
+        }
+
+        private void txtTellie_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtTellie.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Gebruik alleen nummers!");
+                txtTellie.Text = txtTellie.Text.Remove(txtTellie.Text.Length - 1);
+            }
+        }
+        private void ReserveringList(List<Reservering> reserverings)
+        {
+
+            DateTime time = dateTijd.Value;
 
             foreach (Reservering r in reserverings)
             {
-                if (r.EindTijd.AddHours(1)  > DateTime.Today) // show only reservations with end time lower than time now (1 hour leeway)
+                if (r.BeginTijd.Date == time.Date)
                 {
                     ListViewItem li = new ListViewItem(r.ReserveringID.ToString());
                     li.SubItems.Add(r.TafelID.ToString());
-                    li.SubItems.Add(r.BeginTijd.ToString());
-                    li.SubItems.Add(r.EindTijd.ToString());
+                    li.SubItems.Add(r.BeginTijd.Hour.ToString() + ":" + r.BeginTijd.Minute.ToString("D2"));
+                    li.SubItems.Add(r.EindTijd.Hour.ToString() + ":" + r.EindTijd.Minute.ToString("D2"));
                     li.SubItems.Add(r.KlantNaam.ToString());
                     li.SubItems.Add(r.AantalPersonen.ToString());
-                    lstReservering.Items.Add(li);
-                }
-                // Update Tafelstatus
-                DateTime nu = dateTijd.Value;
-                dateTijd.MinDate = DateTime.Today;
-                if (r.BeginTijd < nu && r.EindTijd > nu || tableList.Contains(r.TafelID))
-                {
-                    tafelToBezet.Add(r.TafelID);
-                }
-                else if (r.BeginTijd < nu.AddHours(2) && r.EindTijd > nu)
-                {
-                    tafelToGereserveerd.Add(r.TafelID);
+
+                    lstReserveringDag.Items.Add(li);
                 }
             }
-            foreach (ColumnHeader ch in lstReservering.Columns)
+            foreach (ColumnHeader ch in lstReserveringDag.Columns)
             {
                 ch.Width = -2;
             }
-            // Tafel & status
-            ChapooLogic.Tafel_Service tafel_Service = new Tafel_Service();
-            List<Tafel> tafels = tafel_Service.GetTafels();
-            cmbTafel.Items.Clear();
-            lstTafelStatus.Clear();
-
-            lstTafelStatus.Columns.Add("Tafel#", 75);
-            lstTafelStatus.Columns.Add("Capaciteit", 75);
-            lstTafelStatus.Columns.Add("Werknemer", 100);
-            lstTafelStatus.Columns.Add("Status", 75);
-
-            lstTafelStatus.FullRowSelect = true;
-            lstTafelStatus.GridLines = true;
-
+        }
+        private void TafelsList(List<Tafel> tafels)
+        {
             foreach (Tafel t in tafels)
             {
                 if (tafelToBezet.Contains(t.TafelNummer)) t.Status = "Bezet";
@@ -226,58 +298,72 @@ namespace Login
             {
                 ch.Width = -2;
             }
-
-            dateTijd.Format = DateTimePickerFormat.Custom;
-            dateTijd.CustomFormat = "MM/dd/yyyy HH:mm:ss";
-
-            DateTime time = dateTijd.Value;
-
+        }
+        private void reserveringStatusList(List<Reservering> reserverings)
+        {
             foreach (Reservering r in reserverings)
             {
-                if (r.BeginTijd.Date == time.Date)
+                if (r.EindTijd.AddHours(1) > DateTime.Today) // show only reservations with end time lower than time now (1 hour leeway)
                 {
                     ListViewItem li = new ListViewItem(r.ReserveringID.ToString());
                     li.SubItems.Add(r.TafelID.ToString());
-                    li.SubItems.Add(r.BeginTijd.Hour.ToString() + ":" + r.BeginTijd.Minute.ToString("D2"));
-                    li.SubItems.Add(r.EindTijd.Hour.ToString() + ":" + r.EindTijd.Minute.ToString("D2"));
+                    li.SubItems.Add(r.BeginTijd.ToString());
+                    li.SubItems.Add(r.EindTijd.ToString());
                     li.SubItems.Add(r.KlantNaam.ToString());
                     li.SubItems.Add(r.AantalPersonen.ToString());
-
-                    lstReserveringDag.Items.Add(li);
+                    lstReservering.Items.Add(li);
+                }
+                // Update Tafelstatus
+                DateTime nu = dateTijd.Value;
+                dateTijd.MinDate = DateTime.Today;
+                if (r.BeginTijd < nu && r.EindTijd > nu || tableList.Contains(r.TafelID))
+                {
+                    tafelToBezet.Add(r.TafelID);
+                }
+                else if (r.BeginTijd < nu.AddHours(2) && r.EindTijd > nu)
+                {
+                    tafelToGereserveerd.Add(r.TafelID);
                 }
             }
-            foreach (ColumnHeader ch in lstReserveringDag.Columns)
+            foreach (ColumnHeader ch in lstReservering.Columns)
             {
                 ch.Width = -2;
             }
         }
-
-        private void dateTijd_ValueChanged(object sender, EventArgs e)
+        private void reserveringColummSettings()
         {
-            loadLists();
-            lblDatum.Text = "Reserveringen voor: " + dateTijd.Value.Date.ToShortDateString();
+            lstReservering.Columns.Add("Reservering Nummer");
+            lstReservering.Columns.Add("Tafel Nummer");
+            lstReservering.Columns.Add("Begin Tijd");
+            lstReservering.Columns.Add("Eind Tijd");
+            lstReservering.Columns.Add("Klant Naam");
+            lstReservering.Columns.Add("Aantal");
+
+            lstReservering.FullRowSelect = true;
+            lstReservering.GridLines = true;
+
+            lstReserveringDag.Columns.Add("Reservering Nummer");
+            lstReserveringDag.Columns.Add("Tafel Nummer");
+            lstReserveringDag.Columns.Add("Begin Tijd");
+            lstReserveringDag.Columns.Add("Eind Tijd");
+            lstReserveringDag.Columns.Add("Klant Naam");
+            lstReserveringDag.Columns.Add("Aantal");
+
+            lstReserveringDag.FullRowSelect = true;
+            lstReserveringDag.GridLines = true;
         }
-
-        private void btnSelectKlant_Click(object sender, EventArgs e)
+        private void tafelColummSettings()
         {
-            LoadKlanten();
-            pnlReservering.Hide();
-            pnlKlantSysteem.Show();
+            lstTafelStatus.Columns.Add("Tafel#", 75);
+            lstTafelStatus.Columns.Add("Capaciteit", 75);
+            lstTafelStatus.Columns.Add("Werknemer", 100);
+            lstTafelStatus.Columns.Add("Status", 75);
+
+            lstTafelStatus.FullRowSelect = true;
+            lstTafelStatus.GridLines = true;
         }
-
-        private void btnTerug_Click(object sender, EventArgs e)
+        private void klantColummSettings()
         {
-            pnlKlantSysteem.Hide();
-            pnlReservering.Show();
-        }
-
-        private void LoadKlanten()
-        {
-            _klant_Service = new Klant_Service();
-            List<Klant> klanten = _klant_Service.GetKlants();
-
-            lstKlantSysteem.Clear();
-
             lstKlantSysteem.Columns.Add("KlantNummer", 100);
             lstKlantSysteem.Columns.Add("Voornaam", 150);
             lstKlantSysteem.Columns.Add("Achternaam", 150);
@@ -286,7 +372,35 @@ namespace Login
 
             lstKlantSysteem.FullRowSelect = true;
             lstKlantSysteem.GridLines = true;
-
+        }
+        private void KlantBestaat()
+        {
+            DateTime begintijd = dateTijd.Value;
+            int AantalPersonen = (int)NumericAantal.Value;
+            if (!bestaatDeKlant())
+            {
+                VoegKlantToe();
+                LoadKlanten();
+                if (bestaatDeKlant())
+                {
+                    Reservering reservering = new Reservering(int.Parse(cmbTafel.Text), begintijd, begintijd.AddHours(2), _klantId, AantalPersonen);
+                    _reservering_Service.AddReservering(reservering);
+                    MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
+                }
+                else
+                {
+                    MessageBox.Show("Geen Persoon gevonden", "Error");
+                }
+            }
+            else
+            {
+                Reservering reservering = new Reservering(int.Parse(cmbTafel.Text), begintijd, begintijd.AddHours(2), _klantId, AantalPersonen);
+                _reservering_Service.AddReservering(reservering);
+                MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
+            }
+        }
+        private void KlantList()
+        {
             foreach (Klant k in klanten)
             {
                 if (!String.IsNullOrEmpty(txtNaamKlant.Text))
@@ -314,57 +428,79 @@ namespace Login
                 }
             }
         }
-
-        private void lstKlantSysteem_SelectedIndexChanged(object sender, EventArgs e)
+        private void UpdateResSettings()
         {
-            if (this.lstKlantSysteem.SelectedItems.Count == 0)
-                return;
-
-            var i = lstKlantSysteem.SelectedItems[0];
-            lblKlantGeselct.Text = "U Heeft: " + i.SubItems[1].Text + " " + i.SubItems[2].Text + " Geselecteerd";
+            pnlReservering.Hide();
+            pnl_overzicht.Show();
+            loadLists();
+            txtNaam.Clear();
+            txtAchternaam.Clear();
+            txtTellie.Clear();
         }
-
-        private void txtNaamKlant_TextChanged(object sender, EventArgs e)
+        private bool NoReservationPossible(string tafelID)
         {
-            LoadKlanten();
-            lblZoeken.Text = "Zoeken op: " + txtNaamKlant.Text;
-        }
+            bool Bezet = false;
 
-        private void btnKlantOpslaan_Click(object sender, EventArgs e)
-        {
-            string date = geboorteDatumPicker.Value.ToString();
-            if (lstKlantSysteem.SelectedItems.Count == 0)
-                return;
-            var i = lstKlantSysteem.SelectedItems[0];
-            txtNaam.Text = i.SubItems[1].Text;
-            txtAchternaam.Text = i.SubItems[2].Text;
-            date = i.SubItems[3].Text;
-            txtTellie.Text = i.SubItems[4].Text;
-            _klantId = int.Parse(i.SubItems[0].Text);
-
-            pnlKlantSysteem.Hide();
-            pnlReservering.Show();
-        }
-
-        private void VoegKlantToe()
-        {
-            string date = geboorteDatumPicker.Value.ToString();
-            Klant klant = new Klant(txtNaam.Text, txtAchternaam.Text, date, txtTellie.Text);
-            _klant_Service.AddKlant(klant);
-        }
-
-        private bool bestaatDeKlant()
-        {
-            bool bestaat = false;
-            for (int i = 0; i < lstKlantSysteem.Items.Count; i++)
+            foreach (ListViewItem row in lstReservering.Items)
             {
-                if (lstKlantSysteem.Items[i].SubItems[1].Text.Contains(txtNaam.Text) && lstKlantSysteem.Items[i].SubItems[2].Text.Contains(txtAchternaam.Text))
+            if (tafelID == row.SubItems[1].Text)
                 {
-                    _klantId = int.Parse(lstKlantSysteem.Items[i].SubItems[0].Text);
-                    bestaat = true;
+                DateTime start = DateTime.Parse(row.SubItems[2].Text);
+                DateTime end = DateTime.Parse(row.SubItems[3].Text);
+                DateTime now = dateTijd.Value;
+                    if ((now > start) && (now < end))
+                    {
+                        foreach (ListViewItem row2 in lstTafelStatus.Items)
+                        {
+                            if (tafelID == row2.SubItems[0].Text)
+                            {
+                                if (row2.SubItems[3].Text == "Bezet")
+                                {
+                                    Bezet = true;
+                                }
+                            }
+
+                        }
+                    }
                 }
             }
-            return bestaat;
+            if (Bezet)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+        }
+
+        private void txtNaam_TextChanged(object sender, EventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txtNaam.Text, "^[a-zA-Z ]"))
+            {
+                MessageBox.Show("Een naam bestaat uit letters");
+                txtNaam.Text.Remove(txtNaam.Text.Length - 1);
+            }
+        }
+
+        private void txtAchternaam_TextChanged(object sender, EventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txtAchternaam.Text, "^[a-zA-Z ]"))
+            {
+                MessageBox.Show("Een naam bestaat uit letters");
+                txtAchternaam.Text.Remove(txtAchternaam.Text.Length - 1);
+            }
+        }
+        private void DatetimepickerSettings()
+        {
+            geboorteDatumPicker.Format = DateTimePickerFormat.Custom;
+            geboorteDatumPicker.CustomFormat = "dd-MM-yyyy";
+            geboorteDatumPicker.MaxDate = DateTime.Today;
+
+            dateTijd.Format = DateTimePickerFormat.Custom;
+            dateTijd.CustomFormat = "MM/dd/yyyy HH:mm:ss";
         }
     }
 }
