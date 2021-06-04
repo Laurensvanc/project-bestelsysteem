@@ -186,15 +186,8 @@ namespace Login
 
         private void txtNaamKlant_TextChanged(object sender, EventArgs e)
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(txtNaamKlant.Text, "^[a-zA-Z ]"))
-            {
-                MessageBox.Show("Een naam bestaat uit letters");
-                txtNaamKlant.Text.Remove(txtNaamKlant.Text.Length - 1);
-            } else
-            {
-                LoadKlanten();
-                lblZoeken.Text = "Zoeken op: " + txtNaamKlant.Text;
-            }
+         LoadKlanten();
+         lblZoeken.Text = "Zoeken op: " + txtNaamKlant.Text;
         }
 
         private void btnKlantOpslaan_Click(object sender, EventArgs e)
@@ -474,24 +467,6 @@ namespace Login
             }
 
 
-        }
-
-        private void txtNaam_TextChanged(object sender, EventArgs e)
-        {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(txtNaam.Text, "^[a-zA-Z ]"))
-            {
-                MessageBox.Show("Een naam bestaat uit letters");
-                txtNaam.Text.Remove(txtNaam.Text.Length - 1);
-            }
-        }
-
-        private void txtAchternaam_TextChanged(object sender, EventArgs e)
-        {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(txtAchternaam.Text, "^[a-zA-Z ]"))
-            {
-                MessageBox.Show("Een naam bestaat uit letters");
-                txtAchternaam.Text.Remove(txtAchternaam.Text.Length - 1);
-            }
         }
         private void DatetimepickerSettings()
         {

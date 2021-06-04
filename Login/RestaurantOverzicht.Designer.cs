@@ -335,7 +335,6 @@
             this.txtNaam.Name = "txtNaam";
             this.txtNaam.Size = new System.Drawing.Size(153, 32);
             this.txtNaam.TabIndex = 0;
-            this.txtNaam.TextChanged += new System.EventHandler(this.txtNaam_TextChanged);
             // 
             // dateTijd
             // 
@@ -479,7 +478,6 @@
             this.txtAchternaam.Name = "txtAchternaam";
             this.txtAchternaam.Size = new System.Drawing.Size(155, 32);
             this.txtAchternaam.TabIndex = 1;
-            this.txtAchternaam.TextChanged += new System.EventHandler(this.txtAchternaam_TextChanged);
             // 
             // label5
             // 
