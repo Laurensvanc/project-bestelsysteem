@@ -18,5 +18,9 @@ namespace ChapooModel
             this.Status = Status;
             this.WerknemerId = WerknemerId;
         }
+        public Tafel(int TafelNummer)
+        {
+            this.TafelNummer = TafelNummer;
+        }
     }
 }

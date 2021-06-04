@@ -8,22 +8,22 @@ namespace ChapooModel
 {
     public class BarKeukenBestelling
     {
-        public int OrderID { get; set; }
-        public int BestellingID { get; set; }
-        public int ProductID { get; set; }
-        public int TafelID { get; set; }
+        public Order Order { get; set; }
+        public Bestelling Bestelling { get; set; }
+        public Product Product { get; set; }
+        public Tafel Tafel { get; set; }
         public string ProductNaam { get; set; }
         public bool IsDrinken { get; set; }
         public string Status { get; set; }
         public int Aantal { get; set; }
         public DateTime Opgenomen { get; set; }
 
-        public BarKeukenBestelling(int orderId, int bestellingId, int productId, int tafelId, string productNaam, bool isDrinken, string status, int aantal, DateTime opgenomen)
+        public BarKeukenBestelling(Order Order, Bestelling Bestelling, Product Product, Tafel Tafel, string productNaam, bool isDrinken, string status, int aantal, DateTime opgenomen)
         {
-            OrderID = orderId;
-            BestellingID = bestellingId;
-            ProductID = productId;
-            TafelID = tafelId;
+            this.Order = Order;
+            this.Bestelling = Bestelling;
+            this.Product = Product;
+            this.Tafel = Tafel;
             ProductNaam = productNaam;
             IsDrinken = isDrinken;
             Status = status;

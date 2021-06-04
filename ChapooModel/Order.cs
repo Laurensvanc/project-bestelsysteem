@@ -13,6 +13,7 @@ namespace ChapooModel
         public double Prijs { get; set; }
         public int Aantal { get; set; }
         public bool isAlcohol { get; set; }
+        public int OrderID { get; set; }
         public Order(Bestelling Bestelling, string ProductNaam, double Prijs, int Aantal, bool isAlcohol)
         {
             this.Bestelling = Bestelling;
@@ -20,6 +21,10 @@ namespace ChapooModel
             this.Prijs = Prijs * Aantal;
             this.Aantal = Aantal;
             this.isAlcohol = isAlcohol;
+        }
+        public Order(int OrderID)
+        {
+            this.OrderID = OrderID;
         }
     }
 }

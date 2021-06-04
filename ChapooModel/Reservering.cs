@@ -7,10 +7,10 @@ namespace ChapooModel
     public class Reservering
     {
         public int ReserveringID { get; set; }
-        public int TafelID { get; set; }
+        public Tafel Tafel { get; set; }
         public DateTime BeginTijd { get; set; }
         public DateTime EindTijd { get; set; }
-        public int KlantID { get; set; }
+        public Klant Klant { get; set; }
         public int AantalPersonen { get; set; }
 
         public string KlantNaam { get; set; }
@@ -19,20 +19,20 @@ namespace ChapooModel
         {
             this.ReserveringID = ReserveringID;
         }
-        public Reservering(int TafelID, DateTime BeginTijd, DateTime EindTijd, int KlantID, int AantalPersonen)
+        public Reservering(Tafel Tafel, DateTime BeginTijd, DateTime EindTijd, Klant Klant, int AantalPersonen)
         {
 
-            this.TafelID = TafelID;
+            this.Tafel = Tafel;
             this.BeginTijd = BeginTijd;
             this.EindTijd = EindTijd;
-            this.KlantID = KlantID;
+            this.Klant = Klant;
             this.AantalPersonen = AantalPersonen;
         }
-        public Reservering (int ReserveringID, int TafelID, DateTime BeginTijd, DateTime EindTijd, int KlantID, int AantalPersonen) : this(TafelID,BeginTijd,EindTijd,KlantID,AantalPersonen)
+        public Reservering (int ReserveringID, Tafel Tafel, DateTime BeginTijd, DateTime EindTijd, Klant Klant, int AantalPersonen) : this(Tafel,BeginTijd,EindTijd,Klant,AantalPersonen)
         {
             this.ReserveringID = ReserveringID;
         }
-        public Reservering(string KlantNaam, int ReserveringID, int TafelID, DateTime BeginTijd, DateTime EindTijd, int KlantID, int AantalPersonen) : this(ReserveringID, TafelID, BeginTijd, EindTijd, KlantID, AantalPersonen)
+        public Reservering(string KlantNaam, int ReserveringID, Tafel Tafel, DateTime BeginTijd, DateTime EindTijd, Klant Klant, int AantalPersonen) : this(ReserveringID, Tafel, BeginTijd, EindTijd, Klant, AantalPersonen)
         {
             this.KlantNaam = KlantNaam;
         }

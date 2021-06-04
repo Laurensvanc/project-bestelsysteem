@@ -23,7 +23,7 @@ namespace ChapooDal
         }
         public Order_Info DB_Get_Order_Info(int TafelID)
         {
-            string query = "SELECT TOP 1 [Bestelling].Opgenomen, [Werknemer].Voornaam + ' ' + [Werknemer].Achternaam AS Naam, [Tafel].WerknemerID, [Transactie].TransactieID, [Transactie].Betaald FROM Bestelling  INNER JOIN Tafel ON [Tafel].TafelID = [Bestelling].TafelID INNER JOIN Werknemer ON [Werknemer].WerknemerID = [Tafel].WerknemerID CROSS JOIN Transactie WHERE [Tafel].TafelID = @TafelID ORDER BY TransactieID DESC ";
+            string query = "USE dbchapoo202104 SELECT TOP 1 [Bestelling].Opgenomen, [Werknemer].Voornaam + ' ' + [Werknemer].Achternaam AS Naam, [Tafel].WerknemerID, [Transactie].TransactieID, [Transactie].Betaald FROM Bestelling  INNER JOIN Tafel ON [Tafel].TafelID = [Bestelling].TafelID INNER JOIN Werknemer ON [Werknemer].WerknemerID = [Tafel].WerknemerID CROSS JOIN Transactie WHERE [Tafel].TafelID = @TafelID ORDER BY TransactieID DESC, [Bestelling].Opgenomen DESC ";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@TafelID", TafelID);
             Order_Info info = ReadTablesInfo(ExecuteSelectQuery(query, sqlParameters));
@@ -39,7 +39,7 @@ namespace ChapooDal
         }
         public List<Order> DB_Get_Orders(int TafelID)
         {
-            string query = "USE dbchapoo202104 SELECT [Bestelling].BestellingID, [Product].ProductNaam, [Product].Prijs, [Order_Product].Aantal, [Product].IsAlcohol FROM Bestelling AS [Bestelling] INNER JOIN [Order] ON [Order].BestellingID = [Bestelling].BestellingID INNER JOIN[Order_Product] ON [Order_Product].OrderID = [Order].OrderID INNER JOIN[Product] ON[Product].ProductID = [Order_Product].ProductID WHERE[Bestelling].TafelID = @TafelID";
+            string query = "USE dbchapoo202104 SELECT [Bestelling].BestellingID, [Product].ProductNaam, [Product].Prijs, [Order_Product].Aantal, [Product].IsAlcohol FROM Bestelling AS [Bestelling] INNER JOIN [Order] ON [Order].BestellingID = [Bestelling].BestellingID INNER JOIN[Order_Product] ON [Order_Product].OrderID = [Order].OrderID INNER JOIN[Product] ON[Product].ProductID = [Order_Product].ProductID WHERE [Bestelling].BestellingID NOT IN (SELECT BestellingID FROM Transactie_Bestelling) AND [Bestelling].TafelID = @TafelID";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@TafelID", TafelID);
             List<Order> orderList = ReadTablesOrder(ExecuteSelectQuery(query, sqlParameters));
@@ -59,12 +59,12 @@ namespace ChapooDal
             sqlParameters[7] = new SqlParameter("@TransactieID", transactie.TransactieID);
             ExecuteEditQuery(query, sqlParameters);
 
-            foreach (int BestellingID in transactie.BestellingIDs)
+            foreach (Bestelling bestelling in transactie.Bestellingen)
             {
                 query = "USE dbchapoo202104 INSERT INTO Transactie_Bestelling(TransactieID, BestellingID) VALUES(@TransactieID, @BestellingID)";
                 sqlParameters = new SqlParameter[2];
                 sqlParameters[0] = new SqlParameter("@TransactieID", transactie.TransactieID);
-                sqlParameters[1] = new SqlParameter("@BestellingID", BestellingID);
+                sqlParameters[1] = new SqlParameter("@BestellingID", bestelling.BestellingID);
                 ExecuteEditQuery(query, sqlParameters);
             }
             return true;

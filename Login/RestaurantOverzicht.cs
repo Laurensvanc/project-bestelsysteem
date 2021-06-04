@@ -253,7 +253,7 @@ namespace Login
                 if (r.BeginTijd.Date == time.Date)
                 {
                     ListViewItem li = new ListViewItem(r.ReserveringID.ToString());
-                    li.SubItems.Add(r.TafelID.ToString());
+                    li.SubItems.Add(r.Tafel.TafelNummer.ToString());
                     li.SubItems.Add(r.BeginTijd.Hour.ToString() + ":" + r.BeginTijd.Minute.ToString("D2"));
                     li.SubItems.Add(r.EindTijd.Hour.ToString() + ":" + r.EindTijd.Minute.ToString("D2"));
                     li.SubItems.Add(r.KlantNaam.ToString());
@@ -306,7 +306,7 @@ namespace Login
                 if (r.EindTijd.AddHours(1) > DateTime.Today) // show only reservations with end time lower than time now (1 hour leeway)
                 {
                     ListViewItem li = new ListViewItem(r.ReserveringID.ToString());
-                    li.SubItems.Add(r.TafelID.ToString());
+                    li.SubItems.Add(r.Tafel.TafelNummer.ToString());
                     li.SubItems.Add(r.BeginTijd.ToString());
                     li.SubItems.Add(r.EindTijd.ToString());
                     li.SubItems.Add(r.KlantNaam.ToString());
@@ -316,13 +316,13 @@ namespace Login
                 // Update Tafelstatus
                 DateTime nu = dateTijd.Value;
                 dateTijd.MinDate = DateTime.Today;
-                if (r.BeginTijd < nu && r.EindTijd > nu || tableList.Contains(r.TafelID))
+                if (r.BeginTijd < nu && r.EindTijd > nu || tableList.Contains(r.Tafel.TafelNummer))
                 {
-                    tafelToBezet.Add(r.TafelID);
+                    tafelToBezet.Add(r.Tafel.TafelNummer);
                 }
                 else if (r.BeginTijd < nu.AddHours(2) && r.EindTijd > nu)
                 {
-                    tafelToGereserveerd.Add(r.TafelID);
+                    tafelToGereserveerd.Add(r.Tafel.TafelNummer);
                 }
             }
             foreach (ColumnHeader ch in lstReservering.Columns)
@@ -377,13 +377,15 @@ namespace Login
         {
             DateTime begintijd = dateTijd.Value;
             int AantalPersonen = (int)NumericAantal.Value;
+            Tafel tafel = new Tafel(int.Parse(cmbTafel.Text));
+            Klant klant = new Klant(_klantId);
             if (!bestaatDeKlant())
             {
                 VoegKlantToe();
                 LoadKlanten();
                 if (bestaatDeKlant())
                 {
-                    Reservering reservering = new Reservering(int.Parse(cmbTafel.Text), begintijd, begintijd.AddHours(2), _klantId, AantalPersonen);
+                    Reservering reservering = new Reservering(tafel, begintijd, begintijd.AddHours(2), klant, AantalPersonen);
                     _reservering_Service.AddReservering(reservering);
                     MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
                 }
@@ -394,7 +396,7 @@ namespace Login
             }
             else
             {
-                Reservering reservering = new Reservering(int.Parse(cmbTafel.Text), begintijd, begintijd.AddHours(2), _klantId, AantalPersonen);
+                Reservering reservering = new Reservering(tafel, begintijd, begintijd.AddHours(2), klant, AantalPersonen);
                 _reservering_Service.AddReservering(reservering);
                 MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
             }
