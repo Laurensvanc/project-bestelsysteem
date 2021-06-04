@@ -91,7 +91,7 @@ namespace Login
         {
             if (NoReservationPossible(cmbTafel.Text))
             {
-                MessageBox.Show("Kan niet reserveren op dit tijdstip", "Error");
+                MessageBox.Show($"Voor tafel {cmbTafel.Text} is al een reservering geplaatst op dit tijdstip", "Error: Geen dubbele reservering mogelijk");
             } else
             {
                 if (String.IsNullOrEmpty(txtNaam.Text) || String.IsNullOrEmpty(txtAchternaam.Text) || String.IsNullOrEmpty(txtTellie.Text) || String.IsNullOrEmpty(cmbTafel.Text))

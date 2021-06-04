@@ -36,7 +36,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtTelNummer = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtWachtwoord = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -56,16 +55,18 @@
             this.txtBevestigwachtwoord = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtBeveiligingsvraag = new System.Windows.Forms.TextBox();
+            this.nudPin = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.nudPin = new System.Windows.Forms.NumericUpDown();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtSecretA = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.nudTelNummer = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPin)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTelNummer)).BeginInit();
             this.SuspendLayout();
             // 
             // txtVoornaam
@@ -144,15 +145,6 @@
             this.label5.Size = new System.Drawing.Size(176, 26);
             this.label5.TabIndex = 8;
             this.label5.Text = "Telefoonnummer";
-            // 
-            // txtTelNummer
-            // 
-            this.txtTelNummer.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.txtTelNummer.Location = new System.Drawing.Point(321, 249);
-            this.txtTelNummer.MaxLength = 50;
-            this.txtTelNummer.Name = "txtTelNummer";
-            this.txtTelNummer.Size = new System.Drawing.Size(229, 32);
-            this.txtTelNummer.TabIndex = 9;
             // 
             // txtEmail
             // 
@@ -344,9 +336,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.nudTelNummer);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.txtSecretA);
+            this.panel1.Controls.Add(this.txtBeveiligingsvraag);
             this.panel1.Controls.Add(this.nudPin);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.txtAchternaam);
@@ -370,7 +363,6 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.txtTelNummer);
             this.panel1.Controls.Add(this.txtEmail);
             this.panel1.Controls.Add(this.txtWachtwoord);
             this.panel1.Controls.Add(this.label6);
@@ -379,6 +371,69 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(829, 630);
             this.panel1.TabIndex = 27;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label14.Location = new System.Drawing.Point(321, 463);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(229, 24);
+            this.label14.TabIndex = 32;
+            this.label14.Text = "\"Wat is uw lievelingsdier?\"";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label13.Location = new System.Drawing.Point(97, 493);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(183, 26);
+            this.label13.TabIndex = 31;
+            this.label13.Text = "Beveiligingsvraag";
+            // 
+            // txtBeveiligingsvraag
+            // 
+            this.txtBeveiligingsvraag.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.txtBeveiligingsvraag.Location = new System.Drawing.Point(321, 490);
+            this.txtBeveiligingsvraag.MaxLength = 32;
+            this.txtBeveiligingsvraag.Name = "txtBeveiligingsvraag";
+            this.txtBeveiligingsvraag.Size = new System.Drawing.Size(229, 32);
+            this.txtBeveiligingsvraag.TabIndex = 30;
+            // 
+            // nudPin
+            // 
+            this.nudPin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.nudPin.Location = new System.Drawing.Point(321, 416);
+            this.nudPin.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.nudPin.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudPin.Name = "nudPin";
+            this.nudPin.Size = new System.Drawing.Size(229, 32);
+            this.nudPin.TabIndex = 29;
+            this.nudPin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudPin.Value = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label12.Location = new System.Drawing.Point(97, 418);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(91, 26);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "Pincode";
             // 
             // panel2
             // 
@@ -400,58 +455,29 @@
             this.label11.TabIndex = 27;
             this.label11.Text = "Registreren";
             // 
-            // label12
+            // nudTelNummer
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label12.Location = new System.Drawing.Point(97, 418);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(91, 26);
-            this.label12.TabIndex = 28;
-            this.label12.Text = "Pincode";
-            // 
-            // nudPin
-            // 
-            this.nudPin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.nudPin.Location = new System.Drawing.Point(321, 416);
-            this.nudPin.Maximum = new decimal(new int[] {
-            9999,
+            this.nudTelNummer.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.nudTelNummer.Location = new System.Drawing.Point(321, 250);
+            this.nudTelNummer.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.nudTelNummer.Minimum = new decimal(new int[] {
+            600000000,
             0,
             0,
             0});
-            this.nudPin.Name = "nudPin";
-            this.nudPin.Size = new System.Drawing.Size(229, 32);
-            this.nudPin.TabIndex = 29;
-            this.nudPin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label13.Location = new System.Drawing.Point(97, 493);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(183, 26);
-            this.label13.TabIndex = 31;
-            this.label13.Text = "Beveiligingsvraag";
-            // 
-            // txtSecretA
-            // 
-            this.txtSecretA.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.txtSecretA.Location = new System.Drawing.Point(321, 490);
-            this.txtSecretA.MaxLength = 32;
-            this.txtSecretA.Name = "txtSecretA";
-            this.txtSecretA.Size = new System.Drawing.Size(229, 32);
-            this.txtSecretA.TabIndex = 30;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label14.Location = new System.Drawing.Point(321, 463);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(229, 24);
-            this.label14.TabIndex = 32;
-            this.label14.Text = "\"Wat is uw lievelingsdier?\"";
+            this.nudTelNummer.Name = "nudTelNummer";
+            this.nudTelNummer.Size = new System.Drawing.Size(229, 32);
+            this.nudTelNummer.TabIndex = 33;
+            this.nudTelNummer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudTelNummer.Value = new decimal(new int[] {
+            600000000,
+            0,
+            0,
+            0});
             // 
             // MedewerkerRegistreren
             // 
@@ -464,9 +490,10 @@
             this.Size = new System.Drawing.Size(1410, 878);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPin)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTelNummer)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -481,7 +508,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtTelNummer;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtWachtwoord;
         private System.Windows.Forms.Label label6;
@@ -505,8 +531,9 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtSecretA;
+        private System.Windows.Forms.TextBox txtBeveiligingsvraag;
         private System.Windows.Forms.NumericUpDown nudPin;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown nudTelNummer;
     }
 }
