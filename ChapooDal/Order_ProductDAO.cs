@@ -81,9 +81,9 @@ namespace ChapooDal
 
             foreach (DataRow dr in dataTable.Rows)
             {
-
+                Product product = new Product((int)dr["ProductID"]);
                 Order_Product order_product = new Order_Product(
-                    (int)dr["ProductID"],
+                    product,
                     (int)dr["Aantal"]
                     );
 
@@ -98,12 +98,15 @@ namespace ChapooDal
 
             foreach (DataRow dr in dataTable.Rows)
             {
-
+                Order order = new Order((int)dr["OrderID"]);
+                Bestelling bestelling = new Bestelling((int)dr["BestellingID"]);
+                Product product = new Product((int)dr["ProductID"]);
+                Tafel tafel = new Tafel((int)dr["TafelID"]);
                 BarKeukenBestelling barKeukenBestelling = new BarKeukenBestelling(
-                    (int)dr["OrderID"],
-                    (int)dr["BestellingID"],
-                    (int)dr["ProductID"],
-                    (int)dr["TafelID"],
+                    order,
+                    bestelling,
+                    product,
+                    tafel,
                     (String)dr["ProductNaam"],
                     (bool)dr["IsDrinken"],
                     (String)dr["Status"],

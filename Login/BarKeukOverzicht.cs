@@ -50,7 +50,7 @@ namespace Login
             {
                 for (int i = 0; i < item.Aantal; i++)
                 {
-                    ListViewItem li = new ListViewItem("#" + item.TafelID.ToString());
+                    ListViewItem li = new ListViewItem("#" + item.Tafel.TafelNummer.ToString());
                     li.SubItems.Add(item.ProductNaam);
                     switch (item.Status)
                     {
@@ -83,7 +83,7 @@ namespace Login
                     if (!item.IsDrinken)
                         continue;
 
-                    ListViewItem li = new ListViewItem("#" + item.TafelID.ToString());
+                    ListViewItem li = new ListViewItem("#" + item.Tafel.TafelNummer.ToString());
                     li.SubItems.Add(item.ProductNaam);
                     li.SubItems.Add(item.Status.ToString());
 
@@ -101,7 +101,7 @@ namespace Login
                     if (item.IsDrinken)
                         continue;
 
-                    ListViewItem li = new ListViewItem("#" + item.TafelID.ToString());
+                    ListViewItem li = new ListViewItem("#" + item.Tafel.TafelNummer.ToString());
                     li.SubItems.Add(item.ProductNaam);
                     li.SubItems.Add(item.Status.ToString());
 
@@ -136,7 +136,7 @@ namespace Login
                 return;
             }
 
-            bool succes = orderProductService.UpdateOrderStatus(order.OrderID, order.ProductID, "Bezig", order.Aantal);
+            bool succes = orderProductService.UpdateOrderStatus(order.Order.OrderID, order.Product.ProductId, "Bezig", order.Aantal);
 
             if (!succes)
             {
@@ -161,7 +161,7 @@ namespace Login
                 return;
             }
 
-            bool succes = orderProductService.UpdateOrderStatus(order.OrderID, order.ProductID, "Nieuw", order.Aantal);
+            bool succes = orderProductService.UpdateOrderStatus(order.Order.OrderID, order.Product.ProductId, "Nieuw", order.Aantal);
 
             if (!succes)
             {
@@ -186,7 +186,7 @@ namespace Login
                 return;
             }
 
-            bool success = orderProductService.UpdateOrderStatus(order.OrderID, order.ProductID, "Compleet", order.Aantal);
+            bool success = orderProductService.UpdateOrderStatus(order.Order.OrderID, order.Product.ProductId, "Compleet", order.Aantal);
 
             if (!success)
             {

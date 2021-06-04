@@ -319,9 +319,9 @@ namespace Login
             List<Order_Product> OrderList = new List<Order_Product>();
             for (int i = 0; i < listOrderView.Items.Count; i++)
             {
-                int id = int.Parse(listOrderView.Items[i].SubItems[3].Text);
+                Product product = new Product(int.Parse(listOrderView.Items[i].SubItems[3].Text));
                 int aantal = int.Parse(listOrderView.Items[i].SubItems[1].Text);
-                Order_Product orderItem = new Order_Product(id, aantal);
+                Order_Product orderItem = new Order_Product(product, aantal);
                 OrderList.Add(orderItem);
             }
             Bestelling bestelling = new Bestelling 

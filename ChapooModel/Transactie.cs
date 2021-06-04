@@ -8,7 +8,7 @@ namespace ChapooModel
 {
     public class Transactie
     {
-        public List<int> BestellingIDs { get; set; }
+        public List<Bestelling> Bestellingen { get; set; }
         public int TransactieID { get; set; }
         public DateTime BetaalTijd = DateTime.Now;
         public bool BonGeprint { get; set; }
@@ -17,9 +17,9 @@ namespace ChapooModel
         public float BedragBetaald { get; set; }
         public float Fooi { get; set; }
         public string Betaalwijze { get; set; }
-        public Transactie(List<int> BestellingIDs, int TransactieID, bool BonGeprint, int WerknemerID, string Opmerking, float BedragBetaald, float Fooi, string Betaalwijze)
+        public Transactie(List<Bestelling> Bestellingen, int TransactieID, bool BonGeprint, int WerknemerID, string Opmerking, float BedragBetaald, float Fooi, string Betaalwijze)
         {
-            this.BestellingIDs = BestellingIDs;
+            this.Bestellingen = Bestellingen;
             this.TransactieID = TransactieID;
             this.BonGeprint = BonGeprint;
             this.WerknemerID = WerknemerID;

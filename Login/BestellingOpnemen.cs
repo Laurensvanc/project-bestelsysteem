@@ -88,13 +88,13 @@ namespace Login
             DateTime nu = DateTime.Now;
             foreach (Reservering r in reserverings)
             {
-                if (r.BeginTijd < nu && r.EindTijd > nu || tableList.Contains(r.TafelID))
+                if (r.BeginTijd < nu && r.EindTijd > nu || tableList.Contains(r.Tafel.TafelNummer))
                 {
-                    tafelToBezet.Add(r.TafelID);
+                    tafelToBezet.Add(r.Tafel.TafelNummer);
                 }
                 else if (r.BeginTijd < nu.AddHours(2) && r.EindTijd > nu)
                 {
-                    tafelToGereserveerd.Add(r.TafelID);
+                    tafelToGereserveerd.Add(r.Tafel.TafelNummer);
                 }
             }
 
@@ -410,9 +410,9 @@ namespace Login
             List<Order_Product> OrderList = new List<Order_Product>();
             for (int i = 0; i < listOrderView.Items.Count; i++)
             {
-                int id = int.Parse(listOrderView.Items[i].SubItems[3].Text);
+                Product product = new Product(int.Parse(listOrderView.Items[i].SubItems[3].Text));
                 int aantal = int.Parse(listOrderView.Items[i].SubItems[1].Text);
-                Order_Product orderItem = new Order_Product(id, aantal);
+                Order_Product orderItem = new Order_Product(product, aantal);
                 OrderList.Add(orderItem);
             }
             Bestelling bestelling = new Bestelling

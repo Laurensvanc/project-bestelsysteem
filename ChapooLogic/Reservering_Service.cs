@@ -25,18 +25,6 @@ namespace ChapooLogic
             }
             catch(Exception ex)
             {
-                List<Reservering> reservering = new List<Reservering>();
-                Reservering r = new Reservering(
-                404,
-                404,
-                DateTime.Now.AddSeconds(404),
-                DateTime.Now.AddMinutes(404),
-                404,
-                404
-                );
-                reservering.Add(r);
-                return reservering;
-                
                 throw new Exception("Chapoo kon niet verbinden met de database");
             }
         }
