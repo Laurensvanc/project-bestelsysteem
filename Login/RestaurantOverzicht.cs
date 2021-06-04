@@ -278,11 +278,11 @@ namespace Login
 
             lstKlantSysteem.Clear();
 
-            lstKlantSysteem.Columns.Add("KlantNummer", 75);
-            lstKlantSysteem.Columns.Add("Voornaam", 75);
-            lstKlantSysteem.Columns.Add("Achternaam", 100);
-            lstKlantSysteem.Columns.Add("GeboorteDatum", 75);
-            lstKlantSysteem.Columns.Add("Mobiel", 75);
+            lstKlantSysteem.Columns.Add("KlantNummer", 100);
+            lstKlantSysteem.Columns.Add("Voornaam", 150);
+            lstKlantSysteem.Columns.Add("Achternaam", 150);
+            lstKlantSysteem.Columns.Add("GeboorteDatum", 100);
+            lstKlantSysteem.Columns.Add("Mobiel", 120);
 
             lstKlantSysteem.FullRowSelect = true;
             lstKlantSysteem.GridLines = true;
