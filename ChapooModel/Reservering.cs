@@ -21,11 +21,10 @@ namespace ChapooModel
         }
         public Reservering(Tafel Tafel, DateTime BeginTijd, DateTime EindTijd, Klant Klant, int AantalPersonen)
         {
-
+            this.Klant = new Klant(Klant.KlantID);
             this.Tafel = Tafel;
             this.BeginTijd = BeginTijd;
             this.EindTijd = EindTijd;
-            this.Klant = Klant;
             this.AantalPersonen = AantalPersonen;
         }
         public Reservering (int ReserveringID, Tafel Tafel, DateTime BeginTijd, DateTime EindTijd, Klant Klant, int AantalPersonen) : this(Tafel,BeginTijd,EindTijd,Klant,AantalPersonen)
