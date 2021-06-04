@@ -26,6 +26,13 @@
             ProductId = productId;
         }
 
+        public Product(int productId, string productNaam, bool isDrinken)
+        {
+            ProductId = productId;
+            ProductNaam = productNaam;
+            IsDrinken = isDrinken;
+        }
+
         public override string ToString()
         {
             return ProductNaam;

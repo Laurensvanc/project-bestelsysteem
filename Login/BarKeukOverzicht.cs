@@ -15,7 +15,7 @@ namespace Login
 {
     public partial class BarKeukOverzicht : UserControl
     {
-        private List<BarKeukenBestelling> _orderList = new List<BarKeukenBestelling>();
+        private List<Order_Product> _orderList = new List<Order_Product>();
         private Order_Product_Service orderProductService = new Order_Product_Service();
 
         public BarKeukOverzicht()
@@ -46,12 +46,12 @@ namespace Login
 
         private void InsertListView()
         {
-            foreach (BarKeukenBestelling item in _orderList)
+            foreach (Order_Product item in _orderList)
             {
                 for (int i = 0; i < item.Aantal; i++)
                 {
-                    ListViewItem li = new ListViewItem("#" + item.TafelID.ToString());
-                    li.SubItems.Add(item.ProductNaam);
+                    ListViewItem li = new ListViewItem("#" + item.Bestelling.Tafel.TafelNummer.ToString());
+                    li.SubItems.Add(item.Product.ProductNaam);
                     switch (item.Status)
                     {
                         default:
@@ -67,7 +67,7 @@ namespace Login
                             li.SubItems.Add(item.Status.ToString()).ForeColor = Color.Green;
                             break;
                     }
-                    li.SubItems.Add(item.Opgenomen.ToString());
+                    li.SubItems.Add(item.Bestelling.Opgenomen.ToString());
                     lv_orderList.Items.Add(li);
 
                 }
@@ -76,15 +76,15 @@ namespace Login
 
         private void InsertBarListView()
         {
-            foreach (BarKeukenBestelling item in _orderList)
+            foreach (Order_Product item in _orderList)
             {
                 for (int i = 0; i < item.Aantal; i++)
                 {
-                    if (!item.IsDrinken)
+                    if (!item.Product.IsDrinken)
                         continue;
 
-                    ListViewItem li = new ListViewItem("#" + item.TafelID.ToString());
-                    li.SubItems.Add(item.ProductNaam);
+                    ListViewItem li = new ListViewItem("#" + item.Bestelling.Tafel.TafelNummer.ToString());
+                    li.SubItems.Add(item.Product.ProductNaam);
                     li.SubItems.Add(item.Status.ToString());
 
                     lv_orderList.Items.Add(li);
@@ -94,15 +94,15 @@ namespace Login
 
         private void InsertKeukenListView()
         {
-            foreach (BarKeukenBestelling item in _orderList)
+            foreach (Order_Product item in _orderList)
             {
                 for (int i = 0; i < item.Aantal; i++)
                 {
-                    if (item.IsDrinken)
+                    if (item.Product.IsDrinken)
                         continue;
 
-                    ListViewItem li = new ListViewItem("#" + item.TafelID.ToString());
-                    li.SubItems.Add(item.ProductNaam);
+                    ListViewItem li = new ListViewItem("#" + item.Bestelling.Tafel.TafelNummer.ToString());
+                    li.SubItems.Add(item.Product.ProductNaam);
                     li.SubItems.Add(item.Status.ToString());
 
                     lv_orderList.Items.Add(li);
@@ -112,7 +112,7 @@ namespace Login
 
         private void GetOrders()
         {
-            _orderList = orderProductService.GetAllBarKeukenBestellingen();
+            _orderList = orderProductService.GetAllOrderProducts();
 
             if (_orderList.Count == 0)
             {
@@ -128,7 +128,7 @@ namespace Login
 
             ListViewItem item = lv_orderList.SelectedItems[0];
 
-            BarKeukenBestelling order = _orderList[item.Index];
+            Order_Product order = _orderList[item.Index];
 
             if (order.Status == "Bezig") 
             {
@@ -136,7 +136,7 @@ namespace Login
                 return;
             }
 
-            bool succes = orderProductService.UpdateOrderStatus(order.OrderID, order.ProductID, "Bezig", order.Aantal);
+            bool succes = orderProductService.UpdateOrderStatus(order.OrderID, order.Product.ProductId, "Bezig", order.Aantal);
 
             if (!succes)
             {
@@ -153,7 +153,7 @@ namespace Login
 
             ListViewItem item = lv_orderList.SelectedItems[0];
 
-            BarKeukenBestelling order = _orderList[item.Index];
+            Order_Product order = _orderList[item.Index];
 
             if (order.Status == "Nieuw")
             {
@@ -161,7 +161,7 @@ namespace Login
                 return;
             }
 
-            bool succes = orderProductService.UpdateOrderStatus(order.OrderID, order.ProductID, "Nieuw", order.Aantal);
+            bool succes = orderProductService.UpdateOrderStatus(order.OrderID, order.Product.ProductId, "Nieuw", order.Aantal);
 
             if (!succes)
             {
@@ -178,7 +178,7 @@ namespace Login
 
             ListViewItem item = lv_orderList.SelectedItems[0];
 
-            BarKeukenBestelling order = _orderList[item.Index];
+            Order_Product order = _orderList[item.Index];
 
             if (order.Status == "Compleet")
             {
@@ -186,7 +186,7 @@ namespace Login
                 return;
             }
 
-            bool success = orderProductService.UpdateOrderStatus(order.OrderID, order.ProductID, "Compleet", order.Aantal);
+            bool success = orderProductService.UpdateOrderStatus(order.OrderID, order.Product.ProductId, "Compleet", order.Aantal);
 
             if (!success)
             {
