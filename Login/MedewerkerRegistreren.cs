@@ -31,12 +31,12 @@ namespace Login
                 if (CheckTextBox(txtVoornaam) &&
                 CheckTextBox(txtAchternaam) &&
                 CheckTextBox(txtInlogNaam) &&
-                CheckTextBox(txtTelNummer) &&
+                nudTelNummer.Value != 600000000 &&
                 CheckTextBox(txtEmail) &&
                 CheckTextBox(txtWachtwoord) &&
-                CheckTextBox(txtBevestigwachtwoord) && txtWachtwoord.Text == txtBevestigwachtwoord.Text)
+                CheckTextBox(txtBevestigwachtwoord) && txtWachtwoord.Text == txtBevestigwachtwoord.Text && 
+                CheckTextBox(txtBeveiligingsvraag))
                 {
-                    int mobiel = int.Parse(txtTelNummer.Text);
                     string encryptedwachtwoord = BCrypt.Net.BCrypt.HashPassword(txtWachtwoord.Text);
                     Account account = new Account(
                         0, // 0 komt niet in de database
@@ -44,20 +44,18 @@ namespace Login
                         txtAchternaam.Text,
                         txtInlogNaam.Text,
                         dtGeboorteDatum.Value,
-                        mobiel,
+                        int.Parse(nudTelNummer.Text),
                         txtEmail.Text,
                         encryptedwachtwoord,
                         int.Parse(nudPin.Text),
-                        txtSecretA.Text,
+                        txtBeveiligingsvraag.Text,
                         Manager, Chef, Bediening, Keuken, Sommelier, Maitre, Bar); ;
                     Account_Service service = new Account_Service();
-                    if (service.AddAccount(account)) MessageBox.Show($"{txtVoornaam.Text} is succesvol geregistreerd.");
+                    if (service.AddAccount(account)) MessageBox.Show($"{txtVoornaam.Text} is geregistreerd!");
                     ClearTextBoxes();
                 }
-                else if (txtWachtwoord.Text != txtBevestigwachtwoord.Text)
-                {
-                    MessageBox.Show("Wachtwoorden komen niet overeen", "Chapoo");
-                }
+                else if (txtWachtwoord.Text != txtBevestigwachtwoord.Text) MessageBox.Show("Wachtwoorden komen niet overeen", "Chapoo");
+                else if (nudTelNummer.Value == 600000000) MessageBox.Show("Vul geldig telefoonnummer in", "Chapoo");
             }
         }
         public bool CheckTextBox(TextBox tb)

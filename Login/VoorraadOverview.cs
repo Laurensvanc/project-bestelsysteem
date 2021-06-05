@@ -12,10 +12,13 @@ namespace Login
         private bool _showingDrinks;
         private List<Product> _products;
         private Product_Service _productService;
+        private ListViewColumnSorter lvwColumnSorter; // column sort functionality
 
         public VoorraadOverview()
         {
             InitializeComponent();
+            lvwColumnSorter = new ListViewColumnSorter();
+            this.lv_Voorraad.ListViewItemSorter = lvwColumnSorter;
         }
 
         private void VoorraadOverview_Load(object sender, EventArgs e)
@@ -226,6 +229,35 @@ namespace Login
         private void lv_Voorraad_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
             e.DrawDefault = true;
+        }
+
+        private void ColumnSort(ColumnClickEventArgs e, ListView lv)
+        {
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+            lv.Sort();
+        }
+
+        private void lv_Voorraad_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSort(e, (ListView)sender);
         }
     }
 }

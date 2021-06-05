@@ -25,14 +25,16 @@ namespace ChapooDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
+                Tafel tafel = new Tafel((int)dr["TafelID"]);
+                Klant klant = new Klant((int)dr["KlantID"]);
                 Reservering reservering = new Reservering(
 
                     (String)dr["Voornaam"],
                     (int)dr["ReserveringID"],
-                    (int)dr["TafelID"],
+                    tafel,
                     (DateTime)dr["BeginTijd"],
                     (DateTime)dr["EindTijd"],
-                    (int)dr["KlantID"],
+                    klant,
                     (int)dr["AantalPersonen"]
                     );
                 
@@ -48,13 +50,14 @@ namespace ChapooDAL
             // Setting the parameters from the parameter order
             SqlParameter[] sqlParameters = new SqlParameter[5];
 
-            sqlParameters[0] = new SqlParameter("@TafelID", reservering.TafelID);
+            sqlParameters[0] = new SqlParameter("@TafelID", reservering.Tafel.TafelNummer);
             sqlParameters[1] = new SqlParameter("@Begin", reservering.BeginTijd);
             sqlParameters[2] = new SqlParameter("@Eind", reservering.EindTijd);
-            sqlParameters[3] = new SqlParameter("@KlantID", reservering.KlantID);
+            sqlParameters[3] = new SqlParameter("@KlantID", reservering.Klant.KlantID);
             sqlParameters[4] = new SqlParameter("@Aantal", reservering.AantalPersonen);
             ExecuteEditQuery(query, sqlParameters);
         }
+
         public void DeleteReservering(Reservering reservering)
         {
             // Data gets changed in database

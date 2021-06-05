@@ -197,6 +197,7 @@
             this.lv_Voorraad.TabIndex = 0;
             this.lv_Voorraad.UseCompatibleStateImageBehavior = false;
             this.lv_Voorraad.View = System.Windows.Forms.View.Details;
+            this.lv_Voorraad.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lv_Voorraad_ColumnClick);
             this.lv_Voorraad.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.lv_Voorraad_DrawColumnHeader);
             this.lv_Voorraad.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.lv_Voorraad_DrawItem);
             this.lv_Voorraad.DoubleClick += new System.EventHandler(this.lv_Voorraad_DoubleClick);

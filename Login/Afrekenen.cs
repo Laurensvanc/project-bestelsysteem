@@ -19,7 +19,7 @@ namespace Login
         private double _totaalPrijs;
         private List<Order> _orderList;
         private Order_Info _orderInfo;
-        private List<int> _bestellingIDs;
+        private List<Bestelling> _bestellingen;
         private DateTime _nu = DateTime.Now;
         private int _tafelID;
         private Form _bon;
@@ -71,7 +71,7 @@ namespace Login
             listOrderViewTotaal.Clear();
             _tafelID = id;
             _totaalPrijs = 0;
-            _bestellingIDs = new List<int>();
+            _bestellingen = new List<Bestelling>();
 
             _orderInfo = _transaction_Service.GetOrderInfo(id);
             if (_orderInfo.Betaald)
@@ -81,7 +81,7 @@ namespace Login
             } else
             {
                 lblTransID.Text = "ID: " + _orderInfo.Transactie.TransactieID.ToString();
-                lblTijd.Text = "Tijd: " + _orderInfo.Tijd.TotalMinutes.ToString("00:00");
+                lblTijd.Text = "Tijd: " + _orderInfo.Tijd.ToString(@"hh\:mm");
                 lblGeholpen.Text = "Geholpen door: " + _orderInfo.Naam;
             }
             string[] arr = new string[4];
@@ -96,7 +96,7 @@ namespace Login
                 listOrderView.Items.Add(li);
                 _totaalPrijs += order.Prijs;
 
-                if (!_bestellingIDs.Contains(order.Bestelling.BestellingID)) _bestellingIDs.Add(order.Bestelling.BestellingID);
+                if (!_bestellingen.Contains(order.Bestelling)) _bestellingen.Add(order.Bestelling);
             }
             listOrderViewTip.Columns.Add("Tip:", 308);
             listOrderViewTotaal.Columns.Add("Totaal prijs:", 380);
@@ -128,7 +128,7 @@ namespace Login
             else if (rbtnPinnen.Checked) betaalWijze = "pin";
 
             Transactie transactie = new Transactie(
-                _bestellingIDs,
+                _bestellingen,
                 _orderInfo.Transactie.TransactieID,
                 BonGeprint, 
                 _orderInfo.WerknemerID,

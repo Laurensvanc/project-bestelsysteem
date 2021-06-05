@@ -32,6 +32,7 @@
             this.flp_TableSelect = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnl_Afrekenen = new System.Windows.Forms.Panel();
+            this.lbl_Instructions = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -44,6 +45,10 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.nudTip = new System.Windows.Forms.NumericUpDown();
             this.listOrderView = new System.Windows.Forms.ListView();
+            this.chBestellingID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chBestelling = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chAantal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chPrijs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listOrderViewTip = new System.Windows.Forms.ListView();
             this.listOrderViewTotaal = new System.Windows.Forms.ListView();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -64,11 +69,6 @@
             this.img_Logo = new System.Windows.Forms.PictureBox();
             this.lblAfrekenen = new System.Windows.Forms.Label();
             this.rbtnPin = new System.Windows.Forms.RadioButton();
-            this.chBestellingID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chBestelling = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chAantal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chPrijs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lbl_Instructions = new System.Windows.Forms.Label();
             this.pnl_Afrekenen.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -86,7 +86,7 @@
             // 
             // flp_TableSelect
             // 
-            this.flp_TableSelect.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flp_TableSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flp_TableSelect.Location = new System.Drawing.Point(346, 180);
             this.flp_TableSelect.Name = "flp_TableSelect";
             this.flp_TableSelect.Size = new System.Drawing.Size(658, 455);
@@ -95,11 +95,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Roboto", 34F);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 34F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
             this.label1.Location = new System.Drawing.Point(344, 92);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(628, 56);
+            this.label1.Size = new System.Drawing.Size(640, 53);
             this.label1.TabIndex = 1;
             this.label1.Text = "Selecteer tafel voor afrekenen";
             // 
@@ -126,6 +126,17 @@
             this.pnl_Afrekenen.Size = new System.Drawing.Size(1404, 872);
             this.pnl_Afrekenen.TabIndex = 19;
             // 
+            // lbl_Instructions
+            // 
+            this.lbl_Instructions.AutoSize = true;
+            this.lbl_Instructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lbl_Instructions.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Instructions.Location = new System.Drawing.Point(877, 711);
+            this.lbl_Instructions.Name = "lbl_Instructions";
+            this.lbl_Instructions.Size = new System.Drawing.Size(234, 25);
+            this.lbl_Instructions.TabIndex = 22;
+            this.lbl_Instructions.Text = "Selecteer betaal methode";
+            // 
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
@@ -140,11 +151,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Roboto", 20F);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(3, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(147, 33);
+            this.label4.Size = new System.Drawing.Size(146, 31);
             this.label4.TabIndex = 22;
             this.label4.Text = "Opmerking";
             // 
@@ -161,7 +172,7 @@
             // txtOpmerking
             // 
             this.txtOpmerking.AcceptsReturn = true;
-            this.txtOpmerking.Font = new System.Drawing.Font("Roboto", 15F);
+            this.txtOpmerking.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.txtOpmerking.Location = new System.Drawing.Point(3, 48);
             this.txtOpmerking.MaxLength = 250;
             this.txtOpmerking.Multiline = true;
@@ -183,10 +194,10 @@
             // rbtnContant
             // 
             this.rbtnContant.AutoSize = true;
-            this.rbtnContant.Font = new System.Drawing.Font("Roboto", 15F);
+            this.rbtnContant.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.rbtnContant.Location = new System.Drawing.Point(19, 69);
             this.rbtnContant.Name = "rbtnContant";
-            this.rbtnContant.Size = new System.Drawing.Size(99, 28);
+            this.rbtnContant.Size = new System.Drawing.Size(99, 29);
             this.rbtnContant.TabIndex = 21;
             this.rbtnContant.TabStop = true;
             this.rbtnContant.Text = "Contant";
@@ -196,20 +207,20 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Roboto", 15F);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.label3.Location = new System.Drawing.Point(15, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(124, 24);
+            this.label3.Size = new System.Drawing.Size(121, 25);
             this.label3.TabIndex = 19;
             this.label3.Text = "Betalen met:";
             // 
             // rbtnPinnen
             // 
             this.rbtnPinnen.AutoSize = true;
-            this.rbtnPinnen.Font = new System.Drawing.Font("Roboto", 15F);
+            this.rbtnPinnen.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.rbtnPinnen.Location = new System.Drawing.Point(19, 42);
             this.rbtnPinnen.Name = "rbtnPinnen";
-            this.rbtnPinnen.Size = new System.Drawing.Size(57, 28);
+            this.rbtnPinnen.Size = new System.Drawing.Size(58, 29);
             this.rbtnPinnen.TabIndex = 20;
             this.rbtnPinnen.TabStop = true;
             this.rbtnPinnen.Text = "Pin";
@@ -239,10 +250,10 @@
             // nudTip
             // 
             this.nudTip.DecimalPlaces = 2;
-            this.nudTip.Font = new System.Drawing.Font("Roboto", 16F);
+            this.nudTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.nudTip.Location = new System.Drawing.Point(384, 391);
             this.nudTip.Name = "nudTip";
-            this.nudTip.Size = new System.Drawing.Size(104, 33);
+            this.nudTip.Size = new System.Drawing.Size(104, 32);
             this.nudTip.TabIndex = 26;
             this.nudTip.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -253,7 +264,7 @@
             this.chBestelling,
             this.chAantal,
             this.chPrijs});
-            this.listOrderView.Font = new System.Drawing.Font("Roboto", 15F);
+            this.listOrderView.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.listOrderView.GridLines = true;
             this.listOrderView.HideSelection = false;
             this.listOrderView.Location = new System.Drawing.Point(3, 3);
@@ -263,9 +274,29 @@
             this.listOrderView.UseCompatibleStateImageBehavior = false;
             this.listOrderView.View = System.Windows.Forms.View.Details;
             // 
+            // chBestellingID
+            // 
+            this.chBestellingID.Text = "ID";
+            this.chBestellingID.Width = 33;
+            // 
+            // chBestelling
+            // 
+            this.chBestelling.Text = "Bestelling";
+            this.chBestelling.Width = 273;
+            // 
+            // chAantal
+            // 
+            this.chAantal.Text = "Aantal";
+            this.chAantal.Width = 70;
+            // 
+            // chPrijs
+            // 
+            this.chPrijs.Text = "Prijs";
+            this.chPrijs.Width = 101;
+            // 
             // listOrderViewTip
             // 
-            this.listOrderViewTip.Font = new System.Drawing.Font("Roboto", 15F);
+            this.listOrderViewTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.listOrderViewTip.GridLines = true;
             this.listOrderViewTip.HideSelection = false;
             this.listOrderViewTip.Location = new System.Drawing.Point(3, 390);
@@ -277,7 +308,7 @@
             // 
             // listOrderViewTotaal
             // 
-            this.listOrderViewTotaal.Font = new System.Drawing.Font("Roboto", 15F);
+            this.listOrderViewTotaal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.listOrderViewTotaal.GridLines = true;
             this.listOrderViewTotaal.HideSelection = false;
             this.listOrderViewTotaal.Location = new System.Drawing.Point(3, 424);
@@ -308,10 +339,10 @@
             // lblTijd
             // 
             this.lblTijd.AutoSize = true;
-            this.lblTijd.Font = new System.Drawing.Font("Roboto", 15F);
-            this.lblTijd.Location = new System.Drawing.Point(18, 21);
+            this.lblTijd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblTijd.Location = new System.Drawing.Point(16, 21);
             this.lblTijd.Name = "lblTijd";
-            this.lblTijd.Size = new System.Drawing.Size(102, 24);
+            this.lblTijd.Size = new System.Drawing.Size(105, 25);
             this.lblTijd.TabIndex = 19;
             this.lblTijd.Text = "Tijd: 00:00";
             // 
@@ -336,10 +367,10 @@
             // lblTransID
             // 
             this.lblTransID.AutoSize = true;
-            this.lblTransID.Font = new System.Drawing.Font("Roboto", 15F);
+            this.lblTransID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lblTransID.Location = new System.Drawing.Point(15, 21);
             this.lblTransID.Name = "lblTransID";
-            this.lblTransID.Size = new System.Drawing.Size(51, 24);
+            this.lblTransID.Size = new System.Drawing.Size(54, 25);
             this.lblTransID.TabIndex = 19;
             this.lblTransID.Text = "Id: ...";
             // 
@@ -354,10 +385,10 @@
             // lblGeholpen
             // 
             this.lblGeholpen.AutoSize = true;
-            this.lblGeholpen.Font = new System.Drawing.Font("Roboto", 15F);
+            this.lblGeholpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lblGeholpen.Location = new System.Drawing.Point(19, 26);
             this.lblGeholpen.Name = "lblGeholpen";
-            this.lblGeholpen.Size = new System.Drawing.Size(165, 24);
+            this.lblGeholpen.Size = new System.Drawing.Size(167, 25);
             this.lblGeholpen.TabIndex = 19;
             this.lblGeholpen.Text = "Geholpen door: ...";
             // 
@@ -380,11 +411,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Roboto", 30F);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
             this.label2.Location = new System.Drawing.Point(66, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 48);
+            this.label2.Size = new System.Drawing.Size(161, 46);
             this.label2.TabIndex = 19;
             this.label2.Text = "Chapoo";
             // 
@@ -400,7 +431,7 @@
             // 
             this.btnTerugOverzicht.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnTerugOverzicht.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTerugOverzicht.Font = new System.Drawing.Font("Roboto", 20F);
+            this.btnTerugOverzicht.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.btnTerugOverzicht.ForeColor = System.Drawing.Color.White;
             this.btnTerugOverzicht.Location = new System.Drawing.Point(240, 643);
             this.btnTerugOverzicht.Name = "btnTerugOverzicht";
@@ -414,7 +445,7 @@
             // 
             this.btnBetaal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnBetaal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBetaal.Font = new System.Drawing.Font("Roboto", 35F);
+            this.btnBetaal.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
             this.btnBetaal.ForeColor = System.Drawing.Color.White;
             this.btnBetaal.Location = new System.Drawing.Point(825, 643);
             this.btnBetaal.Name = "btnBetaal";
@@ -428,7 +459,7 @@
             // 
             this.btnUpdatePrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnUpdatePrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdatePrice.Font = new System.Drawing.Font("Roboto", 18F);
+            this.btnUpdatePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.btnUpdatePrice.ForeColor = System.Drawing.Color.White;
             this.btnUpdatePrice.Location = new System.Drawing.Point(1161, 643);
             this.btnUpdatePrice.Name = "btnUpdatePrice";
@@ -452,11 +483,11 @@
             // lblAfrekenen
             // 
             this.lblAfrekenen.AutoSize = true;
-            this.lblAfrekenen.Font = new System.Drawing.Font("Roboto", 20F);
+            this.lblAfrekenen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.lblAfrekenen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(78)))), ((int)(((byte)(124)))));
             this.lblAfrekenen.Location = new System.Drawing.Point(236, 124);
             this.lblAfrekenen.Name = "lblAfrekenen";
-            this.lblAfrekenen.Size = new System.Drawing.Size(226, 33);
+            this.lblAfrekenen.Size = new System.Drawing.Size(228, 31);
             this.lblAfrekenen.TabIndex = 17;
             this.lblAfrekenen.Text = "Afrekenen tafel ...";
             // 
@@ -471,37 +502,6 @@
             this.rbtnPin.TabStop = true;
             this.rbtnPin.Text = "Pin";
             this.rbtnPin.UseVisualStyleBackColor = true;
-            // 
-            // chBestellingID
-            // 
-            this.chBestellingID.Text = "ID";
-            this.chBestellingID.Width = 33;
-            // 
-            // chBestelling
-            // 
-            this.chBestelling.Text = "Bestelling";
-            this.chBestelling.Width = 273;
-            // 
-            // chAantal
-            // 
-            this.chAantal.Text = "Aantal";
-            this.chAantal.Width = 70;
-            // 
-            // chPrijs
-            // 
-            this.chPrijs.Text = "Prijs";
-            this.chPrijs.Width = 101;
-            // 
-            // lbl_Instructions
-            // 
-            this.lbl_Instructions.AutoSize = true;
-            this.lbl_Instructions.Font = new System.Drawing.Font("Roboto", 15F);
-            this.lbl_Instructions.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Instructions.Location = new System.Drawing.Point(877, 711);
-            this.lbl_Instructions.Name = "lbl_Instructions";
-            this.lbl_Instructions.Size = new System.Drawing.Size(241, 24);
-            this.lbl_Instructions.TabIndex = 22;
-            this.lbl_Instructions.Text = "Selecteer betaal methode";
             // 
             // Afrekenen
             // 

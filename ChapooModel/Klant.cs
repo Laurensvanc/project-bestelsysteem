@@ -31,6 +31,10 @@ namespace ChapooModel
             this.Mobiel = Mobiel;
             this.KlantID = KlantID;
         }
+        public Klant(int KlantID)
+        {
+            this.KlantID = KlantID;
+        }
 
     }
 }

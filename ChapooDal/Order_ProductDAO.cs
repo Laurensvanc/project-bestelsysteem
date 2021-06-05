@@ -81,9 +81,9 @@ namespace ChapooDal
 
             foreach (DataRow dr in dataTable.Rows)
             {
-
+                Product product = new Product((int)dr["ProductID"]);
                 Order_Product order_product = new Order_Product(
-                    (int)dr["ProductID"],
+                    product,
                     (int)dr["Aantal"]
                     );
 

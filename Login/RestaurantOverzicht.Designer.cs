@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.pnlKlantSysteem = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lstKlantSysteem = new System.Windows.Forms.ListView();
+            this.lblKlantSysteem = new System.Windows.Forms.Label();
             this.lblZoeken = new System.Windows.Forms.Label();
             this.lblKlantGeselct = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -36,7 +39,6 @@
             this.txtNaamKlant = new System.Windows.Forms.TextBox();
             this.btnTerug = new System.Windows.Forms.Button();
             this.btnKlantOpslaan = new System.Windows.Forms.Button();
-            this.lstKlantSysteem = new System.Windows.Forms.ListView();
             this.panel_Header = new System.Windows.Forms.Panel();
             this.lstReservering = new System.Windows.Forms.ListView();
             this.label11 = new System.Windows.Forms.Label();
@@ -66,17 +68,21 @@
             this.geboorteDatumPicker = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.pnlReservering = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.btnSelectKlant = new System.Windows.Forms.Button();
             this.pnlKlantSysteem.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel_Header.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnl_overzicht.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericAantal)).BeginInit();
             this.pnlReservering.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlKlantSysteem
             // 
+            this.pnlKlantSysteem.Controls.Add(this.panel1);
             this.pnlKlantSysteem.Controls.Add(this.lblZoeken);
             this.pnlKlantSysteem.Controls.Add(this.lblKlantGeselct);
             this.pnlKlantSysteem.Controls.Add(this.label4);
@@ -84,37 +90,74 @@
             this.pnlKlantSysteem.Controls.Add(this.txtNaamKlant);
             this.pnlKlantSysteem.Controls.Add(this.btnTerug);
             this.pnlKlantSysteem.Controls.Add(this.btnKlantOpslaan);
-            this.pnlKlantSysteem.Controls.Add(this.lstKlantSysteem);
             this.pnlKlantSysteem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlKlantSysteem.Location = new System.Drawing.Point(0, 0);
             this.pnlKlantSysteem.Name = "pnlKlantSysteem";
             this.pnlKlantSysteem.Size = new System.Drawing.Size(1576, 942);
             this.pnlKlantSysteem.TabIndex = 16;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.panel1.Controls.Add(this.lstKlantSysteem);
+            this.panel1.Controls.Add(this.lblKlantSysteem);
+            this.panel1.Location = new System.Drawing.Point(279, 22);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1001, 640);
+            this.panel1.TabIndex = 31;
+            // 
+            // lstKlantSysteem
+            // 
+            this.lstKlantSysteem.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstKlantSysteem.HideSelection = false;
+            this.lstKlantSysteem.Location = new System.Drawing.Point(3, 65);
+            this.lstKlantSysteem.MultiSelect = false;
+            this.lstKlantSysteem.Name = "lstKlantSysteem";
+            this.lstKlantSysteem.Size = new System.Drawing.Size(995, 572);
+            this.lstKlantSysteem.TabIndex = 0;
+            this.lstKlantSysteem.UseCompatibleStateImageBehavior = false;
+            this.lstKlantSysteem.View = System.Windows.Forms.View.Details;
+            this.lstKlantSysteem.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lstKlantSysteem_ColumnClick);
+            this.lstKlantSysteem.SelectedIndexChanged += new System.EventHandler(this.lstKlantSysteem_SelectedIndexChanged);
+            // 
+            // lblKlantSysteem
+            // 
+            this.lblKlantSysteem.AutoSize = true;
+            this.lblKlantSysteem.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKlantSysteem.ForeColor = System.Drawing.Color.White;
+            this.lblKlantSysteem.Location = new System.Drawing.Point(4, 11);
+            this.lblKlantSysteem.Name = "lblKlantSysteem";
+            this.lblKlantSysteem.Size = new System.Drawing.Size(276, 46);
+            this.lblKlantSysteem.TabIndex = 12;
+            this.lblKlantSysteem.Text = "Klant Systeem";
+            // 
             // lblZoeken
             // 
             this.lblZoeken.AutoSize = true;
-            this.lblZoeken.Location = new System.Drawing.Point(12, 130);
+            this.lblZoeken.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblZoeken.Location = new System.Drawing.Point(25, 380);
             this.lblZoeken.Name = "lblZoeken";
-            this.lblZoeken.Size = new System.Drawing.Size(104, 13);
+            this.lblZoeken.Size = new System.Drawing.Size(197, 25);
             this.lblZoeken.TabIndex = 11;
             this.lblZoeken.Text = "Zoeken op Iedereen";
             // 
             // lblKlantGeselct
             // 
             this.lblKlantGeselct.AutoSize = true;
-            this.lblKlantGeselct.Location = new System.Drawing.Point(156, 392);
+            this.lblKlantGeselct.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKlantGeselct.Location = new System.Drawing.Point(278, 670);
             this.lblKlantGeselct.Name = "lblKlantGeselct";
-            this.lblKlantGeselct.Size = new System.Drawing.Size(123, 13);
+            this.lblKlantGeselct.Size = new System.Drawing.Size(213, 23);
             this.lblKlantGeselct.TabIndex = 10;
             this.lblKlantGeselct.Text = "Geen klant geselecteerd";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 74);
+            this.label4.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(25, 315);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(67, 25);
             this.label4.TabIndex = 5;
             this.label4.Text = "Naam";
             // 
@@ -122,7 +165,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(10, 12);
+            this.label3.Location = new System.Drawing.Point(49, 249);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(134, 25);
             this.label3.TabIndex = 4;
@@ -130,42 +173,43 @@
             // 
             // txtNaamKlant
             // 
-            this.txtNaamKlant.Location = new System.Drawing.Point(10, 93);
+            this.txtNaamKlant.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNaamKlant.Location = new System.Drawing.Point(30, 343);
             this.txtNaamKlant.Name = "txtNaamKlant";
-            this.txtNaamKlant.Size = new System.Drawing.Size(100, 20);
+            this.txtNaamKlant.Size = new System.Drawing.Size(181, 31);
             this.txtNaamKlant.TabIndex = 3;
             this.txtNaamKlant.TextChanged += new System.EventHandler(this.txtNaamKlant_TextChanged);
             // 
             // btnTerug
             // 
-            this.btnTerug.Location = new System.Drawing.Point(563, 382);
+            this.btnTerug.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnTerug.FlatAppearance.BorderSize = 0;
+            this.btnTerug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTerug.Font = new System.Drawing.Font("Roboto", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTerug.ForeColor = System.Drawing.Color.White;
+            this.btnTerug.Location = new System.Drawing.Point(270, 705);
             this.btnTerug.Name = "btnTerug";
-            this.btnTerug.Size = new System.Drawing.Size(75, 23);
+            this.btnTerug.Size = new System.Drawing.Size(221, 91);
             this.btnTerug.TabIndex = 2;
             this.btnTerug.Text = "Terug";
-            this.btnTerug.UseVisualStyleBackColor = true;
+            this.btnTerug.UseVisualStyleBackColor = false;
             this.btnTerug.Click += new System.EventHandler(this.btnTerug_Click);
             // 
             // btnKlantOpslaan
             // 
-            this.btnKlantOpslaan.Location = new System.Drawing.Point(666, 382);
+            this.btnKlantOpslaan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnKlantOpslaan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.btnKlantOpslaan.FlatAppearance.BorderSize = 0;
+            this.btnKlantOpslaan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKlantOpslaan.Font = new System.Drawing.Font("Roboto", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKlantOpslaan.ForeColor = System.Drawing.Color.White;
+            this.btnKlantOpslaan.Location = new System.Drawing.Point(1039, 703);
             this.btnKlantOpslaan.Name = "btnKlantOpslaan";
-            this.btnKlantOpslaan.Size = new System.Drawing.Size(75, 23);
+            this.btnKlantOpslaan.Size = new System.Drawing.Size(235, 93);
             this.btnKlantOpslaan.TabIndex = 1;
-            this.btnKlantOpslaan.Text = "Kiezen";
-            this.btnKlantOpslaan.UseVisualStyleBackColor = true;
+            this.btnKlantOpslaan.Text = "Selecteren";
+            this.btnKlantOpslaan.UseVisualStyleBackColor = false;
             this.btnKlantOpslaan.Click += new System.EventHandler(this.btnKlantOpslaan_Click);
-            // 
-            // lstKlantSysteem
-            // 
-            this.lstKlantSysteem.HideSelection = false;
-            this.lstKlantSysteem.Location = new System.Drawing.Point(159, 28);
-            this.lstKlantSysteem.Name = "lstKlantSysteem";
-            this.lstKlantSysteem.Size = new System.Drawing.Size(582, 348);
-            this.lstKlantSysteem.TabIndex = 0;
-            this.lstKlantSysteem.UseCompatibleStateImageBehavior = false;
-            this.lstKlantSysteem.View = System.Windows.Forms.View.Details;
-            this.lstKlantSysteem.SelectedIndexChanged += new System.EventHandler(this.lstKlantSysteem_SelectedIndexChanged);
             // 
             // panel_Header
             // 
@@ -182,11 +226,13 @@
             this.lstReservering.Font = new System.Drawing.Font("Roboto", 17F);
             this.lstReservering.HideSelection = false;
             this.lstReservering.Location = new System.Drawing.Point(3, 55);
+            this.lstReservering.MultiSelect = false;
             this.lstReservering.Name = "lstReservering";
             this.lstReservering.Size = new System.Drawing.Size(1092, 679);
             this.lstReservering.TabIndex = 0;
             this.lstReservering.UseCompatibleStateImageBehavior = false;
             this.lstReservering.View = System.Windows.Forms.View.Details;
+            this.lstReservering.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lstReservering_ColumnClick);
             // 
             // label11
             // 
@@ -225,11 +271,13 @@
             this.lstTafelStatus.Font = new System.Drawing.Font("Roboto", 17F);
             this.lstTafelStatus.HideSelection = false;
             this.lstTafelStatus.Location = new System.Drawing.Point(3, 55);
+            this.lstTafelStatus.MultiSelect = false;
             this.lstTafelStatus.Name = "lstTafelStatus";
             this.lstTafelStatus.Size = new System.Drawing.Size(438, 679);
             this.lstTafelStatus.TabIndex = 1;
             this.lstTafelStatus.UseCompatibleStateImageBehavior = false;
             this.lstTafelStatus.View = System.Windows.Forms.View.Details;
+            this.lstTafelStatus.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lstTafelStatus_ColumnClick);
             // 
             // btnMin
             // 
@@ -292,6 +340,7 @@
             // 
             this.txtNaam.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNaam.Location = new System.Drawing.Point(36, 146);
+            this.txtNaam.MaxLength = 30;
             this.txtNaam.Name = "txtNaam";
             this.txtNaam.Size = new System.Drawing.Size(153, 32);
             this.txtNaam.TabIndex = 0;
@@ -308,20 +357,20 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Location = new System.Drawing.Point(36, 119);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(98, 24);
+            this.lblName.Size = new System.Drawing.Size(97, 23);
             this.lblName.TabIndex = 4;
             this.lblName.Text = "Voornaam";
             // 
             // lblAantalPersonen
             // 
             this.lblAantalPersonen.AutoSize = true;
-            this.lblAantalPersonen.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAantalPersonen.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAantalPersonen.Location = new System.Drawing.Point(36, 405);
             this.lblAantalPersonen.Name = "lblAantalPersonen";
-            this.lblAantalPersonen.Size = new System.Drawing.Size(149, 24);
+            this.lblAantalPersonen.Size = new System.Drawing.Size(147, 23);
             this.lblAantalPersonen.TabIndex = 5;
             this.lblAantalPersonen.Text = "Aantal Personen";
             // 
@@ -330,9 +379,9 @@
             this.btnUpdateRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnUpdateRes.FlatAppearance.BorderSize = 0;
             this.btnUpdateRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdateRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateRes.Font = new System.Drawing.Font("Roboto", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateRes.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateRes.Location = new System.Drawing.Point(37, 673);
+            this.btnUpdateRes.Location = new System.Drawing.Point(1148, 755);
             this.btnUpdateRes.Name = "btnUpdateRes";
             this.btnUpdateRes.Size = new System.Drawing.Size(205, 102);
             this.btnUpdateRes.TabIndex = 6;
@@ -345,13 +394,13 @@
             this.btnDeleteRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnDeleteRes.FlatAppearance.BorderSize = 0;
             this.btnDeleteRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteRes.Font = new System.Drawing.Font("Roboto", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteRes.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteRes.Location = new System.Drawing.Point(269, 673);
+            this.btnDeleteRes.Location = new System.Drawing.Point(410, 752);
             this.btnDeleteRes.Name = "btnDeleteRes";
             this.btnDeleteRes.Size = new System.Drawing.Size(238, 102);
             this.btnDeleteRes.TabIndex = 7;
-            this.btnDeleteRes.Text = "Verwijderen";
+            this.btnDeleteRes.Text = "Terug";
             this.btnDeleteRes.UseVisualStyleBackColor = false;
             this.btnDeleteRes.Click += new System.EventHandler(this.btnDeleteRes_Click);
             // 
@@ -359,38 +408,56 @@
             // 
             this.NumericAantal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NumericAantal.Location = new System.Drawing.Point(40, 432);
+            this.NumericAantal.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.NumericAantal.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.NumericAantal.Name = "NumericAantal";
             this.NumericAantal.Size = new System.Drawing.Size(120, 32);
             this.NumericAantal.TabIndex = 4;
+            this.NumericAantal.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // lstReserveringDag
             // 
             this.lstReserveringDag.Font = new System.Drawing.Font("Roboto", 15F);
             this.lstReserveringDag.HideSelection = false;
-            this.lstReserveringDag.Location = new System.Drawing.Point(413, 103);
+            this.lstReserveringDag.Location = new System.Drawing.Point(3, 60);
+            this.lstReserveringDag.MultiSelect = false;
             this.lstReserveringDag.Name = "lstReserveringDag";
-            this.lstReserveringDag.Size = new System.Drawing.Size(808, 480);
+            this.lstReserveringDag.Size = new System.Drawing.Size(943, 561);
             this.lstReserveringDag.TabIndex = 9;
             this.lstReserveringDag.UseCompatibleStateImageBehavior = false;
             this.lstReserveringDag.View = System.Windows.Forms.View.Details;
+            this.lstReserveringDag.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lstReserveringDag_ColumnClick);
             // 
             // lblDatum
             // 
             this.lblDatum.AutoSize = true;
-            this.lblDatum.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatum.Location = new System.Drawing.Point(413, 78);
+            this.lblDatum.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDatum.ForeColor = System.Drawing.Color.White;
+            this.lblDatum.Location = new System.Drawing.Point(13, 14);
             this.lblDatum.Name = "lblDatum";
-            this.lblDatum.Size = new System.Drawing.Size(401, 25);
+            this.lblDatum.Size = new System.Drawing.Size(588, 38);
             this.lblDatum.TabIndex = 10;
             this.lblDatum.Text = "Ingeplande Reserveringen voor vandaag";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(33, 215);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 24);
+            this.label1.Size = new System.Drawing.Size(148, 23);
             this.label1.TabIndex = 12;
             this.label1.Text = "Geboorte Datum";
             // 
@@ -398,17 +465,19 @@
             // 
             this.txtTellie.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTellie.Location = new System.Drawing.Point(40, 344);
+            this.txtTellie.MaxLength = 20;
             this.txtTellie.Name = "txtTellie";
             this.txtTellie.Size = new System.Drawing.Size(184, 32);
             this.txtTellie.TabIndex = 3;
+            this.txtTellie.TextChanged += new System.EventHandler(this.txtTellie_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(36, 317);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(164, 24);
+            this.label2.Size = new System.Drawing.Size(163, 23);
             this.label2.TabIndex = 14;
             this.label2.Text = "Telefoon Nummer";
             // 
@@ -416,6 +485,7 @@
             // 
             this.txtAchternaam.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAchternaam.Location = new System.Drawing.Point(211, 146);
+            this.txtAchternaam.MaxLength = 30;
             this.txtAchternaam.Name = "txtAchternaam";
             this.txtAchternaam.Size = new System.Drawing.Size(155, 32);
             this.txtAchternaam.TabIndex = 1;
@@ -423,10 +493,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(207, 119);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 24);
+            this.label5.Size = new System.Drawing.Size(111, 23);
             this.label5.TabIndex = 18;
             this.label5.Text = "Achternaam";
             // 
@@ -460,16 +530,17 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(36, 495);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(171, 24);
+            this.label7.Size = new System.Drawing.Size(169, 23);
             this.label7.TabIndex = 21;
             this.label7.Text = "Reservering Datum";
             // 
             // pnlReservering
             // 
             this.pnlReservering.BackColor = System.Drawing.Color.Transparent;
+            this.pnlReservering.Controls.Add(this.panel3);
             this.pnlReservering.Controls.Add(this.label7);
             this.pnlReservering.Controls.Add(this.geboorteDatumPicker);
             this.pnlReservering.Controls.Add(this.label6);
@@ -480,8 +551,6 @@
             this.pnlReservering.Controls.Add(this.label2);
             this.pnlReservering.Controls.Add(this.txtTellie);
             this.pnlReservering.Controls.Add(this.label1);
-            this.pnlReservering.Controls.Add(this.lblDatum);
-            this.pnlReservering.Controls.Add(this.lstReserveringDag);
             this.pnlReservering.Controls.Add(this.NumericAantal);
             this.pnlReservering.Controls.Add(this.btnDeleteRes);
             this.pnlReservering.Controls.Add(this.btnUpdateRes);
@@ -490,21 +559,32 @@
             this.pnlReservering.Controls.Add(this.dateTijd);
             this.pnlReservering.Controls.Add(this.txtNaam);
             this.pnlReservering.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlReservering.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlReservering.Location = new System.Drawing.Point(0, 0);
             this.pnlReservering.Name = "pnlReservering";
             this.pnlReservering.Size = new System.Drawing.Size(1576, 942);
             this.pnlReservering.TabIndex = 5;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
+            this.panel3.Controls.Add(this.lstReserveringDag);
+            this.panel3.Controls.Add(this.lblDatum);
+            this.panel3.Location = new System.Drawing.Point(407, 103);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(949, 624);
+            this.panel3.TabIndex = 32;
             // 
             // btnSelectKlant
             // 
             this.btnSelectKlant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnSelectKlant.FlatAppearance.BorderSize = 0;
             this.btnSelectKlant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelectKlant.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectKlant.Font = new System.Drawing.Font("Microsoft Sans Serif", 30.75F);
             this.btnSelectKlant.ForeColor = System.Drawing.Color.White;
-            this.btnSelectKlant.Location = new System.Drawing.Point(1048, 12);
+            this.btnSelectKlant.Location = new System.Drawing.Point(964, 12);
             this.btnSelectKlant.Name = "btnSelectKlant";
-            this.btnSelectKlant.Size = new System.Drawing.Size(173, 58);
+            this.btnSelectKlant.Size = new System.Drawing.Size(353, 85);
             this.btnSelectKlant.TabIndex = 15;
             this.btnSelectKlant.Text = "Klant Systeem";
             this.btnSelectKlant.UseVisualStyleBackColor = false;
@@ -515,14 +595,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.pnl_overzicht);
-            this.Controls.Add(this.pnlReservering);
             this.Controls.Add(this.pnlKlantSysteem);
+            this.Controls.Add(this.pnlReservering);
+            this.Controls.Add(this.pnl_overzicht);
             this.Name = "RestaurantOverzicht";
             this.Size = new System.Drawing.Size(1576, 942);
             this.Load += new System.EventHandler(this.RestaurantOverzicht_Load);
             this.pnlKlantSysteem.ResumeLayout(false);
             this.pnlKlantSysteem.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel_Header.ResumeLayout(false);
             this.panel_Header.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -531,6 +613,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumericAantal)).EndInit();
             this.pnlReservering.ResumeLayout(false);
             this.pnlReservering.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -575,5 +659,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel pnlReservering;
         private System.Windows.Forms.Button btnSelectKlant;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblKlantSysteem;
+        private System.Windows.Forms.Panel panel3;
     }
 }
