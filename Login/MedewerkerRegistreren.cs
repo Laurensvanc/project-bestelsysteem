@@ -1,12 +1,14 @@
 ﻿using ChapooLogic;
 using ChapooModel;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Login
 {
     public partial class MedewerkerRegistreren : UserControl
     {
+        private Account_Service _AccountService = new Account_Service();
         public MedewerkerRegistreren()
         {
             InitializeComponent();
@@ -14,6 +16,7 @@ namespace Login
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            List<int> pincodes = _AccountService.GetPincodes();
             int Manager = 0, Chef = 0, Bediening = 0, Keuken = 0, Sommelier = 0, Maitre = 0, Bar = 0;
             if (rbManager.Checked) Manager = 1;
             else if (rbChef.Checked) Chef = 1;
@@ -34,8 +37,9 @@ namespace Login
                 nudTelNummer.Value != 600000000 &&
                 CheckTextBox(txtEmail) &&
                 CheckTextBox(txtWachtwoord) &&
-                CheckTextBox(txtBevestigwachtwoord) && txtWachtwoord.Text == txtBevestigwachtwoord.Text && 
-                CheckTextBox(txtBeveiligingsvraag))
+                CheckTextBox(txtBevestigwachtwoord) && txtWachtwoord.Text == txtBevestigwachtwoord.Text &&
+                CheckTextBox(txtBeveiligingsvraag) &&
+                !pincodes.Contains(int.Parse(nudPin.Text)))
                 {
                     string encryptedwachtwoord = BCrypt.Net.BCrypt.HashPassword(txtWachtwoord.Text);
                     Account account = new Account(
@@ -50,12 +54,12 @@ namespace Login
                         int.Parse(nudPin.Text),
                         txtBeveiligingsvraag.Text,
                         Manager, Chef, Bediening, Keuken, Sommelier, Maitre, Bar); ;
-                    Account_Service service = new Account_Service();
-                    if (service.AddAccount(account)) MessageBox.Show($"{txtVoornaam.Text} is geregistreerd!");
+                    if (_AccountService.AddAccount(account)) MessageBox.Show($"{txtVoornaam.Text} is geregistreerd!");
                     ClearTextBoxes();
                 }
                 else if (txtWachtwoord.Text != txtBevestigwachtwoord.Text) MessageBox.Show("Wachtwoorden komen niet overeen", "Chapoo");
                 else if (nudTelNummer.Value == 600000000) MessageBox.Show("Vul geldig telefoonnummer in", "Chapoo");
+                else if (pincodes.Contains(int.Parse(nudPin.Text))) MessageBox.Show("Pincode bestaat al, probeer nog een keer", "Chapoo");
             }
         }
         public bool CheckTextBox(TextBox tb)

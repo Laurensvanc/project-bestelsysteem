@@ -85,5 +85,9 @@ namespace ChapooLogic
 
             return accountDAO.checkanswer(v,i);
         }
+        public List<int> GetPincodes()
+        {
+            return accountDAO.Db_Get_All_Pincodes();
+        }
     }
 }

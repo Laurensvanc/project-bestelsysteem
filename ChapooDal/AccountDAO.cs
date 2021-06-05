@@ -53,6 +53,12 @@ namespace ChapooDal
             sqlParameters[11] = new SqlParameter("@Secreta", account.SecretAnswer);
             ExecuteEditQuery(query, sqlParameters);
         }
+        public List<int> Db_Get_All_Pincodes()
+        {
+            string query = "USE dbchapoo202104 SELECT Pincode FROM [Account]";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadPincodes(ExecuteSelectQuery(query, sqlParameters));
+        }
 
         public bool checkanswer(string v,string i)
         {
@@ -110,14 +116,11 @@ namespace ChapooDal
 
         public void UpdateLastLoginAccount(string account)
         {
-           
-                string query = "USE dbchapoo202104 UPDATE [Account] SET LaatsteLogin = @time WHERE Inlognaam = @inlognaam";
-                SqlParameter[] sqlParameters = new SqlParameter[2];
-                sqlParameters[0] = new SqlParameter("@inlognaam", account);
-                sqlParameters[1] = new SqlParameter("@time", DateTime.Now);
-                ExecuteEditQuery(query, sqlParameters);
-                
-          
+            string query = "USE dbchapoo202104 UPDATE [Account] SET LaatsteLogin = @time WHERE Inlognaam = @inlognaam";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@inlognaam", account);
+            sqlParameters[1] = new SqlParameter("@time", DateTime.Now);
+            ExecuteEditQuery(query, sqlParameters);
         }
 
         public Account GetAccount(string account)
@@ -146,10 +149,8 @@ namespace ChapooDal
             int Bar = 0;
             int Pincode = 0;
             string SecretAnswer = string.Empty;
-
             int WerknemerID = 0;
         
-
             foreach (DataRow dr in dataTable.Rows)
             {
                 Wachtwoord = dr["Wachtwoord"].ToString();
@@ -177,10 +178,16 @@ namespace ChapooDal
                 Telefoonnummer = Int32.Parse(dr["Mobiel"].ToString());
                 Email = dr["Email"].ToString();
             }
-
-            
-                return new Account(WerknemerID, Voornaam, Achternaam, Inlognaam, GeboorteDatum, Telefoonnummer, Email, Wachtwoord, Pincode, SecretAnswer, Manager, Chef, Bediening, Keuken, Sommelier, Maitre, Bar);
-            
+            return new Account(WerknemerID, Voornaam, Achternaam, Inlognaam, GeboorteDatum, Telefoonnummer, Email, Wachtwoord, Pincode, SecretAnswer, Manager, Chef, Bediening, Keuken, Sommelier, Maitre, Bar);
+        }
+        private List<int> ReadPincodes(DataTable dataTable)
+        {
+            List<int> pincodes = new List<int>();
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                pincodes.Add((int)dr["Pincode"]);
+            }
+            return pincodes;
         }
 
         private int ReadTables(DataTable dataTable)
