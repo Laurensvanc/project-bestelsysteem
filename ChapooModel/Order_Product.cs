@@ -12,6 +12,9 @@ namespace ChapooModel
         public int ProductID { get; set; }
         public Product Product { get; set; }
         public int Aantal { get; set; }
+        public Bestelling Bestelling { get; set; }
+        public string Status { get; set; }
+
         public Order_Product(Product Product, int Aantal)
         {
             this.Product = Product;
