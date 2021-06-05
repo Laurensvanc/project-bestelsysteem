@@ -57,7 +57,7 @@ namespace ChapooDal
             ExecuteEditQuery(updateQuery, sqlParameters);
         }
 
-        public List<BarKeukenBestelling> Db_Get_All_BarKeuken_Bestellingen()
+        public List<Order_Product> Db_Get_All_Order_Products()
         {
             string query = @"SELECT op.OrderID, o.BestellingID, op.ProductID, b.TafelID, p.ProductNaam, p.IsDrinken, op.[Status], op.Aantal, b.Opgenomen
                                 FROM Order_Product AS op
@@ -70,9 +70,9 @@ namespace ChapooDal
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
             DataTable queryResult = ExecuteSelectQuery(query, sqlParameters);
-            List<BarKeukenBestelling> barKeukenBestellingen = ReadBarKeukenBestellingTables(queryResult);
+            List<Order_Product> orderProduct = ReadOrderProductProductBestelling(queryResult);
 
-            return barKeukenBestellingen;
+            return orderProduct;
         }
 
         private List<Order_Product> ReadTables(DataTable dataTable)
@@ -92,31 +92,28 @@ namespace ChapooDal
             return orderProducts;
         }
 
-        private List<BarKeukenBestelling> ReadBarKeukenBestellingTables(DataTable dataTable)
+        private List<Order_Product> ReadOrderProductProductBestelling(DataTable dataTable)
         {
-            List<BarKeukenBestelling> barKeukenBestellingen = new List<BarKeukenBestelling>();
+            List<Order_Product> orderProducts = new List<Order_Product>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Order order = new Order((int)dr["OrderID"]);
-                Bestelling bestelling = new Bestelling((int)dr["BestellingID"]);
-                Product product = new Product((int)dr["ProductID"]);
-                Tafel tafel = new Tafel((int)dr["TafelID"]);
-                BarKeukenBestelling barKeukenBestelling = new BarKeukenBestelling(
-                    order,
-                    bestelling,
-                    product,
-                    tafel,
-                    (String)dr["ProductNaam"],
-                    (bool)dr["IsDrinken"],
+                Order_Product orderProduct = new Order_Product(
+                    (int)dr["OrderID"],
                     (String)dr["Status"],
                     (int)dr["Aantal"],
-                    (DateTime)dr["Opgenomen"]
-                    );
+                    new Product(
+                        (int)dr["ProductID"],
+                        (String)dr["ProductNaam"],
+                        (bool)dr["IsDrinken"]),
+                    new Bestelling(
+                        (int)dr["BestellingID"], 
+                        new Tafel((int)dr["TafelID"]),
+                        (DateTime)dr["Opgenomen"]));
 
-                barKeukenBestellingen.Add(barKeukenBestelling);
+                orderProducts.Add(orderProduct);
             }
-            return barKeukenBestellingen;
+            return orderProducts;
         }
     }
 }

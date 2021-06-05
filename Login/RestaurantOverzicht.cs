@@ -1,6 +1,7 @@
 ﻿using ChapooLogic;
 using ChapooModel;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,17 +13,24 @@ namespace Login
         private ChapooLogic.Reservering_Service _reservering_Service;
         private ChapooLogic.Klant_Service _klant_Service;
         private ChapooLogic.Tafel_Service tafel_Service;
+        private ListViewColumnSorter lvwColumnSorter; // column sort functionality
         private List<int> tafelToBezet;
         private List<Tafel> tafels;
         private List<int> tafelToGereserveerd;
         private List<int> tableList;
         private List<Klant> klanten;
+        private Klant klant;
         private int _klantId;
 
         public RestaurantOverzicht()
         {
             InitializeComponent();
             DatetimepickerSettings();
+            lvwColumnSorter = new ListViewColumnSorter();
+            this.lstReservering.ListViewItemSorter = lvwColumnSorter;
+            this.lstTafelStatus.ListViewItemSorter = lvwColumnSorter;
+            this.lstReserveringDag.ListViewItemSorter = lvwColumnSorter;
+            this.lstKlantSysteem.ListViewItemSorter = lvwColumnSorter;
         }
 
         private void RestaurantOverzicht_Load(object sender, EventArgs e)
@@ -57,12 +65,12 @@ namespace Login
                     pnlReservering.Hide();
                     pnl_overzicht.Show();
                 }
-            } else
-                {
-                    pnlReservering.Hide();
-                    pnl_overzicht.Show();
-                }
-
+            }
+            else
+            {
+                pnlReservering.Hide();
+                pnl_overzicht.Show();
+            }
         }
 
         private void btnMin_Click(object sender, EventArgs e)
@@ -92,7 +100,8 @@ namespace Login
             if (NoReservationPossible(cmbTafel.Text))
             {
                 MessageBox.Show($"Voor tafel {cmbTafel.Text} is al een reservering geplaatst op dit tijdstip", "Error: Geen dubbele reservering mogelijk");
-            } else
+            }
+            else
             {
                 if (String.IsNullOrEmpty(txtNaam.Text) || String.IsNullOrEmpty(txtAchternaam.Text) || String.IsNullOrEmpty(txtTellie.Text) || String.IsNullOrEmpty(cmbTafel.Text))
                 {
@@ -110,7 +119,6 @@ namespace Login
                     UpdateResSettings();
                 }
             }
-
         }
 
         //loads everything related to reservering/tafel
@@ -172,7 +180,6 @@ namespace Login
 
             //load klanten list
             KlantList();
-
         }
 
         private void lstKlantSysteem_SelectedIndexChanged(object sender, EventArgs e)
@@ -186,13 +193,12 @@ namespace Login
 
         private void txtNaamKlant_TextChanged(object sender, EventArgs e)
         {
-         LoadKlanten();
-         lblZoeken.Text = "Zoeken op: " + txtNaamKlant.Text;
+            LoadKlanten();
+            lblZoeken.Text = "Zoeken op: " + txtNaamKlant.Text;
         }
 
         private void btnKlantOpslaan_Click(object sender, EventArgs e)
         {
-
             if (lstKlantSysteem.SelectedItems.Count == 0)
                 return;
             var i = lstKlantSysteem.SelectedItems[0];
@@ -236,9 +242,9 @@ namespace Login
                 txtTellie.Text = txtTellie.Text.Remove(txtTellie.Text.Length - 1);
             }
         }
+
         private void ReserveringList(List<Reservering> reserverings)
         {
-
             DateTime time = dateTijd.Value;
 
             foreach (Reservering r in reserverings)
@@ -260,6 +266,7 @@ namespace Login
                 ch.Width = -2;
             }
         }
+
         private void TafelsList(List<Tafel> tafels)
         {
             foreach (Tafel t in tafels)
@@ -292,11 +299,12 @@ namespace Login
                 ch.Width = -2;
             }
         }
+
         private void reserveringStatusList(List<Reservering> reserverings)
         {
             foreach (Reservering r in reserverings)
             {
-                if (r.EindTijd.AddHours(1) > DateTime.Today) // show only reservations with end time lower than time now (1 hour leeway)
+                if ((r.EindTijd.Date == DateTime.Today.Date) && (r.EindTijd.AddHours(1) > DateTime.Now)) // show only reservations with end time lower than time now (1 hour leeway)
                 {
                     ListViewItem li = new ListViewItem(r.ReserveringID.ToString());
                     li.SubItems.Add(r.Tafel.TafelNummer.ToString());
@@ -323,6 +331,7 @@ namespace Login
                 ch.Width = -2;
             }
         }
+
         private void reserveringColummSettings()
         {
             lstReservering.Columns.Add("Reservering Nummer");
@@ -345,6 +354,7 @@ namespace Login
             lstReserveringDag.FullRowSelect = true;
             lstReserveringDag.GridLines = true;
         }
+
         private void tafelColummSettings()
         {
             lstTafelStatus.Columns.Add("Tafel#", 75);
@@ -355,6 +365,7 @@ namespace Login
             lstTafelStatus.FullRowSelect = true;
             lstTafelStatus.GridLines = true;
         }
+
         private void klantColummSettings()
         {
             lstKlantSysteem.Columns.Add("KlantNummer", 100);
@@ -366,18 +377,21 @@ namespace Login
             lstKlantSysteem.FullRowSelect = true;
             lstKlantSysteem.GridLines = true;
         }
+
         private void KlantBestaat()
         {
             DateTime begintijd = dateTijd.Value;
             int AantalPersonen = (int)NumericAantal.Value;
             Tafel tafel = new Tafel(int.Parse(cmbTafel.Text));
-            Klant klant = new Klant(_klantId);
+            klant = new Klant(_klantId);
             if (!bestaatDeKlant())
             {
                 VoegKlantToe();
                 LoadKlanten();
+
                 if (bestaatDeKlant())
                 {
+                    klant.KlantID = _klantId;
                     Reservering reservering = new Reservering(tafel, begintijd, begintijd.AddHours(2), klant, AantalPersonen);
                     _reservering_Service.AddReservering(reservering);
                     MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
@@ -389,11 +403,13 @@ namespace Login
             }
             else
             {
+                klant.KlantID = _klantId;
                 Reservering reservering = new Reservering(tafel, begintijd, begintijd.AddHours(2), klant, AantalPersonen);
                 _reservering_Service.AddReservering(reservering);
                 MessageBox.Show("Reservering voor " + txtNaam.Text + " Gezet, op: " + dateTijd.Value.ToShortDateString(), "Success");
             }
         }
+
         private void KlantList()
         {
             foreach (Klant k in klanten)
@@ -423,6 +439,7 @@ namespace Login
                 }
             }
         }
+
         private void UpdateResSettings()
         {
             pnlReservering.Hide();
@@ -432,17 +449,18 @@ namespace Login
             txtAchternaam.Clear();
             txtTellie.Clear();
         }
+
         private bool NoReservationPossible(string tafelID)
         {
             bool Bezet = false;
 
             foreach (ListViewItem row in lstReservering.Items)
             {
-            if (tafelID == row.SubItems[1].Text)
+                if (tafelID == row.SubItems[1].Text)
                 {
-                DateTime start = DateTime.Parse(row.SubItems[2].Text);
-                DateTime end = DateTime.Parse(row.SubItems[3].Text);
-                DateTime now = dateTijd.Value;
+                    DateTime start = DateTime.Parse(row.SubItems[2].Text);
+                    DateTime end = DateTime.Parse(row.SubItems[3].Text);
+                    DateTime now = dateTijd.Value;
                     if ((now > start) && (now < end))
                     {
                         foreach (ListViewItem row2 in lstTafelStatus.Items)
@@ -454,7 +472,6 @@ namespace Login
                                     Bezet = true;
                                 }
                             }
-
                         }
                     }
                 }
@@ -467,9 +484,8 @@ namespace Login
             {
                 return false;
             }
-
-
         }
+
         private void DatetimepickerSettings()
         {
             geboorteDatumPicker.Format = DateTimePickerFormat.Custom;
@@ -478,6 +494,49 @@ namespace Login
 
             dateTijd.Format = DateTimePickerFormat.Custom;
             dateTijd.CustomFormat = "MM/dd/yyyy HH:mm:ss";
+        }
+
+        private void ColumnSort(ColumnClickEventArgs e, ListView lv)
+        {
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+            lv.Sort();
+        }
+        private void lstReservering_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSort(e, (ListView)sender);
+        }
+
+        private void lstTafelStatus_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSort(e, (ListView)sender);
+        }
+
+        private void lstReserveringDag_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSort(e, (ListView)sender);
+        }
+
+        private void lstKlantSysteem_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSort(e, (ListView)sender);
         }
     }
 }

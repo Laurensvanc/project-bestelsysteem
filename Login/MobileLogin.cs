@@ -198,7 +198,9 @@ namespace Login
                 try
                 {
                     Account account = service.loginPincode(Int32.Parse(pnc_text.Text));
-
+                    if(account.Inlognaam == string.Empty) {
+                        throw new Exception();
+                    }
                     MobileHome menu = new MobileHome(this, _platform, account);
 
                     menu.Show();

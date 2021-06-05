@@ -208,6 +208,7 @@
     <Compile Include="DesktopLogin.Designer.cs">
       <DependentUpon>DesktopLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListViewColumnSorter.cs" />
     <Compile Include="MedewerkerRegistreren.cs">
       <SubType>UserControl</SubType>
     </Compile>

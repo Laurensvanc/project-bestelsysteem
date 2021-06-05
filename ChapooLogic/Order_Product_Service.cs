@@ -11,11 +11,11 @@ namespace ChapooLogic
     public class Order_Product_Service
     {
         Order_ProductDAO orderProductDAO = new Order_ProductDAO();
-        public List<BarKeukenBestelling> GetAllBarKeukenBestellingen()
+        public List<Order_Product> GetAllOrderProducts()
         {
             try
             {
-                List<BarKeukenBestelling> bestellingen = orderProductDAO.Db_Get_All_BarKeuken_Bestellingen();
+                List<Order_Product> bestellingen = orderProductDAO.Db_Get_All_Order_Products();
                 return bestellingen;
             }
             catch (Exception err)

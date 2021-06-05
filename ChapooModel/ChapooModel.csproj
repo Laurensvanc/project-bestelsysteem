@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
-    <Compile Include="BarKeukenBestelling.cs" />
     <Compile Include="Bestelling.cs" />
     <Compile Include="Klant.cs" />
     <Compile Include="MenuName.cs" />
