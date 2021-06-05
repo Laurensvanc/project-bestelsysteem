@@ -132,7 +132,9 @@ namespace Login
                 return;
             }
 
-            bool succes = orderProductService.UpdateOrderStatus(order.OrderID, order.Product.ProductId, "Bezig", order.Aantal);
+            order.Status = "Bezig";
+
+            bool succes = orderProductService.UpdateOrderStatus(order);
 
             if (!succes)
             {
@@ -157,7 +159,9 @@ namespace Login
                 return;
             }
 
-            bool succes = orderProductService.UpdateOrderStatus(order.OrderID, order.Product.ProductId, "Nieuw", order.Aantal);
+            order.Status = "Nieuw";
+
+            bool succes = orderProductService.UpdateOrderStatus(order);
 
             if (!succes)
             {
@@ -182,7 +186,9 @@ namespace Login
                 return;
             }
 
-            bool success = orderProductService.UpdateOrderStatus(order.OrderID, order.Product.ProductId, "Compleet", order.Aantal);
+            order.Status = "Compleet";
+
+            bool success = orderProductService.UpdateOrderStatus(order);
 
             if (!success)
             {

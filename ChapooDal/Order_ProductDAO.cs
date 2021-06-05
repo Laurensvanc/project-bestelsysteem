@@ -24,21 +24,21 @@ namespace ChapooDal
             return orderProducts;
         }
 
-        public void Update_Order_Status(int orderId, int productId, string status, int aantal)
+        public void Update_Order_Status(Order_Product orderProduct)
         {
-            if (aantal > 1) 
+            if (orderProduct.Aantal > 1)
             {
                 string insertQuery = "INSERT INTO Order_Product (OrderID, ProductID, Aantal, [Status]) VALUES (@OrderID, @ProductID, @Aantal, @Status)";
                 SqlParameter[] insertSqlParameter = new SqlParameter[4];
 
-                insertSqlParameter[0] = new SqlParameter("@OrderID", orderId);
-                insertSqlParameter[1] = new SqlParameter("@ProductID", productId);
+                insertSqlParameter[0] = new SqlParameter("@OrderID", orderProduct.OrderID);
+                insertSqlParameter[1] = new SqlParameter("@ProductID", orderProduct.Product.ProductId);
                 insertSqlParameter[2] = new SqlParameter("@Aantal", 1);
-                insertSqlParameter[3] = new SqlParameter("@Status", status);
+                insertSqlParameter[3] = new SqlParameter("@Status", orderProduct.Status);
                 ExecuteEditQuery(insertQuery, insertSqlParameter);
 
-                status = "Nieuw";
-                aantal--;
+                orderProduct.Status = "Nieuw";
+                orderProduct.Aantal--;
             }
 
             string updateQuery = @"UPDATE Order_Product
@@ -48,10 +48,10 @@ namespace ChapooDal
 	                            AND ProductID = @ProductID";
             SqlParameter[] sqlParameters = new SqlParameter[4];
 
-            sqlParameters[0] = new SqlParameter("@Status", status);
-            sqlParameters[1] = new SqlParameter("@Aantal", aantal);
-            sqlParameters[2] = new SqlParameter("@OrderID", orderId);
-            sqlParameters[3] = new SqlParameter("@ProductID", productId);
+            sqlParameters[0] = new SqlParameter("@Status", orderProduct.Status);
+            sqlParameters[1] = new SqlParameter("@Aantal", orderProduct.Aantal);
+            sqlParameters[2] = new SqlParameter("@OrderID", orderProduct.OrderID);
+            sqlParameters[3] = new SqlParameter("@ProductID", orderProduct.Product.ProductId);
 
 
             ExecuteEditQuery(updateQuery, sqlParameters);
