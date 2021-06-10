@@ -43,7 +43,7 @@
   <Class Name="ChapooLogic.Account_Service">
     <Position X="5.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAACAAAAAAA=</HashCode>
+      <HashCode>ABAAAAAAAAAAAAAAACAAAAAAAgAIAAAAAAECIAAAAAA=</HashCode>
       <FileName>Account_Service.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -73,22 +73,16 @@
   <Class Name="ChapooLogic.Menu_Service">
     <Position X="16.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAAAAAAAAAAABAAACAAAAAAAACAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAABAAACAAAAAAAACAAAAAA=</HashCode>
       <FileName>Menu_Service.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="menuDAO" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="ChapooLogic.Product_Service">
     <Position X="21" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAAAAAQAAAAAAQAgAgAAAAAAAQAAAAAAEAAA=</HashCode>
+      <HashCode>AAAAEAAAAAAAAIAAAAAAQAgAgAAAAAAAQAAAAAAEAAA=</HashCode>
       <FileName>Product_Service.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="productDAO" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="ChapooLogic.Reservering_Service">
     <Position X="7.5" Y="5.25" Width="1.5" />
@@ -103,7 +97,7 @@
   <Class Name="ChapooLogic.Tafel_Service">
     <Position X="14.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAE=</HashCode>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>Tafel_Service.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -129,7 +123,7 @@
     <TypeIdentifier />
   </Class>
   <Class Name="ChapooModel.Klant">
-    <Position X="11.75" Y="8" Width="1.5" />
+    <Position X="12" Y="8" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="ChapooModel.MenuName">
@@ -145,11 +139,11 @@
     <TypeIdentifier />
   </Class>
   <Class Name="ChapooModel.Order_Info">
-    <Position X="23.25" Y="12.25" Width="1.5" />
+    <Position X="23.25" Y="13.25" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="ChapooModel.Order_Product">
-    <Position X="23.25" Y="10.25" Width="1.5" />
+    <Position X="23.25" Y="10.75" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="ChapooModel.Product">
