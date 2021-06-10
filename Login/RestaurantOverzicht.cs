@@ -304,7 +304,7 @@ namespace Login
         {
             foreach (Reservering r in reserverings)
             {
-                if ((r.EindTijd.Date == DateTime.Today.Date) && (r.EindTijd.AddHours(1) > DateTime.Now)) // show only reservations with end time lower than time now (1 hour leeway)
+                if ((r.BeginTijd.Date == DateTime.Today.Date) && (r.EindTijd.AddHours(1) > DateTime.Now)) // show only reservations with end time lower than time now (1 hour leeway)
                 {
                     ListViewItem li = new ListViewItem(r.ReserveringID.ToString());
                     li.SubItems.Add(r.Tafel.TafelNummer.ToString());

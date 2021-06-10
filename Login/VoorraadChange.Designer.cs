@@ -31,6 +31,7 @@ namespace Login
         {
             this.components = new System.ComponentModel.Container();
             this.pnl_VoorraadChange = new System.Windows.Forms.Panel();
+            this.lbl_Instruction = new System.Windows.Forms.Label();
             this.pnl_ChangeBtn = new System.Windows.Forms.Panel();
             this.btn_CancelChange = new System.Windows.Forms.Button();
             this.btn_Remove = new System.Windows.Forms.Button();
@@ -53,7 +54,6 @@ namespace Login
             this.lbl_ProductNameTxt = new System.Windows.Forms.Label();
             this.lbl_ProductIDTxt = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lbl_Instruction = new System.Windows.Forms.Label();
             this.pnl_VoorraadChange.SuspendLayout();
             this.pnl_ChangeBtn.SuspendLayout();
             this.pnl_AddBtn.SuspendLayout();
@@ -85,6 +85,16 @@ namespace Login
             this.pnl_VoorraadChange.Name = "pnl_VoorraadChange";
             this.pnl_VoorraadChange.Size = new System.Drawing.Size(450, 350);
             this.pnl_VoorraadChange.TabIndex = 0;
+            // 
+            // lbl_Instruction
+            // 
+            this.lbl_Instruction.AutoSize = true;
+            this.lbl_Instruction.Font = new System.Drawing.Font("Roboto Condensed", 14F, System.Drawing.FontStyle.Bold);
+            this.lbl_Instruction.Location = new System.Drawing.Point(20, 8);
+            this.lbl_Instruction.Name = "lbl_Instruction";
+            this.lbl_Instruction.Size = new System.Drawing.Size(119, 23);
+            this.lbl_Instruction.TabIndex = 16;
+            this.lbl_Instruction.Text = "lbl_Instruction";
             // 
             // pnl_ChangeBtn
             // 
@@ -227,6 +237,11 @@ namespace Login
             // 
             this.nud_Amount.Font = new System.Drawing.Font("Roboto Condensed", 12F);
             this.nud_Amount.Location = new System.Drawing.Point(199, 167);
+            this.nud_Amount.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.nud_Amount.Name = "nud_Amount";
             this.nud_Amount.Size = new System.Drawing.Size(66, 27);
             this.nud_Amount.TabIndex = 4;
@@ -246,6 +261,7 @@ namespace Login
             // 
             this.tb_PurchasePrice.Font = new System.Drawing.Font("Roboto Condensed", 12F);
             this.tb_PurchasePrice.Location = new System.Drawing.Point(199, 134);
+            this.tb_PurchasePrice.MaxLength = 8;
             this.tb_PurchasePrice.Name = "tb_PurchasePrice";
             this.tb_PurchasePrice.Size = new System.Drawing.Size(66, 27);
             this.tb_PurchasePrice.TabIndex = 3;
@@ -267,6 +283,7 @@ namespace Login
             // 
             this.tb_MenuPrice.Font = new System.Drawing.Font("Roboto Condensed", 12F);
             this.tb_MenuPrice.Location = new System.Drawing.Point(199, 101);
+            this.tb_MenuPrice.MaxLength = 8;
             this.tb_MenuPrice.Name = "tb_MenuPrice";
             this.tb_MenuPrice.Size = new System.Drawing.Size(66, 27);
             this.tb_MenuPrice.TabIndex = 2;
@@ -288,6 +305,7 @@ namespace Login
             // 
             this.tb_ProductName.Font = new System.Drawing.Font("Roboto Condensed", 12F);
             this.tb_ProductName.Location = new System.Drawing.Point(199, 68);
+            this.tb_ProductName.MaxLength = 100;
             this.tb_ProductName.Name = "tb_ProductName";
             this.tb_ProductName.Size = new System.Drawing.Size(219, 27);
             this.tb_ProductName.TabIndex = 1;
@@ -326,16 +344,6 @@ namespace Login
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // lbl_Instruction
-            // 
-            this.lbl_Instruction.AutoSize = true;
-            this.lbl_Instruction.Font = new System.Drawing.Font("Roboto Condensed", 14F, System.Drawing.FontStyle.Bold);
-            this.lbl_Instruction.Location = new System.Drawing.Point(20, 8);
-            this.lbl_Instruction.Name = "lbl_Instruction";
-            this.lbl_Instruction.Size = new System.Drawing.Size(119, 23);
-            this.lbl_Instruction.TabIndex = 16;
-            this.lbl_Instruction.Text = "lbl_Instruction";
             // 
             // VoorraadChange
             // 
