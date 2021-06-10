@@ -17,6 +17,7 @@ namespace Login
         private void btnRegister_Click(object sender, EventArgs e)
         {
             List<int> pincodes = _AccountService.GetPincodes();
+            bool nameInUse = _AccountService.CheckExistingAccount(txtInlogNaam.Text);
             int Manager = 0, Chef = 0, Bediening = 0, Keuken = 0, Sommelier = 0, Maitre = 0, Bar = 0;
             if (rbManager.Checked) Manager = 1;
             else if (rbChef.Checked) Chef = 1;
@@ -39,7 +40,8 @@ namespace Login
                 CheckTextBox(txtWachtwoord) &&
                 CheckTextBox(txtBevestigwachtwoord) && txtWachtwoord.Text == txtBevestigwachtwoord.Text &&
                 CheckTextBox(txtBeveiligingsvraag) &&
-                !pincodes.Contains(int.Parse(nudPin.Text)))
+                !pincodes.Contains(int.Parse(nudPin.Text)) &&
+                nameInUse)
                 {
                     string encryptedwachtwoord = BCrypt.Net.BCrypt.HashPassword(txtWachtwoord.Text);
                     Account account = new Account(
@@ -60,6 +62,7 @@ namespace Login
                 else if (txtWachtwoord.Text != txtBevestigwachtwoord.Text) MessageBox.Show("Wachtwoorden komen niet overeen", "Chapoo");
                 else if (nudTelNummer.Value == 600000000) MessageBox.Show("Vul geldig telefoonnummer in", "Chapoo");
                 else if (pincodes.Contains(int.Parse(nudPin.Text))) MessageBox.Show("Pincode bestaat al, probeer nog een keer", "Chapoo");
+                else if (!nameInUse) MessageBox.Show("Inlognaam in gebruik", "Chapoo");
             }
         }
         public bool CheckTextBox(TextBox tb)
