@@ -71,7 +71,14 @@ namespace ChapooDal
             }
             return false;
         }
-
+        public bool Db_Check_Existing_Account(string name)
+        {
+            string query = "USE dbchapoo202104 SELECT Pincode,WerknemerID,Inlognaam,Wachtwoord,Manager,Chef,Bediening,Keuken,Sommelier,Maitre,Bar FROM [Account] WHERE Inlognaam = @Inlognaam";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Inlognaam", name);
+            Account account = ReadAccount(ExecuteSelectQuery(query, sqlParameters));
+            return account.Inlognaam == string.Empty;
+        }
         public string readanswer(DataTable dataTable)
         {
             string antwoord = string.Empty;
@@ -103,7 +110,7 @@ namespace ChapooDal
             }
             return Inlognaam;
         }
-
+       
         public void ResetPassword(string account, string encryptedwachtwoord)
         {
             string query = "USE dbchapoo202104 UPDATE [Account] SET Wachtwoord = @Wachtwoord WHERE Inlognaam = @inlognaam";

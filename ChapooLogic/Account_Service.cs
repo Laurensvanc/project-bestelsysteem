@@ -79,6 +79,17 @@ namespace ChapooLogic
                 throw;
             }
         }
+        public bool CheckExistingAccount(string name)
+        {
+            try
+            {
+                return accountDAO.Db_Check_Existing_Account(name);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
         public bool checkanswer(string v,string i)
         {
