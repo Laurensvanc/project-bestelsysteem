@@ -83,25 +83,26 @@ namespace Login
                 lblTransID.Text = "ID: " + _orderInfo.Transactie.TransactieID.ToString();
                 lblTijd.Text = "Tijd: " + _orderInfo.Tijd.ToString(@"hh\:mm");
                 lblGeholpen.Text = "Geholpen door: " + _orderInfo.Naam;
-            }
-            string[] arr = new string[4];
-            _orderList = _transaction_Service.GetOrders(id);
-            foreach (Order order in _orderList)
-            {
-                arr[0] = order.Bestelling.BestellingID.ToString();
-                arr[1] = order.ProductNaam;
-                arr[2] = order.Aantal.ToString();
-                arr[3] = "€ " + order.Prijs.ToString("00.00");
-                ListViewItem li = new ListViewItem(arr);
-                listOrderView.Items.Add(li);
-                _totaalPrijs += order.Prijs;
 
-                if (!_bestellingen.Contains(order.Bestelling)) _bestellingen.Add(order.Bestelling);
+                string[] arr = new string[4];
+                _orderList = _transaction_Service.GetOrders(id);
+                foreach (Order order in _orderList)
+                {
+                    arr[0] = order.Bestelling.BestellingID.ToString();
+                    arr[1] = order.ProductNaam;
+                    arr[2] = order.Aantal.ToString();
+                    arr[3] = "€ " + order.Prijs.ToString("00.00");
+                    ListViewItem li = new ListViewItem(arr);
+                    listOrderView.Items.Add(li);
+                    _totaalPrijs += order.Prijs;
+
+                    if (!_bestellingen.Contains(order.Bestelling)) _bestellingen.Add(order.Bestelling);
+                }
+                listOrderViewTip.Columns.Add("Tip:", 308);
+                listOrderViewTotaal.Columns.Add("Totaal prijs:", 380);
+                _totaalPrijs += double.Parse(nudTip.Text);
+                listOrderViewTotaal.Columns.Add("€ " + _totaalPrijs.ToString("00.00"), 100);
             }
-            listOrderViewTip.Columns.Add("Tip:", 308);
-            listOrderViewTotaal.Columns.Add("Totaal prijs:", 380);
-            _totaalPrijs += double.Parse(nudTip.Text);
-            listOrderViewTotaal.Columns.Add("€ " + _totaalPrijs.ToString("00.00"), 100);
         }
 
         private void btnUpdatePrice_Click(object sender, EventArgs e)
