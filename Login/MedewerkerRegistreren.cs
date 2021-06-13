@@ -61,10 +61,10 @@ namespace Login
                     ClearTextBoxes();
                 }
                 else if (txtWachtwoord.Text != txtBevestigwachtwoord.Text) MessageBox.Show("Wachtwoorden komen niet overeen", "Chapoo");
-                else if (nudTelNummer.Value == 600000000) MessageBox.Show("Vul geldig telefoonnummer in", "Chapoo");
+                else if (nudTelNummer.Value == 600000000 || nudTelNummer.Text == "") MessageBox.Show("Vul geldig telefoonnummer in", "Chapoo");
+                else if (nudPin.Text == "") MessageBox.Show("Vul pincode in", "Chapoo");
                 else if (pincodes.Contains(int.Parse(nudPin.Text))) MessageBox.Show("Pincode bestaat al, probeer nog een keer", "Chapoo");
                 else if (!nameInUse) MessageBox.Show("Inlognaam in gebruik", "Chapoo");
-                else if (string.IsNullOrEmpty(nudPin.Text)) MessageBox.Show("Vul pincode in", "Chapoo");
             }
         }
         public bool CheckTextBox(TextBox tb)
