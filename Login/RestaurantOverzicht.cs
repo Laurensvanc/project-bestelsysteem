@@ -44,7 +44,6 @@ namespace Login
         {
             LoadKlanten();
             UpdateResSettings();
-            loadLists();
         }
 
         private void btnPlus_Click(object sender, EventArgs e)
@@ -126,6 +125,11 @@ namespace Login
         //loads everything related to reservering/tafel
         private void loadLists()
         {
+            //clear lists
+            lstReservering.Clear();
+            lstReserveringDag.Clear();
+            cmbTafel.Items.Clear();
+            lstTafelStatus.Clear();
             // Tafels bezet
             Transaction_Service transaction_Service = new Transaction_Service();
             tableList = transaction_Service.GetTables();
@@ -134,8 +138,6 @@ namespace Login
             List<Reservering> reserverings = _reservering_Service.GetReserverings();
             tafelToBezet = new List<int>();
             tafelToGereserveerd = new List<int>();
-            lstReservering.Clear();
-            lstReserveringDag.Clear();
             //Load List Settings
             reserveringColummSettings();
             //Fill Status List
@@ -143,8 +145,6 @@ namespace Login
             // Tafel & status
             tafel_Service = new Tafel_Service();
             tafels = tafel_Service.GetTafels();
-            cmbTafel.Items.Clear();
-            lstTafelStatus.Clear();
             tafelColummSettings();
             //Fill Tafel/Reservering Lists
             TafelsList(tafels);
@@ -318,7 +318,6 @@ namespace Login
                 }
                 // Update Tafelstatus
                 DateTime nu = dateTijd.Value;
-                dateTijd.MinDate = DateTime.Today;
                 if (r.BeginTijd < nu && r.EindTijd > nu || tableList.Contains(r.Tafel.TafelNummer))
                 {
                     tafelToBezet.Add(r.Tafel.TafelNummer);
@@ -373,8 +372,8 @@ namespace Login
             lstKlantSysteem.Columns.Add("KlantNummer", 100);
             lstKlantSysteem.Columns.Add("Voornaam", 150);
             lstKlantSysteem.Columns.Add("Achternaam", 150);
-            lstKlantSysteem.Columns.Add("GeboorteDatum", 100);
-            lstKlantSysteem.Columns.Add("Mobiel", 120);
+            lstKlantSysteem.Columns.Add("Geboortedatum", 200);
+            lstKlantSysteem.Columns.Add("Mobiel", 150);
 
             lstKlantSysteem.FullRowSelect = true;
             lstKlantSysteem.GridLines = true;
@@ -493,9 +492,11 @@ namespace Login
             geboorteDatumPicker.Format = DateTimePickerFormat.Custom;
             geboorteDatumPicker.CustomFormat = "dd-MM-yyyy";
             geboorteDatumPicker.MaxDate = DateTime.Today;
+            geboorteDatumPicker.MinDate = geboorteDatumPicker.MaxDate.AddYears(-110);
 
             dateTijd.Format = DateTimePickerFormat.Custom;
             dateTijd.CustomFormat = "MM/dd/yyyy HH:mm:ss";
+            dateTijd.MinDate = DateTime.Today;
         }
 
         private void ColumnSort(ColumnClickEventArgs e, ListView lv)

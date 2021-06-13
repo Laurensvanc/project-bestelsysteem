@@ -13,6 +13,8 @@ namespace Login
         private List<Order_Product> _drinkList = new List<Order_Product>();
         private List<Order_Product> _foodList = new List<Order_Product>();
 
+        private List<Order_Product> _filteredOrderList = new List<Order_Product>();
+
         private bool _filter;
 
         private Order_Product_Service _orderProductService = new Order_Product_Service();
@@ -62,6 +64,9 @@ namespace Login
                 case "Bezig":
                     color = Color.FromArgb(245, 90, 90);
                     break;
+                case "Serveer":
+                    color = Color.FromArgb(90, 173, 245);
+                    break;
                 case "Afgerond":
                     color = Color.FromArgb(104, 237, 99);
                     break;
@@ -72,11 +77,19 @@ namespace Login
 
         private void InsertListView()
         {
-            foreach (Order_Product order in _orderList)
-            {
-                if (order.Bestelling.Opgenomen.Date != DateTime.Today && _filter)
-                    continue;
+            List<Order_Product> list = new List<Order_Product>();
 
+            if (_filter)
+            {
+                list = _filteredOrderList;
+            } 
+            else
+            {
+                list = _orderList;
+            }
+
+            foreach (Order_Product order in list)
+            {
                 TimeSpan time = order.Bestelling.Opgenomen - DateTime.Now;
                 int minutes = Convert.ToInt32(time.TotalMinutes * -1);
 
@@ -97,9 +110,6 @@ namespace Login
         {
             foreach (Order_Product order in _drinkList)
             {
-                if (order.Bestelling.Opgenomen.Date != DateTime.Today && _filter)
-                    continue;
-
                 TimeSpan time = order.Bestelling.Opgenomen - DateTime.Now;
                 int minutes = Convert.ToInt32(time.TotalMinutes * -1);
 
@@ -120,9 +130,6 @@ namespace Login
         {
             foreach (Order_Product order in _foodList)
             {
-                if (order.Bestelling.Opgenomen.Date != DateTime.Today && _filter)
-                    continue;
-
                 TimeSpan time = order.Bestelling.Opgenomen - DateTime.Now;
                 int minutes = Convert.ToInt32(time.TotalMinutes * -1);
 
@@ -134,6 +141,7 @@ namespace Login
                 li.SubItems.Add(minutes.ToString());
 
                 lv_orderList.Items.Add(li);
+                
             }
 
             // update status color
@@ -154,12 +162,27 @@ namespace Login
             _orderList.Clear();
             _foodList.Clear();
             _drinkList.Clear();
+            _filteredOrderList.Clear();
 
             _orderList = _orderProductService.GetAllOrderProducts();
+
+            if (_filter)
+            {
+                foreach (Order_Product order in _orderList)
+                {
+                    if (Filter(order))
+                        continue;
+
+                    _filteredOrderList.Add(order);
+                }
+            }
 
             foreach (Order_Product order in _orderList)
             {
                 if (order.Product.IsDrinken)
+                    continue;
+
+                if (Filter(order))
                     continue;
 
                 _foodList.Add(order);
@@ -168,6 +191,9 @@ namespace Login
             foreach (Order_Product order in _orderList)
             {
                 if (!order.Product.IsDrinken)
+                    continue;
+
+                if (Filter(order))
                     continue;
 
                 _drinkList.Add(order);
@@ -276,6 +302,12 @@ namespace Login
             switch (_orderDisplay)
             {
                 default:
+                    if (_filter)
+                    {
+                        order = _filteredOrderList[item.Index];
+                        break;
+                    }
+
                     order = _orderList[item.Index];
                     break;
                 case 0:
@@ -285,6 +317,11 @@ namespace Login
                     order = _drinkList[item.Index];
                     break;
                 case 2:
+                    if (_filter)
+                    {
+                        order = _filteredOrderList[item.Index];
+                        break;
+                    }
                     order = _orderList[item.Index];
                     break;
             }
@@ -328,11 +365,41 @@ namespace Login
 
             if (_filter) 
             {
-                btn_filter.Text = "vandaag"; 
+                btn_filter.Text = "actief"; 
                 return;
             }
 
             btn_filter.Text = "geen";
+        }
+
+        private void btn_serveer_Click(object sender, EventArgs e)
+        {
+            if (lv_orderList.SelectedItems.Count <= 0)
+                return;
+
+            Order_Product order = GetListOrder();
+
+            if (CheckForStatusDuplicate(order, "Serveer"))
+                return;
+
+            order.Status = "Serveer";
+
+            bool success = _orderProductService.UpdateOrderStatus(order);
+
+            if (!success)
+            {
+                MessageBox.Show("Kon geen order updaten");
+            }
+
+            UpdateList();
+        }
+
+        private bool Filter(Order_Product order)
+        {
+            if (_filter && order.Status == "Afgerond")
+                return true;
+
+            return false;
         }
     }
 }
