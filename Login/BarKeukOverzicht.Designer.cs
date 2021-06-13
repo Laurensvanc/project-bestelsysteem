@@ -40,6 +40,7 @@
             this.btn_kitchenOrder = new System.Windows.Forms.Button();
             this.btn_barOrder = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_serveer = new System.Windows.Forms.Button();
             this.panel_Header.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +64,7 @@
             this.btn_workingOn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_workingOn.Font = new System.Drawing.Font("Roboto", 36F);
             this.btn_workingOn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_workingOn.Location = new System.Drawing.Point(463, 735);
+            this.btn_workingOn.Location = new System.Drawing.Point(626, 735);
             this.btn_workingOn.Name = "btn_workingOn";
             this.btn_workingOn.Size = new System.Drawing.Size(243, 144);
             this.btn_workingOn.TabIndex = 2;
@@ -95,7 +96,7 @@
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(268, 195);
             this.btn_update.TabIndex = 4;
-            this.btn_update.Text = "Update";
+            this.btn_update.Text = "Refresh";
             this.btn_update.UseVisualStyleBackColor = false;
             this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
@@ -121,7 +122,7 @@
             this.btn_filter.Name = "btn_filter";
             this.btn_filter.Size = new System.Drawing.Size(125, 37);
             this.btn_filter.TabIndex = 29;
-            this.btn_filter.Text = "vandaag";
+            this.btn_filter.Text = "actief";
             this.btn_filter.UseVisualStyleBackColor = false;
             this.btn_filter.Click += new System.EventHandler(this.btn_filter_Click);
             // 
@@ -200,10 +201,25 @@
             this.label1.TabIndex = 30;
             this.label1.Text = "Filter:";
             // 
+            // btn_serveer
+            // 
+            this.btn_serveer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(173)))), ((int)(((byte)(245)))));
+            this.btn_serveer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_serveer.Font = new System.Drawing.Font("Roboto", 36F);
+            this.btn_serveer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_serveer.Location = new System.Drawing.Point(327, 735);
+            this.btn_serveer.Name = "btn_serveer";
+            this.btn_serveer.Size = new System.Drawing.Size(243, 144);
+            this.btn_serveer.TabIndex = 32;
+            this.btn_serveer.Text = "Serveer";
+            this.btn_serveer.UseVisualStyleBackColor = false;
+            this.btn_serveer.Click += new System.EventHandler(this.btn_serveer_Click);
+            // 
             // BarKeukOverzicht
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_serveer);
             this.Controls.Add(this.btn_barOrder);
             this.Controls.Add(this.btn_kitchenOrder);
             this.Controls.Add(this.btn_generalOrder);
@@ -233,5 +249,6 @@
         private System.Windows.Forms.Button btn_barOrder;
         private System.Windows.Forms.Button btn_filter;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_serveer;
     }
 }
