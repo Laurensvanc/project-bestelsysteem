@@ -31,7 +31,7 @@ namespace Login
             {
                 MessageBox.Show("Medewerker moet een functie hebben", "Chapoo");
             } else
-            {   // if all textboxes and radiobuttons are filled in, register account
+            {   // if all textboxes and radiobuttons are filled in with correct values, register account
                 if (CheckTextBox(txtVoornaam) &&
                 CheckTextBox(txtAchternaam) &&
                 CheckTextBox(txtInlogNaam) &&
@@ -40,6 +40,7 @@ namespace Login
                 CheckTextBox(txtWachtwoord) &&
                 CheckTextBox(txtBevestigwachtwoord) && txtWachtwoord.Text == txtBevestigwachtwoord.Text &&
                 CheckTextBox(txtBeveiligingsvraag) &&
+                !string.IsNullOrEmpty(nudPin.Text) &&
                 !pincodes.Contains(int.Parse(nudPin.Text)) &&
                 nameInUse)
                 {
@@ -63,6 +64,7 @@ namespace Login
                 else if (nudTelNummer.Value == 600000000) MessageBox.Show("Vul geldig telefoonnummer in", "Chapoo");
                 else if (pincodes.Contains(int.Parse(nudPin.Text))) MessageBox.Show("Pincode bestaat al, probeer nog een keer", "Chapoo");
                 else if (!nameInUse) MessageBox.Show("Inlognaam in gebruik", "Chapoo");
+                else if (string.IsNullOrEmpty(nudPin.Text)) MessageBox.Show("Vul pincode in", "Chapoo");
             }
         }
         public bool CheckTextBox(TextBox tb)
