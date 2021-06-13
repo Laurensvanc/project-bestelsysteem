@@ -46,11 +46,11 @@ namespace Login
             lv_orderList.Columns.Add("Minuten", 125, HorizontalAlignment.Right);
         }
 
-        Color StatusColor(Order_Product order)
+        Color StatusColor(string status)
         {
             Color color;
 
-            switch (order.Status)
+            switch (status)
             {
                 default:
                     color = Color.Black;
@@ -85,10 +85,12 @@ namespace Login
                 li.SubItems.Add(order.Status.ToString());
                 li.SubItems.Add(order.Aantal.ToString());
                 li.SubItems.Add(minutes.ToString());
-                li.ForeColor = StatusColor(order);
 
                 lv_orderList.Items.Add(li);
             }
+
+            // update status color
+            UpdateListStatusColor();
         }
 
         private void InsertBarListView()
@@ -98,14 +100,20 @@ namespace Login
                 if (order.Bestelling.Opgenomen.Date != DateTime.Today && _filter)
                     continue;
 
+                TimeSpan time = order.Bestelling.Opgenomen - DateTime.Now;
+                int minutes = Convert.ToInt32(time.TotalMinutes * -1);
+
                 ListViewItem li = new ListViewItem("#" + order.Bestelling.Tafel.TafelNummer.ToString());
                 li.SubItems.Add(order.Product.ProductNaam);
                 li.SubItems.Add(order.Status.ToString());
                 li.SubItems.Add(order.Aantal.ToString());
-                li.ForeColor = StatusColor(order);
+                li.SubItems.Add(minutes.ToString());
 
                 lv_orderList.Items.Add(li);
             }
+
+            // update status color
+            UpdateListStatusColor();
         }
 
         private void InsertKitchenListView()
@@ -115,13 +123,29 @@ namespace Login
                 if (order.Bestelling.Opgenomen.Date != DateTime.Today && _filter)
                     continue;
 
+                TimeSpan time = order.Bestelling.Opgenomen - DateTime.Now;
+                int minutes = Convert.ToInt32(time.TotalMinutes * -1);
+
                 ListViewItem li = new ListViewItem("#" + order.Bestelling.Tafel.TafelNummer.ToString());
+
                 li.SubItems.Add(order.Product.ProductNaam);
-                li.SubItems.Add(order.Status.ToString());
+                li.SubItems.Add(order.Status);
                 li.SubItems.Add(order.Aantal.ToString());
-                li.ForeColor = StatusColor(order);
+                li.SubItems.Add(minutes.ToString());
 
                 lv_orderList.Items.Add(li);
+            }
+
+            // update status color
+            UpdateListStatusColor();
+        }
+
+        void UpdateListStatusColor()
+        {
+            foreach (ListViewItem item in lv_orderList.Items)
+            {
+                item.UseItemStyleForSubItems = false;
+                item.SubItems[2].ForeColor = StatusColor(item.SubItems[2].Text);
             }
         }
 
