@@ -26,21 +26,6 @@ namespace ChapooDal
 
         public void Update_Order_Status(Order_Product orderProduct)
         {
-            if (orderProduct.Aantal > 1)
-            {
-                string insertQuery = "INSERT INTO Order_Product (OrderID, ProductID, Aantal, [Status]) VALUES (@OrderID, @ProductID, @Aantal, @Status)";
-                SqlParameter[] insertSqlParameter = new SqlParameter[4];
-
-                insertSqlParameter[0] = new SqlParameter("@OrderID", orderProduct.OrderID);
-                insertSqlParameter[1] = new SqlParameter("@ProductID", orderProduct.Product.ProductId);
-                insertSqlParameter[2] = new SqlParameter("@Aantal", 1);
-                insertSqlParameter[3] = new SqlParameter("@Status", orderProduct.Status);
-                ExecuteEditQuery(insertQuery, insertSqlParameter);
-
-                orderProduct.Status = "Nieuw";
-                orderProduct.Aantal--;
-            }
-
             string updateQuery = @"UPDATE Order_Product
                                 SET [Status] = @Status, Aantal = @Aantal
                                 FROM Order_Product
@@ -52,7 +37,6 @@ namespace ChapooDal
             sqlParameters[1] = new SqlParameter("@Aantal", orderProduct.Aantal);
             sqlParameters[2] = new SqlParameter("@OrderID", orderProduct.OrderID);
             sqlParameters[3] = new SqlParameter("@ProductID", orderProduct.Product.ProductId);
-
 
             ExecuteEditQuery(updateQuery, sqlParameters);
         }

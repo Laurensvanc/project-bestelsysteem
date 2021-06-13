@@ -10,12 +10,19 @@ namespace Login
     public partial class BarKeukOverzicht : UserControl
     {
         private List<Order_Product> _orderList = new List<Order_Product>();
-        private Order_Product_Service orderProductService = new Order_Product_Service();
+        private List<Order_Product> _drinkList = new List<Order_Product>();
+        private List<Order_Product> _foodList = new List<Order_Product>();
+
+        private bool _filter;
+
+        private Order_Product_Service _orderProductService = new Order_Product_Service();
+        private int _orderDisplay;
 
         public BarKeukOverzicht()
         {
+            _orderDisplay = 2;
+            _filter = true;
             InitializeComponent();
-
             UpdateList();
         }
 
@@ -33,82 +40,114 @@ namespace Login
 
             // place headers
             lv_orderList.Columns.Add("Tafelnr", 100, HorizontalAlignment.Center);
-            lv_orderList.Columns.Add("Gerecht", 425);
-            lv_orderList.Columns.Add("Status", 150, HorizontalAlignment.Center);
-            lv_orderList.Columns.Add("Opgenomen", 275, HorizontalAlignment.Left);
+            lv_orderList.Columns.Add("Gerecht", 650);
+            lv_orderList.Columns.Add("Status", 115, HorizontalAlignment.Center);
+            lv_orderList.Columns.Add("Aantal", 85, HorizontalAlignment.Right);
+            lv_orderList.Columns.Add("Minuten", 125, HorizontalAlignment.Right);
+        }
+
+        Color StatusColor(Order_Product order)
+        {
+            Color color;
+
+            switch (order.Status)
+            {
+                default:
+                    color = Color.Black;
+                    break;
+
+                case "Nieuw":
+                    color = Color.FromArgb(252, 181, 40);
+                    break;
+                case "Bezig":
+                    color = Color.FromArgb(245, 90, 90);
+                    break;
+                case "Afgerond":
+                    color = Color.FromArgb(104, 237, 99);
+                    break;
+            }
+
+            return color;
         }
 
         private void InsertListView()
         {
-            foreach (Order_Product item in _orderList)
+            foreach (Order_Product order in _orderList)
             {
-                for (int i = 0; i < item.Aantal; i++)
-                {
-                    ListViewItem li = new ListViewItem("#" + item.Bestelling.Tafel.TafelNummer.ToString());
-                    li.SubItems.Add(item.Product.ProductNaam);
-                    switch (item.Status)
-                    {
-                        default:
-                            li.SubItems.Add(item.Status.ToString());
-                            break;
+                if (order.Bestelling.Opgenomen.Date != DateTime.Today && _filter)
+                    continue;
 
-                        case "Nieuw":
-                            li.SubItems.Add(item.Status.ToString()).ForeColor = Color.Orange;
-                            break;
+                TimeSpan time = order.Bestelling.Opgenomen - DateTime.Now;
+                int minutes = Convert.ToInt32(time.TotalMinutes * -1);
 
-                        case "Bezig":
-                            li.SubItems.Add(item.Status.ToString()).ForeColor = Color.Red;
-                            break;
+                ListViewItem li = new ListViewItem("#" + order.Bestelling.Tafel.TafelNummer.ToString());
+                li.SubItems.Add(order.Product.ProductNaam);
+                li.SubItems.Add(order.Status.ToString());
+                li.SubItems.Add(order.Aantal.ToString());
+                li.SubItems.Add(minutes.ToString());
+                li.ForeColor = StatusColor(order);
 
-                        case "Compleet":
-                            li.SubItems.Add(item.Status.ToString()).ForeColor = Color.Green;
-                            break;
-                    }
-                    li.SubItems.Add(item.Bestelling.Opgenomen.ToString());
-                    lv_orderList.Items.Add(li);
-                }
+                lv_orderList.Items.Add(li);
             }
         }
 
         private void InsertBarListView()
         {
-            foreach (Order_Product item in _orderList)
+            foreach (Order_Product order in _drinkList)
             {
-                for (int i = 0; i < item.Aantal; i++)
-                {
-                    if (!item.Product.IsDrinken)
-                        continue;
+                if (order.Bestelling.Opgenomen.Date != DateTime.Today && _filter)
+                    continue;
 
-                    ListViewItem li = new ListViewItem("#" + item.Bestelling.Tafel.TafelNummer.ToString());
-                    li.SubItems.Add(item.Product.ProductNaam);
-                    li.SubItems.Add(item.Status.ToString());
+                ListViewItem li = new ListViewItem("#" + order.Bestelling.Tafel.TafelNummer.ToString());
+                li.SubItems.Add(order.Product.ProductNaam);
+                li.SubItems.Add(order.Status.ToString());
+                li.SubItems.Add(order.Aantal.ToString());
+                li.ForeColor = StatusColor(order);
 
-                    lv_orderList.Items.Add(li);
-                }
+                lv_orderList.Items.Add(li);
             }
         }
 
-        private void InsertKeukenListView()
+        private void InsertKitchenListView()
         {
-            foreach (Order_Product item in _orderList)
+            foreach (Order_Product order in _foodList)
             {
-                for (int i = 0; i < item.Aantal; i++)
-                {
-                    if (item.Product.IsDrinken)
-                        continue;
+                if (order.Bestelling.Opgenomen.Date != DateTime.Today && _filter)
+                    continue;
 
-                    ListViewItem li = new ListViewItem("#" + item.Bestelling.Tafel.TafelNummer.ToString());
-                    li.SubItems.Add(item.Product.ProductNaam);
-                    li.SubItems.Add(item.Status.ToString());
+                ListViewItem li = new ListViewItem("#" + order.Bestelling.Tafel.TafelNummer.ToString());
+                li.SubItems.Add(order.Product.ProductNaam);
+                li.SubItems.Add(order.Status.ToString());
+                li.SubItems.Add(order.Aantal.ToString());
+                li.ForeColor = StatusColor(order);
 
-                    lv_orderList.Items.Add(li);
-                }
+                lv_orderList.Items.Add(li);
             }
         }
 
         private void GetOrders()
         {
-            _orderList = orderProductService.GetAllOrderProducts();
+            _orderList.Clear();
+            _foodList.Clear();
+            _drinkList.Clear();
+
+            _orderList = _orderProductService.GetAllOrderProducts();
+
+            foreach (Order_Product order in _orderList)
+            {
+                if (order.Product.IsDrinken)
+                    continue;
+
+                _foodList.Add(order);
+            }
+
+            foreach (Order_Product order in _orderList)
+            {
+                if (!order.Product.IsDrinken)
+                    continue;
+
+                _drinkList.Add(order);
+            }
 
             if (_orderList.Count == 0)
             {
@@ -122,19 +161,14 @@ namespace Login
             if (lv_orderList.SelectedItems.Count <= 0)
                 return;
 
-            ListViewItem item = lv_orderList.SelectedItems[0];
+            Order_Product order = GetListOrder();
 
-            Order_Product order = _orderList[item.Index];
-
-            if (order.Status == "Bezig")
-            {
-                MessageBox.Show("Dit is de huidige status");
+            if (CheckForStatusDuplicate(order, "Bezig"))
                 return;
-            }
 
             order.Status = "Bezig";
 
-            bool succes = orderProductService.UpdateOrderStatus(order);
+            bool succes = _orderProductService.UpdateOrderStatus(order);
 
             if (!succes)
             {
@@ -149,19 +183,14 @@ namespace Login
             if (lv_orderList.SelectedItems.Count <= 0)
                 return;
 
-            ListViewItem item = lv_orderList.SelectedItems[0];
+            Order_Product order = GetListOrder();
 
-            Order_Product order = _orderList[item.Index];
-
-            if (order.Status == "Nieuw")
-            {
-                MessageBox.Show("Dit is de huidige status");
+            if (CheckForStatusDuplicate(order, "Nieuw"))
                 return;
-            }
 
             order.Status = "Nieuw";
 
-            bool succes = orderProductService.UpdateOrderStatus(order);
+            bool succes = _orderProductService.UpdateOrderStatus(order);
 
             if (!succes)
             {
@@ -176,19 +205,14 @@ namespace Login
             if (lv_orderList.SelectedItems.Count <= 0)
                 return;
 
-            ListViewItem item = lv_orderList.SelectedItems[0];
+            Order_Product order = GetListOrder();
 
-            Order_Product order = _orderList[item.Index];
-
-            if (order.Status == "Compleet")
-            {
-                MessageBox.Show("Dit is de huidige status");
+            if (CheckForStatusDuplicate(order, "Afgerond"))
                 return;
-            }
 
-            order.Status = "Compleet";
+            order.Status = "Afgerond";
 
-            bool success = orderProductService.UpdateOrderStatus(order);
+            bool success = _orderProductService.UpdateOrderStatus(order);
 
             if (!success)
             {
@@ -202,7 +226,89 @@ namespace Login
         {
             SetListView();
             GetOrders();
-            InsertListView();
+
+            switch (_orderDisplay) 
+            {
+                case 0:
+                    InsertKitchenListView();
+                    break;
+                case 1:
+                    InsertBarListView();
+                    break;
+                case 2:
+                    InsertListView();
+                    break;
+            }
+        }
+
+        private Order_Product GetListOrder()
+        {
+            ListViewItem item = new ListViewItem();
+            Order_Product order;
+
+            int intSelectedIndex = lv_orderList.SelectedIndices[0];
+            item = lv_orderList.Items[intSelectedIndex];
+
+            switch (_orderDisplay)
+            {
+                default:
+                    order = _orderList[item.Index];
+                    break;
+                case 0:
+                    order = _foodList[item.Index];
+                    break;
+                case 1:
+                    order = _drinkList[item.Index];
+                    break;
+                case 2:
+                    order = _orderList[item.Index];
+                    break;
+            }
+
+            return order;
+        }
+
+        private void btn_generalOrder_Click(object sender, EventArgs e)
+        {
+            _orderDisplay = 2;
+            UpdateList();
+        }
+
+        private void btn_kitchenOrder_Click(object sender, EventArgs e)
+        {
+            _orderDisplay = 0;
+            UpdateList();
+        }
+
+        private void btn_barOrder_Click(object sender, EventArgs e)
+        {
+            _orderDisplay = 1;
+            UpdateList();
+        }
+
+        bool CheckForStatusDuplicate(Order_Product product, string status)
+        {
+            if (product.Status == status) 
+            {
+                MessageBox.Show($"{status} is de huidige status");
+                return true;
+            }
+
+            return false;
+        }
+
+        private void btn_filter_Click(object sender, EventArgs e)
+        {
+            _filter = !_filter;
+            UpdateList();
+
+            if (_filter) 
+            {
+                btn_filter.Text = "vandaag"; 
+                return;
+            }
+
+            btn_filter.Text = "geen";
         }
     }
 }
