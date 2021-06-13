@@ -12,7 +12,7 @@ namespace Login
     {
         private ChoosePlatform _platform;
         private MobileHome _mobileMenu;
-        public Product_Service productService;
+        public Product_Service productService = new Product_Service();
         private Reservering_Service _reserveringService;
         private Transaction_Service _transactionService;
         public List<Product> productList = new List<Product>();

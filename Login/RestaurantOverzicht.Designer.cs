@@ -134,30 +134,30 @@
             // lblZoeken
             // 
             this.lblZoeken.AutoSize = true;
-            this.lblZoeken.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblZoeken.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblZoeken.Location = new System.Drawing.Point(25, 380);
             this.lblZoeken.Name = "lblZoeken";
-            this.lblZoeken.Size = new System.Drawing.Size(197, 25);
+            this.lblZoeken.Size = new System.Drawing.Size(204, 25);
             this.lblZoeken.TabIndex = 11;
             this.lblZoeken.Text = "Zoeken op Iedereen";
             // 
             // lblKlantGeselct
             // 
             this.lblKlantGeselct.AutoSize = true;
-            this.lblKlantGeselct.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKlantGeselct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblKlantGeselct.Location = new System.Drawing.Point(278, 670);
             this.lblKlantGeselct.Name = "lblKlantGeselct";
-            this.lblKlantGeselct.Size = new System.Drawing.Size(213, 23);
+            this.lblKlantGeselct.Size = new System.Drawing.Size(215, 24);
             this.lblKlantGeselct.TabIndex = 10;
             this.lblKlantGeselct.Text = "Geen klant geselecteerd";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(25, 315);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 25);
+            this.label4.Size = new System.Drawing.Size(68, 25);
             this.label4.TabIndex = 5;
             this.label4.Text = "Naam";
             // 
@@ -185,7 +185,7 @@
             this.btnTerug.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnTerug.FlatAppearance.BorderSize = 0;
             this.btnTerug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTerug.Font = new System.Drawing.Font("Roboto", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTerug.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTerug.ForeColor = System.Drawing.Color.White;
             this.btnTerug.Location = new System.Drawing.Point(270, 705);
             this.btnTerug.Name = "btnTerug";
@@ -201,7 +201,7 @@
             this.btnKlantOpslaan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnKlantOpslaan.FlatAppearance.BorderSize = 0;
             this.btnKlantOpslaan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnKlantOpslaan.Font = new System.Drawing.Font("Roboto", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKlantOpslaan.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKlantOpslaan.ForeColor = System.Drawing.Color.White;
             this.btnKlantOpslaan.Location = new System.Drawing.Point(1039, 703);
             this.btnKlantOpslaan.Name = "btnKlantOpslaan";
@@ -223,7 +223,7 @@
             // 
             // lstReservering
             // 
-            this.lstReservering.Font = new System.Drawing.Font("Roboto", 17F);
+            this.lstReservering.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.lstReservering.HideSelection = false;
             this.lstReservering.Location = new System.Drawing.Point(3, 55);
             this.lstReservering.MultiSelect = false;
@@ -237,11 +237,11 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(14, 10);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(222, 38);
+            this.label11.Size = new System.Drawing.Size(221, 37);
             this.label11.TabIndex = 27;
             this.label11.Text = "Reserveringen";
             // 
@@ -258,17 +258,17 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Roboto", 24F);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(12, 10);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(186, 38);
+            this.label8.Size = new System.Drawing.Size(188, 37);
             this.label8.TabIndex = 27;
             this.label8.Text = "Tafel Status";
             // 
             // lstTafelStatus
             // 
-            this.lstTafelStatus.Font = new System.Drawing.Font("Roboto", 17F);
+            this.lstTafelStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.lstTafelStatus.HideSelection = false;
             this.lstTafelStatus.Location = new System.Drawing.Point(3, 55);
             this.lstTafelStatus.MultiSelect = false;
@@ -284,7 +284,7 @@
             this.btnMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnMin.FlatAppearance.BorderSize = 0;
             this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMin.Font = new System.Drawing.Font("Roboto", 32F);
+            this.btnMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F);
             this.btnMin.ForeColor = System.Drawing.Color.White;
             this.btnMin.Location = new System.Drawing.Point(502, 781);
             this.btnMin.Name = "btnMin";
@@ -299,7 +299,7 @@
             this.btnPlus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnPlus.FlatAppearance.BorderSize = 0;
             this.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPlus.Font = new System.Drawing.Font("Roboto", 32F);
+            this.btnPlus.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F);
             this.btnPlus.ForeColor = System.Drawing.Color.White;
             this.btnPlus.Location = new System.Drawing.Point(40, 781);
             this.btnPlus.Name = "btnPlus";
@@ -314,7 +314,7 @@
             this.btnFresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnFresh.FlatAppearance.BorderSize = 0;
             this.btnFresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFresh.Font = new System.Drawing.Font("Roboto", 32F);
+            this.btnFresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F);
             this.btnFresh.ForeColor = System.Drawing.Color.White;
             this.btnFresh.Location = new System.Drawing.Point(1119, 781);
             this.btnFresh.Name = "btnFresh";
@@ -357,20 +357,20 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Location = new System.Drawing.Point(36, 119);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(97, 23);
+            this.lblName.Size = new System.Drawing.Size(98, 24);
             this.lblName.TabIndex = 4;
             this.lblName.Text = "Voornaam";
             // 
             // lblAantalPersonen
             // 
             this.lblAantalPersonen.AutoSize = true;
-            this.lblAantalPersonen.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAantalPersonen.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAantalPersonen.Location = new System.Drawing.Point(36, 405);
             this.lblAantalPersonen.Name = "lblAantalPersonen";
-            this.lblAantalPersonen.Size = new System.Drawing.Size(147, 23);
+            this.lblAantalPersonen.Size = new System.Drawing.Size(149, 24);
             this.lblAantalPersonen.TabIndex = 5;
             this.lblAantalPersonen.Text = "Aantal Personen";
             // 
@@ -379,7 +379,7 @@
             this.btnUpdateRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnUpdateRes.FlatAppearance.BorderSize = 0;
             this.btnUpdateRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdateRes.Font = new System.Drawing.Font("Roboto", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateRes.ForeColor = System.Drawing.Color.White;
             this.btnUpdateRes.Location = new System.Drawing.Point(1148, 755);
             this.btnUpdateRes.Name = "btnUpdateRes";
@@ -394,7 +394,7 @@
             this.btnDeleteRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(99)))), ((int)(((byte)(151)))));
             this.btnDeleteRes.FlatAppearance.BorderSize = 0;
             this.btnDeleteRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteRes.Font = new System.Drawing.Font("Roboto", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteRes.ForeColor = System.Drawing.Color.White;
             this.btnDeleteRes.Location = new System.Drawing.Point(410, 752);
             this.btnDeleteRes.Name = "btnDeleteRes";
@@ -429,7 +429,7 @@
             // 
             // lstReserveringDag
             // 
-            this.lstReserveringDag.Font = new System.Drawing.Font("Roboto", 15F);
+            this.lstReserveringDag.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lstReserveringDag.HideSelection = false;
             this.lstReserveringDag.Location = new System.Drawing.Point(3, 60);
             this.lstReserveringDag.MultiSelect = false;
@@ -443,21 +443,21 @@
             // lblDatum
             // 
             this.lblDatum.AutoSize = true;
-            this.lblDatum.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDatum.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDatum.ForeColor = System.Drawing.Color.White;
             this.lblDatum.Location = new System.Drawing.Point(13, 14);
             this.lblDatum.Name = "lblDatum";
-            this.lblDatum.Size = new System.Drawing.Size(588, 38);
+            this.lblDatum.Size = new System.Drawing.Size(590, 37);
             this.lblDatum.TabIndex = 10;
             this.lblDatum.Text = "Ingeplande Reserveringen voor vandaag";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(33, 215);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 23);
+            this.label1.Size = new System.Drawing.Size(148, 24);
             this.label1.TabIndex = 12;
             this.label1.Text = "Geboorte Datum";
             // 
@@ -474,10 +474,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(36, 317);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(163, 23);
+            this.label2.Size = new System.Drawing.Size(164, 24);
             this.label2.TabIndex = 14;
             this.label2.Text = "Telefoon Nummer";
             // 
@@ -493,18 +493,20 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(207, 119);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 23);
+            this.label5.Size = new System.Drawing.Size(112, 24);
             this.label5.TabIndex = 18;
             this.label5.Text = "Achternaam";
             // 
             // cmbTafel
             // 
+            this.cmbTafel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTafel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTafel.FormattingEnabled = true;
             this.cmbTafel.Location = new System.Drawing.Point(232, 432);
+            this.cmbTafel.MaxLength = 10;
             this.cmbTafel.Name = "cmbTafel";
             this.cmbTafel.Size = new System.Drawing.Size(47, 33);
             this.cmbTafel.TabIndex = 5;
@@ -530,10 +532,10 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(36, 495);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(169, 23);
+            this.label7.Size = new System.Drawing.Size(171, 24);
             this.label7.TabIndex = 21;
             this.label7.Text = "Reservering Datum";
             // 
@@ -559,7 +561,7 @@
             this.pnlReservering.Controls.Add(this.dateTijd);
             this.pnlReservering.Controls.Add(this.txtNaam);
             this.pnlReservering.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlReservering.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlReservering.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlReservering.Location = new System.Drawing.Point(0, 0);
             this.pnlReservering.Name = "pnlReservering";
             this.pnlReservering.Size = new System.Drawing.Size(1576, 942);

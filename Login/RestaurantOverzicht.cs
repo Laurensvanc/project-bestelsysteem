@@ -42,6 +42,8 @@ namespace Login
 
         private void btnFresh_Click(object sender, EventArgs e)
         {
+            LoadKlanten();
+            UpdateResSettings();
             loadLists();
         }
 
