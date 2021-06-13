@@ -15,6 +15,7 @@ namespace Login
 
         public VoorraadChange(Product product)
         {
+            // change product
             InitializeComponent();
             LoadFields(product);
             pnl_AddBtn.Hide();
@@ -24,6 +25,7 @@ namespace Login
 
         public VoorraadChange()
         {
+            // add product
             InitializeComponent();
             pnl_ChangeBtn.Hide();
             lbl_ProductIDTxt.Hide();
@@ -36,6 +38,7 @@ namespace Login
 
         private void LoadFields(Product product)
         {
+            // load fields with product info
             _product = product;
             lbl_ProductIDValue.Text = _product.ProductId.ToString();
             tb_ProductName.Text = _product.ProductNaam;
@@ -69,6 +72,7 @@ namespace Login
 
         private void CheckPriceInput(TextBox textBox, KeyPressEventArgs e)
         {
+            // check if input is allowed character
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
             {
                 e.Handled = true;
@@ -193,7 +197,6 @@ namespace Login
             {
                 errorProvider.SetError(textBox, error);
                 return false;
-                //e.Cancel = true;
             }
             else
             {

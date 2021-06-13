@@ -105,11 +105,11 @@ namespace Login
             // 
             this.lbl_Instruction2.AutoSize = true;
             this.lbl_Instruction2.Font = new System.Drawing.Font("Roboto", 14.25F);
-            this.lbl_Instruction2.Location = new System.Drawing.Point(224, 31);
+            this.lbl_Instruction2.Location = new System.Drawing.Point(222, 31);
             this.lbl_Instruction2.Name = "lbl_Instruction2";
-            this.lbl_Instruction2.Size = new System.Drawing.Size(304, 23);
+            this.lbl_Instruction2.Size = new System.Drawing.Size(309, 23);
             this.lbl_Instruction2.TabIndex = 6;
-            this.lbl_Instruction2.Text = "Kies een menu om aan te passen->";
+            this.lbl_Instruction2.Text = "Kies een menu om aan te passen ->";
             // 
             // lbl_Instruction
             // 

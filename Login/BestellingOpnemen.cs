@@ -66,39 +66,41 @@ namespace Login
 
         private void UpdateTables()
         {
+            // update table buttons with reservation status
             List<Button> btns = new List<Button>();
 
-            foreach (Control c in pnl_TafelSelect.Controls)
+            foreach (Control c in pnl_TafelSelect.Controls) // get all buttons from control
             {
-                if (c is Button && c.Text.Contains("Tafel"))
+                if (c.Text.Contains("Tafel")) // if button is a table button
                 {
-                    btns.Add((Button)c);
+                    btns.Add((Button)c); // add to buttons list
                 }
             }
-            GetTableStatus(btns);
+            GetTableStatus(btns); // update buttons list with status
         }
 
         private void GetTableStatus(List<Button> btns)
         {
-            List<Reservering> reserverings = _reserveringService.GetReserverings();
+            List<Reservering> reserveringen = _reserveringService.GetReserverings(); // list of all reserved tables
+            List<int> tableList = _transactionService.GetTables(); // list of all tables with active transaction
 
-            List<int> tableList = _transactionService.GetTables();
-            List<int> tafelToBezet = new List<int>();
-            List<int> tafelToGereserveerd = new List<int>();
+            List<int> tafelToBezet = new List<int>(); // list of tables with status 'Bezet' 
+            List<int> tafelToGereserveerd = new List<int>(); // list of tables with status 'Gereserveerd' 
+
             DateTime nu = DateTime.Now;
-            foreach (Reservering r in reserverings)
+            foreach (Reservering r in reserveringen)
             {
-                if (r.BeginTijd < nu && r.EindTijd > nu || tableList.Contains(r.Tafel.TafelNummer))
+                if (r.BeginTijd < nu && r.EindTijd > nu || tableList.Contains(r.Tafel.TafelNummer)) // if reservering is now
                 {
                     tafelToBezet.Add(r.Tafel.TafelNummer);
                 }
-                else if (r.BeginTijd < nu.AddHours(2) && r.EindTijd > nu)
+                else if (r.BeginTijd < nu.AddHours(2) && r.EindTijd > nu) // if reservering is 2 hours from now
                 {
                     tafelToGereserveerd.Add(r.Tafel.TafelNummer);
                 }
             }
 
-            btns.Reverse();
+            btns.Reverse(); // reverse list because of buttons ordering
             for (int i = 0; i < 10; i++)
             {
                 if (tafelToBezet.Contains(i + 1))

@@ -132,6 +132,7 @@ namespace Login
                             {
                                 _menuService.ChangeMenu(menu);
                                 UpdateProducts();
+                                MessageBox.Show("Product toegevoegd!", "Success!");
                             }
                         }
                         else

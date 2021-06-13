@@ -168,11 +168,7 @@ namespace Login
             }
             if (menuId > 0) // checks which products to load
             {
-                bool drinks = false;
-                if (_menuName == "Drank Kaart")
-                {
-                    drinks = true;
-                }
+                bool drinks = _menuName == "Drank Kaart";
                 using (var menuChange = new MenuChange(_menuName, menuId, drinks))
                 {
                     menuChange.ShowDialog();
@@ -239,7 +235,7 @@ namespace Login
                 }
                 else
                 {
-                    b.FlatAppearance.BorderSize = 2;
+                    b.FlatAppearance.BorderSize = 3;
                 }
             }
         }
