@@ -96,7 +96,9 @@ namespace Login
 
         private void resetbtn_Click(object sender, EventArgs e)
         {
-            if (secrettxtbox.Text.ToLower() == "hond")
+            Account_Service service = new Account_Service();
+
+            if (service.checkanswer(secrettxtbox.Text.ToLower(), user2txt.Text) )
             {
 
 
@@ -104,7 +106,6 @@ namespace Login
                 {
                     string password = newwwtxt.Text;
                     string encryptedwachtwoord = BCrypt.Net.BCrypt.HashPassword(password);
-                    Account_Service service = new Account_Service();
                     if(service.ResetPassword(user2txt.Text, encryptedwachtwoord))
                     {
                         MessageBox.Show("Wachtwoord gereset!");
