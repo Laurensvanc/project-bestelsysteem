@@ -93,8 +93,19 @@ namespace Login
             arr[2] = "€" + p.InkoopPrijs.ToString("0.00");
             arr[3] = "€" + p.Prijs.ToString("0.00") + $" ({priceProfit}€{priceDifference.ToString("0.00")})";
             arr[4] = p.Aantal.ToString();
-
+            
             ListViewItem li = new ListViewItem(arr);
+            if (p.Aantal < 5)
+            {
+                if (p.Aantal < 1)
+                {
+                    li.ForeColor = Color.Red;
+                }
+                else
+                {
+                    li.ForeColor = Color.DarkOrange;
+                }
+            }
             lv_Voorraad.Items.Add(li);
         }
 

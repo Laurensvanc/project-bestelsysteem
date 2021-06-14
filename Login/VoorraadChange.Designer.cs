@@ -186,7 +186,7 @@ namespace Login
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(90, 35);
             this.btn_Add.TabIndex = 7;
-            this.btn_Add.Text = "Add";
+            this.btn_Add.Text = "Toevoegen";
             this.btn_Add.UseVisualStyleBackColor = false;
             this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
