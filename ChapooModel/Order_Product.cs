@@ -8,7 +8,7 @@ namespace ChapooModel
 {
     public class Order_Product
     {
-        public int OrderID { get; set; }
+        public Order Order { get; set; }
         public Product Product { get; set; }
         public int Aantal { get; set; }
         public Bestelling Bestelling { get; set; }
@@ -20,9 +20,9 @@ namespace ChapooModel
             this.Aantal = Aantal;
         }
 
-        public Order_Product(int orderId,string status, int aantal,Product product, Bestelling bestelling)
+        public Order_Product(Order order, string status, int aantal,Product product, Bestelling bestelling)
         {
-            OrderID = orderId;
+            Order = order;
             Aantal = aantal;
             Status = status;
             Product = product;

@@ -37,11 +37,12 @@ namespace ChapooModel
             this.BestellingID = BestellingID;
         }
 
-        public Bestelling(int bestellingId, Tafel tafelId, DateTime opgenomen)
+        public Bestelling(int bestellingId, Tafel tafel, DateTime opgenomen, string instructies)
         {
             this.BestellingID = bestellingId;
-            this.Tafel = tafelId;
+            this.Tafel = tafel;
             this.Opgenomen = opgenomen;
+            this.Instructies = instructies;
         }
     }
 }

@@ -42,10 +42,11 @@ namespace Login
 
             // place headers
             lv_orderList.Columns.Add("Tafelnr", 100, HorizontalAlignment.Center);
-            lv_orderList.Columns.Add("Gerecht", 650);
+            lv_orderList.Columns.Add("Gerecht", 400);
             lv_orderList.Columns.Add("Status", 115, HorizontalAlignment.Center);
             lv_orderList.Columns.Add("Aantal", 85, HorizontalAlignment.Right);
             lv_orderList.Columns.Add("Minuten", 125, HorizontalAlignment.Right);
+            lv_orderList.Columns.Add("Instructies", 400, HorizontalAlignment.Left);
         }
 
         Color StatusColor(string status)
@@ -98,6 +99,7 @@ namespace Login
                 li.SubItems.Add(order.Status.ToString());
                 li.SubItems.Add(order.Aantal.ToString());
                 li.SubItems.Add(minutes.ToString());
+                li.SubItems.Add(order.Bestelling.Instructies);
 
                 lv_orderList.Items.Add(li);
             }
@@ -118,6 +120,7 @@ namespace Login
                 li.SubItems.Add(order.Status.ToString());
                 li.SubItems.Add(order.Aantal.ToString());
                 li.SubItems.Add(minutes.ToString());
+                li.SubItems.Add(order.Bestelling.Instructies);
 
                 lv_orderList.Items.Add(li);
             }
@@ -139,6 +142,7 @@ namespace Login
                 li.SubItems.Add(order.Status);
                 li.SubItems.Add(order.Aantal.ToString());
                 li.SubItems.Add(minutes.ToString());
+                li.SubItems.Add(order.Bestelling.Instructies);
 
                 lv_orderList.Items.Add(li);
                 

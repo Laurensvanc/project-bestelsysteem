@@ -35,7 +35,7 @@ namespace ChapooDal
 
             sqlParameters[0] = new SqlParameter("@Status", orderProduct.Status);
             sqlParameters[1] = new SqlParameter("@Aantal", orderProduct.Aantal);
-            sqlParameters[2] = new SqlParameter("@OrderID", orderProduct.OrderID);
+            sqlParameters[2] = new SqlParameter("@OrderID", orderProduct.Order.OrderID);
             sqlParameters[3] = new SqlParameter("@ProductID", orderProduct.Product.ProductId);
 
             ExecuteEditQuery(updateQuery, sqlParameters);
@@ -43,7 +43,7 @@ namespace ChapooDal
 
         public List<Order_Product> Db_Get_All_Order_Products()
         {
-            string query = @"SELECT op.OrderID, o.BestellingID, op.ProductID, b.TafelID, p.ProductNaam, p.IsDrinken, op.[Status], op.Aantal, b.Opgenomen
+            string query = @"SELECT op.OrderID, o.BestellingID, op.ProductID, b.TafelID, p.ProductNaam, p.IsDrinken, op.[Status], op.Aantal, b.Opgenomen, b.Instructies
                                 FROM Order_Product AS op
                                 JOIN[Order] AS o
                                 ON op.OrderID = o.OrderID
@@ -83,7 +83,8 @@ namespace ChapooDal
             foreach (DataRow dr in dataTable.Rows)
             {
                 Order_Product orderProduct = new Order_Product(
-                    (int)dr["OrderID"],
+                    new Order(
+                        (int)dr["OrderID"]),
                     (String)dr["Status"],
                     (int)dr["Aantal"],
                     new Product(
@@ -93,7 +94,8 @@ namespace ChapooDal
                     new Bestelling(
                         (int)dr["BestellingID"], 
                         new Tafel((int)dr["TafelID"]),
-                        (DateTime)dr["Opgenomen"]));
+                        (DateTime)dr["Opgenomen"],
+                        (String)dr["Instructies"]));
 
                 orderProducts.Add(orderProduct);
             }

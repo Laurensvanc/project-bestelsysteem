@@ -20,7 +20,7 @@ namespace ChapooLogic
             }
             catch (Exception err)
             {
-                throw (err);
+                throw new Exception(err.Message);
             }
         }
 
@@ -33,8 +33,10 @@ namespace ChapooLogic
             }
             catch (Exception err)
             {
+                // not used
+                new Exception(err.Message);
+                
                 return false;
-                throw (err);
             }
         }
     }
